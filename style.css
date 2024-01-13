@@ -7,7 +7,7 @@ header, footer {
 header h1, header p, footer p {
     margin: 0 auto;
     padding: 5px;
-    max-width: 960px
+    max-width: 960px;
 }
 
 #cesiumContainer {
