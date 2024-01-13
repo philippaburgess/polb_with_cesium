@@ -1,1 +1,28 @@
+/* Style for header and footer */
+header, footer {
+    background-color: #fffdd0; /* light yellow color */
+    text-align: center; /* Centers the text */
+    padding: 10px 0; /* Adds padding above and below the text */
+}
+
+/* Ensures the header and footer content is centered and responsive */
+header h1, header p, footer p {
+    margin: 0 auto; /* Centers the content horizontally */
+    padding: 5px;
+    max-width: 960px; /* Maximum width of the content area */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    header h1, header p, footer p {
+        max-width: 90%; /* Allows some margin on smaller screens */
+    }
+}
+
+/* Styles for the main container */
+#cesiumContainer {
+    width: 100vw; /* Full view width */
+    height: calc(100vh - 120px); /* Full view height minus header and footer */
+    overflow: hidden; /* Hides the scroll bar */
+}
 
