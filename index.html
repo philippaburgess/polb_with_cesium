@@ -5,22 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Port of Long Beach: Sustainability Analysis</title>
+        <style>
+        html, body, #cesiumContainer {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.111/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.111/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+      <header>
         <h1>Port of Long Beach: Sustainability Analysis</h1>
         <p>Built with Cesium and ArcGIS Pro 3.2</p>
     </header>
-    <main>
-        <!-- Calendar Section -->
-        <section id="calendar" class="content-section">
-            <h2>Cesium Story Placeholder While We Build Out a Custom Deployment</h2>
-          <iframe title="586_Cesium_POLB" width="1024" height="576" src="https://ion.cesium.com/stories/viewer/?id=6cd92041-7907-4e42-9048-ebcaad10f965" frameborder="0" allow="fullscreen" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </main>
+<main>
+    <div id="cesiumContainer"></div>
+    <script>
+   const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
+      
+      Cesium.ArcGisMapService.defaultAccessToken = apiKey;
+
+      const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
+      
+      Cesium.Ion.defaultAccessToken = cesiumAccessToken;
+
+        const viewer = new Cesium.Viewer("cesiumContainer", {
+            // ... other viewer settings
+        });     
+
+     var locations = [
+    Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
+    Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800), // Middle Harbor
+    Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
+    Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 600), // Queen Mary
+    Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
+];
+        // Function to fly to a location and wait
+        function flyToLocationAndHold(index) {
+            if (index >= locations.length) {
+                return; // Stop if we've visited all locations
+            }
+          
+            viewer.camera.flyTo({
+                destination: locations[index],
+                complete: function() {
+                    // Add data layers or other actions here
+
+                    // Wait for 2 minutes, then fly to the next location
+                    setTimeout(function() {
+                        flyToLocationAndHold(index + 1);
+                    }, 12000); // seconds minutes
+                }
+            });
+        }
+
+        // Start the sequence
+        flyToLocationAndHold(0);
+     
+       </script>
+
+        </main>
 
     <footer>
         <p>Contact: philippaburgess@gmail.com
     </footer>
+  </body>
+</html>
+
+
 </body>
 </html>
