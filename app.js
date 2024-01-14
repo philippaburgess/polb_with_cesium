@@ -14,6 +14,13 @@ var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0;
 
 
+window.onload = function() {
+    var slides = document.querySelectorAll('.slide');
+    window.currentSlideIndex = 0;
+    if (slides.length > 0) {
+        slides[0].classList.add('active'); // Show the first slide
+    }
+    
 window.nextSlide = function() {
         if (currentSlideIndex < slides.length - 1) {
             slides[currentSlideIndex].classList.remove('active'); // Hide current slide
