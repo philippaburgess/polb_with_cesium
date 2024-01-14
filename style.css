@@ -12,8 +12,11 @@ header h1, header p, footer p {
 
 #cesiumContainer {
     width: 100%;
-    height: calc(100vh - 120px); /* Adjust the 120px if your header/footer are larger */
+    height: calc(100vh - 120px); /* Adjust based on actual header/footer size */
+    position: relative;
+    z-index: 0; /* Ensures it is not overlaid by other elements */
 }
+
 
 #instruction-box {
     position: absolute; /* Position absolutely within the cesiumContainer */
