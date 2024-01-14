@@ -7,14 +7,9 @@
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
      // Initialize the Cesium Viewer
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-        // Set the home button to a static view over Long Beach
-        homeButton: false,
-        sceneModePicker: false,
-        navigationHelpButton: false,
-        animation: false,
-        timeline: false,
+const viewer = new Cesium.Viewer('cesiumContainer');
     });
+
 
     viewer.scene.camera.setView({
         destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
