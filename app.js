@@ -22,7 +22,6 @@
     timeline: false, // Don't show the timeline
     navigationHelpButton: false, // Don't show the navigation help button
 });
-    });
 
     // Section 2: Scene and Location Setup
     // Define your locations array here as before
