@@ -79,6 +79,7 @@ window.previousScene = function() {
         updateScene();
     }
 };
+
     // Section 4: Initial Flyover
 
 // Function to fly to each location and hold
