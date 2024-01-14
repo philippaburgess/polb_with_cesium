@@ -53,39 +53,6 @@ header h1, header p, footer p {
     background-color: #cca300; /* Darker yellow on hover */
 }
 
-#story-title {
-    position: absolute;
-    top: 10px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 10; /* Ensure it's above the Cesium canvas */
-}
-
-#story-navigation {
-    position: absolute;
-    bottom: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
-    z-index: 10; /* Ensure it's above the Cesium canvas */
-}
-
-
-/* Style for the navigation buttons */
-#story-navigation button {
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-left: 5px; /* Space between buttons */
-    cursor: pointer;
-}
-
-#story-navigation button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
-
 /* Styles for the slide content */
 .slide-content {
     display: none; /* Hide all slide content by default */
