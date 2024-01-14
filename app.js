@@ -13,28 +13,31 @@
 var currentSlideIndex = 0;
 var slides = document.querySelectorAll('.slide');
 
-// This function will be called when the "OK, what is next?" button is clicked
 function nextSlide() {
-    // Check if we are not at the last slide already
-    if (currentSlideIndex < slides.length - 1) {
-        slides[currentSlideIndex].classList.remove('active'); // Hide current slide
-        currentSlideIndex += 1; // Move to the next slide
-        slides[currentSlideIndex].classList.add('active'); // Show next slide
+    // Hide current slide
+    slides[currentSlideIndex].classList.remove('active');
+
+    // Move to the next slide
+    currentSlideIndex += 1;
+
+    // Check if it's the last slide
+    if (currentSlideIndex >= slides.length) {
+        closeInstructions(); // If it is the last slide, close the instruction box
+    } else {
+        // Show next slide
+        slides[currentSlideIndex].classList.add('active');
     }
 }
 
-// This function will be called when the "Got it, let's start!" button is clicked
 function closeInstructions() {
-    document.getElementById('instruction-box').style.display = 'none'; // Close the instruction box
-    // Start the flyover automatically after closing the instructions
-    flyToLocationAndHold(0);
+    // Close the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Additional code to start any other processes if necessary
 }
 
-// Initialize the instruction box by showing the first slide
+// Initialize the first slide to be active on window load
 window.onload = function() {
-    if (slides.length > 0) {
-        slides[0].classList.add('active'); // Show the first slide
-    }
+    slides[0].classList.add('active');
 };
 
     const locations = [
