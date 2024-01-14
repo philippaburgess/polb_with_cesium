@@ -6,92 +6,47 @@
     const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
-    // Initialize the Cesium Viewer
+    // Initialize the Cesium Viewer with the basic options
     const viewer = new Cesium.Viewer('cesiumContainer', {
-        // ... other viewer settings
+        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+        }),
+        baseLayerPicker: false,
+        geocoder: false,
+        sceneModePicker: false
     });
 
-    // Locations array
-    const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
-        Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800), // Middle Harbor
-        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
-        Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 600), // Queen Mary
-        Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
-    ];
+    // Slides for the instruction overlay
+    var slides = document.querySelectorAll('.slide');
+    var currentSlideIndex = 0; // Start at the first slide
 
-     var scenes = [
-        // Scene 1
-        {
-            title: "Vincent Thomas Bridge",
-            content: "Here's some information about the Vincent Thomas Bridge...",
-            cameraView: function() {
-                viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500),
-                    duration: 3
-                });
-            }
-        },
-        // Scene 2
-        {
-            title: "Middle Harbor",
-            content: "Middle Harbor is known for...",
-            cameraView: function() {
-                viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800),
-                    duration: 3
-                });
-            }
-        },
-        // ... Additional scenes
-    ];
-
-    var currentSceneIndex = 0;
-
-    function updateScene() {
-        var scene = scenes[currentSceneIndex];
-        document.getElementById('scene-title').textContent = scene.title;
-        document.getElementById('scene-content').textContent = scene.content;
-        scene.cameraView();
-    }
-
-    window.nextScene = function() {
-        if (currentSceneIndex < scenes.length - 1) {
-            currentSceneIndex++;
-            updateScene();
+    // Function to move to the next slide in the instruction overlay
+    window.nextSlide = function() {
+        if (currentSlideIndex < slides.length - 1) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex++;
+            slides[currentSlideIndex].classList.add('active');
         }
     };
 
-    window.previousScene = function() {
-        if (currentSceneIndex > 0) {
-            currentSceneIndex--;
-            updateScene();
-        }
-    };
-
-    window.startStory = function() {
+    // Function to close the instruction overlay
+    window.closeInstructions = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        document.getElementById('story-navigation').style.display = 'block';
-        updateScene();
+        // If you have additional logic to start the story, you can call it here
+        // For now, this does nothing but close the instructions
     };
 
+    // The window.onload function is set to prepare the slides without advancing any scenes or showing additional content
     window.onload = function() {
-        // Your existing functions for managing the instruction overlay...
-        
-        // Initialize the story to the first scene
-        if (scenes.length > 0) {
-            updateScene();
+        // Set the first slide to active when the page loads
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
         }
-    };
 
-window.startStory = function() {
-    document.getElementById('instruction-box').style.display = 'none';
-    document.getElementById('story-navigation').style.display = 'block';
-    document.getElementById('story-title').style.display = 'block';
-    updateScene();
-};
-    
-})();
+        // Location array
+    const locations = [
+        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
+    ];
 
 
 
