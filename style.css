@@ -71,28 +71,24 @@ header h1, header p, footer p {
     display: block; /* Show active slide content */
 }
 
-
-
-/* Navigation Buttons Styles */
-#navigation-buttons {
+#navigation-container {
     position: absolute;
     bottom: 20px;
-    right: 20px;
-    z-index: 10; /* Ensure it's above the Cesium canvas */
+    left: 20px;
+    z-index: 10; /* Adjust if necessary to ensure it's above the Cesium canvas */
 }
 
-#navigation-buttons button {
+#navigation-container button {
     padding: 10px 20px;
-    background-color: #ffd700; /* Yellow background to match the introduction */
-    color: #000; /* Text color */
+    background-color: #ffd700; /* Yellow background */
+    color: #000;
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     cursor: pointer;
-    margin: 0 5px; /* Spacing between buttons */
-    font-weight: bold; /* Make text bold */
+    margin-right: 10px; /* Space between buttons */
 }
 
-#navigation-buttons button:hover {
+#navigation-container button:hover {
     background-color: #cca300; /* Darker yellow on hover */
 }
 
@@ -104,7 +100,6 @@ header h1, header p, footer p {
 #slide-forward:after {
     content: ' >';
 }
-
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
