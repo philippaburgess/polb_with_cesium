@@ -66,3 +66,7 @@ window.onload = function() {
 .nextScene = function() {
 // Logic to go to the next scene will be added here later
 };
+
+function onInitialFlyToComplete() {
+    document.getElementById('slide-forward').style.visibility = 'visible';
+}
