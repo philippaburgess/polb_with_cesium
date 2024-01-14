@@ -13,31 +13,34 @@
 var currentSlideIndex = 0;
 var slides = document.querySelectorAll('.slide');
 
-function nextSlide() {
-    // Hide current slide
-    slides[currentSlideIndex].classList.remove('active');
 
-    // Move to the next slide
-    currentSlideIndex += 1;
 
-    // Check if it's the last slide
-    if (currentSlideIndex >= slides.length) {
-        closeInstructions(); // If it is the last slide, close the instruction box
-    } else {
-        // Show next slide
-        slides[currentSlideIndex].classList.add('active');
+    // Define the functions in the global scope
+window.nextSlide = function() {
+    var slides = document.querySelectorAll('.slide');
+    if (window.currentSlideIndex < slides.length - 1) {
+        slides[window.currentSlideIndex].classList.remove('active'); // Hide current slide
+        window.currentSlideIndex += 1; // Move to the next slide
+        slides[window.currentSlideIndex].classList.add('active'); // Show next slide
     }
-}
+};
 
-function closeInstructions() {
-    // Close the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Additional code to start any other processes if necessary
-}
+window.closeInstructions = function() {
+    document.getElementById('instruction-box').style.display = 'none'; // Close the instruction box
+    // Start the flyover automatically after closing the instructions
+    flyToLocationAndHold(0);
+};
 
-// Initialize the first slide to be active on window load
+// Initialize the instruction box by showing the first slide
 window.onload = function() {
-    slides[0].classList.add('active');
+    window.currentSlideIndex = 0;
+    var slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        slides[0].classList.add('active'); // Show the first slide
+    }
+    // Prevent the flyToLocationAndHold function from starting immediately
+    // Comment out or remove the line below that calls flyToLocationAndHold(0);
+    // flyToLocationAndHold(0); // Comment or remove this line
 };
 
     const locations = [
