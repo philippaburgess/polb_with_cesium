@@ -16,13 +16,13 @@
         sceneModePicker: false
     });
 
-    viewer.scene.camera.setView({
+   viewer.scene.camera.setView({
         destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
     });
 
     // Slides for the instruction overlay
     var slides = document.querySelectorAll('.slide');
-    var currentSlideIndex = 0; // Start at the first slide
+    var currentSlideIndex = 0;
 
     // Function to move to the next slide in the instruction overlay
     window.nextSlide = function() {
@@ -36,24 +36,15 @@
     // Function to close the instruction overlay
     window.closeInstructions = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        // If you have additional logic to start the story, you can call it here
-        // For now, this does nothing but close the instructions
     };
 
-    // The window.onload function is set to prepare the slides without advancing any scenes or showing additional content
+    // Set the first slide to active when the page loads
     window.onload = function() {
-        // Set the first slide to active when the page loads
         if (slides.length > 0) {
             slides[0].classList.add('active');
         }
     };
 })();
-
-
-
-
-
-
 
 
 
