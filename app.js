@@ -16,7 +16,7 @@
     vrButton: false, // Don't show the VR button
     geocoder: false, // Don't show the geocoder widget
     homeButton: false, // Don't show the home button
-    infoBox: true, // Don't show the info box
+    infoBox: false, // Don't show the info box
     sceneModePicker: false, // Don't show the scene mode picker
     selectionIndicator: false, // Don't show the selection indicator
     timeline: false, // Don't show the timeline
