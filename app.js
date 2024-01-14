@@ -16,6 +16,11 @@
         sceneModePicker: false
     });
 
+        const locations = [
+        Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
+        // ... other locations
+    ];
+
    viewer.scene.camera.setView({
         destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
     });
