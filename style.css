@@ -81,7 +81,7 @@ main {
 #navigation-container {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
     z-index: 10; /* Adjust if necessary to ensure it's above the Cesium canvas */
 }
 
