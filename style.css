@@ -1,18 +1,18 @@
 html, body {
   width: 100%;
-  min-height: 100%; /* Use min-height instead of height */
+  min-height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 header, footer {
-  background-color: #fffdd0; /* Light yellow color */
+  background-color: #fffdd0;
   text-align: center;
   padding: 15px 0;
-  width: 100%; /* Ensure full width */
+  width: 100%;
 }
 
 header h1, header p, footer p {
@@ -78,27 +78,31 @@ main {
     display: block; /* Show active slide content */
 }
 
-#navigation-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10; /* Adjust if necessary to ensure it's above the Cesium canvas */
+#navigation-buttons {
+    visibility: hidden;
+
+#navigation-buttons { /* Corrected ID */
+  visibility: hidden;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
 }
 
-#navigation-container button {
-    padding: 10px 20px;
-    background-color: #ffd700; /* Yellow background */
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px; /* Space between buttons */
+#navigation-buttons button { /* Updated selector */
+  padding: 10px 20px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-#navigation-container button:hover {
-    background-color: #cca300; /* Darker yellow on hover */
+#navigation-buttons button:hover { /* Updated selector */
+  background-color: #cca300;
 }
-
+  
 /* Adding directional arrows next to the text */
 #slide-back:before {
     content: '< ';
@@ -109,10 +113,10 @@ main {
 }
 
 footer {
-  padding: 15px 0; /* Your footer padding */
-  text-align: center; /* Center the text in the footer */
-  background-color: #fffdd0; /* Your footer background color */
-  width: 100%; /* Ensure the footer is full width */
+  padding: 15px 0;
+  text-align: center;
+  background-color: #fffdd0;
+  width: 100%;
 }
 
 /* Responsive design for smaller screens */
