@@ -87,4 +87,3 @@ header h1, header p, footer p {
     header h1, header p, footer p {
         max-width: 90%; /* Allows some margin on smaller screens */
     }
-}
