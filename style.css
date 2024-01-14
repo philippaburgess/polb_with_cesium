@@ -15,6 +15,24 @@ header h1, header p, footer p {
     height: calc(100vh - 120px); /* Adjust the 120px if your header/footer are larger */
 }
 
+.instruction {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #ffffff;
+    border: 1px solid #000;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.slide {
+    display: none; /* Hide all slides by default */
+}
+
+.slide.active {
+    display: block; /* Only the active slide is shown */
+}
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
