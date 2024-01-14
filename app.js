@@ -16,11 +16,6 @@
         sceneModePicker: false
     });
 
-            // Location array
-    const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
-    ];
-
     // Slides for the instruction overlay
     var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0; // Start at the first slide
