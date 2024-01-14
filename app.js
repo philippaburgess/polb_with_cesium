@@ -14,8 +14,7 @@ var currentSlideIndex = 0;
 var slides = document.querySelectorAll('.slide');
 
 
-
-    // Define the functions in the global scope
+// Define the functions in the global scope
 window.nextSlide = function() {
     var slides = document.querySelectorAll('.slide');
     if (window.currentSlideIndex < slides.length - 1) {
@@ -38,11 +37,11 @@ window.onload = function() {
     if (slides.length > 0) {
         slides[0].classList.add('active'); // Show the first slide
     }
-    // Prevent the flyToLocationAndHold function from starting immediately
-    // Comment out or remove the line below that calls flyToLocationAndHold(0);
-    // flyToLocationAndHold(0); // Comment or remove this line
 };
 
+
+
+    
     const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
         Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800), // Middle Harbor
