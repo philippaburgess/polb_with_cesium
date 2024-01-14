@@ -1,4 +1,5 @@
 (function() {
+    
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
     Cesium.ArcGisMapService.defaultAccessToken = apiKey;
 
@@ -9,36 +10,22 @@
         // ... other viewer settings
     });
 
-
-var currentSlideIndex = 0;
 var slides = document.querySelectorAll('.slide');
+    var currentSlideIndex = 0;
 
 
-// Define the functions in the global scope
 window.nextSlide = function() {
-    var slides = document.querySelectorAll('.slide');
-    if (window.currentSlideIndex < slides.length - 1) {
-        slides[window.currentSlideIndex].classList.remove('active'); // Hide current slide
-        window.currentSlideIndex += 1; // Move to the next slide
-        slides[window.currentSlideIndex].classList.add('active'); // Show next slide
-    }
-};
+        if (currentSlideIndex < slides.length - 1) {
+            slides[currentSlideIndex].classList.remove('active'); // Hide current slide
+            currentSlideIndex++; // Move to the next slide
+            slides[currentSlideIndex].classList.add('active'); // Show next slide
+        }
+    };
 
-window.closeInstructions = function() {
-    document.getElementById('instruction-box').style.display = 'none'; // Close the instruction box
-    // Start the flyover automatically after closing the instructions
-    flyToLocationAndHold(0);
-};
-
-// Initialize the instruction box by showing the first slide
-window.onload = function() {
-    window.currentSlideIndex = 0;
-    var slides = document.querySelectorAll('.slide');
-    if (slides.length > 0) {
-        slides[0].classList.add('active'); // Show the first slide
-    }
-};
-
+    window.closeInstructions = function() {
+        document.getElementById('instruction-box').style.display = 'none'; // Close the instruction box
+        flyToLocationAndHold(0); // Start the flyover
+    };
 
 
     
@@ -68,6 +55,13 @@ window.onload = function() {
 
     flyToLocationAndHold(0);
 })();
+
+  // Attach the onload handler to window
+    window.onload = function() {
+        slides[0].classList.add('active'); // Show the first slide on load
+    };
+
+
 
 
 
