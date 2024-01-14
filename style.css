@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: auto; /* Enable scrolling on the page */
 }
 
 header, footer {
@@ -20,14 +21,13 @@ header h1, header p, footer p {
   width: 100%;
   height: calc(100vh - 120px); /* Adjust based on header/footer height */
   position: relative; /* Needed for absolutely positioned children */
-  overflow: hidden; /* Hides the scroll bar */ 
 }
 
 main {
     position: relative; /* Positioned relative to its normal position */
     max-height: calc(100vh - (height of header + height of footer));
     overflow-y: auto; /* Enable vertical scrollbar if content overflows */
-    padding-bottom: (height of footer); /* Space for footer */
+    padding-bottom: 10px; /* Space for footer */
 }
 
 #instruction-box {
@@ -110,6 +110,7 @@ main {
 footer {
     height: 10px; /* Height of your footer */
     position: relative; /* Positioned relative to its normal position */
+    width: 100%; /* Ensure the footer is full width */
 }
 
 /* Responsive design for smaller screens */
