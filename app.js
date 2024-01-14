@@ -20,85 +20,70 @@
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
     ];
 
-    // Define your scenes here
-    var scenes = [
+        var scenes = [
         // Scene 1
-        function(viewer) {
-            // Code to execute for scene 1
+        function() {
             viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500),
+                destination: locations[0],
                 duration: 3
             });
         },
         // Scene 2
-        function(viewer) {
-            // Code to execute for scene 2
+        function() {
+            viewer.camera.flyTo({
+                destination: locations[1],
+                duration: 3
+            });
         },
         // ... Additional scenes
     ];
 
     var currentSceneIndex = 0;
 
-    // Function to move to the next scene
     window.nextScene = function() {
         if (currentSceneIndex < scenes.length - 1) {
             currentSceneIndex++;
-            scenes[currentSceneIndex](viewer); // Execute the current scene function
+            scenes[currentSceneIndex]();
         }
     };
 
-    // Function to move to the previous scene
     window.previousScene = function() {
         if (currentSceneIndex > 0) {
             currentSceneIndex--;
-            scenes[currentSceneIndex](viewer); // Execute the current scene function
+            scenes[currentSceneIndex]();
         }
     };
 
-    // Close the instruction box and start the story
     window.startStory = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        scenes[0](viewer); // Start with the first scene
-    };
-
-    // Function to fly to the given location (part of your existing code)
-    window.flyToLocationAndHold = function(index) {
-        if (index >= locations.length) {
-            return; // Stop if all locations have been visited
-        }
-        viewer.camera.flyTo({
-            destination: locations[index],
-            complete: function() {
-                setTimeout(function() {
-                    window.flyToLocationAndHold(index + 1);
-                }, 12000); // 12 seconds
-            }
-        });
-    };
-
-    // Your existing window.onload event
-    window.onload = function() {
-        // Access the slides and set the current slide index
-        var slides = document.querySelectorAll('.slide');
-        var currentSlideIndex = 0;
-
-        // Your existing functions for managing the instruction overlay
-        window.nextSlide = function() {
-            // Existing code for nextSlide
-        };
-
-        window.closeInstructions = function() {
-            // Close the instruction box and start the story
-            document.getElementById('instruction-box').style.display = 'none';
-            scenes[0](viewer); // Start with the first scene
-        };
-
-        // Make the first slide active if slides are available
-        if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
+        scenes[currentSceneIndex]();
     };
 })();
+
+window.onload = function() {
+    var slides = document.querySelectorAll('.slide');
+    var currentSlideIndex = 0;
+
+    window.nextSlide = function() {
+        if (currentSlideIndex < slides.length - 1) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex++;
+            slides[currentSlideIndex].classList.add('active');
+        }
+    };
+
+    window.closeInstructions = function() {
+        document.getElementById('instruction-box').style.display = 'none';
+        scenes[currentSceneIndex]();
+    };
+
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
+};
+
+
+
 
 
 
