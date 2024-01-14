@@ -15,14 +15,20 @@ header h1, header p, footer p {
     height: calc(100vh - 120px); /* Adjust the 120px if your header/footer are larger */
 }
 
-.instruction {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    background: #ffffff;
-    border: 1px solid #000;
-    padding: 10px;
+
+#instruction-box {
+    position: absolute; /* Position absolutely within the cesiumContainer */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for the box's own size */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border: 1px solid #ffd700; /* Yellow border */
+    padding: 20px;
     z-index: 1000;
+    max-width: 400px; /* Or any max-width you see fit */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    border-radius: 10px; /* Optional: rounds the corners */
+    text-align: center; /* Centers the text */
 }
 
 .slide {
@@ -32,6 +38,22 @@ header h1, header p, footer p {
 .slide.active {
     display: block; /* Only the active slide is shown */
 }
+
+/* Adjust the button styles as needed */
+#instruction-box button {
+    padding: 10px 20px;
+    background-color: #ffd700; /* Yellow background to match the border */
+    color: #000;
+    border: none;
+    border-radius: 5px; /* Optional: rounds the button corners */
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#instruction-box button:hover {
+    background-color: #cca300; /* Darker yellow on hover */
+}
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
