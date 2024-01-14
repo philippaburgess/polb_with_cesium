@@ -71,15 +71,17 @@ header h1, header p, footer p {
 }
 
 
-#slide-forward {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    /* Add any other styles you need here */
+#slide-forward button {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#slide-forward button {
-    /* Style for your button */
+#slide-forward button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
 /* Responsive design for smaller screens */
