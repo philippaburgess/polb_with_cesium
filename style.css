@@ -63,6 +63,18 @@ header h1, header p, footer p {
     display: block; /* Show active slide content */
 }
 
+
+#slide-forward {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    /* Add any other styles you need here */
+}
+
+#slide-forward button {
+    /* Style for your button */
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     header h1, header p, footer p {
