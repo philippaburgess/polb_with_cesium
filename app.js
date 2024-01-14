@@ -30,7 +30,7 @@
             complete: function() {
                 setTimeout(function() {
                     window.flyToLocationAndHold(index + 1);
-                }, 12000); // 12 seconds
+                }, 5000); // 5 seconds
             }
         });
     };
@@ -63,3 +63,6 @@ window.onload = function() {
     }
 };
 
+.nextScene = function() {
+// Logic to go to the next scene will be added here later
+};
