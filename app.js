@@ -11,6 +11,21 @@
         // ... other viewer settings
     });
 
+    // Function to start the flyover
+    function startFlyover() {
+        // Set the initial view to focus on the Port of Long Beach
+        viewer.scene.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
+            orientation: {
+                heading: Cesium.Math.toRadians(0), // facing east
+                pitch: Cesium.Math.toRadians(-45), // looking down at 45 degrees
+                roll: 0.0
+            },
+            duration: 3 // Fly there in 3 seconds
+        });
+    }
+
+    
     // Locations array
     const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
