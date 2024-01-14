@@ -3,7 +3,6 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto; /* Enable scrolling on the page */
   display: flex;
   flex-direction: column; /* Stack children vertically */
 }
@@ -11,7 +10,7 @@ html, body {
 header, footer {
   background-color: #fffdd0; /* Light yellow color */
   text-align: center;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 header h1, header p, footer p {
@@ -111,7 +110,7 @@ main {
 }
 
 footer {
-    height: 10px; /* Height of your footer */
+    height: 15px; /* Height of your footer */
     position: relative; /* Positioned relative to its normal position */
     width: 100%; /* Ensure the footer is full width */
 }
