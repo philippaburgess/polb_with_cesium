@@ -15,7 +15,7 @@
         <p>In the Process of Being Built with Cesium and ArcGIS Pro 3.2</p>
     </header>
 <main>
-    <div id="cesiumContainer"></div>
+    <div id="cesiumContainer">
 <div id="instruction-box" class="instruction">
     <div id="welcome-slide" class="slide active">
         <p>Welcome! This journey will be manually navigated by you.</p>
@@ -29,6 +29,10 @@
         <p>You can minimize text/images and explore data layers as they appear.</p>
         <button onclick="window.closeInstructions()">Got it, let's start!</button>
     </div>
+ <div id="slide-forward" style="visibility: hidden; position: absolute; bottom: 20px; right: 20px;">
+        <button onclick="nextScene()">Next</button>
+    </div>
+</div>
         </main>
     <footer>
         <p>Contact: philippaburgess@gmail.com</p>
