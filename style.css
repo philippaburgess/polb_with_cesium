@@ -63,13 +63,13 @@ header h1, header p, footer p {
     z-index: 10; /* Ensure it's above the Cesium canvas */
 }
 
-/* Position the navigation buttons at the bottom left inside the Cesium container */
 #story-navigation {
     position: absolute;
     bottom: 10px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
     z-index: 10; /* Ensure it's above the Cesium canvas */
 }
+
 
 /* Style for the navigation buttons */
 #story-navigation button {
@@ -78,12 +78,21 @@ header h1, header p, footer p {
     color: white;
     border: none;
     border-radius: 5px;
-    margin-right: 5px; /* Space between buttons */
+    margin-left: 5px; /* Space between buttons */
     cursor: pointer;
 }
 
 #story-navigation button:hover {
     background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styles for the slide content */
+.slide-content {
+    display: none; /* Hide all slide content by default */
+}
+
+.slide-content.active {
+    display: block; /* Show active slide content */
 }
 
 /* Responsive design for smaller screens */
