@@ -85,6 +85,13 @@
         });
     };
 
+function onFlyoverComplete() {
+    // Show the navigation container after the initial flyover
+    document.getElementById('navigation-container').style.visibility = 'visible';
+    // Start with the first scene
+    updateScene();
+}
+    
     // Set up the initial state when the page loads
     window.onload = function() {
         var slides = document.querySelectorAll('.slide');
