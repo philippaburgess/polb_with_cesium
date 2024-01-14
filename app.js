@@ -1,4 +1,6 @@
 (function() {
+
+        // Section 1: API Keys and Viewer Initialization
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
     Cesium.ArcGisMapService.defaultAccessToken = apiKey;
@@ -8,8 +10,22 @@
 
    // Initialize the Cesium Viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
-        // ... other viewer settings
+    animation: false, // Don't show the animation widget
+    baseLayerPicker: false, // Don't show the base layer picker
+    fullscreenButton: false, // Don't show the fullscreen button
+    vrButton: false, // Don't show the VR button
+    geocoder: false, // Don't show the geocoder widget
+    homeButton: false, // Don't show the home button
+    infoBox: true, // Don't show the info box
+    sceneModePicker: false, // Don't show the scene mode picker
+    selectionIndicator: false, // Don't show the selection indicator
+    timeline: false, // Don't show the timeline
+    navigationHelpButton: false, // Don't show the navigation help button
+});
     });
+
+    // Section 2: Scene and Location Setup
+    // Define your locations array here as before
 
  const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
@@ -48,6 +64,8 @@
         });
     }
 
+    // Section 3: Scene Navigation Functions
+
     // Functions to navigate between scenes
     window.nextScene = function() {
         if (currentSceneIndex < scenes.length - 1) {
@@ -62,6 +80,8 @@
             updateScene();
         }
     };
+
+    // Section 4: Initial Flyover
 
     // Function to execute when initial flyover is complete
     function onFlyoverComplete() {
@@ -91,6 +111,9 @@ function onFlyoverComplete() {
     // Start with the first scene
     updateScene();
 }
+
+
+ // Section 5: Page Load Setup
     
     // Set up the initial state when the page loads
     window.onload = function() {
