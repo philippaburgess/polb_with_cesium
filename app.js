@@ -6,14 +6,18 @@
     const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
- // Initialize the Cesium Viewer with the basic options
+     // Initialize the Cesium Viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
-        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
-        }),
-        baseLayerPicker: false,
-        geocoder: false,
-        sceneModePicker: false
+        // Set the home button to a static view over Long Beach
+        homeButton: false,
+        sceneModePicker: false,
+        navigationHelpButton: false,
+        animation: false,
+        timeline: false,
+    });
+
+    viewer.scene.camera.setView({
+        destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
     });
 
     // Slides for the instruction overlay
@@ -42,6 +46,8 @@
         if (slides.length > 0) {
             slides[0].classList.add('active');
         }
+    };
+})();
 
 
 
