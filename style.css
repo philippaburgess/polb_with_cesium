@@ -23,6 +23,13 @@ header h1, header p, footer p {
   overflow: hidden; /* Hides the scroll bar */ 
 }
 
+main {
+    position: relative; /* Positioned relative to its normal position */
+    max-height: calc(100vh - (height of header + height of footer));
+    overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+    padding-bottom: (height of footer); /* Space for footer */
+}
+
 #instruction-box {
     position: absolute; /* Position absolutely within the cesiumContainer */
     top: 50%; /* Center vertically */
@@ -98,6 +105,11 @@ header h1, header p, footer p {
 
 #slide-forward:after {
     content: ' >';
+}
+
+footer {
+    height: 10px; /* Height of your footer */
+    position: relative; /* Positioned relative to its normal position */
 }
 
 /* Responsive design for smaller screens */
