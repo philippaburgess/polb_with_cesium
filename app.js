@@ -65,53 +65,46 @@
 
     // Section 3: Scene Navigation Functions
 
-    // Functions to navigate between scenes
-    window.nextScene = function() {
-        if (currentSceneIndex < scenes.length - 1) {
-            currentSceneIndex++;
-            updateScene();
-        }
-    };
+// Functions to navigate between scenes
+window.nextScene = function() {
+    if (currentSceneIndex < scenes.length - 1) {
+        currentSceneIndex++;
+        updateScene();
+    }
+};
 
-    window.previousScene = function() {
-        if (currentSceneIndex > 0) {
-            currentSceneIndex--;
-            updateScene();
-        }
-    };
-
+window.previousScene = function() {
+    if (currentSceneIndex > 0) {
+        currentSceneIndex--;
+        updateScene();
+    }
+};
     // Section 4: Initial Flyover
 
-    // Function to execute when initial flyover is complete
-    function onFlyoverComplete() {
-        document.getElementById('slide-forward').style.visibility = 'visible';
-        updateScene(); // Start the storytelling part
+// Function to fly to each location and hold
+window.flyToLocationAndHold = function(index) {
+    if (index >= locations.length) {
+        onFlyoverComplete(); // When flyover is complete, call this function
+        return;
     }
-
-    // Function to fly to each location and hold
-    window.flyToLocationAndHold = function(index) {
-        if (index >= locations.length) {
-            onFlyoverComplete(); // When flyover is complete, call this function
-            return;
+    viewer.camera.flyTo({
+        destination: locations[index],
+        complete: function() {
+            setTimeout(function() {
+                window.flyToLocationAndHold(index + 1);
+            }, 2000); // Wait time before flying to the next location
         }
-        viewer.camera.flyTo({
-            destination: locations[index],
-            complete: function() {
-                setTimeout(function() {
-                    window.flyToLocationAndHold(index + 1);
-                }, 3000); // Wait time before flying to the next location
-            }
-        });
-    };
+    });
+};
 
+// Function to execute when initial flyover is complete
 function onFlyoverComplete() {
     // Show the navigation container after the initial flyover
     document.getElementById('navigation-container').style.visibility = 'visible';
     // Start with the first scene
     updateScene();
 }
-
-
+        
  // Section 5: Page Load Setup
     
     // Set up the initial state when the page loads
