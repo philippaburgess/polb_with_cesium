@@ -15,29 +15,27 @@
         <p>In the Process of Being Built with Cesium and ArcGIS Pro 3.2</p>
     </header>
 <main>
-    <div id="cesiumContainer">
-<div id="instruction-box" class="instruction">
-    <div id="welcome-slide" class="slide active">
-        <p>Welcome! This journey will be manually navigated by you.</p>
-     <button onclick="window.nextSlide()">OK, what is next?</button>
-    </div>
-    <div id="autoplay-slide" class="slide">
-        <p>Some scenes will autoplay, but you'll need to advance manually to the next one.</p>
-        <button onclick="window.nextSlide()">Understood, continue.</button>
-    </div>
-    <div id="data-slide" class="slide">
-        <p>You can minimize text/images and explore data layers as they appear.</p>
-        <button onclick="window.closeInstructions()">Got it, let's start!</button>
-    </div>
- <div id="slide-forward" style="visibility: hidden; position: absolute; bottom: 20px; right: 20px;">
-        <button onclick="nextScene()">Next</button>
-    </div>
-        <div id="navigation-buttons" style="visibility: hidden; position: absolute; bottom: 20px; right: 20px;">
-            <button id="slide-back" onclick="previousScene()" style="display: none;">Previous</button>
-            <button id="slide-forward" onclick="nextScene()">Next</button>
+  <main>
+        <div id="cesiumContainer"></div>
+        <div id="instruction-box" class="instruction">
+            <div id="welcome-slide" class="slide active">
+                <p>Welcome! This journey will be manually navigated by you.</p>
+                <button onclick="window.nextSlide()">OK, what is next?</button>
+            </div>
+            <div id="autoplay-slide" class="slide">
+                <p>Some scenes will autoplay, but you'll need to advance manually to the next one.</p>
+                <button onclick="window.nextSlide()">Understood, continue.</button>
+            </div>
+            <div id="data-slide" class="slide">
+                <p>You can minimize text/images and explore data layers as they appear.</p>
+                <button onclick="window.closeInstructions()">Got it, let's start!</button>
+            </div>
         </div>
-</div>
-        </main>
+        <div id="navigation-container" style="visibility: hidden; position: absolute; bottom: 20px; right: 20px;">
+            <button id="slide-back" onclick="window.previousScene()" style="display: none;">&lt; Previous</button>
+            <button id="slide-next" onclick="window.nextScene()">Next &gt;</button>
+        </div>
+    </main>
     <footer>
         <p>Contact: philippaburgess@gmail.com</p>
     </footer>
