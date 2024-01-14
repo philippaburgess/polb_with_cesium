@@ -83,6 +83,14 @@
             updateScene();
         }
     };
+
+window.startStory = function() {
+    document.getElementById('instruction-box').style.display = 'none';
+    document.getElementById('story-navigation').style.display = 'block';
+    document.getElementById('story-title').style.display = 'block';
+    updateScene();
+};
+    
 })();
 
 
