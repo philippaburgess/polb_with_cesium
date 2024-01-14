@@ -9,21 +9,33 @@
         // ... other viewer settings
     });
 
-    var currentSlideIndex = 0;
+
+var currentSlideIndex = 0;
 var slides = document.querySelectorAll('.slide');
 
+// This function will be called when the "OK, what is next?" button is clicked
 function nextSlide() {
+    // Check if we are not at the last slide already
     if (currentSlideIndex < slides.length - 1) {
-        slides[currentSlideIndex].style.display = 'none'; // Hide current slide
+        slides[currentSlideIndex].classList.remove('active'); // Hide current slide
         currentSlideIndex += 1; // Move to the next slide
-        slides[currentSlideIndex].style.display = 'block'; // Show next slide
+        slides[currentSlideIndex].classList.add('active'); // Show next slide
     }
 }
 
+// This function will be called when the "Got it, let's start!" button is clicked
 function closeInstructions() {
     document.getElementById('instruction-box').style.display = 'none'; // Close the instruction box
+    // Start the flyover automatically after closing the instructions
+    flyToLocationAndHold(0);
 }
 
+// Initialize the instruction box by showing the first slide
+window.onload = function() {
+    if (slides.length > 0) {
+        slides[0].classList.add('active'); // Show the first slide
+    }
+};
 
     const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500), // Vincent Thomas Bridge
