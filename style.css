@@ -4,6 +4,8 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: auto; /* Enable scrolling on the page */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
 }
 
 header, footer {
@@ -24,10 +26,11 @@ header h1, header p, footer p {
 }
 
 main {
+    flex: 1;
     position: relative; /* Positioned relative to its normal position */
     max-height: calc(100vh - (height of header + height of footer));
     overflow-y: auto; /* Enable vertical scrollbar if content overflows */
-    padding-bottom: 10px; /* Space for footer */
+    padding-bottom: 15px; /* Space for footer */
 }
 
 #instruction-box {
