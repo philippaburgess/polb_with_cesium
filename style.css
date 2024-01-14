@@ -33,7 +33,6 @@ header h1, header p, footer p {
     display: block; /* Only the active slide is shown */
 }
 
-
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     header h1, header p, footer p {
