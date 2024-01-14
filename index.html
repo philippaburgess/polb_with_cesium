@@ -16,7 +16,20 @@
     </header>
 <main>
     <div id="cesiumContainer"></div>
-
+<div id="instruction-box" class="instruction">
+    <div id="welcome-slide" class="slide">
+        <p>Welcome! This journey will be manually navigated by you.</p>
+        <button onclick="nextSlide()">OK, what is next?</button>
+    </div>
+    <div id="autoplay-slide" class="slide" style="display:none;">
+        <p>Some scenes will autoplay, but you'll need to advance manually to the next one.</p>
+        <button onclick="nextSlide()">Understood, continue.</button>
+    </div>
+    <div id="data-slide" class="slide" style="display:none;">
+        <p>You can minimize text/images and explore data layers as they appear.</p>
+        <button onclick="closeInstructions()">Got it, let's start!</button>
+    </div>
+</div>
 
         </main>
     <footer>
