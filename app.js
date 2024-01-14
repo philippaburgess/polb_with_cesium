@@ -49,6 +49,28 @@
             slides[0].classList.add('active');
         }
     };
+
+
+
+    function flyToLocationAndHold(index) {
+        if (index >= locations.length) {
+            return; // Stop if we've visited all locations
+        }
+
+        viewer.camera.flyTo({
+            destination: locations[index],
+            complete: function() {
+                // Add data layers or other actions here
+                setTimeout(function() {
+                    flyToLocationAndHold(index + 1);
+                }, 12000); // 12 seconds
+            }
+        });
+    }
+
+    flyToLocationAndHold(0);
+})();
+    
 })();
 
 
