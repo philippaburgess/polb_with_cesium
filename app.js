@@ -6,7 +6,7 @@
     const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
-    // Initialize the Cesium Viewer with the basic options
+ // Initialize the Cesium Viewer with the basic options
     const viewer = new Cesium.Viewer('cesiumContainer', {
         imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
             url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
@@ -15,6 +15,11 @@
         geocoder: false,
         sceneModePicker: false
     });
+
+            // Location array
+    const locations = [
+        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
+    ];
 
     // Slides for the instruction overlay
     var slides = document.querySelectorAll('.slide');
@@ -43,10 +48,7 @@
             slides[0].classList.add('active');
         }
 
-        // Location array
-    const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 800), // Long Beach Container Terminal
-    ];
+
 
 
 
