@@ -14,7 +14,6 @@ header h1, header p, footer p {
 #cesiumContainer {
     width: 100vw; /* Full view width */
     height: calc(100vh - 120px); /* Full view height minus header and footer */
-    overflow: hidden; /* Hides the scroll bar */
 }
 
 #instruction-box {
