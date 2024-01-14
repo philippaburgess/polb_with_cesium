@@ -1,16 +1,18 @@
 html, body {
   width: 100%;
-  height: 100%;
+  min-height: 100%; /* Use min-height instead of height */
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column; /* Stack children vertically */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 header, footer {
   background-color: #fffdd0; /* Light yellow color */
   text-align: center;
   padding: 15px 0;
+  width: 100%; /* Ensure full width */
 }
 
 header h1, header p, footer p {
@@ -19,17 +21,14 @@ header h1, header p, footer p {
 }
 
 #cesiumContainer {
-  width: 100%;
+  flex: 1;
   height: calc(100vh - 120px); /* Adjust based on header/footer height */
   position: relative; /* Needed for absolutely positioned children */
 }
 
 main {
-    flex: 1;
-    position: relative; /* Positioned relative to its normal position */
-    max-height: calc(100vh - (height of header + height of footer));
-    overflow-y: auto; /* Enable vertical scrollbar if content overflows */
-    padding-bottom: 15px; /* Space for footer */
+  flex: 1; /* Grow to use available space */
+  position: relative; /* Positioned relative to its normal position */
 }
 
 #instruction-box {
@@ -110,9 +109,10 @@ main {
 }
 
 footer {
-    height: 15px; /* Height of your footer */
-    position: relative; /* Positioned relative to its normal position */
-    width: 100%; /* Ensure the footer is full width */
+  padding: 15px 0; /* Your footer padding */
+  text-align: center; /* Center the text in the footer */
+  background-color: #fffdd0; /* Your footer background color */
+  width: 100%; /* Ensure the footer is full width */
 }
 
 /* Responsive design for smaller screens */
