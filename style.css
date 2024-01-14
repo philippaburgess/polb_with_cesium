@@ -1,7 +1,12 @@
 header, footer {
     background-color: #fffdd0; /* This is a light yellow color */
     text-align: center;
-    padding: 10px 0;
+    padding: 0px 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 header h1, header p, footer p {
