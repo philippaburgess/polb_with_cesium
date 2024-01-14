@@ -20,67 +20,70 @@
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
     ];
 
-        var scenes = [
+     var scenes = [
         // Scene 1
-        function() {
-            viewer.camera.flyTo({
-                destination: locations[0],
-                duration: 3
-            });
+        {
+            title: "Vincent Thomas Bridge",
+            content: "Here's some information about the Vincent Thomas Bridge...",
+            cameraView: function() {
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500),
+                    duration: 3
+                });
+            }
         },
         // Scene 2
-        function() {
-            viewer.camera.flyTo({
-                destination: locations[1],
-                duration: 3
-            });
+        {
+            title: "Middle Harbor",
+            content: "Middle Harbor is known for...",
+            cameraView: function() {
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800),
+                    duration: 3
+                });
+            }
         },
         // ... Additional scenes
     ];
 
     var currentSceneIndex = 0;
 
+    function updateScene() {
+        var scene = scenes[currentSceneIndex];
+        document.getElementById('scene-title').textContent = scene.title;
+        document.getElementById('scene-content').textContent = scene.content;
+        scene.cameraView();
+    }
+
     window.nextScene = function() {
         if (currentSceneIndex < scenes.length - 1) {
             currentSceneIndex++;
-            scenes[currentSceneIndex]();
+            updateScene();
         }
     };
 
     window.previousScene = function() {
         if (currentSceneIndex > 0) {
             currentSceneIndex--;
-            scenes[currentSceneIndex]();
+            updateScene();
         }
     };
 
     window.startStory = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        scenes[currentSceneIndex]();
+        document.getElementById('story-navigation').style.display = 'block';
+        updateScene();
     };
-})();
 
-window.onload = function() {
-    var slides = document.querySelectorAll('.slide');
-    var currentSlideIndex = 0;
-
-    window.nextSlide = function() {
-        if (currentSlideIndex < slides.length - 1) {
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex++;
-            slides[currentSlideIndex].classList.add('active');
+    window.onload = function() {
+        // Your existing functions for managing the instruction overlay...
+        
+        // Initialize the story to the first scene
+        if (scenes.length > 0) {
+            updateScene();
         }
     };
-
-    window.closeInstructions = function() {
-        document.getElementById('instruction-box').style.display = 'none';
-        scenes[currentSceneIndex]();
-    };
-
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-    }
-};
+})();
 
 
 
