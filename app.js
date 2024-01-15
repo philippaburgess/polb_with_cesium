@@ -152,7 +152,7 @@ window.nextScene = function() {
         updateScene();
         document.getElementById('slide-forward').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block';
-
+    }
         if (currentSceneIndex === scenes.length - 1) {
             document.getElementById('slide-forward').style.display = 'none';
         }
