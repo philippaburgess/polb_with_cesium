@@ -114,9 +114,6 @@
             
     ];
 
-var currentSceneIndex = 0;
-var currentSlideIndex = 0;
-
 function updateScene() {
     var scene = scenes[currentSceneIndex];
 
@@ -224,9 +221,14 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 };
 
+var currentSceneIndex = 0;
+var currentSlideIndex = 0;
+var slides;
+
 // Section 5: Page Load Setup
 
 window.onload = function() {
+    slides = document.querySelectorAll('.slide');
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
