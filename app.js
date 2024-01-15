@@ -1,8 +1,8 @@
-(function() {
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
 
+(function() {
         // Section 1: API Keys and Viewer Initialization
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
@@ -228,6 +228,7 @@ window.closeScene = function() {
 
 window.onload = function() {
     slides = document.querySelectorAll('.slide');
+    
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
@@ -257,5 +258,6 @@ window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}
 };
 })();
