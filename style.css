@@ -78,10 +78,7 @@ main {
     display: block; /* Show active slide content */
 }
 
-#navigation-buttons {
-    visibility: hidden;
-
-#navigation-buttons { /* Corrected ID */
+#navigation-buttons 
   visibility: hidden;
   position: absolute;
   bottom: 20px;
