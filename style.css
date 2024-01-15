@@ -109,6 +109,16 @@ main {
     content: ' >';
 }
 
+#slide-forward {
+  /* Position at the bottom right inside cesiumContainer */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100; /* Ensure it's above other elements */
+  /* Visibility should be set to hidden initially */
+  visibility: hidden;
+}
+
 footer {
   background-color: #fffdd0; /* Light yellow color */
   text-align: center;
