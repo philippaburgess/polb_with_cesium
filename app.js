@@ -35,41 +35,36 @@
         // Add more locations as needed
     ];
 
-const scenes = [
-    {
-        title: "The Green Port",
-        content: "The Port of Long Beach (POLB) refers to itself as 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest ports in the United States, the cargo it transports is a significant driver to the national economy. The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.",
-        location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
-    },
-    // ... other scenes
-];
-
-
-// Function to update the current scene
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    document.getElementById('scene-title').textContent = scene.title;
-    document.getElementById('scene-content').textContent = scene.content;
-    
-    viewer.scene.camera.flyTo({
-        destination: scene.location,
-        orientation: {
-            heading: Cesium.Math.toRadians(0),
-            pitch: Cesium.Math.toRadians(-30),
-            roll: 0.0
+    const scenes = [
+        {
+            title: "The Green Port",
+            content: "Description of The Green Port...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
         },
-        duration: 2 // You need to specify the duration here
-    });
+        // ...other scenes
+    ];
+
+var currentSceneIndex = 0;
+
+ function updateScene() {
+        var scene =
+scenes[currentSceneIndex];
+document.getElementById('scene-title').textContent = scene.title;
+document.getElementById('scene-content').textContent = scene.content;
+viewer.camera.flyTo({
+destination: scene.location,
+duration: 2 // Duration of the camera flight in seconds
+});
 }
 
     // Section 3: Scene Navigation Functions
 
-// Functions to navigate between scenes
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-        showSceneContainer(); // Add this line
+    } else {
+        // Consider what should happen if it's the last scene
     }
 };
 
@@ -77,55 +72,50 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
-        showSceneContainer(); // Add this line
+    } else {
+        // Consider what should happen if it's the first scene
     }
 };
 
-        // New function to show the scene container
+// New function to show the scene container
 function showSceneContainer() {
     var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'block'; // Make it visible
-    }
+    sceneContainer.style.display = 'block';
 }
 
 // Function to close the scene container
 window.closeScene = function() {
     var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'none'; // Hide the scene container
-    }
+    sceneContainer.style.display = 'none';
 };
     // Section 4: Initial Flyover
 
-// Function to execute when initial flyover is complete
 function onFlyoverComplete() {
-    document.getElementById('navigation-buttons').style.visibility = 'visible'; // Show navigation buttons
-    showSceneContainer(); // Show the first scene's content
-    updateScene(); // Update the scene
+    document.getElementById('navigation-buttons').style.visibility = 'visible';
+    updateScene();
+    showSceneContainer();
 }
-        
-// Function to fly to each location and hold
+
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
-        onFlyoverComplete(); // When flyover is complete, call this function
+        onFlyoverComplete();
         return;
     }
     viewer.camera.flyTo({
         destination: locations[index],
         complete: function() {
             setTimeout(function() {
-                window.flyToLocationAndHold(index + 1);
-            }, 1500); // Wait time before flying to the next location
+                flyToLocationAndHold(index + 1);
+            }, 1500); // Time to hold on each location
         }
     });
 };
+
         
  // Section 5: Page Load Setup
     
-// Set up the initial state when the page loads
 window.onload = function() {
-    document.getElementById('navigation-buttons').style.visibility = 'hidden'; // Hide navigation buttons initially
+    document.getElementById('navigation-buttons').style.visibility = 'hidden';
     var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0;
 
@@ -139,14 +129,14 @@ window.onload = function() {
 
     window.closeInstructions = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        window.flyToLocationAndHold(0);
+        flyToLocationAndHold(0);
     };
 
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
 };
-
+})();
 
 
 
