@@ -134,15 +134,14 @@ var currentSceneIndex = 0;
     } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
-}        
-         
-         document.getElementById('scene-title').textContent = scene.title;
+};        
+document.getElementById('scene-title').textContent = scene.title;
 document.getElementById('scene-content').textContent = scene.content;
 viewer.camera.flyTo({
 destination: scene.location,
 duration: 2 // Duration of the camera flight in seconds
 });
-}
+};
 
 // Section 3: Scene Navigation Functions
 
