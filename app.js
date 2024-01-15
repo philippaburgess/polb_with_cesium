@@ -136,6 +136,22 @@ function updateScene() {
     }
 }  // This is where the function should end with a closing brace
 
+    window.nextSlide = function() {
+        // Accessing currentSlideIndex which is in the same scope
+        if (currentSlideIndex < slides.length - 1) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex++;
+            slides[currentSlideIndex].classList.add('active');
+            // Code to handle the visibility of navigation buttons
+        }
+
+  };
+
+        window.closeInstructions = function() {
+        document.getElementById('instruction-box').style.display = 'none';
+        flyToLocationAndHold(0); // Make sure this function is defined
+    };   
+            
 // Section 3: Scene Navigation Functions
 
 window.nextScene = function() {
@@ -172,14 +188,6 @@ function showSceneContainer() {
     var sceneContainer = document.getElementById('scene-container');
     if (sceneContainer) {
         sceneContainer.style.display = 'block';
-    }
-};
-
-// Function to close the scene container
-window.closeScene = function() {
-    var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'none';
     }
 };
 
