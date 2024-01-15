@@ -218,30 +218,41 @@ window.closeScene = function() {
 // Section 5: Page Load Setup
 
 window.onload = function() {
+    // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
-    document.getElementById('slide-forward').style.display = 'none'; // Initially hide the "Next" button
-    document.getElementById('slide-back').style.display = 'none'; // Initially hide the "Previous" button
+    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
+    // Select all the slide elements
     var slides = document.querySelectorAll('.slide');
-    var currentSlideIndex = 0;
 
-    window.nextSlide = function() {
-        if (currentSlideIndex < slides.length - 1) {
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex++;
-            slides[currentSlideIndex].classList.add('active');
-        }
-        // Additional logic to handle the visibility of navigation buttons
-        // can be added here if necessary
-    };
+    // Define the function to move to the next slide
 
-    window.closeInstructions = function() {
-        document.getElementById('instruction-box').style.display = 'none';
-        flyToLocationAndHold(0);
-    };
+   window.nextSlide = function() {
 
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-    }
+     // Check if there are more slides to show
+if (currentSlideIndex < slides.length - 1) {
+// Remove 'active' class from the current slide
+slides[currentSlideIndex].classList.remove('active');
+// Move to the next slide
+currentSlideIndex++;
+// Add 'active' class to the new current slide to show it
+slides[currentSlideIndex].classList.add('active');
+}
+// Handle navigation button visibility here if needed
 };
-})();
+        
+ // Define the function to close the instructions and start the flyover
+window.closeInstructions = function() {
+    // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+};
+
+// Activate the first slide if any are present
+if (slides.length > 0) {
+    slides[0].classList.add('active');
+}
+};
+})(); 
