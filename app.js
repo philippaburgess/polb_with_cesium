@@ -83,11 +83,13 @@ function showSceneContainer() {
     sceneContainer.style.display = 'block';
 }
 
-// Function to close the scene container
 window.closeScene = function() {
     var sceneContainer = document.getElementById('scene-container');
-    sceneContainer.style.display = 'none';
+    if (sceneContainer) {
+        sceneContainer.style.display = 'none'; // Hide the scene container
+    }
 };
+        
     // Section 4: Initial Flyover
 
 function onFlyoverComplete() {
