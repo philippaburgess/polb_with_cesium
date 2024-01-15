@@ -118,7 +118,6 @@ var currentSceneIndex = 0;
 
 function updateScene() {
     var scene = scenes[currentSceneIndex];
-    console.log("Updating scene to: ", scene.title);  // Debugging log
 
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-content');
@@ -245,3 +244,4 @@ window.onload = function() {
         slides[0].classList.add('active');
     }
 };
+})();
