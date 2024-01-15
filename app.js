@@ -40,15 +40,17 @@ const scenes = [
         title: "The Green Port",
         content: "The Port of Long Beach (POLB) refers to itself as 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest ports in the United States, the cargo it transports is a significant driver to the national economy. The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.",
         location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
-            },
+    },
+    // ... other scenes
 ];
+
 
 // Function to update the current scene
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     document.getElementById('scene-title').textContent = scene.title;
     document.getElementById('scene-content').textContent = scene.content;
-    // Set the camera view here when updating the scene
+    
     viewer.scene.camera.flyTo({
         destination: scene.location,
         orientation: {
@@ -56,18 +58,9 @@ function updateScene() {
             pitch: Cesium.Math.toRadians(-30),
             roll: 0.0
         },
-        duration
-
-    // Function to update the current scene
-    function updateScene() {
-        var scene = scenes[currentSceneIndex];
-        document.getElementById('scene-title').textContent = scene.title;
-        document.getElementById('scene-content').textContent = scene.content;
-        viewer.camera.flyTo({
-            destination: scene.location,
-            duration: 2 // Adjust as needed
-        });
-    }
+        duration: 2 // You need to specify the duration here
+    });
+}
 
     // Section 3: Scene Navigation Functions
 
@@ -130,31 +123,29 @@ window.flyToLocationAndHold = function(index) {
         
  // Section 5: Page Load Setup
     
-    // Set up the initial state when the page loads
- window.onload = function() {
+// Set up the initial state when the page loads
+window.onload = function() {
     document.getElementById('navigation-buttons').style.visibility = 'hidden'; // Hide navigation buttons initially
-        var slides = document.querySelectorAll('.slide');
-        var currentSlideIndex = 0;
+    var slides = document.querySelectorAll('.slide');
+    var currentSlideIndex = 0;
 
-        window.nextSlide = function() {
-            if (currentSlideIndex < slides.length - 1) {
-                slides[currentSlideIndex].classList.remove('active');
-                currentSlideIndex++;
-                slides[currentSlideIndex].classList.add('active');
-            }
-        };
-
-        window.closeInstructions = function() {
-            document.getElementById('instruction-box').style.display = 'none';
-            window.flyToLocationAndHold(0);
-        };
-
-        if (slides.length > 0) {
-            slides[0].classList.add('active');
+    window.nextSlide = function() {
+        if (currentSlideIndex < slides.length - 1) {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex++;
+            slides[currentSlideIndex].classList.add('active');
         }
     };
-        
-})();
+
+    window.closeInstructions = function() {
+        document.getElementById('instruction-box').style.display = 'none';
+        window.flyToLocationAndHold(0);
+    };
+
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
+};
 
 
 
