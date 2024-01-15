@@ -100,12 +100,11 @@ window.flyToLocationAndHold = function(index) {
 
 // Function to execute when initial flyover is complete
 function onFlyoverComplete() {
-    // Show the navigation container after the initial flyover
-    document.getElementById('navigation-container').style.visibility = 'visible';
+    // Hide the 'Next' button until the initial flyover is complete
+    document.getElementById('slide-forward').style.display = 'block'; // Make sure this ID matches the 'Next' button ID
     // Start with the first scene
     updateScene();
 }
-
 
 
         
