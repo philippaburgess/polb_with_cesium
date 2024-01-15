@@ -1,4 +1,7 @@
 (function() {
+    var currentSceneIndex = 0;
+    var currentSlideIndex = 0;
+    var slides;
 
         // Section 1: API Keys and Viewer Initialization
     
@@ -221,10 +224,6 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 };
 
-var currentSceneIndex = 0;
-var currentSlideIndex = 0;
-var slides;
-
 // Section 5: Page Load Setup
 
 window.onload = function() {
@@ -235,11 +234,10 @@ window.onload = function() {
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
 // Activate the first slide if any are present
-  if (slides.length > 0) {
-    slides[0].classList.add('active');
-}
-};
-
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+    };
 // Now your nextSlide and closeInstructions functions will work correctly because they can access the slides and currentSlideIndex variables.
 window.nextSlide = function() {
 if (currentSlideIndex < slides.length - 1) {
@@ -261,9 +259,4 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
 
-// Activate the first slide if any are present
-if (slides.length > 0) {
-    slides[0].classList.add('active');
-        }
-   };
 })(); 
