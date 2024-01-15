@@ -143,6 +143,8 @@ window.nextScene = function() {
 
 // Section 3: Scene Navigation Functions
 
+// Section 3: Scene Navigation Functions
+
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
@@ -156,8 +158,7 @@ window.nextScene = function() {
     } else {
         // Optional: Handle the last scene case, such as hiding the 'Next' button or looping to the first scene
     }
-};
-
+}; // This closing bracket ends the window.nextScene function
 
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
@@ -171,7 +172,7 @@ window.previousScene = function() {
     } else {
         // Optional: Handle the first scene case, such as hiding the 'Previous' button or looping to the last scene
     }
-};
+}; // This closing bracket ends the window.previousScene function
 
 // Function to show the scene container
 function showSceneContainer() {
@@ -189,7 +190,6 @@ window.closeScene = function() {
     }
 };
 
-        
     // Section 4: Initial Flyover
 
 function onFlyoverComplete() {
