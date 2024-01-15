@@ -152,7 +152,7 @@ window.nextScene = function() {
         updateScene();
         document.getElementById('slide-forward').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block';
-    }
+
         if (currentSceneIndex === scenes.length - 1) {
             document.getElementById('slide-forward').style.display = 'none';
         }
@@ -160,6 +160,7 @@ window.nextScene = function() {
         // Optional: Handle the last scene case, such as hiding the 'Next' button or looping to the first scene
     }
 };
+
 
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
