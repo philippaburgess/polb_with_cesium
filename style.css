@@ -46,39 +46,40 @@ main {
     text-align: center; /* Centers the text */
 }
 
+
 .slide {
-    display: none; /* Hide all slides by default */
+  display: none; /* Hide all slides by default */
 }
 
 .slide.active {
-    display: block; /* Only the active slide is shown */
+  display: block; /* Only the active slide is shown */
 }
 
 /* Adjust the button styles as needed */
 #instruction-box button {
-    padding: 10px 20px;
-    background-color: #ffd700; /* Yellow background to match the border */
-    color: #000;
-    border: none;
-    border-radius: 5px; /* Optional: rounds the button corners */
-    cursor: pointer;
-    margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ffd700; /* Yellow background to match the border */
+  color: #000;
+  border: none;
+  border-radius: 5px; /* Optional: rounds the button corners */
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 #instruction-box button:hover {
-    background-color: #cca300; /* Darker yellow on hover */
+  background-color: #cca300; /* Darker yellow on hover */
 }
 
 /* Styles for the slide content */
 .slide-content {
-    display: none; /* Hide all slide content by default */
+  display: none; /* Hide all slide content by default */
 }
 
 .slide-content.active {
-    display: block; /* Show active slide content */
+  display: block; /* Show active slide content */
 }
 
-#navigation-buttons 
+#navigation-buttons { /* Fixed bracket */
   visibility: hidden;
   position: absolute;
   bottom: 20px;
@@ -102,32 +103,29 @@ main {
   
 /* Adding directional arrows next to the text */
 #slide-back:before {
-    content: '< ';
+content: '< ';
 }
 
 #slide-forward:after {
-    content: ' >';
+content: ' >';
 }
 
 #slide-forward {
-  /* Position at the bottom right inside cesiumContainer */
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100; /* Ensure it's above other elements */
-  /* Visibility should be set to hidden initially */
-  visibility: hidden;
+display: none; /* Keep the button hidden initially */
 }
 
 footer {
-  background-color: #fffdd0; /* Light yellow color */
-  text-align: center;
-  padding: 15px 0;
-  width: 100%; /* Ensure the footer is full width */
+background-color: #fffdd0; /* Light yellow color /
+text-align: center;
+padding: 15px 0;
+position: relative; / Positioned relative to its normal position /
+width: 100%; / Ensure the footer is full width /
+bottom: 0; / Stick to the bottom */
 }
 
-/* Responsive design for smaller screens */
+/* Responsive design for smaller screens /
 @media (max-width: 768px) {
-    header h1, header p, footer p {
-        max-width: 90%; /* Allows some margin on smaller screens */
-    }
+header h1, header p, footer p {
+max-width: 90%; / Allows some margin on smaller screens */
+}
+}
