@@ -65,11 +65,13 @@
 
     // Section 3: Scene Navigation Functions
 
+
 // Functions to navigate between scenes
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
+        showSceneContainer(); // Add this line
     }
 };
 
@@ -77,11 +79,36 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
+        showSceneContainer(); // Add this line
+    }
+};
+
+// New function to show the scene container
+function showSceneContainer() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'block'; // Change from none to block to make it visible
+    }
+}
+
+// Function to close the scene container
+window.closeScene = function() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'none'; // Hide the scene container
     }
 };
 
     // Section 4: Initial Flyover
 
+        // Function to execute when initial flyover is complete
+function onFlyoverComplete() {
+document.getElementById('slide-forward').style.visibility = 'visible'; // This shows the "Next" button
+document.getElementById('navigation-buttons').style.visibility = 'visible'; // Ensure this container is visible
+// Call the function to update the scene, which also makes the scene container visible.
+updateScene();
+}
+        
 // Function to fly to each location and hold
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
@@ -97,16 +124,6 @@ window.flyToLocationAndHold = function(index) {
         }
     });
 };
-
-// Function to execute when initial flyover is complete
-function onFlyoverComplete() {
-    // Hide the 'Next' button until the initial flyover is complete
-    document.getElementById('slide-forward').style.display = 'block'; // Make sure this ID matches the 'Next' button ID
-    // Start with the first scene
-    updateScene();
-}
-
-
         
  // Section 5: Page Load Setup
     
