@@ -37,11 +37,81 @@
 
     const scenes = [
         {
-            title: "The Green Port",
+            title: "Scene 1: The Green Port",
             content: "Description of The Green Port...",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
         },
-        // ...other scenes
+               {
+            title: "Scene 2: The Port",
+            content: "Description of The Port...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
+        },
+               {
+            title: "Scene 3: The Port of Long Beach Terminals",
+            content: "Description Port Terminals...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
+        },
+              {
+            title: "Scene 4:TEUs",
+            content: "Description TEUs...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 5500)
+        },
+              {
+            title: "Scene 5:Economic Impact",
+            content: "Description Economic Impact..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
+        },
+              {
+            title: "Scene 6:Environment",
+            content: "Description Environment..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500)
+        },
+             {
+            title: "Scene 7:Clean Initiatives",
+            content: "Description Clean Initiatives..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500)
+        },
+              {
+            title: "Scene 8:Air Quality",
+            content: "Description Air Quality..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500)
+        },
+             {
+            title: "Scene 9:Modernization",
+            content: "Description Modernization..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
+        },
+             {
+            title: "Scene 10:Future Planning",
+            content: "Description Future Planning...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500)
+        },
+             {
+            title: "Scene 11:Funding",
+            content: "Description Funding...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 12500)
+        },
+             {
+            title: "Scene 12:Good Neighbors",
+            content: "Description Good Neighbors...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500)
+        },
+            {
+            title: "Scene 13:Solutions",
+            content: "Description Solutions...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500)
+        },
+             {
+            title: "Scene 14: References",
+            content: "Description References...",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 15500)
+        },
+             {
+            title: "Scene 15: Thank You",
+            content: "Description Thank You ..",
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
+        },
+            
     ];
 
 var currentSceneIndex = 0;
@@ -89,6 +159,32 @@ window.closeScene = function() {
         sceneContainer.style.display = 'none'; // Hide the scene container
     }
 };
+
+        window.nextScene = function() {
+    if (currentSceneIndex < scenes.length - 1) {
+        currentSceneIndex++;
+        updateScene();
+        if (currentSceneIndex === scenes.length - 1) {
+            document.getElementById('slide-forward').style.display = 'none';
+        }
+        if (currentSceneIndex > 0) {
+            document.getElementById('slide-back').style.display = 'block';
+        }
+    }
+};
+
+window.previousScene = function() {
+    if (currentSceneIndex > 0) {
+        currentSceneIndex--;
+        updateScene();
+        if (currentSceneIndex < scenes.length - 1) {
+            document.getElementById('slide-forward').style.display = 'block';
+        }
+        if (currentSceneIndex === 0) {
+            document.getElementById('slide-back').style.display = 'none';
+        }
+    }
+};
         
     // Section 4: Initial Flyover
 
@@ -96,6 +192,10 @@ function onFlyoverComplete() {
     document.getElementById('navigation-buttons').style.visibility = 'visible';
     updateScene();
     showSceneContainer();
+document.getElementById('slide-forward').style.display
+= 'block';
+document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
+updateScene(); // This will load the first scene
 }
 
 window.flyToLocationAndHold = function(index) {
@@ -111,6 +211,14 @@ window.flyToLocationAndHold = function(index) {
             }, 1500); // Time to hold on each location
         }
     });
+
+        window.closeScene = function() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'none'; // Hide the scene container
+    }
+    // Optional: Add logic to navigate back to the main view or do nothing
+
 };
 
         
@@ -118,6 +226,8 @@ window.flyToLocationAndHold = function(index) {
     
 window.onload = function() {
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
+    document.getElementById('slide-forward').style.display = 'none'; // Initially hide the "Next" button
+    document.getElementById('slide-back').style.display = 'none'; // Initially hide the "Previous" button
     var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0;
 
