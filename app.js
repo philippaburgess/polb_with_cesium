@@ -116,8 +116,8 @@
 
 var currentSceneIndex = 0;
 
- function updateScene() {
-     var scene = scenes[currentSceneIndex];
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
     console.log("Updating scene to: ", scene.title);  // Debugging log
 
     var titleElement = document.getElementById('scene-title');
@@ -134,13 +134,11 @@ var currentSceneIndex = 0;
     } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
-};        
-document.getElementById('scene-title').textContent = scene.title;
-document.getElementById('scene-content').textContent = scene.content;
-viewer.camera.flyTo({
-destination: scene.location,
-duration: 2 // Duration of the camera flight in seconds
-});
+}  // This is where the function should end with a closing brace
+
+// Section 3: Scene Navigation Functions
+window.nextScene = function() {
+    // Function code goes here...
 };
 
 // Section 3: Scene Navigation Functions
@@ -181,7 +179,7 @@ function showSceneContainer() {
     if (sceneContainer) {
         sceneContainer.style.display = 'block';
     }
-}
+};
 
 // Function to close the scene container
 window.closeScene = function() {
