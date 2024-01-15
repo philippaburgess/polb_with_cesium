@@ -78,6 +78,25 @@ main {
   display: block; /* Show active slide content */
 }
 
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  background-color: #ff0000; /* Red color for visibility, change as needed */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em; /* Smaller text size */
+  z-index: 1002; /* Ensure it's above other content */
+}
+
+.close-btn:hover {
+  background-color: #cc0000; /* Darker red on
+hover */
+}
+
 #scene-container {
     position: absolute;
     top: 10%; /* Adjust as needed for your design */
