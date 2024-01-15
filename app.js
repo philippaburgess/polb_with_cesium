@@ -137,13 +137,6 @@ function updateScene() {
 }  // This is where the function should end with a closing brace
 
 // Section 3: Scene Navigation Functions
-window.nextScene = function() {
-    // Function code goes here...
-};
-
-// Section 3: Scene Navigation Functions
-
-// Section 3: Scene Navigation Functions
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
