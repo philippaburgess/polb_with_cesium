@@ -46,7 +46,6 @@ main {
     text-align: center; /* Centers the text */
 }
 
-
 .slide {
   display: none; /* Hide all slides by default */
 }
@@ -79,12 +78,45 @@ main {
   display: block; /* Show active slide content */
 }
 
-#navigation-buttons { /* Fixed bracket */
-  visibility: hidden;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 10;
+#scene-container {
+    position: absolute;
+    top: 10%; /* Adjust as needed for your design */
+    left: 10%; /* Adjust as needed for your design */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    z-index: 1001; /* Above instruction box */
+    display: none; /* Hidden initially */
+}
+
+#scene-content h2 {
+    margin: 0 0 10px 0; /* Add space below the title */
+    color: #333; /* Dark text for readability */
+}
+
+#scene-content p {
+    margin: 0 0 20px 0; /* Add space below the paragraph */
+}
+
+#scene-content button {
+    padding: 10px 20px;
+    background-color: #ffd700; /* Yellow background to match the theme */
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#scene-content button:hover {
+    background-color: #cca300; /* Darker yellow on hover */
+}
+
+#navigation-buttons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10; /* High enough to be above the Cesium canvas */
 }
 
 #navigation-buttons button { /* Updated selector */
@@ -111,16 +143,14 @@ content: ' >';
 }
 
 #slide-forward {
-display: none; /* Keep the button hidden initially */
 }
 
 footer {
-background-color: #fffdd0; /* Light yellow color /
-text-align: center;
-padding: 15px 0;
-position: relative; / Positioned relative to its normal position /
-width: 100%; / Ensure the footer is full width /
-bottom: 0; / Stick to the bottom */
+    background-color: #fffdd0; /* Light yellow color */
+    text-align: center;
+    padding: 15px 0;
+    position: relative; /* Positioned relative to its normal position */
+    width: 100%; /* Ensure the footer is full width */
 }
 
 /* Responsive design for smaller screens /
