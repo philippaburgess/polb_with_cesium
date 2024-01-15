@@ -57,61 +57,6 @@ function updateScene() {
             roll: 0.0
         },
         duration
-The JavaScript function provided has a few issues that need correction. Here's a breakdown of the changes that should be made:
-
-You're attempting to define a camera view within the object of a scene. This is incorrect because the camera should be set separately, not within the scene object.
-
-The content of the scenes should be a string, but it is not enclosed in quotes, which will cause an error.
-
-The camera.setView function is misplaced and should be part of the scene setup or camera initialization, not within the scenes array.
-
-Here's how to adjust your app.js:
-
-javascript
-Copy code
-// Section 1: API Keys and Viewer Initialization
-// ...
-
-// Section 2: Scene and Location Setup
-const scenes = [
-    {
-        title: "The Green Port",
-        content: "The Port of Long Beach (POLB) refers to itself as 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest ports in the United States, the cargo it transports is a significant driver to the national economy. The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.",
-        location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
-        // You do not set the camera view here, remove the camera.setView from this object
-    },
-    // ...
-];
-
-// ...
-
-// Function to update the current scene
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    document.getElementById('scene-title').textContent = scene.title;
-    document.getElementById('scene-content').textContent = scene.content;
-    // Set the camera view here when updating the scene
-    viewer.scene.camera.flyTo({
-        destination: scene.location,
-        orientation: {
-            heading: Cesium.Math.toRadians(0),
-            pitch: Cesium.Math.toRadians(-30),
-            roll: 0.0
-        },
-        duration: 2
-});
-}
-                
-        {
-            title: "Title for Scene 2",
-            content: "Content for Scene 2...",
-            location: Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800)
-        },
-        // Add more scenes as needed
-    ];
-
-    // Current scene index
-    var currentSceneIndex = 0;
 
     // Function to update the current scene
     function updateScene() {
@@ -125,7 +70,6 @@ function updateScene() {
     }
 
     // Section 3: Scene Navigation Functions
-
 
 // Functions to navigate between scenes
 window.nextScene = function() {
@@ -210,16 +154,6 @@ window.flyToLocationAndHold = function(index) {
         }
     };
         
-    viewer.scene.camera.setView({
-      destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0),
-      orientation: {
-        heading: Cesium.Math.toRadians(0), // facing east
-        pitch: Cesium.Math.toRadians(-30), // looking down at 30 degrees
-        roll: 0.0
-      }
-    });
-  };
-
 })();
 
 
