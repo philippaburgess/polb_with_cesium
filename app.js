@@ -37,9 +37,19 @@
 
    var scenes = [
         {
-            title: "Title for Scene 1",
-            content: "Content for Scene 1...",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
+            title: The Green Port",
+            content: "The Port of Long Beach (POLB) has the tag line, The Green Port as it strives to be a role model for green port operations. As one of the busiest port in the United States, the cargo it transports are a significant driver to national economy.
+
+The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.",
+           // Set the initial view to focus on the Port of Long Beach
+viewer.scene.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(-118.220071, 33.766145, 10000.0), // Adjust the longitude, latitude, and height to match the view you want
+orientation: {
+heading: Cesium.Math.toRadians(0), // East, in radians
+pitch: Cesium.Math.toRadians(-30), // Tilt down 30 degrees
+roll: 0.0
+}
+});
         },
         {
             title: "Title for Scene 2",
@@ -83,11 +93,11 @@ window.previousScene = function() {
     }
 };
 
-// New function to show the scene container
+        // New function to show the scene container
 function showSceneContainer() {
     var sceneContainer = document.getElementById('scene-container');
     if (sceneContainer) {
-        sceneContainer.style.display = 'block'; // Change from none to block to make it visible
+        sceneContainer.style.display = 'block'; // Make it visible
     }
 }
 
@@ -98,16 +108,15 @@ window.closeScene = function() {
         sceneContainer.style.display = 'none'; // Hide the scene container
     }
 };
-
     // Section 4: Initial Flyover
 
 // Function to execute when initial flyover is complete
 function onFlyoverComplete() {
-    document.getElementById('slide-forward').style.visibility = 'visible'; // This shows the "Next" button
-    document.getElementById('navigation-buttons').style.visibility = 'visible'; // Ensure this container is visible
-    updateScene(); // Call the function to update the scene, which also makes the scene container visible.
+    document.getElementById('navigation-buttons').style.visibility = 'visible'; // Show navigation buttons
+    showSceneContainer(); // Show the first scene's content
+    updateScene(); // Update the scene
 }
-  
+        
 // Function to fly to each location and hold
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
@@ -119,15 +128,12 @@ window.flyToLocationAndHold = function(index) {
         complete: function() {
             setTimeout(function() {
                 window.flyToLocationAndHold(index + 1);
-            }, 2000); // Wait time before flying to the next location
+            }, 1500); // Wait time before flying to the next location
         }
     });
 };
         
  // Section 5: Page Load Setup
-
-       
-
     
     // Set up the initial state when the page loads
  window.onload = function() {
