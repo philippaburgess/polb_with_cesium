@@ -234,20 +234,25 @@ window.onload = function() {
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
-    // Select all the slide elements
-    var slides = document.querySelectorAll('.slide');
+// Activate the first slide if any are present
+  if (slides.length > 0) {
+    slides[0].classList.add('active');
+}
+};
+
+// Now your nextSlide and closeInstructions functions will work correctly because they can access the slides and currentSlideIndex variables.
+window.nextSlide = function() {
+if (currentSlideIndex < slides.length - 1) {
+slides[currentSlideIndex].classList.remove('active');
+currentSlideIndex++;
+slides[currentSlideIndex].classList.add('active');
+}
+// Add any additional code for handling navigation button visibility here if needed
+};
+        
 
     // Define the function to move to the next slide
 
-window.nextSlide = function() {
-  if (currentSlideIndex < slides.length - 1) {
-      slides[currentSlideIndex].classList.remove('active');
-      currentSlideIndex++;
-      slides[currentSlideIndex].classList.add('active');
-            }
-            // Handle navigation button visibility if needed
-        };
-        
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     // Hide the instruction box
