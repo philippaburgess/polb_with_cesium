@@ -144,49 +144,20 @@ duration: 2 // Duration of the camera flight in seconds
 });
 }
 
-    // Section 3: Scene Navigation Functions
+// Section 3: Scene Navigation Functions
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-    } else {
-        // Consider what should happen if it's the last scene
-    }
-};
+        document.getElementById('slide-forward').style.display = 'block';
+        document.getElementById('slide-back').style.display = 'block';
 
-window.previousScene = function() {
-    if (currentSceneIndex > 0) {
-        currentSceneIndex--;
-        updateScene();
-    } else {
-        // Consider what should happen if it's the first scene
-    }
-};
-
-// New function to show the scene container
-function showSceneContainer() {
-    var sceneContainer = document.getElementById('scene-container');
-    sceneContainer.style.display = 'block';
-}
-
-window.closeScene = function() {
-    var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'none'; // Hide the scene container
-    }
-};
-
-        window.nextScene = function() {
-    if (currentSceneIndex < scenes.length - 1) {
-        currentSceneIndex++;
-        updateScene();
         if (currentSceneIndex === scenes.length - 1) {
             document.getElementById('slide-forward').style.display = 'none';
         }
-        if (currentSceneIndex > 0) {
-            document.getElementById('slide-back').style.display = 'block';
-        }
+    } else {
+        // Optional: Handle the last scene case, such as hiding the 'Next' button or looping to the first scene
     }
 };
 
@@ -194,14 +165,32 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
-        if (currentSceneIndex < scenes.length - 1) {
-            document.getElementById('slide-forward').style.display = 'block';
-        }
+        document.getElementById('slide-forward').style.display = 'block';
+
         if (currentSceneIndex === 0) {
             document.getElementById('slide-back').style.display = 'none';
         }
+    } else {
+        // Optional: Handle the first scene case, such as hiding the 'Previous' button or looping to the last scene
     }
 };
+
+// Function to show the scene container
+function showSceneContainer() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'block';
+    }
+}
+
+// Function to close the scene container
+window.closeScene = function() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'none';
+    }
+};
+
         
     // Section 4: Initial Flyover
 
@@ -239,35 +228,41 @@ window.flyToLocationAndHold = function(index) {
 };
 
         
- // Section 5: Page Load Setup
-    
+// Section 5: Page Load Setup
+
 window.onload = function() {
+    // Initially hide the navigation buttons
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Initially hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Initially hide the "Previous" button
+
+    // Select all slide elements
     var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0;
 
+    // Define function to move to the next slide
     window.nextSlide = function() {
         if (currentSlideIndex < slides.length - 1) {
             slides[currentSlideIndex].classList.remove('active');
             currentSlideIndex++;
             slides[currentSlideIndex].classList.add('active');
         }
+        // Additional logic to handle the visibility of navigation buttons
+        // can be added here if necessary
     };
 
+    // Define function to close instructions and start the flyover
     window.closeInstructions = function() {
         document.getElementById('instruction-box').style.display = 'none';
+        // Ensure flyToLocationAndHold function is defined correctly elsewhere in your code
         flyToLocationAndHold(0);
     };
 
+    // Activate the first slide if any exist
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
 };
-})();
-
-
 
 
 
