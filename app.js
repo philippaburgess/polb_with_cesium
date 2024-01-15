@@ -115,6 +115,7 @@
     ];
 
 var currentSceneIndex = 0;
+var currentSlideIndex = 0;
 
 function updateScene() {
     var scene = scenes[currentSceneIndex];
@@ -228,19 +229,14 @@ window.onload = function() {
 
     // Define the function to move to the next slide
 
-   window.nextSlide = function() {
-
-     // Check if there are more slides to show
-if (currentSlideIndex < slides.length - 1) {
-// Remove 'active' class from the current slide
-slides[currentSlideIndex].classList.remove('active');
-// Move to the next slide
-currentSlideIndex++;
-// Add 'active' class to the new current slide to show it
-slides[currentSlideIndex].classList.add('active');
-}
-// Handle navigation button visibility here if needed
-};
+window.nextSlide = function() {
+  if (currentSlideIndex < slides.length - 1) {
+      slides[currentSlideIndex].classList.remove('active');
+      currentSlideIndex++;
+      slides[currentSlideIndex].classList.add('active');
+            }
+            // Handle navigation button visibility if needed
+        };
         
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
@@ -253,6 +249,6 @@ window.closeInstructions = function() {
 // Activate the first slide if any are present
 if (slides.length > 0) {
     slides[0].classList.add('active');
-}
-};
+        }
+   };
 })(); 
