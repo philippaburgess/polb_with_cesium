@@ -38,8 +38,8 @@
     const scenes = [
         {
             title: "Scene 1: The Green Port",
-            content: "Description of The Green Port...",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 2500)
+            content: "The Green Port...",
+            location: Cesium.Cartesian3.fromDegrees(-115.2765, 31.7489, 2500)
         },
                {
             title: "Scene 2: The Port",
