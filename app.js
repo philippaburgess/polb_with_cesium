@@ -101,14 +101,13 @@ window.closeScene = function() {
 
     // Section 4: Initial Flyover
 
-        // Function to execute when initial flyover is complete
+// Function to execute when initial flyover is complete
 function onFlyoverComplete() {
-document.getElementById('slide-forward').style.visibility = 'visible'; // This shows the "Next" button
-document.getElementById('navigation-buttons').style.visibility = 'visible'; // Ensure this container is visible
-// Call the function to update the scene, which also makes the scene container visible.
-updateScene();
+    document.getElementById('slide-forward').style.visibility = 'visible'; // This shows the "Next" button
+    document.getElementById('navigation-buttons').style.visibility = 'visible'; // Ensure this container is visible
+    updateScene(); // Call the function to update the scene, which also makes the scene container visible.
 }
-        
+  
 // Function to fly to each location and hold
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
@@ -126,9 +125,13 @@ window.flyToLocationAndHold = function(index) {
 };
         
  // Section 5: Page Load Setup
+
+       
+
     
     // Set up the initial state when the page loads
-    window.onload = function() {
+ window.onload = function() {
+    document.getElementById('navigation-buttons').style.visibility = 'hidden'; // Hide navigation buttons initially
         var slides = document.querySelectorAll('.slide');
         var currentSlideIndex = 0;
 
