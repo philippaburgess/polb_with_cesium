@@ -183,55 +183,49 @@ window.closeScene = function() {
     }
 };
 
-    // Section 4: Initial Flyover
+// Section 4: Initial Flyover
 
 function onFlyoverComplete() {
     document.getElementById('navigation-buttons').style.visibility = 'visible';
-    updateScene();
     showSceneContainer();
-document.getElementById('slide-forward').style.display
-= 'block';
-document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
-updateScene(); // This will load the first scene
+    document.getElementById('slide-forward').style.display = 'block';
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
+    updateScene(); // This will load the first scene
 }
 
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
         onFlyoverComplete();
-        return;
+    } else {
+        viewer.camera.flyTo({
+            destination: locations[index],
+            complete: function() {
+                setTimeout(function() {
+                    flyToLocationAndHold(index + 1);
+                }, 1500); // Time to hold on each location
+            }
+        });
     }
-    viewer.camera.flyTo({
-        destination: locations[index],
-        complete: function() {
-            setTimeout(function() {
-                flyToLocationAndHold(index + 1);
-            }, 1500); // Time to hold on each location
-        }
-    });
+};
 
-        window.closeScene = function() {
+window.closeScene = function() {
     var sceneContainer = document.getElementById('scene-container');
     if (sceneContainer) {
         sceneContainer.style.display = 'none'; // Hide the scene container
     }
     // Optional: Add logic to navigate back to the main view or do nothing
-
 };
 
-        
 // Section 5: Page Load Setup
 
 window.onload = function() {
-    // Initially hide the navigation buttons
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Initially hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Initially hide the "Previous" button
 
-    // Select all slide elements
     var slides = document.querySelectorAll('.slide');
     var currentSlideIndex = 0;
 
-    // Define function to move to the next slide
     window.nextSlide = function() {
         if (currentSlideIndex < slides.length - 1) {
             slides[currentSlideIndex].classList.remove('active');
@@ -242,14 +236,11 @@ window.onload = function() {
         // can be added here if necessary
     };
 
-    // Define function to close instructions and start the flyover
     window.closeInstructions = function() {
         document.getElementById('instruction-box').style.display = 'none';
-        // Ensure flyToLocationAndHold function is defined correctly elsewhere in your code
         flyToLocationAndHold(0);
     };
 
-    // Activate the first slide if any exist
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
