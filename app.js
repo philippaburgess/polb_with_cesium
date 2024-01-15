@@ -254,15 +254,3 @@ window.onload = function() {
         slides[0].classList.add('active');
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
