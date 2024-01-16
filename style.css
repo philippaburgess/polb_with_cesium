@@ -123,10 +123,32 @@ content: ' >';
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
+    padding-bottom: 40px; /* Extra padding at the bottom to make space for the close button */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     z-index: 10; /* Above instruction box */
     display: none; /* Hidden initially */
     max-width: 400px; /* Or any max-width you see fit */
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  background-color: #d3d3d3;; /* Light grey background*/
+  color: #696969; /* Dark grey text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em; /* Smaller text size */
+  z-index: 15; /* Ensure it's above other content */
+  font-weight: bold; /* Make the 'X' bold */
+  font-family: Arial, sans-serif; /* Ensure a consistent font */
+}
+
+.close-btn:hover {
+  background-color: #a9a9a9; /* Darker grey on
+hover */
 }
 
 #scene-content h2 {
@@ -152,27 +174,6 @@ content: ' >';
     background-color: #cca300; /* Darker yellow on hover */
 }
 
-
-.close-btn {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  padding: 2px 5px;
-  background-color: #d3d3d3;; /* Light grey background*/
-  color: #696969; /* Dark grey text */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.5em; /* Smaller text size */
-  z-index: 15; /* Ensure it's above other content */
-  font-weight: bold; /* Make the 'X' bold */
-  font-family: Arial, sans-serif; /* Ensure a consistent font */
-}
-
-.close-btn:hover {
-  background-color: #a9a9a9;0; /* Darker grey on
-hover */
-}
 
 footer {
     background-color: #fffdd0; /* Light yellow color */
