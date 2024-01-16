@@ -143,8 +143,8 @@ hover */
 
   #scene-container {
     position: absolute;
-    top: 0 /* Adjust as needed for your design */
-    left: 0; /* Adjust as needed for your design */
+    top: 10px /* Adjust as needed for your design */
+    left: 10px; /* Adjust as needed for your design */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
