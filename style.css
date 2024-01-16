@@ -118,8 +118,8 @@ content: ' >';
 
   #scene-container {
     position: absolute;
-    top: 20px /* Adjust as needed for your design */
-    left: 20px; /* Adjust as needed for your design */
+    top: 10px /* Adjust as needed for your design */
+    left: 10px; /* Adjust as needed for your design */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
@@ -163,14 +163,10 @@ content: ' >';
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.8em; /* Smaller text size */
-  z-index: 1002; /* Ensure it's above other content */
+  z-index: 15; /* Ensure it's above other content */
   font-weight: bold; /* Make the 'X' bold */
   font-family: Arial, sans-serif; /* Ensure a consistent font */
 }
-
-.close-btn {
-  /* ... existing styles ... */
-  }
 
 .close-btn:hover {
   background-color: #cc0000; /* Darker red on
