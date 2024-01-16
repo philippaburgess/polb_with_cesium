@@ -134,7 +134,7 @@
         },
              {
             title: "Scene 12:Good Neighbors",
-            content: "<p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.
+            content: "<p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.</p>" + 
 
 "<p>Some of the specific measures the Ports are taking include:</p>" + 
 
