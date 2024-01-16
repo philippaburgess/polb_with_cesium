@@ -137,22 +137,6 @@ function updateScene() {
     }
 }  // This is where the function should end with a closing brace
 
-    window.nextSlide = function() {
-        // Accessing currentSlideIndex which is in the same scope
-        if (currentSlideIndex < slides.length - 1) {
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex++;
-            slides[currentSlideIndex].classList.add('active');
-            // Code to handle the visibility of navigation buttons
-        }
-
-  };
-
-        window.closeInstructions = function() {
-        document.getElementById('instruction-box').style.display = 'none';
-        flyToLocationAndHold(0); // Make sure this function is defined
-    };   
-            
 // Section 3: Scene Navigation Functions
 
 window.nextScene = function() {
@@ -240,15 +224,11 @@ window.onload = function() {
             slides[0].classList.add('active');
         }
     };
-// Now your nextSlide and closeInstructions functions will work correctly because they can access the slides and currentSlideIndex variables.
+// Define next slide function
 window.nextSlide = function() {
-if (currentSlideIndex < slides.length - 1) {
-slides[currentSlideIndex].classList.remove('active');
-currentSlideIndex++;
-slides[currentSlideIndex].classList.add('active');
-}
-// Add any additional code for handling navigation button visibility here if needed
-};
+ document.getElementById('instruction-box').style.display = 'none';
+        flyToLocationAndHold(0); // Ensure this function is defined above
+    };
         
 
     // Define the function to move to the next slide
