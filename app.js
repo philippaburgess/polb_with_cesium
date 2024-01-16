@@ -171,7 +171,7 @@
         },
              {
             title: "Scene 15: Thank You",
-            content: '<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:400px;'>";
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:400px;'>";
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
         },
             
