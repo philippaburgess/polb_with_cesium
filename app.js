@@ -204,21 +204,24 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-        document.getElementById('scene-container').style.display = 'block'; // Make sure the text box is visible for the next scene
-    } else {
-        document.getElementById('slide-forward').style.display = 'none';
+        document.getElementById('scene-container').style.display = 'block';
+        document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
+    } 
+    if (currentSceneIndex === scenes.length - 1) {
+        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
     }
-}; // This closing bracket ends the window.nextScene function
+};
 
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
-        document.getElementById('scene-container').style.display = 'block'; // Make sure the text box is visible for the previous scene
-    } else {
-       document.getElementById('slide-back').style.display = 'none';
-    }
-}; // This closing bracket ends the window.previousScene function
+        document.getElementById('scene-container').style.display = 'block';
+}
+if (currentSceneIndex === 0) {
+document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
+}
+};
 
 // Function to show the scene container
 function showSceneContainer() {
