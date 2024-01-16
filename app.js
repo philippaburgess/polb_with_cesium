@@ -55,17 +55,17 @@
         },
                {
             title: "Scene 3: The Port of Long Beach Terminals",
-            content: "Description Port Terminals...",
+            content: "<img src="https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg" alt="Terminals" style="width:100%;max-width:400px;">",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
         },
               {
             title: "Scene 4:TEUs",
-            content: "Description TEUs...",
+            content: "<img src="https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg" alt="TEU" style="width:100%;max-width:400px;">",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 5500)
         },
               {
             title: "Scene 5:Economic Impact",
-            content: "Description Economic Impact..",
+            content: ""<img src="https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg" alt="Map" style="width:100%;max-width:400px;">",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
         },
               {
