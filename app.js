@@ -49,7 +49,9 @@ The port is located adjacent to the Port of Los Angeles in the City of Long Beac
         },
                {
             title: "Scene 2: The Port",
-            content: "Description of The Port...",
+            content: "The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.
+
+Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
         },
                {
