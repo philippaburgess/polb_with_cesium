@@ -226,11 +226,12 @@ window.onload = function() {
     };
 // Define next slide function
 window.nextSlide = function() {
- document.getElementById('instruction-box').style.display = 'none';
-        flyToLocationAndHold(0); // Ensure this function is defined above
-    };
-        
-
+        if (currentSlideIndex < slides.length - 1) {
+        slides[currentSlideIndex].classList.remove('active');
+        currentSlideIndex++;
+        slides[currentSlideIndex].classList.add('active');
+    }
+};
     // Define the function to move to the next slide
 
  // Define the function to close the instructions and start the flyover
