@@ -35,7 +35,6 @@ main {
     position: absolute; /* Position absolutely within the cesiumContainer */
     top: 10px; /* Center vertically */
     left: 10px; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust for the box's own size */
     background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
     border: 1px solid #ffd700; /* Yellow border */
     padding: 20px;
@@ -44,14 +43,6 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
     border-radius: 10px; /* Optional: rounds the corners */
     text-align: center; /* Centers the text */
-}
-
-.slide {
-  display: none; /* Hide all slides by default */
-}
-
-.slide.active {
-  display: block; /* Only the active slide is shown */
 }
 
 /* Adjust the button styles as needed */
@@ -77,6 +68,52 @@ main {
 .slide-content.active {
   display: block; /* Show active slide content */
 }
+  
+/* Adding directional arrows next to the text */
+#slide-back:before {
+content: '< ';
+}
+
+#slide-forward:after {
+content: ' >';
+}
+
+#slide-forward {
+      display: block; /* or inline-block, as needed */
+}
+
+#slide-back {
+      display: block; /* or inline-block, as needed */
+}
+
+.slide {
+  display: none; /* Hide all slides by default */
+}
+
+.slide.active {
+  display: block; /* Only the active slide is shown */
+}
+
+#navigation-buttons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10; /* High enough to be above the Cesium canvas */
+}
+
+#navigation-buttons button { /* Updated selector */
+  padding: 10px 20px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#navigation-buttons button:hover { /* Updated selector */
+  background-color: #cca300;
+}
 
 .close-btn {
   position: absolute;
@@ -97,14 +134,12 @@ main {
 .close-btn {
   /* ... existing styles ... */
 
-
-
 .close-btn:hover {
   background-color: #cc0000; /* Darker red on
 hover */
 }
 
-#scene-container {
+  #scene-container {
     position: absolute;
     top: 10%; /* Adjust as needed for your design */
     left: 10%; /* Adjust as needed for your design */
@@ -136,44 +171,6 @@ hover */
 
 #scene-content button:hover {
     background-color: #cca300; /* Darker yellow on hover */
-}
-
-#navigation-buttons {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10; /* High enough to be above the Cesium canvas */
-}
-
-#navigation-buttons button { /* Updated selector */
-  padding: 10px 20px;
-  background-color: #ffd700;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-#navigation-buttons button:hover { /* Updated selector */
-  background-color: #cca300;
-}
-  
-/* Adding directional arrows next to the text */
-#slide-back:before {
-content: '< ';
-}
-
-#slide-forward:after {
-content: ' >';
-}
-
-#slide-forward {
-      display: block; /* or inline-block, as needed */
-}
-
-#slide-back {
-      display: block; /* or inline-block, as needed */
 }
 
 footer {
