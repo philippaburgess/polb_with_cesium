@@ -204,11 +204,6 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-        document.getElementById('slide-forward').style.display = 'block';
-        document.getElementById('slide-back').style.display = 'block';
-
-        if (currentSceneIndex === scenes.length - 1) {
-            document.getElementById('slide-forward').style.display = 'none';
         }
     } else {
         // Optional: Handle the last scene case, such as hiding the 'Next' button or looping to the first scene
@@ -219,10 +214,6 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
-        document.getElementById('slide-forward').style.display = 'block';
-
-        if (currentSceneIndex === 0) {
-            document.getElementById('slide-back').style.display = 'none';
         }
     } else {
         // Optional: Handle the first scene case, such as hiding the 'Previous' button or looping to the last scene
