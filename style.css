@@ -116,35 +116,10 @@ content: ' >';
   background-color: #cca300;
 }
 
-.close-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 5px 10px;
-  background-color: #ff0000; /* Red color for visibility, change as needed */
-  color: #ffffff; /* White text color */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.8em; /* Smaller text size */
-  z-index: 1002; /* Ensure it's above other content */
-  font-weight: bold; /* Make the 'X' bold */
-  font-family: Arial, sans-serif; /* Ensure a consistent font */
-}
-
-.close-btn {
-  /* ... existing styles ... */
-  }
-
-.close-btn:hover {
-  background-color: #cc0000; /* Darker red on
-hover */
-}
-
   #scene-container {
     position: absolute;
-    top: 10px /* Adjust as needed for your design */
-    left: 10px; /* Adjust as needed for your design */
+    top: 20px /* Adjust as needed for your design */
+    left: 20px; /* Adjust as needed for your design */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
@@ -174,6 +149,32 @@ hover */
 
 #scene-content button:hover {
     background-color: #cca300; /* Darker yellow on hover */
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  background-color: #ff0000; /* Red color for visibility, change as needed */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em; /* Smaller text size */
+  z-index: 1002; /* Ensure it's above other content */
+  font-weight: bold; /* Make the 'X' bold */
+  font-family: Arial, sans-serif; /* Ensure a consistent font */
+}
+
+.close-btn {
+  /* ... existing styles ... */
+  }
+
+.close-btn:hover {
+  background-color: #cc0000; /* Darker red on
+hover */
 }
 
 footer {
