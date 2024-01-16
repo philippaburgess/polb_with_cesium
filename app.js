@@ -227,7 +227,7 @@ window.closeScene = function() {
 // Section 5: Page Load Setup
 
 window.onload = function() {
-    slides = document.querySelectorAll('.slide');
+    var slides = document.querySelectorAll('.slide');
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
@@ -258,6 +258,6 @@ window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}
+      };
 };    
 })();
