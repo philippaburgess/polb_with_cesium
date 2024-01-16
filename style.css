@@ -129,7 +129,7 @@ content: ' >';
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     z-index: 10; /* Above instruction box */
     display: none; /* Hidden initially */
-    max-width: 1200px; /* Or any max-width you see fit */
+    max-width: 1000px; /* Or any max-width you see fit */
 }
 
 .close-btn {
