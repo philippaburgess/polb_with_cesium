@@ -55,7 +55,7 @@
         },
                {
             title: "Scene 3: The Port of Long Beach Terminals",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:1000px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:800px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
         },
               {
