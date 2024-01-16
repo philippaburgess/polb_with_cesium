@@ -182,11 +182,13 @@ function updateScene() {
 
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
+    var sceneContainer = document.getElementById('scene-container');
 
-    if(titleElement && contentElement) {
+   if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
-
+        sceneContainer.style.display = 'block'; // Make sure the container is visible
+       
         viewer.camera.flyTo({
             destination: scene.location,
             duration: 2  // Duration of the camera flight in seconds
