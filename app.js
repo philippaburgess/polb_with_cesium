@@ -122,7 +122,7 @@ function updateScene() {
     var scene = scenes[currentSceneIndex];
 
     var titleElement = document.getElementById('scene-title');
-    var contentElement = document.getElementById('scene-content');
+    var contentElement = document.getElementById('scene-description');
 
     if(titleElement && contentElement) {
         titleElement.textContent = scene.title;
