@@ -75,7 +75,7 @@
         },
              {
             title: "Scene 7:Clean Initiatives",
-            content: "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model 'green' port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
+            content: "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
 
 
 "<p>Using clean energy sources. The Port has invested in a number of renewable energy projects, including solar panels and wind turbines.</p>" +
