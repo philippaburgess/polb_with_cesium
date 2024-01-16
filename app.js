@@ -174,7 +174,7 @@ function showSceneContainer() {
     if (sceneContainer) {
         sceneContainer.style.display = 'block';
     }
-};
+}
 
 // Section 4: Initial Flyover
 
