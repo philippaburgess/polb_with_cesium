@@ -134,6 +134,7 @@ content: ' >';
 
 .close-btn {
   /* ... existing styles ... */
+  }
 
 .close-btn:hover {
   background-color: #cc0000; /* Darker red on
@@ -142,8 +143,9 @@ hover */
 
   #scene-container {
     position: absolute;
-    top: 10%; /* Adjust as needed for your design */
-    left: 10%; /* Adjust as needed for your design */
+    top: 50%; /* Adjust as needed for your design */
+    left: 50%; /* Adjust as needed for your design */
+    transform: translate(-50%, -50%); /* Adjust the box's position to its center */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
