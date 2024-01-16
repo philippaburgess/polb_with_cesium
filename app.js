@@ -186,7 +186,7 @@ function updateScene() {
 
     if(titleElement && contentElement) {
         titleElement.textContent = scene.title;
-        contentElement.innerHTML = scene.content;
+        contentElement.textContent = scene.content;
 
         viewer.camera.flyTo({
             destination: scene.location,
