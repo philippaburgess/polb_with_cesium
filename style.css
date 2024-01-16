@@ -130,7 +130,8 @@ content: ' >';
 }
 
 #scene-content h2 {
-    margin: 0 0 10px 0; /* Add space below the title */
+    margin: 0; /* Add space below the title */
+    padding-right: 30px; /* Provide space for the close button */
     color: #333; /* Dark text for readability */
 }
 
@@ -157,8 +158,8 @@ content: ' >';
   top: 5px;
   right: 5px;
   padding: 5px 10px;
-  background-color: #ff0000; /* Red color for visibility, change as needed */
-  color: #ffffff; /* White text color */
+  background-color: #d3d3d3;; /* Light grey background*/
+  color: #696969; /* Dark grey text */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -169,7 +170,7 @@ content: ' >';
 }
 
 .close-btn:hover {
-  background-color: #cc0000; /* Darker red on
+  background-color: #a9a9a9;0; /* Darker grey on
 hover */
 }
 
