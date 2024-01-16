@@ -143,15 +143,15 @@ hover */
 
   #scene-container {
     position: absolute;
-    top: 50%; /* Adjust as needed for your design */
-    left: 50%; /* Adjust as needed for your design */
-    transform: translate(-50%, -50%); /* Adjust the box's position to its center */
+    top: 0 /* Adjust as needed for your design */
+    left: 0; /* Adjust as needed for your design */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     z-index: 10; /* Above instruction box */
     display: none; /* Hidden initially */
+    max-width: 400px; /* Or any max-width you see fit */
 }
 
 #scene-content h2 {
