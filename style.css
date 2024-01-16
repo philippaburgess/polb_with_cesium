@@ -21,9 +21,9 @@ header h1, header p, footer p {
 }
 
 #cesiumContainer {
+  position: relative; /* Needed for absolutely positioned children */
   flex: 1;
   height: calc(100vh - 120px); /* Adjust based on header/footer height */
-  position: relative; /* Needed for absolutely positioned children */
 }
 
 main {
@@ -112,7 +112,7 @@ hover */
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    z-index: 1001; /* Above instruction box */
+    z-index: 10; /* Above instruction box */
     display: none; /* Hidden initially */
 }
 
