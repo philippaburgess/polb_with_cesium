@@ -181,7 +181,6 @@ var longBeachDataLayer;
     
 function updateScene() {
     var scene = scenes[currentSceneIndex];
-
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
@@ -194,9 +193,11 @@ function updateScene() {
 if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene 12
         // Add the GeoJSON layer if it's not already added
         if (!longBeachDataLayer) {
-            longBeachDataLayer = Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson');
+            longBeachDataLayer = Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
+            longBeachDataLayer = dataSource;
             viewer.dataSources.add(longBeachDataLayer);
-        }
+        });
+    }
     } else {
         // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
