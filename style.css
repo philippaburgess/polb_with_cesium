@@ -33,8 +33,8 @@ main {
 
 #instruction-box {
     position: absolute; /* Position absolutely within the cesiumContainer */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 10px; /* Center vertically */
+    left: 10px; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for the box's own size */
     background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
     border: 1px solid #ffd700; /* Yellow border */
@@ -169,6 +169,11 @@ content: ' >';
 }
 
 #slide-forward {
+      display: block; /* or inline-block, as needed */
+}
+
+#slide-back {
+      display: block; /* or inline-block, as needed */
 }
 
 footer {
