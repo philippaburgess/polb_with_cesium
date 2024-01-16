@@ -2,9 +2,8 @@
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
-
-
-        // Section 1: API Keys and Viewer Initialization
+    
+   // Section 1: API Keys and Viewer Initialization
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
     Cesium.ArcGisMapService.defaultAccessToken = apiKey;
@@ -186,7 +185,7 @@ function updateScene() {
 
     if(titleElement && contentElement) {
         titleElement.textContent = scene.title;
-        contentElement.textContent = scene.content;
+        contentElement.innerHTML = scene.content;
 
         viewer.camera.flyTo({
             destination: scene.location,
