@@ -204,9 +204,9 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-        }
+        document.getElementById('scene-container').style.display = 'block'; // Make sure the text box is visible for the next scene
     } else {
-        // Optional: Handle the last scene case, such as hiding the 'Next' button or looping to the first scene
+        document.getElementById('slide-forward').style.display = 'none';
     }
 }; // This closing bracket ends the window.nextScene function
 
@@ -214,9 +214,9 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
-        }
+        document.getElementById('scene-container').style.display = 'block'; // Make sure the text box is visible for the previous scene
     } else {
-        // Optional: Handle the first scene case, such as hiding the 'Previous' button or looping to the last scene
+       document.getElementById('slide-back').style.display = 'none';
     }
 }; // This closing bracket ends the window.previousScene function
 
