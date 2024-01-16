@@ -217,6 +217,7 @@ window.previousScene = function() {
         currentSceneIndex--;
         updateScene();
         document.getElementById('scene-container').style.display = 'block';
+        document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
 }
 if (currentSceneIndex === 0) {
 document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
