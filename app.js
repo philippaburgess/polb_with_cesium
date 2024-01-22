@@ -141,7 +141,7 @@
 "<p><li>Participating in the Clean Air Action Plan (CAAP), a regional initiative to reduce air pollution from ports and other sources.</li></p>" + 
 
 
-"<p><li>Investing in clean technology, such as electric cargo handling equipment and zero-emissions ships.<li></p>" + 
+"<p><li>Investing in clean technology, such as electric cargo handling equipment and zero-emissions ships.</li></p>" + 
 
 
 "<p><li>Working with shippers and cargo owners to reduce the emissions of their ships and trucks.</li></p>" + 
