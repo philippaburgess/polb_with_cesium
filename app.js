@@ -2,7 +2,7 @@
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
-    
+
    // Section 1: API Keys and Viewer Initialization
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
@@ -191,11 +191,13 @@ function updateScene() {
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
 if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene 12
-        // Add the GeoJSON layer if it's not already added
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
              viewer.dataSources.add(dataSource); 
              longBeachDataLayer = dataSource;
+    }).otherwise(function(error){
+        // Handle any loading errors
+        console.error(error);
         }); 
       }     
     } else {
@@ -222,6 +224,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
         var pickedFeature = pickedObject.id;
         var featureProperties = pickedFeature.properties;
+        displayInfoBox(pickedFeature);
         
     var infoBox = document.getElementById('infoBox');
         infoBox.innerHTML = 'Loading...'; // Clear previous content
@@ -236,6 +239,15 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         infoBox.style.display = 'block'; // Show the info box
     }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    
+    function displayInfoBox(pickedFeature) {
+    var infoBox = document.getElementById('infoBox');
+    // Populate the infoBox with data from the pickedFeature
+    // Example:
+    infoBox.innerHTML = '<h4>' + pickedFeature.name + '</h4>'; // Change according to your data structure
+    // Add additional feature properties as needed
+    infoBox.style.display = 'block';
+}
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
