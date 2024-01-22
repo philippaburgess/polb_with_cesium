@@ -44,7 +44,7 @@
             content: "<p></p><p>The Port of Long Beach (POLB) refers to itself as the 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest port in both the United States and the world, the cargo it transports are a significant driver to national economy.</p>" +
 
 "<p>The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-115.2765, 31.7489, 2500)
+            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7470, 2500)
         },
                {
             title: "2: The Port",
