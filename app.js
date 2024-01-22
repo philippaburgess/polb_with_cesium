@@ -223,30 +223,23 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     var pickedObject = viewer.scene.pick(movement.position);
     if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
         var pickedFeature = pickedObject.id;
-        var featureProperties = pickedFeature.properties;
         displayInfoBox(pickedFeature);
-        
+    }
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
-        infoBox.innerHTML = 'Loading...'; // Clear previous content
+    var featureProperties = pickedFeature.properties;
         
     var content = '<h4>Feature Information</h4>';
     for (var key in featureProperties) {
       if (featureProperties.hasOwnProperty(key)) {
         content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
       }
-    }            
-         infoBox.innerHTML = content 
-        infoBox.style.display = 'block'; // Show the info box
-    }
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    }   
     
-    function displayInfoBox(pickedFeature) {
-    var infoBox = document.getElementById('infoBox');
-    // Populate the infoBox with data from the pickedFeature
-    // Example:
-    infoBox.innerHTML = '<h4>' + pickedFeature.name + '</h4>'; // Change according to your data structure
-    // Add additional feature properties as needed
-    infoBox.style.display = 'block';
+    infoBox.innerHTML = content; // Set the content generated from properties
+    infoBox.style.display = 'block'; // Show the info box
 }
 
 window.nextScene = function() {
