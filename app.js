@@ -195,16 +195,14 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
              viewer.dataSources.add(dataSource); 
              longBeachDataLayer = dataSource;
-    }).otherwise(function(error){
-        // Handle any loading errors
-        console.error(error);
+             }).otherwise(function(error){
+             console.error(error);
         }); 
       }     
     } else {
-        // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
-            viewer.dataSources.remove(longBeachDataLayer);
-            longBeachDataLayer = null;
+         viewer.dataSources.remove(longBeachDataLayer);
+         longBeachDataLayer = null;
         }
     }
 
@@ -229,11 +227,11 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
 function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
-    var featureProperties = pickedFeature.properties;
-        
+    if (pickedFeature.properties) {
     var content = '<h4>Feature Information</h4>';
-    if (featureProperties) {
-       for (var key in featureProperties) {
+    var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now()); 
+        
+    for (var key in featureProperties) {
         if (featureProperties.hasOwnProperty(key)) {
         content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
       }
@@ -241,8 +239,8 @@ function displayInfoBox(pickedFeature) {
  } else {
         content += "<p>No data available.</p>";
     }    
-    infoBox.innerHTML = content; // Set the content generated from properties
-    infoBox.style.display = 'block'; // Show the info box
+    infoBox.innerHTML = content; 
+    infoBox.style.display = 'block'; 
 }
 
 window.nextScene = function() {
