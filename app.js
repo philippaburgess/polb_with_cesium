@@ -226,8 +226,18 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         var featureProperties = pickedFeature.properties;
         // Perform your display logic here, such as opening a modal or displaying a side panel with the feature's information
         console.log(featureProperties);
+        
+    var infoBox = document.getElementById('infoBox');
+        infoBox.innerHTML = ''; // Clear previous content
+        for (var propertyName in featureProperties) {
+            if (featureProperties.hasOwnProperty(propertyName)) {
+                var propertyValue = featureProperties[propertyName];
+                infoBox.innerHTML += `<strong>${propertyName}:</strong> ${propertyValue}<br/>`;
+            }
+        }
+        infoBox.style.display = 'block'; // Show the info box
     }
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);    
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
