@@ -99,13 +99,13 @@
             content: "<p></p><p>The Port of Long Beach is taking a number of steps to reduce emissions from its operations, including the modernization of the Vincent Thomas Bridge. Other initiatives include:</p>" + 
 
 
-"<p>The Port is investing in low-sulfur marine fuel (LSMF) to reduce emissions from ships.</p>" + 
+"<p><li>The Port is investing in low-sulfur marine fuel (LSMF) to reduce emissions from ships.</li></p>" + 
 
 
 "<p><li>The Port is also investing in electric and green technologies, such as on-dock electric power and shore power, to reduce emissions from trucks and trains.</li></p>" + 
 
 
-"<p><li>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.<li></p>",
+"<p><li>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.</li></p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
         },
              {
@@ -147,7 +147,7 @@
 "<p><li>Working with shippers and cargo owners to reduce the emissions of their ships and trucks.</li></p>" + 
 
 
-"<p>Educating the public about air pollution and the Ports' efforts to reduce it.</p>",
+"<p><li>Educating the public about air pollution and the Ports' efforts to reduce it.</li></p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500)
         },
             {
