@@ -44,7 +44,7 @@
             content: "<p></p><p>The Port of Long Beach (POLB) refers to itself as the 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest port in both the United States and the world, the cargo it transports are a significant driver to national economy.</p>" +
 
 "<p>The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.</p>",
-           var locationWithOrientation = {
+           
            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7470, 2500)
             orientation: {
         heading : Cesium.Math.toRadians(90.0), // East, in radians
@@ -57,12 +57,12 @@
             content: "<p></p><p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
 "<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
+           orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
         },
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
         },
               {
             title: "4: TEUs",
@@ -72,12 +72,12 @@
               {
             title: "5: Economic Impact",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:100%;max-width:900px;'>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
         },
               {
             title: "6: Environment",
             content: "<p></p><p>The port's operations impact air quality, soil, groundwater, and the well-being of both its workforce and the local community. The surrounding ecosystems, including marine and wildlife habitats, are also affected by the port's activities.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500)
         },
              {
             title: "7: Clean Initiatives",
@@ -91,14 +91,14 @@
 
 
 "<p><li>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</li></p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500)
         },
               {
             title: "8: Air Quality",
             content: "<p></p><p>The Clean Air Action Plan (CAAP) is a comprehensive plan to reduce air pollution in the South Coast Air Basin. The plan was developed by the South Coast Air Quality Management District (SCAQMD) in collaboration with local governments, businesses, and environmental groups. The CAAP is an important step in the Port of Long Beach's commitment to environmental stewardship. The CAAP is designed to monitor and improve air quality in the Port of Long Beach and the surrounding area, and help mitigate risks to public health.</p>" +
 
 "<p>The overlay is a polygon of the County of Los Angeles. The majority of pollution that causes asthma and has an airborne cancer risk is actually much higher in the center of the city of Los Angeles, and much less so than near the ports. This is an improvement over past decades and years although there is still more to be done.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500)
         },
              {
             title: "9: Modernization",
@@ -112,7 +112,7 @@
 
 
 "<p><li>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.</li></p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
         },
              {
             title: "10: Future Planning",
@@ -126,7 +126,7 @@
 
 
 "<p>They continue to monitor and improve air quality by reducing emissions of air pollutants such as particulate matter and nitrogen oxides.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500)
         },
              {
             title: "11: Funding",
@@ -135,7 +135,7 @@
 "<p>In addition to governmental support, the Port has successfully partnered with private companies, such as Toyota and Amazon, which have provided substantial private funding. This collaboration between public and private sectors is a key element in the port's funding strategy.</p>" + 
 
 "<p>Looking forward, the Port is actively seeking additional funding opportunities. These include further support from federal sources and expanding its network of private company partnerships. The integration of government grants and incentive programs with private funding is pivotal for the port's ongoing and future environmental projects.</p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 12500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 12500)
         },
              {
             title: "12: Good Neighbors",
@@ -154,7 +154,7 @@
 
 
 "<p><li>Educating the public about air pollution and the Ports' efforts to reduce it.</li></p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500)
         },
             {
             title: "13: Solutions",
@@ -168,7 +168,7 @@
 
 
 "<p><li>Enhancing social awareness and advocacy is crucial, particularly in addressing issues of equity and environmental justice. It's important to recognize that health impacts often disproportionately affect vulnerable and underrepresented communities. Advocacy should focus on ensuring access to essential services such as insurance programs, health education, and quality healthcare, which are key to mitigating these disparities and promoting environmental justice.</li></p>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500)
         },
              {
             title: "14: References",
@@ -178,7 +178,7 @@
              {
             title: "15: Thank You",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:900px;'>",
-            location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
+            orientation: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
         },
             
     ];
