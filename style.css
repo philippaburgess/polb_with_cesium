@@ -177,7 +177,7 @@ hover */
 }
 
 #infoBox {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: absolute; /* Positioning relative to the cesiumContainer */
   top: 10%; /* Adjust based on where you want the box to appear */
   left: 10%; /* Adjust based on where you want the box to appear */
