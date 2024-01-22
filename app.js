@@ -55,17 +55,17 @@
         },
                {
             title: "3: The Port of Long Beach Terminals",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:80%;max-width:800px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
         },
               {
             title: "4: TEUs",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:80%;max-width:800px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 5500)
         },
               {
             title: "5: Economic Impact",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:80%;max-width:800px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:100%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
         },
               {
@@ -138,13 +138,13 @@
 "<p>Some of the specific measures the Ports are taking include:</p>" + 
 
 
-"<p>Participating in the Clean Air Action Plan (CAAP), a regional initiative to reduce air pollution from ports and other sources.</p>" + 
+"<p><li>Participating in the Clean Air Action Plan (CAAP), a regional initiative to reduce air pollution from ports and other sources.</li></p>" + 
 
 
-"<p>Investing in clean technology, such as electric cargo handling equipment and zero-emissions ships.</p>" + 
+"<p><li>Investing in clean technology, such as electric cargo handling equipment and zero-emissions ships.<li></p>" + 
 
 
-"<p>Working with shippers and cargo owners to reduce the emissions of their ships and trucks.</p>" + 
+"<p><li>Working with shippers and cargo owners to reduce the emissions of their ships and trucks.</li></p>" + 
 
 
 "<p>Educating the public about air pollution and the Ports' efforts to reduce it.</p>",
@@ -166,12 +166,12 @@
         },
              {
             title: "14: References",
-            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:90%;max-width:900px;'>",
+            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:100%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 15500)
         },
              {
             title: "15: Thank You",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:90%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
         },
             
