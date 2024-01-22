@@ -12,7 +12,7 @@
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
    // Initialize the Cesium Viewer
-    const viewer = new Cesium.Viewer('cesiumContainer'), {
+    const viewer = new Cesium.Viewer('cesiumContainer', {
     animation: false, // Don't show the animation widget
     baseLayerPicker: false, // Don't show the base layer picker
     fullscreenButton: false, // Don't show the fullscreen button
