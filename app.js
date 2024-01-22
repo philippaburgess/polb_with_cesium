@@ -284,7 +284,8 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
     }
 
         viewer.camera.flyTo({
-            destination: scene.location,
+            destination: scene.destination,
+            orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
    } else {
