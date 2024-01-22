@@ -198,7 +198,6 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
              longBeachDataLayer = dataSource;
         }); 
       }     
-}
     } else {
         // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
@@ -211,9 +210,7 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
             destination: scene.location,
             duration: 2  // Duration of the camera flight in seconds
         });
-    } else {
-        console.error("Scene title or content element not found!");  // Error log if elements are not found
-    }
+    } 
 }  // This is where the function should end with a closing brace
 
 // Section 3: Scene Navigation Functions
