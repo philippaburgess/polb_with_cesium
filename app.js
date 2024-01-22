@@ -194,10 +194,8 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
         // Add the GeoJSON layer if it's not already added
         if (!longBeachDataLayer) {
             longBeachDataLayer = Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
-            longBeachDataLayer = dataSource;
             viewer.dataSources.add(longBeachDataLayer);
-        });
-    }
+        }
     } else {
         // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
