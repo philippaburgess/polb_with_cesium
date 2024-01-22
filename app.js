@@ -195,7 +195,7 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
              viewer.dataSources.add(dataSource); 
              longBeachDataLayer = dataSource;
-             }).otherwise(function(error){
+             }).catch(function(error){
              console.error(error);
         }); 
       }     
