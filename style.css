@@ -178,17 +178,20 @@ hover */
 
 #infoBox {
   display: none; /* Hidden by default */
-  position: absolute; /* Positioning relative to the nearest positioned ancestor (or the body if none) */
-  background: white;
-  padding: 10px;
-  border: 1px solid black;
-  z-index: 100; /* Above other elements */
-  top: 10%; /* Adjust this as needed */
-  left: 10%; /* Adjust this as needed */
-  width: auto; /* Adjust this as needed */
-  height: auto; /* Adjust this as needed */
-  overflow-y: auto; /* Adds scroll for overflow content */
-  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: Adds shadow for better visibility */
+  position: absolute; /* Positioning relative to the cesiumContainer */
+  top: 10%; /* Adjust based on where you want the box to appear */
+  left: 10%; /* Adjust based on where you want the box to appear */
+  width: 300px; /* Set a fixed width or adjust as needed */
+  padding: 15px;
+  background: #fff; /* White background */
+  border-left: 5px solid #007bff; /* Blue left border for styling */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  z-index: 200; /* Make sure it's above other elements */
+}
+
+#infoBox h4 {
+  margin-top: 0;
+  color: #007bff; /* Blue text color for the title */
 }
 
 footer {
