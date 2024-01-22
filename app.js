@@ -250,16 +250,6 @@ function showSceneContainer() {
     }
 }
 
-var pickedFeature;
-viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-    var pickedObject = viewer.scene.pick(movement.position);
-    if (Cesium.defined(pickedObject) && pickedObject.id) {
-        pickedFeature = pickedObject.id;
-        // Display data table or information about the feature
-        // Access feature properties using pickedFeature.properties
-    }
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
 // Section 4: Initial Flyover
 
 function onFlyoverComplete() {
