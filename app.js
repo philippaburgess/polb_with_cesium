@@ -227,7 +227,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
 function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
-    if (pickedFeature.properties) {
+    if (pickedFeature && pickedFeature.properties) {
     var content = '<h4>Feature Information</h4>';
     var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now()); 
         
@@ -236,12 +236,18 @@ function displayInfoBox(pickedFeature) {
         content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
       }
     }   
- } else {
-        content += "<p>No data available.</p>";
-    }    
     infoBox.innerHTML = content; 
     infoBox.style.display = 'block'; 
+ } else {
+    infoBox.innerHTML = "<p>No data available.</p>";
+    infoBox.style.display = 'block'; 
+    }
+}     
+if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
+    var pickedFeature = pickedObject.id;
+    displayInfoBox(pickedFeature);
 }
+
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
