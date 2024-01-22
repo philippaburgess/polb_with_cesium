@@ -298,29 +298,28 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     var pickedObject = viewer.scene.pick(movement.position);
     if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
-        var pickedFeature = pickedObject.id;
-        displayInfoBox(pickedFeature);
+        displayInfoBox(pickedObject.id);
     }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
     if (pickedFeature && pickedFeature.properties) {
-    var content = '<h4>Feature Information</h4>';
-    var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now()); 
+    var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now());
+        var content = '<h4>Feature Information</h4>';
         
-    for (var key in properties) {
-        if (properties.hasOwnProperty(key)) {
-        content += '<strong>' + key + '</strong>: ' + properties[key] + '<br>';
-      }
-    }   
-    infoBox.innerHTML = content; 
-    infoBox.style.display = 'block'; 
- } else {
-    infoBox.innerHTML = "<p>No data available.</p>";
-    infoBox.style.display = 'block'; 
+for (var key in properties) {
+            if (properties.hasOwnProperty(key)) {
+                content += '<strong>' + key + '</strong>: ' + properties[key] + '<br>';
+            }
+        }   
+        infoBox.innerHTML = content; 
+        infoBox.style.display = 'block'; 
+    } else {
+        infoBox.innerHTML = "<p>No data available.</p>";
+        infoBox.style.display = 'block'; 
     }
-}     
+}
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
