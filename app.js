@@ -232,12 +232,15 @@ function displayInfoBox(pickedFeature) {
     var featureProperties = pickedFeature.properties;
         
     var content = '<h4>Feature Information</h4>';
-    for (var key in featureProperties) {
-      if (featureProperties.hasOwnProperty(key)) {
+    if (featureProperties) {
+       for (var key in featureProperties) {
+        if (featureProperties.hasOwnProperty(key)) {
         content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
       }
     }   
-    
+ } else {
+        content += "<p>No data available.</p>";
+    }    
     infoBox.innerHTML = content; // Set the content generated from properties
     infoBox.style.display = 'block'; // Show the info box
 }
