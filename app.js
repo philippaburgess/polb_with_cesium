@@ -295,12 +295,12 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
 
 // Section 3: Scene Navigation Functions
 
-viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-    var pickedObject = viewer.scene.pick(movement.position);
-    if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
-        displayInfoBox(pickedObject.id);
-    }
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+// viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
+   // var pickedObject = viewer.scene.pick(movement.position);
+    // if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
+    // displayInfoBox(pickedObject.id);
+    // }
+// }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
