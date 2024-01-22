@@ -41,14 +41,14 @@
     const scenes = [
         {
             title: "1: The Green Port",
-            content: "<p>The Port of Long Beach (POLB) refers to itself as the 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest port in both the United States and the world, the cargo it transports are a significant driver to national economy.</p>" +
+            content: "<p></p><p>The Port of Long Beach (POLB) refers to itself as the 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest port in both the United States and the world, the cargo it transports are a significant driver to national economy.</p>" +
 
 "<p>The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.</p>",
             location: Cesium.Cartesian3.fromDegrees(-115.2765, 31.7489, 2500)
         },
                {
             title: "2: The Port",
-            content: "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
+            content: "<p></p><p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
 "<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
@@ -70,47 +70,47 @@
         },
               {
             title: "6: Environment",
-            content: "<p>The port's operations impact air quality, soil, groundwater, and the well-being of both its workforce and the local community. The surrounding ecosystems, including marine and wildlife habitats, are also affected by the port's activities.</p>",
+            content: "<p></p><p>The port's operations impact air quality, soil, groundwater, and the well-being of both its workforce and the local community. The surrounding ecosystems, including marine and wildlife habitats, are also affected by the port's activities.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500)
         },
              {
             title: "7: Clean Initiatives",
-            content: "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
+            content: "<p></p><p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
 
 
-"<p>Using clean energy sources. The Port has invested in a number of renewable energy projects, including solar panels and wind turbines.</p>" +
+"<p><li>Using clean energy sources. The Port has invested in a number of renewable energy projects, including solar panels and wind turbines.</li></p>" +
 
 
-"<p>Improving air quality. The Port has implemented a number of measures to reduce air pollution, including truck electrification, cleaner fuels, and a green fleet program.</p>" + 
+"<p><li>Improving air quality. The Port has implemented a number of measures to reduce air pollution, including truck electrification, cleaner fuels, and a green fleet program.</li></p>" + 
 
 
-"<p>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</p>",
+"<p><li>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</li></p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500)
         },
               {
             title: "8: Air Quality",
-            content: "<p>The Clean Air Action Plan (CAAP) is a comprehensive plan to reduce air pollution in the South Coast Air Basin. The plan was developed by the South Coast Air Quality Management District (SCAQMD) in collaboration with local governments, businesses, and environmental groups. The CAAP is an important step in the Port of Long Beach's commitment to environmental stewardship. The CAAP is designed to monitor and improve air quality in the Port of Long Beach and the surrounding area, and help mitigate risks to public health.</p>" +
+            content: "<p></p><p>The Clean Air Action Plan (CAAP) is a comprehensive plan to reduce air pollution in the South Coast Air Basin. The plan was developed by the South Coast Air Quality Management District (SCAQMD) in collaboration with local governments, businesses, and environmental groups. The CAAP is an important step in the Port of Long Beach's commitment to environmental stewardship. The CAAP is designed to monitor and improve air quality in the Port of Long Beach and the surrounding area, and help mitigate risks to public health.</p>" +
 
 "<p>The overlay is a polygon of the County of Los Angeles. The majority of pollution that causes asthma and has an airborne cancer risk is actually much higher in the center of the city of Los Angeles, and much less so than near the ports. This is an improvement over past decades and years although there is still more to be done.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500)
         },
              {
             title: "9: Modernization",
-            content: "<p>The Port of Long Beach is taking a number of steps to reduce emissions from its operations, including the modernization of the Vincent Thomas Bridge. Other initiatives include:</p>" + 
+            content: "<p></p><p>The Port of Long Beach is taking a number of steps to reduce emissions from its operations, including the modernization of the Vincent Thomas Bridge. Other initiatives include:</p>" + 
 
 
 "<p>The Port is investing in low-sulfur marine fuel (LSMF) to reduce emissions from ships.</p>" + 
 
 
-"<p>The Port is also investing in electric and green technologies, such as on-dock electric power and shore power, to reduce emissions from trucks and trains.</p>" + 
+"<p><li>The Port is also investing in electric and green technologies, such as on-dock electric power and shore power, to reduce emissions from trucks and trains.</li></p>" + 
 
 
-"<p>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.</p>",
+"<p><li>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.<li></p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
         },
              {
             title: "10: Future Planning",
-            content: "<p>There are several objectives that the port is committed to meeting by 2030 and by 2050 to reduce contaminants and improve quality of life by improving the ports relationship to the environment.</p>" + 
+            content: "<p></p><p>There are several objectives that the port is committed to meeting by 2030 and by 2050 to reduce contaminants and improve quality of life by improving the ports relationship to the environment.</p>" + 
 
 
 "<p>The Climate Adaptation and Coastal Resiliency Plan (CRP), a strategic framework that identifies the risks posed by climate change and outlines comprehensive strategies to address these challenges.</p>" + 
@@ -124,7 +124,7 @@
         },
              {
             title: "11: Funding",
-            content: "<p>Securing funding is a crucial component to achieving the port's sustainability goals. Among the government sources, notable contributors include the Maritime Administration (MARAD) under the U.S. Department of Transportation, the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD). These agencies have been instrumental in providing the financial backing needed for various environmental initiatives.</p>" + 
+            content: "<p></p><p>Securing funding is a crucial component to achieving the port's sustainability goals. Among the government sources, notable contributors include the Maritime Administration (MARAD) under the U.S. Department of Transportation, the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD). These agencies have been instrumental in providing the financial backing needed for various environmental initiatives.</p>" + 
 
 "<p>In addition to governmental support, the Port has successfully partnered with private companies, such as Toyota and Amazon, which have provided substantial private funding. This collaboration between public and private sectors is a key element in the port's funding strategy.</p>" + 
 
@@ -133,7 +133,7 @@
         },
              {
             title: "12: Good Neighbors",
-            content: "<p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.</p>" + 
+            content: "<p></p><p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.</p>" + 
 
 "<p>Some of the specific measures the Ports are taking include:</p>" + 
 
@@ -152,16 +152,16 @@
         },
             {
             title: "13: Solutions",
-            content: "<p>The public can significantly contribute to the Port of Long Beach's environmental stewardship efforts by:</p>" +
+            content: "<p></p><p>The public can significantly contribute to the Port of Long Beach's environmental stewardship efforts by:</p>" +
 
 
-"<p>Advocating for policies and funding that bolster environmental protection.</p>" +
+"<p><li>Advocating for policies and funding that bolster environmental protection.</li></p>" +
 
 
-"<p>Engaging in educational opportunities, such as port tours and environmental programs offered by the Port of Long Beach, allows community members to expand their knowledge and understanding of the port's environmental actions and challenges.</p>" +
+"<p><li>Engaging in educational opportunities, such as port tours and environmental programs offered by the Port of Long Beach, allows community members to expand their knowledge and understanding of the port's environmental actions and challenges.</li></p>" +
 
 
-"<p>Enhancing social awareness and advocacy is crucial, particularly in addressing issues of equity and environmental justice. It's important to recognize that health impacts often disproportionately affect vulnerable and underrepresented communities. Advocacy should focus on ensuring access to essential services such as insurance programs, health education, and quality healthcare, which are key to mitigating these disparities and promoting environmental justice.</p>",
+"<p><li>Enhancing social awareness and advocacy is crucial, particularly in addressing issues of equity and environmental justice. It's important to recognize that health impacts often disproportionately affect vulnerable and underrepresented communities. Advocacy should focus on ensuring access to essential services such as insurance programs, health education, and quality healthcare, which are key to mitigating these disparities and promoting environmental justice.</li></p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500)
         },
              {
