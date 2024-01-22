@@ -217,6 +217,18 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
 
 // Section 3: Scene Navigation Functions
 
+viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
+    var pickedObject = viewer.scene.pick(movement.position);
+    if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
+        var pickedFeature = pickedObject.id;
+        // Here, display your data table or information about the feature
+        // You can access feature properties using pickedFeature.properties
+        var featureProperties = pickedFeature.properties;
+        // Perform your display logic here, such as opening a modal or displaying a side panel with the feature's information
+        console.log(featureProperties);
+    }
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);    
+
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
