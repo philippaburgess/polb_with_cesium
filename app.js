@@ -197,7 +197,7 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
             longBeachDataLayer.then(function(dataSource) {
                 viewer.dataSources.add(longBeachDataLayer);
         }); 
-      }
+      })
     } else {
         // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
