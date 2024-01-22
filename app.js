@@ -46,7 +46,7 @@
 "<p>The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.</p>",
            
            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7470, 2500)
-            orientation: {
+        location: {
         heading : Cesium.Math.toRadians(90.0), // East, in radians
         pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
         roll : 0.0 // No roll
