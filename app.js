@@ -40,41 +40,41 @@
 
     const scenes = [
         {
-            title: "Scene 1: The Green Port",
+            title: "1: The Green Port",
             content: "<p>The Port of Long Beach (POLB) refers to itself as the 'The Green Port' as it strives to be a role model for green port operations. As one of the busiest port in both the United States and the world, the cargo it transports are a significant driver to national economy.</p>" +
 
 "<p>The port is located adjacent to the Port of Los Angeles in the City of Long Beach at the southern end of Los Angeles County and part of the South Bay Basin. Its strategic location provides access to major highways, rail lines, and airports. This makes it a convenient and efficient port for shippers and receivers.</p>",
             location: Cesium.Cartesian3.fromDegrees(-115.2765, 31.7489, 2500)
         },
                {
-            title: "Scene 2: The Port",
+            title: "2: The Port",
             content: "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
 "<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500)
         },
                {
-            title: "Scene 3: The Port of Long Beach Terminals",
+            title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:80%;max-width:800px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500)
         },
               {
-            title: "Scene 4:TEUs",
+            title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:80%;max-width:800px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 5500)
         },
               {
-            title: "Scene 5:Economic Impact",
+            title: "5: Economic Impact",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:80%;max-width:800px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
         },
               {
-            title: "Scene 6:Environment",
+            title: "6: Environment",
             content: "<p>The port's operations impact air quality, soil, groundwater, and the well-being of both its workforce and the local community. The surrounding ecosystems, including marine and wildlife habitats, are also affected by the port's activities.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500)
         },
              {
-            title: "Scene 7:Clean Initiatives",
+            title: "7: Clean Initiatives",
             content: "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
 
 
@@ -88,14 +88,14 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500)
         },
               {
-            title: "Scene 8:Air Quality",
+            title: "8: Air Quality",
             content: "<p>The Clean Air Action Plan (CAAP) is a comprehensive plan to reduce air pollution in the South Coast Air Basin. The plan was developed by the South Coast Air Quality Management District (SCAQMD) in collaboration with local governments, businesses, and environmental groups. The CAAP is an important step in the Port of Long Beach's commitment to environmental stewardship. The CAAP is designed to monitor and improve air quality in the Port of Long Beach and the surrounding area, and help mitigate risks to public health.</p>" +
 
 "<p>The overlay is a polygon of the County of Los Angeles. The majority of pollution that causes asthma and has an airborne cancer risk is actually much higher in the center of the city of Los Angeles, and much less so than near the ports. This is an improvement over past decades and years although there is still more to be done.</p>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500)
         },
              {
-            title: "Scene 9:Modernization",
+            title: "9: Modernization",
             content: "<p>The Port of Long Beach is taking a number of steps to reduce emissions from its operations, including the modernization of the Vincent Thomas Bridge. Other initiatives include:</p>" + 
 
 
@@ -109,7 +109,7 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500)
         },
              {
-            title: "Scene 10:Future Planning",
+            title: "10: Future Planning",
             content: "<p>There are several objectives that the port is committed to meeting by 2030 and by 2050 to reduce contaminants and improve quality of life by improving the ports relationship to the environment.</p>" + 
 
 
@@ -123,7 +123,7 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500)
         },
              {
-            title: "Scene 11:Funding",
+            title: "11: Funding",
             content: "<p>Securing funding is a crucial component to achieving the port's sustainability goals. Among the government sources, notable contributors include the Maritime Administration (MARAD) under the U.S. Department of Transportation, the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD). These agencies have been instrumental in providing the financial backing needed for various environmental initiatives.</p>" + 
 
 "<p>In addition to governmental support, the Port has successfully partnered with private companies, such as Toyota and Amazon, which have provided substantial private funding. This collaboration between public and private sectors is a key element in the port's funding strategy.</p>" + 
@@ -132,7 +132,7 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 12500)
         },
              {
-            title: "Scene 12:Good Neighbors",
+            title: "12: Good Neighbors",
             content: "<p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.</p>" + 
 
 "<p>Some of the specific measures the Ports are taking include:</p>" + 
@@ -151,7 +151,7 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500)
         },
             {
-            title: "Scene 13:Solutions",
+            title: "13: Solutions",
             content: "<p>The public can significantly contribute to the Port of Long Beach's environmental stewardship efforts by:</p>" +
 
 
@@ -165,13 +165,13 @@
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500)
         },
              {
-            title: "Scene 14: References",
-            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:80%;max-width:800px;'>",
+            title: "14: References",
+            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:90%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 15500)
         },
              {
-            title: "Scene 15: Thank You",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:80%;max-width:800px;'>",
+            title: "15: Thank You",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:90%;max-width:900px;'>",
             location: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500)
         },
             
