@@ -176,6 +176,20 @@ hover */
     background-color: #cca300; /* Darker yellow on hover */
 }
 
+#infoBox {
+  display: none; /* Hidden by default */
+  position: absolute; /* Positioning relative to the nearest positioned ancestor (or the body if none) */
+  background: white;
+  padding: 10px;
+  border: 1px solid black;
+  z-index: 100; /* Above other elements */
+  top: 10%; /* Adjust this as needed */
+  left: 10%; /* Adjust this as needed */
+  width: auto; /* Adjust this as needed */
+  height: auto; /* Adjust this as needed */
+  overflow-y: auto; /* Adds scroll for overflow content */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: Adds shadow for better visibility */
+}
 
 footer {
     background-color: #fffdd0; /* Light yellow color */
