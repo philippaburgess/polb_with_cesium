@@ -221,20 +221,18 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     var pickedObject = viewer.scene.pick(movement.position);
     if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
         var pickedFeature = pickedObject.id;
-        // Here, display your data table or information about the feature
-        // You can access feature properties using pickedFeature.properties
         var featureProperties = pickedFeature.properties;
-        // Perform your display logic here, such as opening a modal or displaying a side panel with the feature's information
-        console.log(featureProperties);
         
     var infoBox = document.getElementById('infoBox');
-        infoBox.innerHTML = ''; // Clear previous content
-        for (var propertyName in featureProperties) {
-            if (featureProperties.hasOwnProperty(propertyName)) {
-                var propertyValue = featureProperties[propertyName];
-                infoBox.innerHTML += `<strong>${propertyName}:</strong> ${propertyValue}<br/>`;
-            }
-        }
+        infoBox.innerHTML = 'Loading...'; // Clear previous content
+        
+    var content = '<h4>Feature Information</h4>';
+    for (var key in featureProperties) {
+      if (featureProperties.hasOwnProperty(key)) {
+        content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
+      }
+    }            
+         infoBox.innerHTML = content 
         infoBox.style.display = 'block'; // Show the info box
     }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
