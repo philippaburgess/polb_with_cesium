@@ -231,9 +231,9 @@ function displayInfoBox(pickedFeature) {
     var content = '<h4>Feature Information</h4>';
     var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now()); 
         
-    for (var key in featureProperties) {
-        if (featureProperties.hasOwnProperty(key)) {
-        content += '<strong>' + key + '</strong>: ' + featureProperties[key] + '<br>';
+    for (var key in properties) {
+        if (properties.hasOwnProperty(key)) {
+        content += '<strong>' + key + '</strong>: ' + properties[key] + '<br>';
       }
     }   
     infoBox.innerHTML = content; 
@@ -243,11 +243,6 @@ function displayInfoBox(pickedFeature) {
     infoBox.style.display = 'block'; 
     }
 }     
-if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
-    var pickedFeature = pickedObject.id;
-    displayInfoBox(pickedFeature);
-}
-
 
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
