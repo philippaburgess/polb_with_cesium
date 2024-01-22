@@ -88,7 +88,7 @@
               {
             title: "5: Economic Impact",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500)
+            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
