@@ -194,10 +194,10 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
         // Add the GeoJSON layer if it's not already added
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson').then(function(dataSource) {
-            longBeachDataLayer.then(function(dataSource) {
-                viewer.dataSources.add(longBeachDataLayer);
+             viewer.dataSources.add(dataSource); 
+             longBeachDataLayer = dataSource;
         }); 
-      }
+      }                                                                                                                                                    
     } else {
         // Remove the GeoJSON layer when moving away from Scene 12
         if (longBeachDataLayer) {
@@ -206,7 +206,6 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
         }
     }
 
-       
         viewer.camera.flyTo({
             destination: scene.location,
             duration: 2  // Duration of the camera flight in seconds
