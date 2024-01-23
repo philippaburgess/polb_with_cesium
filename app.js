@@ -109,8 +109,8 @@
 "<p><li>MMudflats: Vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
 "<p><li>Essential Fish Habitats: Critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
-"<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>"
-                "</ul>",
+"<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
+"</ul>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
