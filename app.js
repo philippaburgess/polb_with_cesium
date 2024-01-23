@@ -139,7 +139,7 @@
             title: "8: Air Quality",
             content: "<p></p>" + "<p>Historically, the Port of Long Beach faced significant challenges with air pollution, impacting public health and the environment. In response, the Clean Air Action Plan (CAAP) was introduced, focusing on comprehensive measures to improve air quality in the South Coast Air Basin. Developed collaboratively by the South Coast Air Quality Management District (SCAQMD), local governments, businesses, and environmental groups, CAAP has played a crucial role in mitigating health risks associated with air pollution.</p>" +
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives.</p>" +
-"<p>Since  2005 the port has reduced:</p>" + 
+"<p>Since 2005 the port has reduced:</p>" + 
 "<ul>" + 
 "<p><li>Diesel Particulate Matter (DPM) by 90%</p></li>" + 
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
@@ -188,12 +188,14 @@
             content: "<p></p>" + "<p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
 "<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of America's Green Gateway, a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
+          destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500),
+          orientation: {
+              heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
           roll : 0.0 // No roll
           }
         },
-             {
+        {
             title: "12: Good Neighbors",
             content: "<p></p>" + "<p>The Port of Long Beach acknowledges its profound impact on local communities, both environmentally and economically. Actively working to mitigate negative effects and enhance the quality of life for nearby residents, the Port has initiated several key programs. These initiatives collectively underline the Port of Long Beach's commitment to maintaining a positive and sustainable relationship with its surrounding community.</p>" +
 "<ul>" + 
