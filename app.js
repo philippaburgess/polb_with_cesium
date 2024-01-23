@@ -112,11 +112,11 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+         destination: Cesium.Cartesian3.fromDegrees(-118.05297, 33.58546, 163734.072), // Approximate location over the port
+         orientation: {
+         heading : Cesium.Math.toRadians(0), // North
+         pitch : Cesium.Math.toRadians(-25), // Tilted angle looking down
+         roll : 0.0 // No roll
           }
         },
              {
@@ -129,11 +129,11 @@ orientation: {
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
 "<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
 "</ul>",            
- destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+     destination: Cesium.Cartesian3.fromDegrees(-118.14, 33.75, 500), // This brings the camera closer to the ground
+     orientation: {
+     heading : Cesium.Math.toRadians(0), // Faces north
+     pitch : Cesium.Math.toRadians(-45), // Angle facing downwards
+     roll : 0.0 // No roll
           }
         },
               {
