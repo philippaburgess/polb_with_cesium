@@ -211,16 +211,14 @@
         },
             {
             title: "13: Solutions",
-            content: "<p></p><p>The public can significantly contribute to the Port of Long Beach's environmental stewardship efforts by:</p>" +
-
-
-"<p><li>Advocating for policies and funding that bolster environmental protection.</li></p>" +
-
-
-"<p><li>Engaging in educational opportunities, such as port tours and environmental programs offered by the Port of Long Beach, allows community members to expand their knowledge and understanding of the port's environmental actions and challenges.</li></p>" +
-
-
-"<p><li>Enhancing social awareness and advocacy is crucial, particularly in addressing issues of equity and environmental justice. It's important to recognize that health impacts often disproportionately affect vulnerable and underrepresented communities. Advocacy should focus on ensuring access to essential services such as insurance programs, health education, and quality healthcare, which are key to mitigating these disparities and promoting environmental justice.</li></p>",
+            content: "<p></p>" + "<p>The Port of Long Beach is making great strides in its environmental efforts and initiatives, bolstered by legislation, private and public funding, and its many partnerships. The public also plays a pivotal role in this progress. Community members and those in the general public can effectively contribute in the following ways:</p>" + 
+"<ul>" + 
+"<p><li>Community Meetings and Workshops: Engage in Port-related discussions, providing valuable input on projects and initiatives.</p></li>" + 
+"<p><li>Engagement with Environmental Programs: Actively participate in clean-up efforts and educational activities organized by the Port.</p></li>" + 
+"<p><li>Sustainable Lifestyle Choices: Embrace eco-friendly daily practices to minimize personal environmental impact.</p></li>" + 
+"<p><li>Policy Advocacy: Advocate for clean air and water initiatives, reaching out to local, state and federal officials to express environmental concerns.</p></li>" + 
+"<p><li>Education and Outreach: Stay informed about environmental issues and help spread awareness.</p></li>" + 
+"</ul>", 
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500),
         orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
