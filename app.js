@@ -30,8 +30,8 @@
     // Define your locations array here as before
 
  const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2700, 33.7489, 25500), // Vincent Thomas Bridge
-        Cesium.Cartesian3.fromDegrees(-118.2565, 33.7589, 800), // Middle Harbor
+        Cesium.Cartesian3.fromDegrees(-118.2700, 33.7489, 18500), // Vincent Thomas Bridge
+        Cesium.Cartesian3.fromDegrees(-118.2565, 33.7589, 8000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 4000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 6000), // Queen Mary
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
@@ -83,11 +83,11 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 5500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+            destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.754, 90), // Adjusted for close-up view
+            orientation: {
+            heading : Cesium.Math.toRadians(0.0), // North
+            pitch : Cesium.Math.toRadians(-90.0), // Looking directly down
+            roll : 0.0 // No roll
           }
         },
 
