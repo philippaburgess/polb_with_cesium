@@ -49,7 +49,7 @@
 <p><li>Green Port Policy (2005): Addresses wildlife, air, water, soils, community engagement, and sustainability.</li></p> +
 <p><li>Zero-Emissions Technologies: Focused on electric vehicles and infrastructure for a zero-emissions future.</li></p> + 
 <p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p> + 
-<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>" 
+<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>",  
 
         destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7470, 2500),
         orientation: {
