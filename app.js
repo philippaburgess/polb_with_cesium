@@ -61,7 +61,7 @@
             title: "2: The Port",
             content: "<p></p>" + "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
-"<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.</p>",
+"<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact. Through its various environmental initiatives and programs, the Port aims to minimize the environmental impact of its operations and contribute to a healthier and more sustainable future for the region.</p>",
           destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
@@ -106,10 +106,17 @@
 
 "<p>Beneficiaries of these environmental efforts include:</p>" + 
 "<ul>" + 
-"<p><li>Mudflats, vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
-"<p><li>Essential Fish Habitats critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
-"<p><li>Migratory routes utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
-"<p><li>Protected areas for various species of migratory sea turtles.</li></p>"
+
+Mudflats: Vital aquatic habitats safeguarded under the Clean Water Act.
+Essential Fish Habitats: Critical for the sustainability of coastal pelagic and groundfish populations.
+Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.
+Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.
+
+                
+"<p><li>MMudflats: Vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
+"<p><li>Essential Fish Habitats: Critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
+"<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
+"<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>"
                 "</ul>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500),
           orientation: {
@@ -120,11 +127,13 @@
         },
              {
             title: "7: Clean Initiatives",
-            content: "<p></p>" + "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
-"<ul>" +                 
-"<p><li>Using clean energy sources. The Port has invested in a number of renewable energy projects, including solar panels and wind turbines.</li></p>" +
-"<p><li>Improving air quality. The Port has implemented a number of measures to reduce air pollution, including truck electrification, cleaner fuels, and a green fleet program.</li></p>" + 
-"<p><li>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</li></p>",+
+            content: "<p></p>" + "<p>The Port of Long Beach has been a pioneer in adopting clean energy sources, reducing air pollution, and enhancing water quality, alongside restoring natural habitats. In collaboration with government and local partners, the Port is setting the standard for green port operations. These actions and strategies reflect the Port's dedication to minimizing environmental impact and leading the way towards a sustainable future.</p>" + 
+             "<p>Key initiatives include:</p>" + 
+"<ul>" +    
+"<p><li>Renewable Energy Initiatives: While specific capacities of solar panels and wind turbines are not detailed, the Port is committed to diverse renewable energy projects.</p></li>" + 
+"<p><li>Partnerships and Collaborations: Working closely with clean technology companies, research institutions, government agencies like CARB and EPA, and non-profit organizations, the Port fosters innovative solutions and aligns with regional and state environmental goals.</p></li>" + 
+"<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
+"<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li> +
 "</ul>",            
  destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500),
           orientation: {
