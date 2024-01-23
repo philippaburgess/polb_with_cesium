@@ -94,11 +94,11 @@ orientation: {
               {
             title: "5: Economic Impact",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 6500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-98.35, 39.50, 5280000), // Central location of the U.S. on a larger scale
+orientation: {
+  heading : Cesium.Math.toRadians(0.0), // North
+  pitch : Cesium.Math.toRadians(-90.0), // Looking directly down
+  roll : 0.0 // No roll
           }
         },
               {
