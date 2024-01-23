@@ -175,8 +175,8 @@
 "<p><li>Developing policies that are in line with CAAP goals, integrating climate change considerations into all Port planning and development activities.</p></li>" + 
 "<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
 "<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
-"</ul>". 
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500),
+"</ul>", 
+        destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500),
                            orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
@@ -187,7 +187,6 @@
             title: "11: Funding",
             content: "<p></p>" + <p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
-
 "<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of "America's Green Gateway," a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
@@ -196,21 +195,13 @@
         },
              {
             title: "12: Good Neighbors",
-            content: "<p></p><p>The Port is committed to working with the local community to improve air quality and acknowledge the existing health risks to the region's residents.</p>" + 
-
-"<p>Some of the specific measures the Ports are taking include:</p>" + 
-
-
-"<p><li>Participating in the Clean Air Action Plan (CAAP), a regional initiative to reduce air pollution from ports and other sources.</li></p>" + 
-
-
-"<p><li>Investing in clean technology, such as electric cargo handling equipment and zero-emissions ships.</li></p>" + 
-
-
-"<p><li>Working with shippers and cargo owners to reduce the emissions of their ships and trucks.</li></p>" + 
-
-
-"<p><li>Educating the public about air pollution and the Ports' efforts to reduce it.</li></p>",
+            content: "<p></p>" + "<p>The Port of Long Beach acknowledges its profound impact on local communities, both environmentally and economically. Actively working to mitigate negative effects and enhance the quality of life for nearby residents, the Port has initiated several key programs. These initiatives collectively underline the Port of Long Beach's commitment to maintaining a positive and sustainable relationship with its surrounding community.</p>" +
+"<ul>" + 
+"<p><li>Community Engagement and Support: Regular interaction with communities and leaders guides the Port's planning, with a focus on addressing the needs of those most affected.</li></p>" + 
+"<p><li>Community Grants Program: Targets funding towards neighborhoods most impacted by Port operations, supporting a range of community-enhancing projects.</li></p>" + 
+"<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
+"<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
+                "</ul>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
