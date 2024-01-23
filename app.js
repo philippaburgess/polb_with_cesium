@@ -43,7 +43,7 @@
             title: "1: The Green Port",
             content: "<p></p><p>The Port of Long Beach (POLB), proudly known as The Green Port, is a leader in green port operations. It plays a vital role in the U.S. and global economy, with its strategic location in Long Beach, California. The Port of Long Beach remains dedicated to pioneering green initiatives, integrating economic activity with environmental stewardship and community well-being. Among its awards and recognitions for its sustainable practices are the Level 4 Green Marine Environmental Certification, 2020 California Governor's Environmental and Economic Leadership Award, and the 2019 AAPA Environmental Excellence Award.</p>" +  
 
-"<p>It's sustainable practices and goals include:</p> +
+"<p>It's sustainable practices and goals include:</p>" +
 
 "<p><li>Clean Air Action Plan (CAAP): Targets 100% zero-emission trucks by 2035 and cargo equipment by 2030.</li><p>" +
 "<p><li>Green Port Policy (2005): Addresses wildlife, air, water, soils, community engagement, and sustainability.</li></p>" +
