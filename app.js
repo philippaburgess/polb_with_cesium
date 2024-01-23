@@ -50,11 +50,11 @@
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
 "<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>" + 
                 "</ul>",  
-        destination: Cesium.Cartesian3.fromDegrees(-118.215, 34.854, 8000),
-        orientation: {
-          heading : Cesium.Math.toRadians(45.0), // 
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-118.2232556, 33.7367972, 17895),
+orientation: {
+  heading : Cesium.Math.toRadians(0.0), // North, adjust as necessary
+  pitch : Cesium.Math.toRadians(-30.0), // Looking down, adjust as necessary
+  roll : 0.0 // No roll
     }
 },
                {
