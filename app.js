@@ -154,16 +154,8 @@
         },
              {
             title: "9: Modernization",
-            content: "<p></p><p>The Port of Long Beach is taking a number of steps to reduce emissions from its operations, including the modernization of the Vincent Thomas Bridge. Other initiatives include:</p>" + 
-
-
-"<p><li>The Port is investing in low-sulfur marine fuel (LSMF) to reduce emissions from ships.</li></p>" + 
-
-
-"<p><li>The Port is also investing in electric and green technologies, such as on-dock electric power and shore power, to reduce emissions from trucks and trains.</li></p>" + 
-
-
-"<p><li>The Port offers incentive programs to vessels and trucks to help accelerate the adoption of cleaner fuel and green technologies.</li></p>",
+            content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
+"<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
