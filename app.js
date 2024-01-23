@@ -177,7 +177,7 @@
 "<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
 "</ul>", 
         destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500),
-                           orientation: {
+        orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
           roll : 0.0 // No roll
