@@ -126,7 +126,7 @@
 "<p><li>Renewable Energy Initiatives: While specific capacities of solar panels and wind turbines are not detailed, the Port is committed to diverse renewable energy projects.</p></li>" + 
 "<p><li>Partnerships and Collaborations: Working closely with clean technology companies, research institutions, government agencies like CARB and EPA, and non-profit organizations, the Port fosters innovative solutions and aligns with regional and state environmental goals.</p></li>" + 
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
-"<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li> +
+"<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
 "</ul>",            
  destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500),
           orientation: {
