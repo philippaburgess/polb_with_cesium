@@ -106,7 +106,7 @@
 
 "<p>Beneficiaries of these environmental efforts include:</p>" + 
 "<ul>" + 
-"<p><li>MMudflats: Vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
+"<p><li>Mudflats: Vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
 "<p><li>Essential Fish Habitats: Critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
