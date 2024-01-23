@@ -146,11 +146,11 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+           destination: Cesium.Cartesian3.fromDegrees(-118.14, 33.75, 2800), // These coordinates position the camera above the port area.
+           orientation: {
+        heading: Cesium.Math.toRadians(330), // This heading rotates the camera to an angle that approximates the northwest direction.
+        pitch: Cesium.Math.toRadians(-45), // This pitch tilts the camera towards the ground at a diagonal angle.
+        roll: 0.0 // This sets the roll to zero, meaning no rotation along the axis of the camera's lens.
           }
         },
              {
