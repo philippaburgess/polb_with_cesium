@@ -59,7 +59,7 @@
 },
                {
             title: "2: The Port",
-            content: "<p></p><p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
+            content: "<p></p>" + "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
 "<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact.</p>",
           destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500),
@@ -102,14 +102,15 @@
         },
               {
             title: "6: Environment",
-            content: "<p></p><p>The Port of Long Beach has recognized its environmental impact and is actively pursuing improvements in water and air quality. Since the 1970s, the port has complied with stringent regulations to enhance water quality, and since 2005, it has implemented measures to significantly reduce air pollutants such as diesel particulate matter, sulfur oxides, and nitrogen oxides. These steps underscore the port's commitment to safeguarding the health of its workforce and the local community, as well as protecting local ecosystems.</p>" + 
+            content: "<p></p>" + "<p>The Port of Long Beach has recognized its environmental impact and is actively pursuing improvements in water and air quality. Since the 1970s, the port has complied with stringent regulations to enhance water quality, and since 2005, it has implemented measures to significantly reduce air pollutants such as diesel particulate matter, sulfur oxides, and nitrogen oxides. These steps underscore the port's commitment to safeguarding the health of its workforce and the local community, as well as protecting local ecosystems.</p>" + 
 
 "<p>Beneficiaries of these environmental efforts include:</p>" + 
-
+"<ul>" + 
 "<p><li>Mudflats, vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
 "<p><li>Essential Fish Habitats critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
 "<p><li>Migratory routes utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
-"<p><li>Protected areas for various species of migratory sea turtles.</li></p>",
+"<p><li>Protected areas for various species of migratory sea turtles.</li></p>"
+                "</ul>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 7500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
@@ -119,17 +120,13 @@
         },
              {
             title: "7: Clean Initiatives",
-            content: "<p></p><p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
-
-
+            content: "<p></p>" + "<p>The Port of Long Beach have been trailblazing in their efforts to use clean energy sources, reduce air pollution, and protect water quality, and restore natural habitats. They continue to work diligently in collaboration with governmental and local partners to be a model green port. Some of the specific actions and plans to reduce the environmental impact of the port include:</p>" + 
+"<ul>" +                 
 "<p><li>Using clean energy sources. The Port has invested in a number of renewable energy projects, including solar panels and wind turbines.</li></p>" +
-
-
 "<p><li>Improving air quality. The Port has implemented a number of measures to reduce air pollution, including truck electrification, cleaner fuels, and a green fleet program.</li></p>" + 
-
-
-"<p><li>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</li></p>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500),
+"<p><li>Protecting water quality. The Port has a number of programs in place to protect water quality, including stormwater management, pollution prevention, and habitat restoration.</li></p>",+
+"</ul>",            
+ destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 8500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
