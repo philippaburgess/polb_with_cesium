@@ -105,7 +105,7 @@
             title: "6: Environment",
             content: "<p></p><p>The Port of Long Beach has recognized its environmental impact and is actively pursuing improvements in water and air quality. Since the 1970s, the port has complied with stringent regulations to enhance water quality, and since 2005, it has implemented measures to significantly reduce air pollutants such as diesel particulate matter, sulfur oxides, and nitrogen oxides. These steps underscore the port's commitment to safeguarding the health of its workforce and the local community, as well as protecting local ecosystems.</p>" + 
 
-"<p>Beneficiaries of these environmental efforts include:</p> + 
+"<p>Beneficiaries of these environmental efforts include:</p>" + 
 
 "<p><li>Mudflats, vital aquatic habitats safeguarded under the Clean Water Act.</li></p>" + 
 "<p><li>Essential Fish Habitats critical for the sustainability of coastal pelagic and groundfish populations.</li></p>" + 
