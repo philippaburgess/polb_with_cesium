@@ -157,11 +157,11 @@ orientation: {
             title: "9: Modernization",
             content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
 "<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
-          destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+       destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.749, 110), // This sets the camera above the port area with containers in view.
+orientation: {
+  heading: Cesium.Math.toRadians(0), // Heading at 0 degrees for north.
+  pitch: Cesium.Math.toRadians(-25), // A slight downward pitch to capture the bridge and containers.
+  roll: 0.0 // Roll set to zero to keep the horizon level.
           }
         },
              {
