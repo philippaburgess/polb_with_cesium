@@ -144,7 +144,7 @@
 "<p><li>Diesel Particulate Matter (DPM) by 90%</p></li>" + 
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
-                </ul>", 
+        "</ul>", 
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 9500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
