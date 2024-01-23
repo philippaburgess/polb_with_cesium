@@ -50,7 +50,7 @@
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
 "<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>" + 
                 "</ul>",  
-        destination: Cesium.Cartesian3.fromDegrees(-118.215, 34.754, 14000),
+        destination: Cesium.Cartesian3.fromDegrees(-118.215, 34.854, 8000),
         orientation: {
           heading : Cesium.Math.toRadians(45.0), // 
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
@@ -72,7 +72,7 @@
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 4500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.8889, 4500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
