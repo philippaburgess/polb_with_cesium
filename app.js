@@ -156,7 +156,7 @@
             title: "9: Modernization",
             content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
 "<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500),
+          destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 10500),
           orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
@@ -165,16 +165,17 @@
         },
              {
             title: "10: Future Planning",
-            content: "<p></p><p>There are several objectives that the port is committed to meeting by 2030 and by 2050 to reduce contaminants and improve quality of life by improving the ports relationship to the environment.</p>" + 
-
-
-"<p>The Climate Adaptation and Coastal Resiliency Plan (CRP), a strategic framework that identifies the risks posed by climate change and outlines comprehensive strategies to address these challenges.</p>" + 
-
-
-"<p>They are working towards reducing greenhouse gas emissions by 50% by 2030 and 100% by 2050.</p>" + 
-
-
-"<p>They continue to monitor and improve air quality by reducing emissions of air pollutants such as particulate matter and nitrogen oxides.</p>",
+            content: "<p></p>" + <p>The Port of Long Beach has set forth clear environmental objectives, anchored by the Climate Adaptation and Coastal Resiliency Plan (CRP), which strategically tackles the challenges posed by climate change. The Port is on a determined path to significantly reduce greenhouse gas emissions, aiming for a 50% reduction by 2030 and reaching for complete elimination by 2050. Concurrently, there is a strong emphasis on enhancing air quality, specifically targeting the reduction of particulate matter and nitrogen oxides. The Port also fosters partnerships with universities and non-profits to advance climate resilience and emissions reduction through collaborative research and educational programs.</p>" + 
+"<p>Strategies for Achieving Emission Reduction Goals:</p>" + 
+"<ul>" + 
+"<p><li>Ensuring the full implementation of the 2017 Clean Air Action Plan (CAAP) Update.</p></li>" + 
+"<p><li>Transitioning to zero-emissions for cargo handling equipment and trucks.</p></li>" + 
+"<p><li>Utilizing grant programs to support environmental mitigation efforts.</p></li>" + 
+"<p><li>Strengthening collaborations with academic and non-profit organizations focused on climate resilience.</p></li>" + 
+"<p><li>Developing policies that are in line with CAAP goals, integrating climate change considerations into all Port planning and development activities.</p></li>" + 
+"<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
+"<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
+"</ul>". 
             destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500),
                            orientation: {
           heading : Cesium.Math.toRadians(90.0), // East, in radians
