@@ -30,8 +30,8 @@
     // Define your locations array here as before
 
  const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2700, 33.7489, 5500), // Vincent Thomas Bridge
-        Cesium.Cartesian3.fromDegrees(-118.2165, 33.7548, 800), // Middle Harbor
+        Cesium.Cartesian3.fromDegrees(-118.2700, 33.7489, 25500), // Vincent Thomas Bridge
+        Cesium.Cartesian3.fromDegrees(-118.2565, 33.7589, 800), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 4000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 6000), // Queen Mary
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 800)  // Bluff Park (Residential Area)
