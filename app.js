@@ -32,8 +32,8 @@
  const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2700, 33.7489, 18500), // Vincent Thomas Bridge
         Cesium.Cartesian3.fromDegrees(-118.2565, 33.7589, 8000), // Middle Harbor
-        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 4000), // Long Beach Container Terminal
-        Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 6000), // Queen Mary
+        Cesium.Cartesian3.fromDegrees(-118.2065, 33.7464, 6000), // Long Beach Container Terminal
+        Cesium.Cartesian3.fromDegrees(-118.1893, 33.7528, 4000), // Queen Mary
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 1000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
@@ -50,7 +50,7 @@
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
 "<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>" + 
                 "</ul>",  
-destination: Cesium.Cartesian3.fromDegrees(-118.2232556, 33.7267972, 17895),
+destination: Cesium.Cartesian3.fromDegrees(-118.2232556, 33.7227972, 17895),
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // North, adjust as necessary
   pitch : Cesium.Math.toRadians(-30.0), // Looking down, adjust as necessary
