@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.74840, 1200), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.74940, 1100), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-60.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-120, 31.5, 150000), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-119, 31.5, 150000), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-30), // Tilted angle looking down
