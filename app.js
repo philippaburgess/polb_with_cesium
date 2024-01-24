@@ -177,11 +177,11 @@ orientation: {
 "<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
 "<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
 "</ul>", 
-        destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 11500),
-        orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.749, 665), // This sets the camera above the area of interest.
+orientation: {
+  heading: Cesium.Math.toRadians(0), // Heading at 0 degrees for north.
+  pitch: Cesium.Math.toRadians(-45), // A downward pitch to capture the port facilities.
+  roll: 0.0 // Roll set to zero to keep the horizon level.
           }
         },
              {
@@ -189,11 +189,11 @@ orientation: {
             content: "<p></p>" + "<p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
 "<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of America's Green Gateway, a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
-          destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500),
-          orientation: {
-              heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.746, 550), // Adjust the coordinates and height to get the right angle and zoom level.
+orientation: {
+  heading: Cesium.Math.toRadians(0), // North is 0 degrees in radians.
+  pitch: Cesium.Math.toRadians(-50), // A slightly steeper pitch to get a good view of the containers.
+  roll: 0.0
           }
         },
         {
@@ -205,11 +205,11 @@ orientation: {
 "<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
 "<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
                 "</ul>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 13500),
-          orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-118.181, 33.756, 1600), // Adjusted coordinates for the desired view
+orientation: {
+  heading: Cesium.Math.toRadians(0), // Zero for north
+  pitch: Cesium.Math.toRadians(-30), // Adjust the angle to see the horizon and the port
+  roll: 0.0
           }
         },
             {
@@ -222,11 +222,11 @@ orientation: {
 "<p><li>Policy Advocacy: Advocate for clean air and water initiatives, reaching out to local, state and federal officials to express environmental concerns.</p></li>" + 
 "<p><li>Education and Outreach: Stay informed about environmental issues and help spread awareness.</p></li>" + 
 "</ul>", 
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 14500),
-        orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
-          roll : 0.0 // No roll
+destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.754, 3000), // Coordinates over the Port of Long Beach
+orientation: {
+  heading: Cesium.Math.toRadians(0), // North direction
+  pitch: Cesium.Math.toRadians(-35), // Slight angle to view both the port and surrounding city
+  roll: 0.0  // Level horizon
           }
         },
              {
