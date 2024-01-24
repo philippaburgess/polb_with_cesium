@@ -232,9 +232,9 @@ orientation: {
              {
             title: "14: References",
             content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 15500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2965, 33.7489, 15500),
           orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
+          heading : Cesium.Math.toRadians(45.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
           roll : 0.0 // No roll
           }
@@ -242,10 +242,10 @@ orientation: {
              {
             title: "15: Thank You",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 16500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2865, 33.7789, 16500),
           orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
-          pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
+          heading : Cesium.Math.toRadians(0.0), // East, in radians
+          pitch : Cesium.Math.toRadians(-90.0), // Looking down, in radians
           roll : 0.0 // No roll
           }
         },
