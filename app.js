@@ -73,7 +73,7 @@ orientation: {
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7129, 12000),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7179, 15000),
           orientation: {
           heading : Cesium.Math.toRadians(345.0), // East, in radians
           pitch : Cesium.Math.toRadians(-70.0), // Looking down, in radians
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.735, 2000), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.245, 33.735, 2000), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-45.0), // Looking directly down
