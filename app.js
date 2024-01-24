@@ -73,7 +73,7 @@ orientation: {
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7349, 7500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7329, 8500),
           orientation: {
           heading : Cesium.Math.toRadians(345.0), // East, in radians
           pitch : Cesium.Math.toRadians(-70.0), // Looking down, in radians
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.739, 2000), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.739, 2000), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-45.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-118.3700, 33.70346, 163734.072), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-118.4700, 33.70146, 163734.072), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-25), // Tilted angle looking down
@@ -129,7 +129,7 @@ orientation: {
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
 "<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
 "</ul>",            
-     destination: Cesium.Cartesian3.fromDegrees(-118.2290, 33.7250, 2500), // This brings the camera closer to the ground
+     destination: Cesium.Cartesian3.fromDegrees(-118.2210, 33.7250, 2500), // This brings the camera closer to the ground
      orientation: {
      heading : Cesium.Math.toRadians(300), // Faces north
      pitch : Cesium.Math.toRadians(-45), // Angle facing downwards
@@ -146,7 +146,7 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1490, 33.7500, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1500, 33.7450, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-20), // This pitch tilts the camera towards the ground at a diagonal angle.
@@ -157,7 +157,7 @@ orientation: {
             title: "9: Modernization",
             content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
 "<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
-       destination: Cesium.Cartesian3.fromDegrees(-118.226, 33.680, 800), // This sets the camera above the port area with containers in view.
+       destination: Cesium.Cartesian3.fromDegrees(-118.226, 33.720, 2800), // This sets the camera above the port area with containers in view.
 orientation: {
   heading: Cesium.Math.toRadians(0), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-40), // A slight downward pitch to capture the bridge and containers.
@@ -177,7 +177,7 @@ orientation: {
 "<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
 "<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
 "</ul>", 
-destination: Cesium.Cartesian3.fromDegrees(-118.210, 33.725, 4000), // This sets the camera above the area of interest.
+destination: Cesium.Cartesian3.fromDegrees(-118.210, 33.735, 5000), // This sets the camera above the area of interest.
 orientation: {
   heading: Cesium.Math.toRadians(0), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-70), // A downward pitch to capture the port facilities.
@@ -189,7 +189,7 @@ orientation: {
             content: "<p></p>" + "<p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
 "<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of America's Green Gateway, a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
-destination: Cesium.Cartesian3.fromDegrees(-118.150, 33.723, 5550), // Adjust the coordinates and height to get the right angle and zoom level.
+destination: Cesium.Cartesian3.fromDegrees(-118.110, 33.723, 5550), // Adjust the coordinates and height to get the right angle and zoom level.
 orientation: {
   heading: Cesium.Math.toRadians(300), // North is 0 degrees in radians.
   pitch: Cesium.Math.toRadians(-50), // A slightly steeper pitch to get a good view of the containers.
@@ -205,7 +205,7 @@ orientation: {
 "<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
 "<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
                 "</ul>",
-destination: Cesium.Cartesian3.fromDegrees(-118.170, 33.715, 3600), // Adjusted coordinates for the desired view
+destination: Cesium.Cartesian3.fromDegrees(-118.140, 33.715, 3600), // Adjusted coordinates for the desired view
 orientation: {
   heading: Cesium.Math.toRadians(0), // Zero for north
   pitch: Cesium.Math.toRadians(-30), // Adjust the angle to see the horizon and the port
@@ -222,7 +222,7 @@ orientation: {
 "<p><li>Policy Advocacy: Advocate for clean air and water initiatives, reaching out to local, state and federal officials to express environmental concerns.</p></li>" + 
 "<p><li>Education and Outreach: Stay informed about environmental issues and help spread awareness.</p></li>" + 
 "</ul>", 
-destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.690, 8000), // Coordinates over the Port of Long Beach
+destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.650, 8000), // Coordinates over the Port of Long Beach
 orientation: {
   heading: Cesium.Math.toRadians(0), // North direction
   pitch: Cesium.Math.toRadians(-35), // Slight angle to view both the port and surrounding city
@@ -232,7 +232,7 @@ orientation: {
              {
             title: "14: References",
             content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.3200, 33.7420, 12500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.3100, 33.7620, 12500),
           orientation: {
           heading : Cesium.Math.toRadians(45.0), // East, in radians
           pitch : Cesium.Math.toRadians(-70.0), // Looking down, in radians
