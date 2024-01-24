@@ -73,7 +73,7 @@ orientation: {
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7329, 8500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7129, 10000),
           orientation: {
           heading : Cesium.Math.toRadians(345.0), // East, in radians
           pitch : Cesium.Math.toRadians(-70.0), // Looking down, in radians
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.215, 33.739, 2000), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.205, 33.739, 2000), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-45.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-118.4700, 33.70146, 163734.072), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-118.5700, 33.70146, 163734.072), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-25), // Tilted angle looking down
@@ -129,7 +129,7 @@ orientation: {
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
 "<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
 "</ul>",            
-     destination: Cesium.Cartesian3.fromDegrees(-118.2210, 33.7250, 2500), // This brings the camera closer to the ground
+     destination: Cesium.Cartesian3.fromDegrees(-118.2190, 33.7250, 2500), // This brings the camera closer to the ground
      orientation: {
      heading : Cesium.Math.toRadians(300), // Faces north
      pitch : Cesium.Math.toRadians(-45), // Angle facing downwards
@@ -146,7 +146,7 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1500, 33.7450, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1500, 33.7430, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-20), // This pitch tilts the camera towards the ground at a diagonal angle.
