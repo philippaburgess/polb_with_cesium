@@ -31,10 +31,10 @@
 
  const locations = [
         Cesium.Cartesian3.fromDegrees(-118.2555, 33.7489, 18500), // Vincent Thomas Bridge
-        Cesium.Cartesian3.fromDegrees(-118.2450, 33.7400, 8000), // Middle Harbor
-        Cesium.Cartesian3.fromDegrees(-118.2300, 33.7414, 6000), // Long Beach Container Terminal
-        Cesium.Cartesian3.fromDegrees(-118.1245, 33.8828,  4000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 2000)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.2450, 33.7400, 12000), // Middle Harbor
+        Cesium.Cartesian3.fromDegrees(-118.2300, 33.7390, 8000), // Long Beach Container Terminal
+        Cesium.Cartesian3.fromDegrees(-118.1290, 33.7928,  6000), // Downtown 
+        Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 4000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
