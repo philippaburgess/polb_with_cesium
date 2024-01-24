@@ -44,7 +44,7 @@
             content: "<p></p>" + "<p>The Port of Long Beach (POLB), proudly known as The Green Port, is a leader in green port operations. It plays a vital role in the U.S. and global economy, with its strategic location in Long Beach, California. The Port of Long Beach remains dedicated to pioneering green initiatives, integrating economic activity with environmental stewardship and community well-being. Among its awards and recognitions for its sustainable practices are the Level 4 Green Marine Environmental Certification, 2020 California Governor's Environmental and Economic Leadership Award, and the 2019 American Association of Port Authorities (AAPA) Environmental Excellence Award.</p>" +  
 "<p>It's sustainable practices and goals include:</p>" +
 "<ul>" +
-"<p><li>Clean Air Action Plan (CAAP): Targets 100% zero-emission cargo by 2025 and trucks by 2035.</li><p>" +
+"<p><li>Clean Air Action Plan (CAAP): Targets 100% zero-emission cargo by 2030 and trucks by 2035.</li><p>" +
 "<p><li>Green Port Policy (2005): Addresses wildlife, air, water, soils, community engagement, and sustainability.</li></p>" +
 "<p><li>Zero-Emissions Technologies: Focused on electric vehicles and infrastructure for a zero-emissions future.</li></p>" + 
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
@@ -73,7 +73,7 @@ orientation: {
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7390, 16000),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7290, 16000),
           orientation: {
           heading : Cesium.Math.toRadians(355.0), // East, in radians
           pitch : Cesium.Math.toRadians(-70.0), // Looking down, in radians
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.280, 33.740, 2000), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.260, 33.740, 2000), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-45.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-118.99, 33.70146, 163734.072), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-119.99, 33.70146, 163734.072), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-25), // Tilted angle looking down
@@ -129,7 +129,7 @@ orientation: {
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
 "<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
 "</ul>",            
-     destination: Cesium.Cartesian3.fromDegrees(-118.2020, 33.7300, 3500), // This brings the camera closer to the ground
+     destination: Cesium.Cartesian3.fromDegrees(-118.2010, 33.7300, 3500), // This brings the camera closer to the ground
      orientation: {
      heading : Cesium.Math.toRadians(300), // Faces north
      pitch : Cesium.Math.toRadians(-45), // Angle facing downwards
@@ -146,7 +146,7 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.7050, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.7035, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-10), // This pitch tilts the camera towards the ground at a diagonal angle.
@@ -157,7 +157,7 @@ orientation: {
             title: "9: Modernization",
             content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
 "<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
-       destination: Cesium.Cartesian3.fromDegrees(-118.280, 33.728, 1500), // This sets the camera above the port area with containers in view.
+       destination: Cesium.Cartesian3.fromDegrees(-118.275, 33.730, 1000), // This sets the camera above the port area with containers in view.
 orientation: {
   heading: Cesium.Math.toRadians(15), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-40), // A slight downward pitch to capture the bridge and containers.
@@ -177,7 +177,7 @@ orientation: {
 "<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
 "<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
 "</ul>", 
-destination: Cesium.Cartesian3.fromDegrees(-118.220, 33.735, 8000), // This sets the camera above the area of interest.
+destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.735, 10000), // This sets the camera above the area of interest.
 orientation: {
   heading: Cesium.Math.toRadians(0), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-70), // A downward pitch to capture the port facilities.
@@ -205,7 +205,7 @@ orientation: {
 "<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
 "<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
                 "</ul>",
-destination: Cesium.Cartesian3.fromDegrees(-118.160, 33.715, 3600), // Adjusted coordinates for the desired view
+destination: Cesium.Cartesian3.fromDegrees(-118.130, 33.715, 3600), // Adjusted coordinates for the desired view
 orientation: {
   heading: Cesium.Math.toRadians(0), // Zero for north
   pitch: Cesium.Math.toRadians(-30), // Adjust the angle to see the horizon and the port
