@@ -62,7 +62,7 @@ orientation: {
             content: "<p></p>" + "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
 "<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact. Through its various environmental initiatives and programs, the Port aims to minimize the environmental impact of its operations and contribute to a healthier and more sustainable future for the region.</p>",
-         destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.7489, 3500),
+         destination: Cesium.Cartesian3.fromDegrees(-118.2665, 33.7489, 3500),
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // True north
   pitch : Cesium.Math.toRadians(-90.0), // Looking straight down
