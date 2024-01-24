@@ -73,9 +73,9 @@ orientation: {
                {
             title: "3: The Port of Long Beach Terminals",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2765, 33.8889, 4500),
+            destination: Cesium.Cartesian3.fromDegrees(-118.2665, 33.8789, 4500),
           orientation: {
-          heading : Cesium.Math.toRadians(90.0), // East, in radians
+          heading : Cesium.Math.toRadians(0.0), // East, in radians
           pitch : Cesium.Math.toRadians(-45.0), // Looking down, in radians
           roll : 0.0 // No roll
           }
