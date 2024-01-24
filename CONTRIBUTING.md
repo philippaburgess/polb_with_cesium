@@ -47,6 +47,12 @@ Don't hesitate to ask for help!
 
 You can ask for help email Philippa Burgess at pburgess@usc.edu. 
 
-## Legal Disclaimer
+## Contributions 
 
-Please remember that contributions do not constitute professional legal advice.
+We warmly welcome contributions from the community. By participating in this project, please understand that:
+
+- Your contributions are made voluntarily, and you will not receive compensation.
+- Contributions to this project do not grant you any ownership or copyright claims over the project's content or code.
+- Your contributions are subject to approval by the project maintainers and must comply with the project's guidelines and code of conduct.
+
+Thank you for your interest in contributing to our project!
