@@ -30,10 +30,10 @@
     // Define your locations array here as before
 
  const locations = [
-        Cesium.Cartesian3.fromDegrees(-118.2590, 33.7489, 18500), // Vincent Thomas Bridge
-        Cesium.Cartesian3.fromDegrees(-118.2465, 33.7400, 8000), // Middle Harbor
-        Cesium.Cartesian3.fromDegrees(-118.2265, 33.7464, 6000), // Long Beach Container Terminal
-        Cesium.Cartesian3.fromDegrees(-118.1193, 33.8028, 4000), // Downtown 
+        Cesium.Cartesian3.fromDegrees(-118.2560, 33.7489, 18500), // Vincent Thomas Bridge
+        Cesium.Cartesian3.fromDegrees(-118.2460, 33.7400, 8000), // Middle Harbor
+        Cesium.Cartesian3.fromDegrees(-118.2365, 33.7414, 6000), // Long Beach Container Terminal
+        Cesium.Cartesian3.fromDegrees(-118.124, 33.8828, 4000), // Downtown 
         Cesium.Cartesian3.fromDegrees(-118.1704, 33.7657, 2000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
@@ -50,7 +50,7 @@
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
 "<p><li>Community Engagement: Prioritizes environmental justice and public health in local communities.</li></p>" + 
                 "</ul>",  
-destination: Cesium.Cartesian3.fromDegrees(-118.1832556, 33.6927972, 17895),
+destination: Cesium.Cartesian3.fromDegrees(-118.1832556, 33.5927972, 17895),
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // North, adjust as necessary
   pitch : Cesium.Math.toRadians(-30.0), // Looking down, adjust as necessary
