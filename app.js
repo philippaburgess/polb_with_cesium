@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2420, 33.7400, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1640, 33.7657, 3000)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1635, 33.7657, 3000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -157,7 +157,7 @@ orientation: {
             title: "9: Modernization",
             content: "<p></p>" + "<p>The recent reconstruction of the Vincent Thomas Bridge stands as a landmark achievement for the Port of Long Beach, significantly enhancing truck access and symbolizing the port's commitment to modernization. This project is part of a broader initiative that includes investing in low-sulfur marine fuel (LSMF) to reduce ship emissions. Additionally, the Port is embracing electric and green technologies, incorporating on-dock electric power and shore power systems to lower emissions from trucks and trains.</p>" + 
 "<p>In its continued efforts to modernize, the Port has implemented shore power at several terminals, enabling ships to connect to the electrical grid while docked, thereby substantially reducing auxiliary engine use. Concurrently, the transition to zero-emissions cargo handling equipment is in progress, marked by the introduction of electric yard trucks and forklifts. Exploring hydrogen fuel cells as an alternative power source for cargo handling equipment and ships, and offering incentives for using clean energy and green technologies to vessels and trucking companies, are also a key part of the Port's forward-thinking strategy.</p>",  
-       destination: Cesium.Cartesian3.fromDegrees(-118.278, 33.7485, 600), // This sets the camera above the port area with containers in view.
+       destination: Cesium.Cartesian3.fromDegrees(-118.278, 33.7486, 600), // This sets the camera above the port area with containers in view.
 orientation: {
   heading: Cesium.Math.toRadians(15), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-60), // A slight downward pitch to capture the bridge and containers.
@@ -205,7 +205,7 @@ orientation: {
 "<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
 "<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
                 "</ul>",
-destination: Cesium.Cartesian3.fromDegrees(-118.245, 33.715, 3600), // Adjusted coordinates for the desired view
+destination: Cesium.Cartesian3.fromDegrees(-118.245, 33.705, 3800), // Adjusted coordinates for the desired view
 orientation: {
   heading: Cesium.Math.toRadians(0), // Zero for north
   pitch: Cesium.Math.toRadians(-30), // Adjust the angle to see the horizon and the port
