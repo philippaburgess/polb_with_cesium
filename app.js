@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2420, 33.7400, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1635, 33.7657, 3000)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1630, 33.7657, 3000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.74839, 1500), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.216, 33.74840, 1200), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-60.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-123.2, 31.5, 140000), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-120, 31.5, 150000), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-30), // Tilted angle looking down
