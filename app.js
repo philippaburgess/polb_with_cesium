@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7505, 1100), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7508, 1100), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-60.0), // Looking directly down
