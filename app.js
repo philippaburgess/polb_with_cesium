@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-118.7, 33.4, 240000), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-122.0, 33.4, 240000), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-45), // Tilted angle looking down
@@ -146,7 +146,7 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.650, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.620, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-10), // This pitch tilts the camera towards the ground at a diagonal angle.
