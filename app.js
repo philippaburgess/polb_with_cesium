@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2420, 33.7400, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1625, 33.7657, 3000)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1620, 33.7657, 3000)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -83,7 +83,7 @@ orientation: {
               {
             title: "4: TEUs",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
-            destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7501, 1100), // Adjusted for close-up view
+            destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7505, 1100), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
             pitch : Cesium.Math.toRadians(-60.0), // Looking directly down
@@ -112,7 +112,7 @@ orientation: {
 "<p><li>Migratory Routes: Utilized by birds and marine mammals, including gray and blue whales.</li></p>" + 
 "<p><li>Sea Turtle Habitats: Protected areas for various species of migratory sea turtles.</li></p>" + 
 "</ul>",
-         destination: Cesium.Cartesian3.fromDegrees(-118, 33.8, 180000), // Approximate location over the port
+         destination: Cesium.Cartesian3.fromDegrees(-118.3, 33.4, 240000), // Approximate location over the port
          orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-45), // Tilted angle looking down
@@ -146,7 +146,7 @@ orientation: {
 "<p><li>Sulfur Oxides (SOx) by 97%</p></li>" +  
 "<p><li>Nitrogen Oxides (NOx) by 62% </p></li>" + 
         "</ul>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.680, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.650, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-10), // This pitch tilts the camera towards the ground at a diagonal angle.
