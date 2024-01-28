@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2360, 33.7500, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1550, 33.7657, 2500)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1550, 33.7677, 1500)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
