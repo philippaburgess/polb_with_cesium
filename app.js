@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2360, 33.7500, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1550, 33.7877, 1500)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1560, 33.7897, 1500)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -265,6 +265,7 @@ orientation: {
 ];
 
 var longBeachDataLayer;
+var heatmapImageryProvider;     
 
 function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Check if it's the Air Quality scene
@@ -289,7 +290,24 @@ function updateAirQualityData() {
 
         viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
-}
+
+
+ if (!heatmapImageryProvider) {
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                url: heatmapUrlTemplate
+            });
+        }
+
+       if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        }
+    } else {
+        // Check if the heatmap layer is present and remove it
+        if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.remove(heatmapImageryProvider);
+        }
+    }    
+}    
     function animateCamera(scene) {
   // Check the title of the scene to determine if we should animate the camera
   if (scene.title === "10: Railyard Expansion") {
