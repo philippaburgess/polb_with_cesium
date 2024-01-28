@@ -266,27 +266,33 @@ orientation: {
 
 var longBeachDataLayer;
 
-    function updateAirQualityData() {
-    if (currentSceneIndex === 7) { // Air Quality scene
-        var apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk';
-        var airQualityApiUrl = `https://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=${apiKey}`;
-    
-        fetch(airQualityApiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Validate and process data here
-                var airQualityContent = "<p>Air Quality Index: " + data.results[0].aqi + "</p>"; // Assuming the API returns an array
-                // Append more data
-                document.getElementById('scene-description').innerHTML += airQualityContent;
+function updateAirQualityData() {
+    if (currentSceneIndex === 7) { // Check if it's the Air Quality scene
+        const type = 'US_AQI'; // The type of heatmap to return
+        const zoomLevel = 12; // The zoom level for the tile
+        const tileX = 10; // Placeholder for X coordinate of the tile
+        const tileY = 10; // Placeholder for Y coordinate of the tile
+        const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
+
+        const heatmapApiUrl = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/${zoomLevel}/${tileX}/${tileY}?key=${apiKey}`;
+
+        fetch(heatmapApiUrl)
+            .then(response => response.blob())
+            .then(imageBlob => {
+                // Create a local URL for the fetched image
+                const imageURL = URL.createObjectURL(imageBlob);
+
+                // Display this image on the Cesium map
+                viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
+                    url: imageURL,
+                    rectangle: Cesium.Rectangle.fromDegrees(
+                        -118.25, 33.70, // These values are placeholders for the SW corner of the tile
+                        -118.20, 33.75  // These values are placeholders for the NE corner of the tile
+                    )
+                }));
             })
             .catch(error => {
-                console.error('Error fetching air quality data:', error);
-                // Handle the error
+                console.error('Error fetching or displaying heatmap tile:', error);
             });
     }
 }
