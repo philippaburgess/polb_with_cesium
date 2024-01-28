@@ -177,11 +177,29 @@ hover */
 }
 
 footer {
-    background-color: #fffdd0; /* Light yellow color */
+    background-color: #fffdd0;
     text-align: center;
-    padding: 15px 0;
+    padding: 10px 0;
+    font-size: 0.8em; /* Adjust as needed */
     position: relative; /* Positioned relative to its normal position */
     width: 100%; /* Ensure the footer is full width */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around; /* or 'space-between' depending on your layout */
+    align-items: center;
+}
+
+.footer-section {
+    margin: 0 10px; /* Adjust spacing as needed */
+}
+
+/* If you want to use icons */
+.icon {
+    display: inline-block;
+    margin-right: 5px;
+    /* add styles for your icons here */
 }
 
 /* Responsive design for smaller screens /
