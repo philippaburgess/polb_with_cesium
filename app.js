@@ -164,8 +164,20 @@ orientation: {
   roll: 0.0 // Roll set to zero to keep the horizon level.
           }
         },
+
+         title: "10: Railyard Expansion",
+            content: "<p></p>" + "<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. The Port B-On Dock expansion is made possible by the recent funding for the port </p>" + 
+"<p><a href='https://youtu.be/vGqbabB5lQk' target='_blank'>Railyard Expansion Video</a></p>",  
+       destination: Cesium.Cartesian3.fromDegrees(-118.278, 33.7486, 600), // This sets the camera above the port area with containers in view.
+orientation: {
+  heading: Cesium.Math.toRadians(15), // Heading at 0 degrees for north.
+  pitch: Cesium.Math.toRadians(-60), // A slight downward pitch to capture the bridge and containers.
+  roll: 0.0 // Roll set to zero to keep the horizon level.
+          }
+        },
+
              {
-            title: "10: Future Planning",
+            title: "11: Future Planning",
             content: "<p></p>" + "<p>The Port of Long Beach has set forth clear environmental objectives, anchored by the Climate Adaptation and Coastal Resiliency Plan (CRP), which strategically tackles the challenges posed by climate change. The Port is on a determined path to significantly reduce greenhouse gas emissions, aiming for a 50% reduction by 2030 and reaching for complete elimination by 2050. Concurrently, there is a strong emphasis on enhancing air quality, specifically targeting the reduction of particulate matter and nitrogen oxides. The Port also fosters partnerships with universities and non-profits to advance climate resilience and emissions reduction through collaborative research and educational programs.</p>" + 
 "<p>Strategies for Achieving Emission Reduction Goals:</p>" + 
 "<ul>" + 
@@ -185,7 +197,7 @@ orientation: {
           }
         },
              {
-            title: "11: Funding",
+            title: "12: Funding",
             content: "<p></p>" + "<p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
 "<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of America's Green Gateway, a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
@@ -197,7 +209,7 @@ orientation: {
           }
         },
         {
-            title: "12: Good Neighbors",
+            title: "13: Good Neighbors",
             content: "<p></p>" + "<p>The Port of Long Beach acknowledges its profound impact on local communities, both environmentally and economically. Actively working to mitigate negative effects and enhance the quality of life for nearby residents, the Port has initiated several key programs. These initiatives collectively underline the Port of Long Beach's commitment to maintaining a positive and sustainable relationship with its surrounding community.</p>" +
 "<ul>" + 
 "<p><li>Community Engagement and Support: Regular interaction with communities and leaders guides the Port's planning, with a focus on addressing the needs of those most affected.</li></p>" + 
@@ -213,7 +225,7 @@ orientation: {
           }
         },
             {
-            title: "13: Solutions",
+            title: "14: Solutions",
             content: "<p></p>" + "<p>The Port of Long Beach is making great strides in its environmental efforts and initiatives, bolstered by legislation, private and public funding, and its many partnerships. The public also plays a pivotal role in this progress. Community members and those in the general public can effectively contribute in the following ways:</p>" + 
 "<ul>" + 
 "<p><li>Community Meetings and Workshops: Engage in Port-related discussions, providing valuable input on projects and initiatives.</p></li>" + 
@@ -230,7 +242,7 @@ orientation: {
           }
         },
              {
-            title: "14: References",
+            title: "15: References",
             content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:100%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.3010, 33.7600, 12500),
           orientation: {
@@ -240,7 +252,7 @@ orientation: {
           }
         },
              {
-            title: "15: Thank You",
+            title: "16: Thank You",
             content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, 5500),
           orientation: {
