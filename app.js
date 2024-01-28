@@ -34,7 +34,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2360, 33.7500, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1550, 33.7777, 1500)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1550, 33.7877, 1500)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -269,15 +269,7 @@ var longBeachDataLayer;
     function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Assuming scene index 7 is "Air Quality"
         // Define the API endpoint and your API key
-        var apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk';
-        var airQualityApiUrl = 'https://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=' + apiKey;
-
-       fetch(airQualityApiUrl)
-        .then(response => response.json())
-        .then(data => {
-            var airQualityContent = "<p>Air Quality Index: " + data.aqi + "</p>";
-            airQualityContent += "<p>Particulate Matter (PM2.5): " + data.pm25 + "</p>";
-            // Add more data as needed
+        var airQualityApiUrl = 'https://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk';
             
             // Update the content of the scene
             document.getElementById('scene-description').innerHTML += airQualityContent;
