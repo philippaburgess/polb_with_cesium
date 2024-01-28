@@ -164,7 +164,7 @@ orientation: {
   roll: 0.0 // Roll set to zero to keep the horizon level.
           }
         },
-
+        {
          title: "10: Railyard Expansion",
             content: "<p></p>" + "<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. The Port B-On Dock expansion is made possible by the recent funding for the port </p>" + 
 "<p><a href='https://youtu.be/vGqbabB5lQk' target='_blank'>Railyard Expansion Video</a></p>",  
