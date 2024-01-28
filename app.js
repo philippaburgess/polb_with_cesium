@@ -332,6 +332,18 @@ function updateScene() {
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
+     if (currentSceneIndex === 7) {
+            // Add heatmap layer if it's not already added
+            if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            }
+        } else {
+            // Remove heatmap layer if we are navigating away from scene 7
+            if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.remove(heatmapImageryProvider);
+            }
+        }
+   
   updateAirQualityData();            
 
   animateCamera(scene);
