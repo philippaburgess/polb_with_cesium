@@ -265,7 +265,38 @@ orientation: {
 ];
 
 var longBeachDataLayer;
-    
+
+    function animateCamera(scene) {
+  // Check the title of the scene to determine if we should animate the camera
+  if (scene.title === "10: Railyard Expansion") {
+    // Fly the camera to the first view
+    viewer.camera.flyTo({
+      destination: scene.destination,
+      orientation: scene.orientation,
+      duration: 2, // Duration of the camera flight in seconds
+      complete: function() {
+        // After the first movement is complete, fly to the second view
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-118.235, 33.7495, 2000), // New coordinates for the second view
+          orientation: {
+            heading: Cesium.Math.toRadians(45),
+            pitch: Cesium.Math.toRadians(-45),
+            roll: 0.0
+          },
+          duration: 2 // Duration of the second camera flight in seconds
+        });
+      }
+    });
+  } else {
+    // For other scenes, just fly to the specified destination and orientation
+    viewer.camera.flyTo({
+      destination: scene.destination,
+      orientation: scene.orientation,
+      duration: 2
+    });
+  }
+}
+
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
@@ -276,6 +307,8 @@ function updateScene() {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+  animateCamera(scene);
 
 if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene 12
         if (!longBeachDataLayer) {
@@ -308,16 +341,11 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
                 longBeachDataLayer = null;
             }
         }
-
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2  // Duration of the camera flight in seconds
-        });
    } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  // This is where the function should end with a closing brace
+    
 
 // Section 3: Scene Navigation Functions
 
