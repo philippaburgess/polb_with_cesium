@@ -269,15 +269,40 @@ var longBeachDataLayer;
     function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Assuming scene index 7 is "Air Quality"
         // Define the API endpoint and your API key
-        var airQualityApiUrl = 'https://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk';
-            
-            // Update the content of the scene
-            document.getElementById('scene-description').innerHTML += airQualityContent;
-        })
-        .catch(error => console.error('Error fetching air quality data:', error));
+        var airQualityApiUrl = 'https://airquality.googleapis.com/v1/currentConditions:lookup';
+        var params = {
+            northLat: 34.0522,
+            westLon: -118.2437,
+            southLat: 33.9416,
+            eastLon: -118.4085,
+            key: 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk' // Replace with your actual API key
+        };
+        
+        // Construct the full URL with parameters
+        var query = Object.keys(params)
+            .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+            .join('&');
+        
+        var fullUrl = airQualityApiUrl + '?' + query;
+        
+        fetch(fullUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Check if the data has the expected properties, assuming 'aqi' and 'pm25' are top-level properties
+                if (data.aqi && data.pm25) {
+                    var airQualityContent = "<p>Air Quality Index: " + data.aqi + "</p>";
+                    airQualityContent += "<p>Particulate Matter (PM2.5): " + data.pm25 + "</p>";
+                    // Update the content of the scene
+                    document.getElementById('scene-description').innerHTML += airQualityContent;
+                } else {
+                    // Handle the case where data does not have the expected format
+                    console.error('Unexpected response format:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching air quality data:', error));
     }
 }
-
+    
     function animateCamera(scene) {
   // Check the title of the scene to determine if we should animate the camera
   if (scene.title === "10: Railyard Expansion") {
@@ -320,7 +345,7 @@ function updateScene() {
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
-  updateAirQualityData();     
+  updateAirQualityData();            
 
   animateCamera(scene);
 
