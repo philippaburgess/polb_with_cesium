@@ -166,9 +166,10 @@ orientation: {
         },
         {
          title: "10: Railyard Expansion",
-            content: "<p></p>" + "<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. The Port B-On Dock expansion is made possible by the recent funding for the port </p>" + 
+            content: "<p></p>" + 
+"<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. The Port B On-Dock expansion is made possible by the recent funding for the port.</p>" + 
 "<p><iframe width='560' height='315' src='https://www.youtube.com/embed/vGqbabB5lQk?si=9KuwZVymXH7yloX' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe></p>",  
-       destination: Cesium.Cartesian3.fromDegrees(-118.270, 33.7492, 2000), // This sets the camera above the port area with containers in view.
+       destination: Cesium.Cartesian3.fromDegrees(-118.270, 33.7492, 2000), 
 orientation: {
   heading: Cesium.Math.toRadians(15), // Heading at 0 degrees for north.
   pitch: Cesium.Math.toRadians(-60), // A slight downward pitch to capture the bridge and containers.
