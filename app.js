@@ -269,18 +269,12 @@ var longBeachDataLayer;
     function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Assuming scene index 7 is "Air Quality"
         // Define the API endpoint and your API key
-        var airQualityApiUrl = 'hhttps://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=';
         var apiKey = 'AIzaSyB69HJDNgy7beq7jia-xqsBCuCqXEkIIxY';
+        var airQualityApiUrl = 'https://airquality.googleapis.com/v1/currentConditions:lookup?northLat=34.0522&westLon=-118.2437&southLat=33.9416&eastLon=-118.4085&key=' + apiKey;
 
-        fetch(airQualityApiUrl, {
-            headers: {
-                'Authorization': 'Bearer ' + apiKey
-            }
-        })
+       fetch(airQualityApiUrl)
         .then(response => response.json())
         .then(data => {
-            // Process and display the air quality data
-            // You can modify the scene's content here based on the API data
             var airQualityContent = "<p>Air Quality Index: " + data.aqi + "</p>";
             airQualityContent += "<p>Particulate Matter (PM2.5): " + data.pm25 + "</p>";
             // Add more data as needed
