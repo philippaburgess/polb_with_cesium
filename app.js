@@ -268,32 +268,26 @@ var longBeachDataLayer;
 
 function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Check if it's the Air Quality scene
-        const type = 'US_AQI'; // The type of heatmap to return
-        const zoomLevel = 12; // The zoom level for the tile
-        const tileX = 10; // Placeholder for X coordinate of the tile
-        const tileY = 10; // Placeholder for Y coordinate of the tile
         const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
+        const type = 'US_AQI'; // The type of heatmap to return
 
-        const heatmapApiUrl = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/${zoomLevel}/${tileX}/${tileY}?key=${apiKey}`;
+        // Assuming the heatmap covers the entire area of interest
+        // and that you have calculated the correct bounding box
+        // You will need to replace the placeholders with the actual values for the bounding box
+        const northLat = 33.75;
+        const southLat = 33.70;
+        const westLon = -118.25;
+        const eastLon = -118.20;
+        
+        // Construct the URL template for the heatmap tile layer
+        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
 
-        fetch(heatmapApiUrl)
-            .then(response => response.blob())
-            .then(imageBlob => {
-                // Create a local URL for the fetched image
-                const imageURL = URL.createObjectURL(imageBlob);
+        // Add the heatmap tile layer as an imagery layer to the Cesium viewer
+        const heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: heatmapUrlTemplate
+        });
 
-                // Display this image on the Cesium map
-                viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-                    url: imageURL,
-                    rectangle: Cesium.Rectangle.fromDegrees(
-                        -118.25, 33.70, // These values are placeholders for the SW corner of the tile
-                        -118.20, 33.75  // These values are placeholders for the NE corner of the tile
-                    )
-                }));
-            })
-            .catch(error => {
-                console.error('Error fetching or displaying heatmap tile:', error);
-            });
+        viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
 }
     function animateCamera(scene) {
