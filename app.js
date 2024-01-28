@@ -266,6 +266,32 @@ orientation: {
 
 var longBeachDataLayer;
 
+    function updateAirQualityData() {
+    if (currentSceneIndex === 7) { // Assuming scene index 7 is "Air Quality"
+        // Define the API endpoint and your API key
+        var airQualityApiUrl = 'hhttps://airquality.googleapis.com/v1/currentConditions:lookup?key=';
+        var apiKey = 'AIzaSyB69HJDNgy7beq7jia-xqsBCuCqXEkIIxY';
+
+        fetch(airQualityApiUrl, {
+            headers: {
+                'Authorization': 'Bearer ' + apiKey
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Process and display the air quality data
+            // You can modify the scene's content here based on the API data
+            var airQualityContent = "<p>Air Quality Index: " + data.aqi + "</p>";
+            airQualityContent += "<p>Particulate Matter (PM2.5): " + data.pm25 + "</p>";
+            // Add more data as needed
+            
+            // Update the content of the scene
+            document.getElementById('scene-description').innerHTML += airQualityContent;
+        })
+        .catch(error => console.error('Error fetching air quality data:', error));
+    }
+}
+
     function animateCamera(scene) {
   // Check the title of the scene to determine if we should animate the camera
   if (scene.title === "10: Railyard Expansion") {
@@ -307,6 +333,8 @@ function updateScene() {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+  updateAirQualityData();     
 
   animateCamera(scene);
 
