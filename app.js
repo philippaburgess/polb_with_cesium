@@ -268,6 +268,281 @@ var longBeachDataLayer;
 var heatmapImageryProvider;     
 
 function updateAirQualityData() {
+        const airQualitySceneIndex = 7;
+        const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
+        const type = 'US_AQI'; // The type of heatmap to return
+        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
+
+        const northLat = 33.75;
+        const southLat = 33.70;
+        const westLon = -118.25;
+        const eastLon = -118.20;
+    
+if (currentSceneIndex === airQualitySceneIndex) {
+        if (!heatmapImageryProvider) {
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                url: heatmapUrlTemplate
+            });
+        }
+    
+        if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        }
+    } else {
+      if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.remove(heatmapImageryProvider);
+            heatmapImageryProvider = null; // Clear the reference
+        }
+    }
+}
+    
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    var titleElement = document.getElementById('scene-title');
+    var contentElement = document.getElementById('scene-description');
+    var sceneContainer = document.getElementById('scene-container');
+
+    if(titleElement && contentElement && sceneContainer) {
+        titleElement.textContent = scene.title;
+        contentElement.innerHTML = scene.content;
+        sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+        // Update the air quality data if necessary
+        updateAirQualityData();
+
+        // Animate the camera to the new scene's viewpoint
+        animateCamera(scene);
+
+   if (currentSceneIndex === 11) {
+
+     }
+    } else {
+        console.error("Scene title or content element not found!");  // Error log if elements are not found
+    }
+}
+        
+  // Check the title of the scene to determine if we should animate the camera
+        
+  if (scene.title === 9) {
+    // Fly the camera to the first view
+    viewer.camera.flyTo({
+      destination: scene.destination,
+      orientation: scene.orientation,
+      duration: 2, // Duration of the camera flight in seconds
+      complete: function() {
+        // After the first movement is complete, fly to the second view
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-118.235, 33.7495, 2000), // New coordinates for the second view
+          orientation: {
+            heading: Cesium.Math.toRadians(45),
+            pitch: Cesium.Math.toRadians(-45),
+            roll: 0.0
+          },
+          duration: 2 // Duration of the second camera flight in seconds
+        });
+      }
+    });
+  } else {
+    // For other scenes, just fly to the specified destination and orientation
+    viewer.camera.flyTo({
+      destination: scene.destination,
+      orientation: scene.orientation,
+      duration: 2
+    });
+  }
+}
+
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    var titleElement = document.getElementById('scene-title');
+    var contentElement = document.getElementById('scene-description');
+    var sceneContainer = document.getElementById('scene-container');
+
+   if(titleElement && contentElement && sceneContainer) {
+        titleElement.textContent = scene.title;
+        contentElement.innerHTML = scene.content;
+        sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+     if (currentSceneIndex === 7) {
+            // Add heatmap layer if it's not already added
+            if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            }
+        } else {
+            // Remove heatmap layer if we are navigating away from scene 7
+            if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.remove(heatmapImageryProvider);
+            }
+        }
+   
+  updateAirQualityData();            
+
+  animateCamera(scene);
+
+if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene 12
+        if (!longBeachDataLayer) {
+           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+            .then(function(dataSource) {
+                    viewer.dataSources.add(dataSource);
+                    longBeachDataLayer = dataSource;
+                    var entities = dataSource.entities.values;
+
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.properties) {
+            // Create a description from the properties
+            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+            entity.properties.propertyNames.forEach(function(propertyName) {
+                var value = entity.properties[propertyName];
+                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+             });
+               description += '</tbody></table>';
+                entity.description = description; // InfoBox will use this
+             }
+        }
+      }).catch(function(error) {
+        console.error(error);
+                });
+            }     
+        } else {
+            if (longBeachDataLayer) {
+                viewer.dataSources.remove(longBeachDataLayer);
+                longBeachDataLayer = null;
+            }
+        }
+   } else {
+        console.error("Scene title or content element not found!");  // Error log if elements are not found
+    }
+}  // This is where the function should end with a closing brace
+    
+
+// Section 3: Scene Navigation Functions
+
+// viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
+   // var pickedObject = viewer.scene.pick(movement.position);
+    // if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
+    // displayInfoBox(pickedObject.id);
+    // }
+// }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+function displayInfoBox(pickedFeature) {        
+    var infoBox = document.getElementById('infoBox');
+    if (pickedFeature && pickedFeature.properties) {
+    var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now());
+        var content = '<h4>Feature Information</h4>';
+        
+for (var key in properties) {
+            if (properties.hasOwnProperty(key)) {
+                content += '<strong>' + key + '</strong>: ' + properties[key] + '<br>';
+            }
+        }   
+        infoBox.innerHTML = content; 
+        infoBox.style.display = 'block'; 
+    } else {
+        infoBox.innerHTML = "<p>No data available.</p>";
+        infoBox.style.display = 'block'; 
+    }
+}
+
+window.nextScene = function() {
+    if (currentSceneIndex < scenes.length - 1) {
+        currentSceneIndex++;
+        updateScene();
+        document.getElementById('scene-container').style.display = 'block';
+        document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
+    } 
+    if (currentSceneIndex === scenes.length - 1) {
+        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
+    }
+};
+
+window.previousScene = function() {
+    if (currentSceneIndex > 0) {
+        currentSceneIndex--;
+        updateScene();
+        document.getElementById('scene-container').style.display = 'block';
+        document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
+}
+if (currentSceneIndex === 0) {
+document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
+}
+};
+
+// Function to show the scene container
+function showSceneContainer() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'block';
+    }
+}
+
+// Section 4: Initial Flyover
+
+function onFlyoverComplete() {
+    document.getElementById('navigation-buttons').style.visibility = 'visible';
+    showSceneContainer();
+    document.getElementById('slide-forward').style.display = 'block';
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
+    updateScene(); // This will load the first scene
+}
+
+window.flyToLocationAndHold = function(index) {
+    if (index >= locations.length) {
+        onFlyoverComplete();
+    } else {
+        viewer.camera.flyTo({
+            destination: locations[index],
+            complete: function() {
+                setTimeout(function() {
+                    flyToLocationAndHold(index + 1);
+                }, 1500); // Time to hold on each location
+            }
+        });
+    }
+};
+
+window.closeScene = function() {
+    var sceneContainer = document.getElementById('scene-container');
+    if (sceneContainer) {
+        sceneContainer.style.display = 'none'; // Hide the scene container
+    }
+    // Optional: Add logic to navigate back to the main view or do nothing
+};
+
+// Section 5: Page Load Setup
+
+window.onload = function() {
+   slides = document.querySelectorAll('.slide');
+    
+    // Hide the navigation buttons initially
+    document.getElementById('navigation-buttons').style.visibility = 'hidden';
+    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
+
+// Activate the first slide if any are present
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+    };
+// Define next slide function
+window.nextSlide = function() {
+        if (currentSlideIndex < slides.length - 1) {
+        slides[currentSlideIndex].classList.remove('active');
+        currentSlideIndex++;
+        slides[currentSlideIndex].classList.add('active');
+    }
+};
+    // Define the function to move to the next slide
+
+ // Define the function to close the instructions and start the flyover
+window.closeInstructions = function() {
+    // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+      };
+})();
+
         const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
         const type = 'US_AQI'; // The type of heatmap to return
         const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
