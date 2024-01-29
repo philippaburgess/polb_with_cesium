@@ -265,7 +265,7 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
-const airQualityApiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Replace with your actual API key
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
