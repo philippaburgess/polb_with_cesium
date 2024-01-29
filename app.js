@@ -269,19 +269,25 @@ const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace w
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
-    const airQualitySceneIndex === 7; // Index for Scene 8
+    const airQualitySceneIndex = 7; // Index for Scene 8
+    console.log('Current scene index:', currentSceneIndex);
    
     if (currentSceneIndex === airQualitySceneIndex) {
+         console.log('In Air Quality Scene'); // Log if in Air Quality scene
+        
         if (!heatmapImageryProvider) {
+              console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                   url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
             });
         }
         if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            console.log('Adding heatmap imagery provider to viewer'); // Log when adding provider to viewer
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
      } else {
     if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
             viewer.imageryLayers.remove(heatmapImageryProvider);
             heatmapImageryProvider = null; // Clear the reference
         }
