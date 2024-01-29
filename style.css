@@ -118,7 +118,7 @@ content: ' >';
   background-color: #cca300;
 }
 
-  #scene-container {
+#scene-container {
     position: absolute;
     top: 10px /* Adjust as needed for your design */
     left: 10px; /* Adjust as needed for your design */
@@ -136,7 +136,7 @@ content: ' >';
   font-size: 0.9em; /* Adjust for paragraphs */
 }
 
-#scene-content li {
+#scene-content ul, li {
   font-size: 0.9em; /* Adjust the font size for list items as needed */
 }
 
