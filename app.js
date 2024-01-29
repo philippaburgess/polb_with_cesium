@@ -438,17 +438,17 @@ window.onload = function() {
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
 // Activate the first slide if any are present
- if (slides && slides.length > 0) { // Check if 'slides' is initialized and has elements
+       if (slides.length > 0) {
             slides[0].classList.add('active');
         }
     };
 // Define next slide function
 window.nextSlide = function() {
    if (currentSceneIndex < scenes.length - 1) {
-       currentSceneIndex++;
-        console.log("Navigating to next scene: " + currentSceneIndex);
-        updateScene();
-    } 
+        slides[currentSlideIndex].classList.remove('active');
+        currentSlideIndex++;
+        slides[currentSlideIndex].classList.add('active');
+    }
 };
     // Define the function to move to the next slide
 
