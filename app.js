@@ -268,46 +268,34 @@ var longBeachDataLayer;
 var heatmapImageryProvider;     
 
 function updateAirQualityData() {
-    if (currentSceneIndex === 7) { // Check if it's the Air Quality scene
         const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
         const type = 'US_AQI'; // The type of heatmap to return
+        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
 
-        // Assuming the heatmap covers the entire area of interest
-        // and that you have calculated the correct bounding box
-        // You will need to replace the placeholders with the actual values for the bounding box
         const northLat = 33.75;
         const southLat = 33.70;
         const westLon = -118.25;
         const eastLon = -118.20;
-        
-        // Construct the URL template for the heatmap tile layer
-        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
-
-        // Add the heatmap tile layer as an imagery layer to the Cesium viewer
-        const heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: heatmapUrlTemplate
-        });
-
-        viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-
-
- if (!heatmapImageryProvider) {
+    
+if (currentSceneIndex === 7) {
+        if (!heatmapImageryProvider) {
+            // Create the provider if it doesn't exist
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                 url: heatmapUrlTemplate
             });
         }
 
-       if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
     } else {
-        // Check if the heatmap layer is present and remove it
-        if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        // Remove the heatmap layer if we are navigating away from scene 7
+        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
             viewer.imageryLayers.remove(heatmapImageryProvider);
         }
-    }    
-}    
+    }
+}
+    
     function animateCamera(scene) {
   // Check the title of the scene to determine if we should animate the camera
   if (scene.title === "10: Railyard Expansion") {
