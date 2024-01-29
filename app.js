@@ -303,7 +303,6 @@ function updateScene() {
 
         updateAirQualityData();
         animateCamera(scene);
-        
   if (currentSceneIndex === 11) {
             loadGeoJsonData();
         }
@@ -312,12 +311,19 @@ function updateScene() {
     }
 }
 function loadGeoJsonData() {
+    if (!longBeachDataLayer) {
     Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
     .then(function(dataSource) {
         viewer.dataSources.add(dataSource);
         longBeachDataLayer = dataSource;
-        var entities = dataSource.entities.values;
+         createDescriptionsForEntities(dataSource.entities.values);
+            }).catch(function (error) {
+                console.error(error);
+            });
+    }
+}
 
+function createDescriptionsForEntities(entities) {
         for (var i = 0; i < entities.length; i++) {
             var entity = entities[i];
             if (entity.properties) {
@@ -330,14 +336,10 @@ function loadGeoJsonData() {
                 entity.description = description;
             }
         }
-    }).catch(function(error) {
-        console.error(error);
-    });
 }
     
 // Function to animate the camera
 function animateCamera(scene) {
-    
   if (scene.title === 9) {
     // Fly the camera to the first view
     viewer.camera.flyTo({
@@ -464,7 +466,9 @@ window.closeScene = function() {
 // Section 5: Page Load Setup
 
 window.onload = function() {
-   slides = document.querySelectorAll('.slide');
+    hideNavigationButtons();
+    activateFirstSlide();
+};
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
