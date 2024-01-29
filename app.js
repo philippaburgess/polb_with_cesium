@@ -376,6 +376,7 @@ window.nextScene = function() {
     if (currentSceneIndex === scenes.length - 1) {
         document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
     }
+        updateScene();
 };
 
 window.previousScene = function() {
@@ -388,6 +389,8 @@ window.previousScene = function() {
 if (currentSceneIndex === 0) {
 document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
 }
+    updateScene();
+    
 };
 
 // Function to show the scene container
