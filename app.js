@@ -479,7 +479,7 @@ window.onload = function() {
         if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-    };
+    }
 // Define next slide function
 window.nextSlide = function() {
         if (currentSlideIndex < slides.length - 1) {
