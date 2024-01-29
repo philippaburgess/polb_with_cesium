@@ -89,15 +89,6 @@ content: ' >';
 
 .slide {
   display: none; /* Hide all slides by default */
-   font-size: 0.8em; /* Adjust the font size as needed */
-}
-
-.slide h1, .slide h2, .slide h3 {
-  font-size: 1em; /* Adjust the font size for headers as needed */
-}
-
-.slide p {
-  font-size: 0.8em; /* Adjust the paragraph font size as needed */
 }
 
 .slide.active {
