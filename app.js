@@ -26,4 +26,17 @@
     navigationHelpButton: false, // Don't show the navigation help button
 });
 
+      // Section 2: Scene and Location Setup
+    // Define your locations array here as before
+
+ const locations = [
+        Cesium.Cartesian3.fromDegrees(-118.2485, 33.7489, 18500), // Vincent Thomas Bridge
+        Cesium.Cartesian3.fromDegrees(-118.2360, 33.7500, 12000), // Middle Harbor
+        Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
+        Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
+        Cesium.Cartesian3.fromDegrees(-118.1560, 33.7897, 1500)  // Bluff Park (Residential Area)
+        // Add more locations as needed
+    ];
+
+
  })();
