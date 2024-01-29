@@ -310,18 +310,7 @@ function updateScene() {
         console.error("Scene title or content element not found!"); // Error log if elements are not found
     }
 }
-
-
-   if (currentSceneIndex === 11) {
-
-     }
-    } else {
-        console.error("Scene title or content element not found!");  // Error log if elements are not found
-    }
-}
-        
-  // Check the title of the scene to determine if we should animate the camera
-        
+ 
   if (scene.title === 9) {
     // Fly the camera to the first view
     viewer.camera.flyTo({
