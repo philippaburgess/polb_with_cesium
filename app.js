@@ -269,7 +269,7 @@ const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace w
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
-    const airQualitySceneIndex = 7; // Index for Scene 8
+    const airQualitySceneIndex === 7; // Index for Scene 8
    
     if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
