@@ -709,7 +709,7 @@ window.closeScene = function() {
 // Section 5: Page Load Setup
 
 window.onload = function() {
-   slides = document.querySelectorAll('.slide');
+   var slides = document.querySelectorAll('.slide');
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
