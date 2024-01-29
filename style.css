@@ -132,6 +132,10 @@ content: ' >';
     max-width: 800px; /* Or any max-width you see fit */
 }
 
+#scene-container p {
+  font-size: 0.8em; /* Adjust for paragraphs */
+}
+
 .close-btn {
   position: absolute;
   top: 5px;
