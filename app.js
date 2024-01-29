@@ -265,6 +265,8 @@ orientation: {
             
 ];
 
+// Section 3 New 
+    
 var longBeachDataLayer;
 var heatmapImageryProvider;     
 
@@ -370,16 +372,6 @@ function animateCamera(scene) {
   }
 }
 
-    
-// Section 3: Scene Navigation Functions
-
-// viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-   // var pickedObject = viewer.scene.pick(movement.position);
-    // if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
-    // displayInfoBox(pickedObject.id);
-    // }
-// }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
 function displayInfoBox(pickedFeature) {        
     var infoBox = document.getElementById('infoBox');
     if (pickedFeature && pickedFeature.properties) {
@@ -480,7 +472,8 @@ window.onload = function() {
         if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-    }
+    };
+
 // Define next slide function
 window.nextSlide = function() {
         if (currentSlideIndex < slides.length - 1) {
@@ -613,125 +606,6 @@ if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene
     }
 }  // This is where the function should end with a closing brace
     
-
-// Section 3: Scene Navigation Functions
-
-// viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-   // var pickedObject = viewer.scene.pick(movement.position);
-    // if (Cesium.defined(pickedObject) && pickedObject.id && pickedObject.id._dataSource === longBeachDataLayer) {
-    // displayInfoBox(pickedObject.id);
-    // }
-// }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
-function displayInfoBox(pickedFeature) {        
-    var infoBox = document.getElementById('infoBox');
-    if (pickedFeature && pickedFeature.properties) {
-    var properties = pickedFeature.properties.getValue(Cesium.JulianDate.now());
-        var content = '<h4>Feature Information</h4>';
-        
-for (var key in properties) {
-            if (properties.hasOwnProperty(key)) {
-                content += '<strong>' + key + '</strong>: ' + properties[key] + '<br>';
-            }
-        }   
-        infoBox.innerHTML = content; 
-        infoBox.style.display = 'block'; 
-    } else {
-        infoBox.innerHTML = "<p>No data available.</p>";
-        infoBox.style.display = 'block'; 
-    }
-}
-
-window.nextScene = function() {
-    if (currentSceneIndex < scenes.length - 1) {
-        currentSceneIndex++;
-        updateScene();
-        document.getElementById('scene-container').style.display = 'block';
-        document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
-    } 
-    if (currentSceneIndex === scenes.length - 1) {
-        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
-    }
-};
-
-window.previousScene = function() {
-    if (currentSceneIndex > 0) {
-        currentSceneIndex--;
-        updateScene();
-        document.getElementById('scene-container').style.display = 'block';
-        document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
-}
-if (currentSceneIndex === 0) {
-document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
-}
-};
-
-// Function to show the scene container
-function showSceneContainer() {
-    var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'block';
-    }
-}
-
-// Section 4: Initial Flyover
-
-function onFlyoverComplete() {
-    document.getElementById('navigation-buttons').style.visibility = 'visible';
-    showSceneContainer();
-    document.getElementById('slide-forward').style.display = 'block';
-    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
-    updateScene(); // This will load the first scene
-}
-
-window.flyToLocationAndHold = function(index) {
-    if (index >= locations.length) {
-        onFlyoverComplete();
-    } else {
-        viewer.camera.flyTo({
-            destination: locations[index],
-            complete: function() {
-                setTimeout(function() {
-                    flyToLocationAndHold(index + 1);
-                }, 1500); // Time to hold on each location
-            }
-        });
-    }
-};
-
-window.closeScene = function() {
-    var sceneContainer = document.getElementById('scene-container');
-    if (sceneContainer) {
-        sceneContainer.style.display = 'none'; // Hide the scene container
-    }
-    // Optional: Add logic to navigate back to the main view or do nothing
-};
-
-// Section 5: Page Load Setup
-
-window.onload = function() {
-   var slides = document.querySelectorAll('.slide');
-    
-    // Hide the navigation buttons initially
-    document.getElementById('navigation-buttons').style.visibility = 'hidden';
-    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
-    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-
-// Activate the first slide if any are present
-        if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
-    };
-// Define next slide function
-window.nextSlide = function() {
-        if (currentSlideIndex < slides.length - 1) {
-        slides[currentSlideIndex].classList.remove('active');
-        currentSlideIndex++;
-        slides[currentSlideIndex].classList.add('active');
-    }
-};
-    // Define the function to move to the next slide
-
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     // Hide the instruction box
