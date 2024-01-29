@@ -261,6 +261,31 @@ orientation: {
 // Section 3
 
 var longBeachDataLayer;
+var heatmapImageryProvider;
+
+const airQualityApiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Replace with your actual API key
+const airQualityType = 'US_AQI'; // The type of heatmap to return
+
+function updateAirQualityData() {
+    const airQualitySceneIndex = 7; // Index for Scene 8
+    const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+
+if (currentSceneIndex === airQualitySceneIndex) {
+        if (!heatmapImageryProvider) {
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                url: heatmapUrlTemplate
+            });
+        }
+        if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        }
+    } else {
+        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.remove(heatmapImageryProvider);
+            heatmapImageryProvider = null; // Clear the reference
+        }
+    }
+}    
     
 function updateScene() {
     var scene = scenes[currentSceneIndex];
@@ -272,6 +297,8 @@ function updateScene() {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+ updateAirQualityData();
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
