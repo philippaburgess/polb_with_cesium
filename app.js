@@ -288,8 +288,6 @@ function updateAirQualityData() {
         viewer.imageryLayers.remove(heatmapImageryProvider);
         heatmapImageryProvider = null; // Clear the reference
     }
-}
-
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
