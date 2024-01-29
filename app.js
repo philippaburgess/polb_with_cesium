@@ -366,24 +366,35 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
+
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
     } 
-    if (currentSceneIndex === scenes.length - 1) {
+    if (currentSceneIndex < scenes.length - 1) {
         document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
+    }
+}
+     if (currentSceneIndex === scenes.length - 1) {
+        document.getElementById('slide-forward').style.display = 'none';
     }
 };
 
+    
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         updateScene();
+        
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
-}
-if (currentSceneIndex === 0) {
-document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
-}
+
+         if (currentSceneIndex === 0) {
+            document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button
+        } else {
+            // If we are not at the first scene, ensure the 'Previous' button is visible
+            document.getElementById('slide-back').style.display = 'block';
+        }
+    }
 };
 
 // Function to show the scene container
