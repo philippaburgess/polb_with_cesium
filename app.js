@@ -271,7 +271,7 @@ function updateAirQualityData() {
     if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`
+                url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
             });
         }
         if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
