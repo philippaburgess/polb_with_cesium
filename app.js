@@ -434,7 +434,7 @@ window.closeScene = function() {
 // Section 6 
 
     
-window.onload = function() {
+window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
     
     // Hide the navigation buttons initially
