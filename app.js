@@ -274,7 +274,7 @@ function updateAirQualityData() {
     if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: 'https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}'
+                url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
             });
         }
         if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
