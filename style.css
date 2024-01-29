@@ -213,6 +213,13 @@ footer {
 /* Responsive design for smaller screens /
 @media (max-width: 768px) {
 header h1, header p, footer p {
-max-width: 90%; / Allows some margin on smaller screens */
+max-width: 100%; / Allows some margin on smaller screens */
+body {
+        font-size: larger; /* Increase text size */
+    }
+ .my-slider {
+        padding: 20px; /* Add padding around the sliders */
+    }
+
 }
-}
+
