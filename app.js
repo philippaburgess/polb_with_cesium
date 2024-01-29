@@ -310,7 +310,6 @@ function updateScene() {
     } else {
         console.error("Scene title or content element not found!");
     }
-}
     
 function loadGeoJsonData() {
     Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
