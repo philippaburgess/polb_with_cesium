@@ -448,11 +448,11 @@ window.onload = function() {
     };
 // Define next slide function
 window.nextSlide = function() {
-  if (slides && currentSlideIndex < slides.length - 1) {
-        slides[currentSlideIndex].classList.remove('active');
-        currentSlideIndex++;
-        slides[currentSlideIndex].classList.add('active');
-    }
+   if (currentSceneIndex < scenes.length - 1) {
+       currentSceneIndex++;
+        console.log("Navigating to next scene: " + currentSceneIndex);
+        updateScene();
+    } 
 };
     // Define the function to move to the next slide
 
