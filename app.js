@@ -460,7 +460,6 @@ window.nextSlide = function() {
    } else {
             console.error('No slide exists at index:', currentSlideIndex);
         }
-    }
 };
     // Define the function to move to the next slide
 
