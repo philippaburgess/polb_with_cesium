@@ -447,7 +447,7 @@ window.addEventListener('load', function() {
     });
 // Define next slide function
 window.nextSlide = function() {
-   if (currentSceneIndex < scenes.length - 1) {
+   if (currentSlideIndex < scenes.length - 1) {
         slides[currentSlideIndex].classList.remove('active');
         currentSlideIndex++;
         slides[currentSlideIndex].classList.add('active');
