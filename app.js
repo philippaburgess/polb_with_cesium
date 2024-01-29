@@ -269,7 +269,6 @@ const airQualityType = 'US_AQI'; // The type of heatmap to return
 function updateAirQualityData() {
     const airQualitySceneIndex = 7; // Index for Scene 8
    
-
     if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -373,7 +372,6 @@ window.nextScene = function() {
     if (currentSceneIndex === scenes.length - 1) {
         document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
     }
-        updateScene();
 };
 
 window.previousScene = function() {
@@ -386,8 +384,6 @@ window.previousScene = function() {
 if (currentSceneIndex === 0) {
 document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button in the first scene
 }
-    updateScene();
-    
 };
 
 // Function to show the scene container
