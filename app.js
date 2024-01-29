@@ -33,7 +33,7 @@
         Cesium.Cartesian3.fromDegrees(-118.2360, 33.7500, 12000), // Middle Harbor
         Cesium.Cartesian3.fromDegrees(-118.2250, 33.7390, 8000), // Long Beach Container Terminal
         Cesium.Cartesian3.fromDegrees(-118.1675, 33.7705, 6000), // Downtown 
-        Cesium.Cartesian3.fromDegrees(-118.1570, 33.7990, 1500)  // Bluff Park (Residential Area)
+        Cesium.Cartesian3.fromDegrees(-118.1560, 33.7820, 1500)  // Bluff Park (Residential Area)
         // Add more locations as needed
     ];
 
@@ -269,18 +269,14 @@ const airQualityType = 'US_AQI'; // The type of heatmap to return
 function updateAirQualityData() {
     const airQualitySceneIndex = 7; // Index for Scene 8
    
-if (currentSceneIndex === airQualitySceneIndex) {
-        if (!heatmapImageryProvider) {
-    const northLat = 33.75;
-    const southLat = 33.70;
-    const westLon = -118.25;
-    const eastLon = -118.20;
 
- heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-    url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+    if (currentSceneIndex === airQualitySceneIndex) {
+        if (!heatmapImageryProvider) {
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
             });
-        }   
- if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        }
+        if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
     } else {
@@ -290,7 +286,6 @@ if (currentSceneIndex === airQualitySceneIndex) {
         }
     }
 }
-    
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
