@@ -310,7 +310,7 @@ function updateScene() {
     } else {
         console.error("Scene title or content element not found!");
     }
-    
+}
 function loadGeoJsonData() {
     Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
     .then(function(dataSource) {
@@ -495,15 +495,6 @@ window.closeInstructions = function() {
       };
 })();
 
-        const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
-        const type = 'US_AQI'; // The type of heatmap to return
-        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
-
-        const northLat = 33.75;
-        const southLat = 33.70;
-        const westLon = -118.25;
-        const eastLon = -118.20;
-    
 if (currentSceneIndex === 7) {
         if (!heatmapImageryProvider) {
             // Create the provider if it doesn't exist
@@ -525,7 +516,7 @@ if (currentSceneIndex === 7) {
     
     function animateCamera(scene) {
   // Check the title of the scene to determine if we should animate the camera
-  if (scene.title === "10: Railyard Expansion") {
+  if (scene.title === 9) {
     // Fly the camera to the first view
     viewer.camera.flyTo({
       destination: scene.destination,
