@@ -275,16 +275,18 @@ if (currentSceneIndex === airQualitySceneIndex) {
     const southLat = 33.70;
     const westLon = -118.25;
     const eastLon = -118.20;
-    const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
-            
-    heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: heatmapUrlTemplate
+
+ heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+    url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
             });
+        }   
+ if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
-   } else {    
-        if (heatmapImageryProvider) {
+    } else {
+        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
             viewer.imageryLayers.remove(heatmapImageryProvider);
-            heatmapImageryProvider = null;
+            heatmapImageryProvider = null; // Clear the reference
         }
     }
 }
