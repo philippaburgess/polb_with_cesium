@@ -272,7 +272,7 @@ function updateAirQualityData() {
         const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
         const type = 'US_AQI'; // The type of heatmap to return
         const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
-    
+
 if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -303,6 +303,7 @@ function updateScene() {
 
         updateAirQualityData();
         animateCamera(scene);
+        
   if (currentSceneIndex === 11) {
             loadGeoJsonData();
         }
@@ -310,6 +311,7 @@ function updateScene() {
         console.error("Scene title or content element not found!");
     }
 }
+    
 function loadGeoJsonData() {
     Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
     .then(function(dataSource) {
@@ -336,7 +338,6 @@ function loadGeoJsonData() {
     
 // Function to animate the camera
 function animateCamera(scene) {
-
     
   if (scene.title === 9) {
     // Fly the camera to the first view
@@ -356,7 +357,7 @@ function animateCamera(scene) {
           duration: 2 // Duration of the second camera flight in seconds
         });
       }
-    });
+}); 
   } else {
     // For other scenes, just fly to the specified destination and orientation
     viewer.camera.flyTo({
