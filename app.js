@@ -279,9 +279,8 @@ function updateAirQualityData() {
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
      } else {
-        if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
-            // Explicitly call removeImageryProvider
-            viewer.imageryLayers.removeImageryProvider(heatmapImageryProvider);
+    if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.remove(heatmapImageryProvider);
             heatmapImageryProvider = null; // Clear the reference
         }
     }
