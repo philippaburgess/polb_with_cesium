@@ -2,7 +2,6 @@
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
-    var viewer; 
 
    // Section 1: API Keys and Viewer Initialization
     
