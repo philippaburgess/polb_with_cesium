@@ -272,11 +272,6 @@ function updateAirQualityData() {
         const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
         const type = 'US_AQI'; // The type of heatmap to return
         const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
-
-        const northLat = 33.75;
-        const southLat = 33.70;
-        const westLon = -118.25;
-        const eastLon = -118.20;
     
 if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
@@ -289,7 +284,7 @@ if (currentSceneIndex === airQualitySceneIndex) {
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
     } else {
-      if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
             viewer.imageryLayers.remove(heatmapImageryProvider);
             heatmapImageryProvider = null; // Clear the reference
         }
@@ -310,8 +305,12 @@ function updateScene() {
         // Update the air quality data if necessary
         updateAirQualityData();
 
-        // Animate the camera to the new scene's viewpoint
         animateCamera(scene);
+    } else {
+        console.error("Scene title or content element not found!"); // Error log if elements are not found
+    }
+}
+
 
    if (currentSceneIndex === 11) {
 
@@ -351,33 +350,6 @@ function updateScene() {
     });
   }
 }
-
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    var titleElement = document.getElementById('scene-title');
-    var contentElement = document.getElementById('scene-description');
-    var sceneContainer = document.getElementById('scene-container');
-
-   if(titleElement && contentElement && sceneContainer) {
-        titleElement.textContent = scene.title;
-        contentElement.innerHTML = scene.content;
-        sceneContainer.style.display = 'block'; // Make sure the container is visible
-
-     if (currentSceneIndex === 7) {
-            // Add heatmap layer if it's not already added
-            if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
-                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-            }
-        } else {
-            // Remove heatmap layer if we are navigating away from scene 7
-            if (viewer.imageryLayers.contains(heatmapImageryProvider)) {
-                viewer.imageryLayers.remove(heatmapImageryProvider);
-            }
-        }
-   
-  updateAirQualityData();            
-
-  animateCamera(scene);
 
 if (currentSceneIndex === 11) { // Scene index starts at 0, so index 11 is Scene 12
         if (!longBeachDataLayer) {
