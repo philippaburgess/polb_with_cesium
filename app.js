@@ -440,7 +440,7 @@ window.onload = function() {
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
 // Activate the first slide if any are present
-        if (slides.length > 0) {
+ if (slides && slides.length > 0) { // Check if 'slides' is initialized and has elements
             slides[0].classList.add('active');
         }
     };
