@@ -183,7 +183,7 @@ orientation: {
 "<p><li>Strengthening collaborations with academic and non-profit organizations focused on climate resilience.</p></li>" + 
 "<p><li>Developing policies that are in line with CAAP goals, integrating climate change considerations into all Port planning and development activities.</p></li>" + 
 "<p><li>Incorporating sea-level rise analysis in the Port's Harbor Development Permit process for future-proof infrastructure planning.</p></li>" + 
-"<p><li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</p></li>" + 
+"<li>Factoring zero-emissions infrastructure plans into lease negotiations and development projects, reinforcing the commitment to sustainable operations.</li>" + 
 "</ul>", 
 destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.735, 10000), // This sets the camera above the area of interest.
 orientation: {
