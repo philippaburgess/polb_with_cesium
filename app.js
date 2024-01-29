@@ -265,7 +265,7 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+const airQualityApiKey = ''; // Replace with your actual API key
 const airQualityType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
@@ -274,7 +274,7 @@ function updateAirQualityData() {
     if (currentSceneIndex === airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+                url: `https://airquality.googleapis.com/v1/mapTypes/$US_AQI/heatmapTiles/{z}/{x}/{y}?key=$AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`
             });
         }
         if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
