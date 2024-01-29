@@ -447,10 +447,19 @@ window.addEventListener('load', function() {
     });
 // Define next slide function
 window.nextSlide = function() {
+   console.log('Current Slide Index:', currentSlideIndex);
+   console.log('Slides Length:', slides.length);
+    
    if (currentSlideIndex < scenes.length - 1) {
         slides[currentSlideIndex].classList.remove('active');
+   }
         currentSlideIndex++;
+
+    if(slides[currentSlideIndex]) {
         slides[currentSlideIndex].classList.add('active');
+   } else {
+            console.error('No slide exists at index:', currentSlideIndex);
+        }
     }
 };
     // Define the function to move to the next slide
