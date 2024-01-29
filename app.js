@@ -367,20 +367,15 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
         updateScene();
-
-        document.getElementById('scene-container').style.display = 'block';
+    document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
-    } 
-    if (currentSceneIndex < scenes.length - 1) {
-        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
+        document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
     }
-}
-     if (currentSceneIndex === scenes.length - 1) {
-        document.getElementById('slide-forward').style.display = 'none';
+    if (currentSceneIndex === scenes.length - 1) {
+        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
     }
 };
 
-    
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
