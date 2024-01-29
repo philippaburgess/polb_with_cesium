@@ -136,6 +136,10 @@ content: ' >';
   font-size: 0.9em; /* Adjust for paragraphs */
 }
 
+#scene-content li {
+  font-size: 0.9em; /* Adjust the font size for list items as needed */
+}
+
 .close-btn {
   position: absolute;
   top: 5px;
