@@ -268,6 +268,10 @@ const airQualityType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
     const airQualitySceneIndex = 7; // Index for Scene 8
+    const northLat = 33.75;
+    const southLat = 33.70;
+    const westLon = -118.25;
+    const eastLon = -118.20;
     const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
 
 if (currentSceneIndex === airQualitySceneIndex) {
