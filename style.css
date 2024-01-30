@@ -129,15 +129,15 @@ content: ' >';
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     z-index: 10; /* Above instruction box */
     display: none; /* Hidden initially */
-    max-width: 900px; /* Or any max-width you see fit */
+    max-width: 1800px; /* Or any max-width you see fit */
 }
 
 #scene-container p {
-  font-size: 0.9em; /* Adjust for paragraphs */
+  font-size: 1.5em; /* Adjust for paragraphs */
 }
 
 #scene-content ul, li {
-  font-size: 0.9em; /* Adjust the font size for list items as needed */
+  font-size: 1.5em; /* Adjust the font size for list items as needed */
 }
 
 .close-btn {
