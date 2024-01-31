@@ -50,7 +50,7 @@
             content: "<p></p>" + "<p>The Port of Long Beach (POLB), proudly known as The Green Port, is a leader in green port operations. It plays a vital role in the U.S. and global economy, with its strategic location in Long Beach, California. The Port of Long Beach remains dedicated to pioneering green initiatives, integrating economic activity with environmental stewardship and community well-being. Among its awards and recognitions for its sustainable practices are the Level 4 Green Marine Environmental Certification, 2020 California Governor's Environmental and Economic Leadership Award, and the 2019 American Association of Port Authorities (AAPA) Environmental Excellence Award.</p>" +  
 "<p>It's sustainable practices and goals include:</p>" +
 "<ul>" +
-"<p><li>Clean Air Action Plan (CAAP): Targets 100% zero-emission cargo by 2030 and trucks by 2035.</li><p>" +
+"<p><li>Clean Air Action Plan (CAAP): Targets 100% zero-emission cargo by 2030 and trucks by 2035.</li></p>" +
 "<p><li>Green Port Policy (2005): Addresses wildlife, air, water, soils, community engagement, and sustainability.</li></p>" +
 "<p><li>Zero-Emissions Technologies: Focused on electric vehicles and infrastructure for a zero-emissions future.</li></p>" + 
 "<p><li>Sustainable Terminal Design: Emphasizes energy-efficient, water-conserving, and waste-reducing practices.</li></p>" + 
@@ -272,7 +272,6 @@ orientation: {
             
 ];
 
-
 // Section 3
 
 // Global variable to store the heatmap imagery provider
@@ -291,7 +290,6 @@ const airQualityMapType = 'US_AQI';
 
 function updateAirQualityData(currentSceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 (index 7)
-
     try {
         if (currentSceneIndex === airQualitySceneIndex) {
             // If we are in the Air Quality scene (Scene 8)
@@ -317,7 +315,6 @@ function updateAirQualityData(currentSceneIndex) {
         console.error('Error updating air quality data:', error);
     }
 }
-
 
 function updateScene() {
     var scene = scenes[currentSceneIndex];
@@ -361,9 +358,6 @@ function updateScene() {
             duration: 2  // Duration of the camera flight in seconds
         });
     }
-} else {
-    console.error("Scene title or content element not found!");  // Error log if elements are not found
-}
 
 var longBeachDataLayer;
 
@@ -392,6 +386,8 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error(error);
                 });
             }     
+
+    
         } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
