@@ -73,7 +73,7 @@ orientation: {
     
                {
             title: "3: The Port of Long Beach Terminals",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:100%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:80%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7075, 16000),
           orientation: {
           heading : Cesium.Math.toRadians(355.0), // East, in radians
@@ -83,7 +83,7 @@ orientation: {
         },
               {
             title: "4: TEUs",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:100%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:80%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7508, 1100), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
@@ -94,7 +94,7 @@ orientation: {
 
               {
             title: "5: Economic Impact",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:100%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:80%;max-width:900px;'>",
 destination: Cesium.Cartesian3.fromDegrees(-98.35, 39.50, 5280000), // Central location of the U.S. on a larger scale
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // North
@@ -239,7 +239,7 @@ orientation: {
         },
              {
             title: "15: References",
-            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:100%;max-width:900px;'>",
+            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:80%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.3010, 33.7600, 12500),
           orientation: {
           heading : Cesium.Math.toRadians(45.0), // East, in radians
@@ -249,7 +249,7 @@ orientation: {
         },
              {
             title: "16: Thank You",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:100%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:80%;max-width:900px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, 5500),
           orientation: {
           heading : Cesium.Math.toRadians(0.0), // East, in radians
