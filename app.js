@@ -270,7 +270,7 @@ const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
   try {
-    const airQualitySceneIndex = 7; // Index for Scene 8
+    const airQualitySceneIndex = 4; // Index for Scene 8
     console.log('Current scene index:', currentSceneIndex);
    
     if (currentSceneIndex === airQualitySceneIndex) {
