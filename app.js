@@ -261,7 +261,6 @@ orientation: {
 
 // Section 3
 
-    
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
@@ -277,7 +276,7 @@ function updateAirQualityData() {
          console.log('In Air Quality Scene'); // Log if in Air Quality scene
         
         if (!heatmapImageryProvider) {
-              console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
+            console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                 url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
             });
