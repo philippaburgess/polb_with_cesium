@@ -298,6 +298,8 @@ function updateAirQualityData(currentSceneIndex) {
         console.error('Error updating air quality data:', error);
     }
 }
+
+    
     
 var longBeachDataLayer;
     
