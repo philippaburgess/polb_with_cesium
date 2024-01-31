@@ -184,6 +184,24 @@ hover */
     background-color: #cca300; /* Darker yellow on hover */
 }
 
+#toggleAirQuality {
+  padding: 10px 20px;
+  background-color: #ffd700; /* Yellow background to match the theme */
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10; /* Ensure it's above the Cesium viewer and other elements */
+  display: none; /* Hidden by default, will be shown via JavaScript */
+}
+
+#toggleAirQuality:hover {
+  background-color: #cca300; /* Darker yellow on hover */
+}
+
 footer {
     background-color: #fffdd0;
     text-align: center;
