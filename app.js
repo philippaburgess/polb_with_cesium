@@ -263,36 +263,43 @@ orientation: {
 
 // Section 3
 
-var longBeachDataLayer;
+// Global variable to store the heatmap imagery provider
 var heatmapImageryProvider;
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+// Your API key should be secured
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
+const airQualityMapType = 'US_AQI';
 
-function updateAirQualityData() {
-  try {
-    const airQualitySceneIndex = 7; // Index for Scene 8
-    console.log('Current scene index:', currentSceneIndex);
-   
-    if (currentSceneIndex === airQualitySceneIndex) {
-         console.log('In Air Quality Scene'); // Log if in Air Quality scene
-        
-        if (!heatmapImageryProvider) {
-            console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
-            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
-            });
-            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-      }
-    } else if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-        console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
-        viewer.imageryLayers.remove(heatmapImageryProvider);
-        heatmapImageryProvider = null; // Clear the reference
-    }
+function updateAirQualityData(currentSceneIndex) {
+    const airQualitySceneIndex = 7; // Scene 8 (index 7)
+
+    try {
+        if (currentSceneIndex === airQualitySceneIndex) {
+            // If we are in the Air Quality scene (Scene 8)
+            if (!heatmapImageryProvider) {
+                // Create the heatmap layer if it doesn't exist
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+
+                heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                    url: heatmapUrlTemplate
+                });
+
+                // Add the heatmap layer to the viewer
+                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            }
+        } else {
+            // If we are not in Scene 8, remove the heatmap layer
+            if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.remove(heatmapImageryProvider);
+                heatmapImageryProvider = null; // Clear the reference to the provider
+            }
+        }
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
 }
+    
+var longBeachDataLayer;
     
 function updateScene() {
     var scene = scenes[currentSceneIndex];
