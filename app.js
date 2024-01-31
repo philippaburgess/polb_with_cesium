@@ -274,7 +274,7 @@ orientation: {
 
 // Section 3
 
-// Global variable to store the heatmap imagery provider
+var longBeachDataLayer;
 var heatmapImageryProvider;
 
     function toggleAirQualityLayer() {
@@ -295,7 +295,7 @@ function updateAirQualityData(currentSceneIndex) {
             // If we are in the Air Quality scene (Scene 8)
             if (!heatmapImageryProvider) {
                 // Create the heatmap layer if it doesn't exist
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
 
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
@@ -358,8 +358,6 @@ function updateScene() {
             duration: 2  // Duration of the camera flight in seconds
         });
     }
-
-var longBeachDataLayer;
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
