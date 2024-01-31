@@ -41,7 +41,7 @@
 
        const scenes = [
         {
-            title: "1: The Green Port",
+        title: "1: The Green Port",
             content: "<p></p>" + "<p>The Port of Long Beach (POLB), proudly known as The Green Port, is a leader in green port operations. It plays a vital role in the U.S. and global economy, with its strategic location in Long Beach, California. The Port of Long Beach remains dedicated to pioneering green initiatives, integrating economic activity with environmental stewardship and community well-being. Among its awards and recognitions for its sustainable practices are the Level 4 Green Marine Environmental Certification, 2020 California Governor's Environmental and Economic Leadership Award, and the 2019 American Association of Port Authorities (AAPA) Environmental Excellence Award.</p>" +  
 "<p>It's sustainable practices and goals include:</p>" +
 "<ul>" +
@@ -62,7 +62,7 @@ orientation: {
             title: "2: The Port",
             content: "<p></p>" + "<p>The Port of Long Beach is the second largest port in the United States in terms of container volume. The Port generates over $36 billion in annual economic activity, handles over $200 billion in annual trade volume, and supports over 450,000 jobs in Southern California. As a major contributor to the local economy, its operations are essential to the region's continued prosperity.</p>" +
 
-"<p>Each year the port handles over 9 million 20-foot container units (TEUs). This number has grown year over year. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact. Through its various environmental initiatives and programs, the Port aims to minimize the environmental impact of its operations and contribute to a healthier and more sustainable future for the region.</p>",
+"<p>Each year the port handles over 9 million 20-foot container units (TEUs) each year with a steady growth trend. However, all of this benefit and growth this is not without a significant impact to the environment. The Port has put significant attention to balancing these activities with its environmental impact. Through its various environmental initiatives and programs, the Port aims to minimize the environmental impact of its operations and contribute to a healthier and more sustainable future for the region.</p>",
          destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, 5500),
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // True north
@@ -73,7 +73,7 @@ orientation: {
     
                {
             title: "3: The Port of Long Beach Terminals",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:80%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Terminals.jpg' alt='Terminals' style='width:90%;max-width:800px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7075, 16000),
           orientation: {
           heading : Cesium.Math.toRadians(355.0), // East, in radians
@@ -83,7 +83,7 @@ orientation: {
         },
               {
             title: "4: TEUs",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:80%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/TEU.jpg' alt='TEU' style='width:90%;max-width:800px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2168, 33.7508, 1100), // Adjusted for close-up view
             orientation: {
             heading : Cesium.Math.toRadians(15.0), // North
@@ -94,7 +94,7 @@ orientation: {
 
               {
             title: "5: Economic Impact",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:80%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Map.jpg' alt='Map' style='width:90%;max-width:800px;'>",
 destination: Cesium.Cartesian3.fromDegrees(-98.35, 39.50, 5280000), // Central location of the U.S. on a larger scale
 orientation: {
   heading : Cesium.Math.toRadians(0.0), // North
@@ -125,7 +125,7 @@ orientation: {
             content: "<p></p>" + "<p>The Port of Long Beach has been a pioneer in adopting clean energy sources, reducing air pollution, and enhancing water quality, alongside restoring natural habitats. In collaboration with government and local partners, the Port is setting the standard for green port operations. These actions and strategies reflect the Port's dedication to minimizing environmental impact and leading the way towards a sustainable future.</p>" + 
              "<p>Key initiatives include:</p>" + 
 "<ul>" +    
-"<p><li>Renewable Energy Initiatives: While specific capacities of solar panels and wind turbines are not detailed, the Port is committed to diverse renewable energy projects.</p></li>" + 
+"<p><li>Renewable Energy Initiatives: Assessing technological and financial feasibility of diverse opportunities and pursuing on-site renewable energy generation such as the Pier Wind project. </p></li>" + 
 "<p><li>Partnerships and Collaborations: Working closely with clean technology companies, research institutions, government agencies like CARB and EPA, and non-profit organizations, the Port fosters innovative solutions and aligns with regional and state environmental goals.</p></li>" + 
 "<p><li>Challenges and Solutions: Addressing the complexities of renewable energy and zero-emission transitions, the Port is navigating challenges such as high initial investments, the intermittency of renewable sources, technical complexities, and stakeholder engagement.</p></li>" +   
 "<p><li>The strategies encompass seeking grants and innovative financing mechanisms, exploring energy storage solutions for consistent electricity supply, partnering with technology experts for smooth integration of new systems, and engaging stakeholders to ensure a shared commitment to sustainable practices.</p></li>" +
@@ -140,7 +140,7 @@ orientation: {
               {
             title: "8: Air Quality",
             content: "<p></p>" + "<p>Historically, the Port of Long Beach faced significant challenges with air pollution, impacting public health and the environment. In response, the Clean Air Action Plan (CAAP) was introduced, focusing on comprehensive measures to improve air quality in the South Coast Air Basin. Developed collaboratively by the South Coast Air Quality Management District (SCAQMD), local governments, businesses, and environmental groups, CAAP has played a crucial role in mitigating health risks associated with air pollution.</p>" +
-"<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives.</p>" +
+"<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62% </p>", 
            destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.620, 3800), // These coordinates position the camera above the port area.
            orientation: {
@@ -163,7 +163,7 @@ orientation: {
         {
          title: "10: Railyard Expansion",
             content: "<p></p>" + 
-"<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. The Port B On-Dock expansion is made possible by the recent funding for the port.</p>" + 
+"<p>The recent State of the Port Conference heralded 2024 as the Year of the Rail. This $1.567 billion Pier B On-Dock Rail initiative is part of the Port's broader modernization and sustainability efforts. Construction is expected to begin in the summer of 2024 and be completed in phases, with the final segment due to be finished in 2032.</p>" + 
 "<p><iframe width='560' height='315' src='https://www.youtube.com/embed/vGqbabB5lQk?si=9KuwZVymXH7yloX' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe></p>",  
        destination: Cesium.Cartesian3.fromDegrees(-118.240, 33.7492, 1500), 
 orientation: {
@@ -196,7 +196,7 @@ orientation: {
             title: "12: Funding",
             content: "<p></p>" + "<p>Securing adequate funding is essential for the Port of Long Beach to achieve its sustainability goals. Government agencies like the Maritime Administration (MARAD), the California Air Resources Board (CARB), and the South Coast Air Quality Management District (SCAQMD) have been key in providing financial support for various environmental initiatives. Private partnerships also play a crucial role. The Port continues to seek funding opportunities, leveraging both government grants and private investments to support its ongoing and future environmental projects. This integrated approach to funding is pivotal in maintaining the momentum of the Port's extensive sustainability endeavors.</p>" + 
 "<p>In recent developments, in March 2017, the Port was allocated $46.4 million by the BHC for its Community Grants Program, to be expended over 12 to 15 years. This program has already directed $31.1 million towards diverse projects, including public parks, water quality improvements, and healthcare programs, demonstrating a significant economic impact through job creation, enhanced quality of life, and increased economic activity. Companies like Toyota and Amazon have provided substantial funding, exemplifying successful public-private collaboration. Additionally, the Port’s community sponsorships have bolstered its engagement and visibility locally.</p>" + 
-"<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. This grant will facilitate the construction of America's Green Gateway, a significant rail project at the Port. Expected to drastically improve cargo efficiency, reduce congestion, and lower environmental impacts, this project will transform the Pier B rail yard and significantly increase the Port’s on-dock rail capacity. It’s a part of a broader $1.567 billion project aimed at enhancing on-dock rail infrastructure.</p>", 
+"<p>Looking to the future, the Port is expanding its funding horizons. A notable achievement in 2023 was securing $283 million in federal funding through the U.S. Department of Transportation's Mega Grant Program. The Port continues to seek funding opportunities to maintain the momentum of its sustainability endeavors and achieve its long-term environmental goals.</p>", 
 destination: Cesium.Cartesian3.fromDegrees(-118.155, 33.712, 9550), // Adjust the coordinates and height to get the right angle and zoom level.
 orientation: {
   heading: Cesium.Math.toRadians(300), // North is 0 degrees in radians.
@@ -206,13 +206,13 @@ orientation: {
         },
         {
             title: "13: Good Neighbors",
-            content: "<p></p>" + "<p>The Port of Long Beach acknowledges its profound impact on local communities, both environmentally and economically. Actively working to mitigate negative effects and enhance the quality of life for nearby residents, the Port has initiated several key programs. These initiatives collectively underline the Port of Long Beach's commitment to maintaining a positive and sustainable relationship with its surrounding community.</p>" +
+            content: "<p></p>" + "<p>The Port of Long Beach actively works to mitigate negative effects from pollution and enhance the quality of life for nearby residents. The Port has initiated several key programs to uphold their commitment. </p>" +
 "<ul>" + 
-"<p><li>Community Engagement and Support: Regular interaction with communities and leaders guides the Port's planning, with a focus on addressing the needs of those most affected.</li></p>" + 
-"<p><li>Community Grants Program: Targets funding towards neighborhoods most impacted by Port operations, supporting a range of community-enhancing projects.</li></p>" + 
-"<p><li>Health and Safety Initiatives: Includes air quality monitoring and pollution reduction measures, prioritizing the health of local residents and workers.</li></p>" + 
-"<p><li>Educational and Workforce Development: Raises awareness about port operations and offers training programs, strengthening the local workforce.</li></p>" + 
-                "</ul>",
+"<p><li>Community Engagement and Support: Through regular interaction with communities and leaders, the Port ensures that the needs of those most affected by its operations are addressed, guiding the Port's planning process.</li></p>" + 
+"<p><li>Community Grants Program: Directs funding to neighborhoods significantly impacted by Port operations, supporting a variety of projects that enhance community well-being and mitigate negative impacts.</li></p>" + 
+"<p><li>Health and Safety Initiatives: Prioritizes the health of local residents and workers by implementing air quality monitoring, pollution reduction measures, and other initiatives that safeguard public health.</li></p>" + 
+"<p><li>Educational and Workforce Development: Raises awareness about its operations and offers training programs, empowering the local workforce and strengthening community ties.</li></p>" + 
+"</ul>",
 destination: Cesium.Cartesian3.fromDegrees(-118.234, 33.705, 3800), // Adjusted coordinates for the desired view
 orientation: {
   heading: Cesium.Math.toRadians(0), // Zero for north
@@ -224,11 +224,11 @@ orientation: {
             title: "14: Solutions",
             content: "<p></p>" + "<p>The Port of Long Beach is making great strides in its environmental efforts and initiatives, bolstered by legislation, private and public funding, and its many partnerships. The public also plays a pivotal role in this progress. Community members and those in the general public can effectively contribute in the following ways:</p>" + 
 "<ul>" + 
-"<p><li>Community Meetings and Workshops: Engage in Port-related discussions, providing valuable input on projects and initiatives.</p></li>" + 
-"<p><li>Engagement with Environmental Programs: Actively participate in clean-up efforts and educational activities organized by the Port.</p></li>" + 
-"<p><li>Sustainable Lifestyle Choices: Embrace eco-friendly daily practices to minimize personal environmental impact.</p></li>" + 
-"<p><li>Policy Advocacy: Advocate for clean air and water initiatives, reaching out to local, state and federal officials to express environmental concerns.</p></li>" + 
-"<p><li>Education and Outreach: Stay informed about environmental issues and help spread awareness.</p></li>" + 
+"<p><li>Community Meetings and Workshops: Engage in discussions related to Port projects and initiatives, sharing valuable insights and feedback.</p></li>" + 
+"<p><li>Engagement with Environmental Programs: Actively participate in clean-up efforts and educational activities organized by the Port, contributing to environmental preservation.</p></li>" + 
+"<p><li>Sustainable Lifestyle Choices: Embrace environmentally conscious daily practices to reduce personal environmental impact, such as energy conservation and recycling.</p></li>" + 
+"<p><li>Policy Advocacy: Advocate for clean air and water initiatives by reaching out to local, state, and federal officials, expressing concerns and supporting positive environmental policies.</p></li>" + 
+"<p><li>Education and Outreach: Stay informed about environmental issues and actively spread awareness, encouraging others to adopt.</p></li>" + 
 "</ul>", 
 destination: Cesium.Cartesian3.fromDegrees(-118.225, 33.650, 8000), // Coordinates over the Port of Long Beach
 orientation: {
@@ -239,7 +239,7 @@ orientation: {
         },
              {
             title: "15: References",
-            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:80%;max-width:900px;'>",
+            content:"<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/References.jpg' alt='References' style='width:90%;max-width:800px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.3010, 33.7600, 12500),
           orientation: {
           heading : Cesium.Math.toRadians(45.0), // East, in radians
@@ -249,7 +249,7 @@ orientation: {
         },
              {
             title: "16: Thank You",
-            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:80%;max-width:900px;'>",
+            content: "<img src='https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Thanks.jpg' alt='Thank You' style='width:90%;max-width:800px;'>",
             destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, 5500),
           orientation: {
           heading : Cesium.Math.toRadians(0.0), // East, in radians
@@ -257,7 +257,9 @@ orientation: {
           roll : 0.0 // No roll
           }
         },
-  ];
+            
+];
+
 
 // Section 3
 
