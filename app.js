@@ -309,6 +309,8 @@ function updateScene() {
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
 
+   updateAirQualityData(currentSceneIndex);
+
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
