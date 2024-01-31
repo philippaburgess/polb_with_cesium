@@ -302,7 +302,8 @@ function updateAirQualityData() {
         
         if (!heatmapImageryProvider) {
               console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
-            contr heatmapImageryProvider = url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/16/3/7?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
             });
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
       }
