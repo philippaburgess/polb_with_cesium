@@ -257,13 +257,10 @@ orientation: {
           roll : 0.0 // No roll
           }
         },
-            
-];
+  ];
 
 // Section 3
 
-    
-    ---
     
 var longBeachDataLayer;
 var heatmapImageryProvider;
