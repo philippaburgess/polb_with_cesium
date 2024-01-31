@@ -3,6 +3,7 @@
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
+    var isAirQualityVisible = false;
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
     Cesium.ArcGisMapService.defaultAccessToken = apiKey;
@@ -26,7 +27,7 @@
     terrainProvider: Cesium.createWorldTerrain({
             requestWaterMask: true, // required for bathymetric effects
             requestVertexNormals: true // for terrain lighting
-    })
+    })        
 });
 
       // Section 2: Scene and Location Setup
@@ -277,7 +278,14 @@ orientation: {
 // Global variable to store the heatmap imagery provider
 var heatmapImageryProvider;
 
-// Your API key should be secured
+    function toggleAirQualityLayer() {
+    isAirQualityVisible = !isAirQualityVisible;
+    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
+    updateAirQualityData(currentSceneIndex);
+}
+
+// API key should be secured
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
 const airQualityMapType = 'US_AQI';
 
@@ -319,6 +327,13 @@ function updateScene() {
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
+    var toggleButton = document.getElementById('toggleAirQuality'); // Ensure this button exists in your HTML
+
+     if (currentSceneIndex === 7) { // If the current scene is 8 (index starts from 0)
+        toggleButton.style.display = 'block'; // Show the button
+    } else {
+        toggleButton.style.display = 'none'; // Hide the button
+    }
 
    updateAirQualityData(currentSceneIndex);
 
@@ -494,6 +509,8 @@ window.closeScene = function() {
     
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
+
+document.getElementById('toggleAirQuality').addEventListener('click', toggleAirQualityLayer);
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
@@ -530,4 +547,5 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
+
  })();
