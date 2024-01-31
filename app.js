@@ -261,31 +261,10 @@ orientation: {
 ];
 
 // Section 3
-function updateAirQualityData() {
-        const airQualitySceneIndex = 7;
-        const apiKey = 'AIzaSyABlTdp_-HP8iW2sH-Z_EgnXKrjIj-tkCk'; // Your API key
-        const type = 'US_AQI'; // The type of heatmap to return
-        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${type}/heatmapTiles/{z}/{x}/{y}?key=${apiKey}`;
 
-if (currentSceneIndex === airQualitySceneIndex) {
-        if (!heatmapImageryProvider) {
-            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: heatmapUrlTemplate
-            });
-        }
-        if (!viewer.imageryLayers.contains(heatmapImageryProvider)) {
-            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        }
-    } else {
-        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-            viewer.imageryLayers.remove(heatmapImageryProvider);
-            heatmapImageryProvider = null; // Clear the reference
-        }
-    }
-
-
-    ---------
-
+    
+    ---
+    
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
@@ -294,7 +273,7 @@ const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
 function updateAirQualityData() {
   try {
-    const airQualitySceneIndex = 4; // Index for Scene 8
+    const airQualitySceneIndex = 7; // Index for Scene 8
     console.log('Current scene index:', currentSceneIndex);
    
     if (currentSceneIndex === airQualitySceneIndex) {
@@ -303,7 +282,7 @@ function updateAirQualityData() {
         if (!heatmapImageryProvider) {
               console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
+                url: 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
             });
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
       }
