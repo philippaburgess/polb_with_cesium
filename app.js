@@ -23,11 +23,7 @@
     sceneModePicker: false, // Don't show the scene mode picker
     selectionIndicator: false, // Don't show the selection indicator
     timeline: false, // Don't show the timeline
-    navigationHelpButton: false, // Don't show the navigation help button
-    terrainProvider: Cesium.createWorldTerrain({
-            requestWaterMask: true, // required for bathymetric effects
-            requestVertexNormals: true // for terrain lighting
-    })        
+    navigationHelpButton: false, // Don't show the navigation help button  
 });
 
       // Section 2: Scene and Location Setup
