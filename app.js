@@ -285,7 +285,7 @@ const airQualityMapType = 'US_AQI'; // The type of heatmap to return
     updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
 }
 
-function updateAirQualityData() {
+function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is being passed
     const airQualitySceneIndex = 7; // Scene 8 (index 7)
     try {
         // Add or remove the heatmap layer based on current scene and visibility state
@@ -306,7 +306,6 @@ function updateAirQualityData() {
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
-}
     
 function updateScene() {
     var scene = scenes[currentSceneIndex];
@@ -322,11 +321,13 @@ function updateScene() {
      // Show or hide the toggle button based on the current scene index
         var toggleButton = document.getElementById('toggleAirQuality');
         if (toggleButton) {
-           toggleButton.style.display = currentSceneIndex === airQualitySceneIndex ? 'block' : 'none';
+           if (currentSceneIndex === 7) { // Show button only on scene 8
+            toggleButton.style.display = 'block';
+            toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
+        } else {
+            toggleButton.style.display = 'none';
+        }
     }
-} else {
-    console.error("Scene title or content element not found!"); // Error log if elements are not found
-}
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -507,11 +508,12 @@ window.closeInstructions = function() {
         button.id = 'toggleAirQuality';
         button.textContent = 'Show Air Quality';
         button.className = 'toggle-button off'; // Initially off
+        button.style.display = 'none'; // Initially hidden
+      
         container.appendChild(button);
 
         button.addEventListener('click', function() {
             toggleAirQualityLayer(); // This will call your toggle function
         });
     }
-})
 })();
