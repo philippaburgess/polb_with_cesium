@@ -24,10 +24,6 @@
     selectionIndicator: false, // Don't show the selection indicator
     timeline: false, // Don't show the timeline
     navigationHelpButton: false, // Don't show the navigation help button 
-    terrainProvider: Cesium.createWorldTerrain({
-      requestWaterMask: true, // required for water effects
-      requestVertexNormals: true // for terrain lighting
-   })
 });
 
 // Add bathymetry imagery layer (replace with actual imagery provider and options)
