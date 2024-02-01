@@ -1,4 +1,4 @@
-// Section 1: API Keys and Viewer Initialization
+var viewer; // Declare viewer globally to ensure it's accessible
 
  function toggleAirQualityLayer() {
     isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
@@ -6,6 +6,8 @@
     toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
     updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
 }
+
+// Section 1: API Keys and Viewer Initialization
 
 (function() {
     var currentSceneIndex = 0;
