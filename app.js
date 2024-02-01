@@ -511,6 +511,8 @@ window.closeInstructions = function() {
     var container = document.getElementById('cesiumContainer');
     container.appendChild(button);
 
-     button.addEventListener('click', toggleAirQualityLayer);
+button.addEventListener('click', function() {
+    toggleAirQualityLayer(currentSceneIndex); // Pass currentSceneIndex if it's available here
+});
 
- })();
+})();
