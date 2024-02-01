@@ -41,7 +41,7 @@
        </div> <!-- Closing tag for instruction-box -->
 
     <!-- Scene Container for Displaying Scene Content -->
-<div id="scene-container" style="display: none;">
+<div id="scene-container">
   <div id="scene-content">
        <button onclick="window.closeScene()" class="close-btn">X</button>
       <!--Close button for scene-->
@@ -50,12 +50,12 @@
   </div>
   </div> <!-- Closing tag for scene-container -->
             
-<div id="infoBox" style="display:none; position:absolute; background:white; padding:10px; border:1px solid black; z-index:100;">
+<div id="infoBox">
  <button onclick="document.getElementById('infoBox').style.display='none'">X</button>
 </div>       
         
          <!-- Navigation Buttons (Previous and Next) -->
-   <div id="navigation-buttons" style="visibility: hidden;">
+   <div id="navigation-buttons">
         <button id="slide-back" onclick="previousScene()" style="display: none;">&lt; Previous</button>
         <button id="slide-forward" onclick="nextScene()">Next &gt;</button>
     </div> <!-- Closing tag for navigation-buttons -->
