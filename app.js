@@ -282,7 +282,7 @@ function updateAirQualityData(currentSceneIndex) {
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             // Add the heatmap layer if we are in or beyond Scene 8 and it is toggled on
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
