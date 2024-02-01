@@ -276,13 +276,21 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
+ function toggleAirQualityLayer() {
+    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
+    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
+    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
+}
+
+    
 function updateAirQualityData(currentSceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 (index 7)
     try {
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             // Add the heatmap layer if we are in or beyond Scene 8 and it is toggled on
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
@@ -360,15 +368,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  
-
-    function toggleAirQualityLayer() {
-    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
-    var toggleButton = document.getElementById('toggleAirQuality');
-    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
-    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
-}
-
-
     
 // Section 4 
 
