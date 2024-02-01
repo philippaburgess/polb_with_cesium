@@ -270,31 +270,31 @@ orientation: {
 // Section 3
 
 var longBeachDataLayer;
-var heatmapImageryProvider;
+var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
+var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-function updateAirQualityData() {
-  try {
-    const airQualitySceneIndex = 7; // Index for Scene 8
-    console.log('Current scene index:', currentSceneIndex);
-   
-    if (currentSceneIndex === airQualitySceneIndex) {
-         console.log('In Air Quality Scene'); // Log if in Air Quality scene
-        
-        if (!heatmapImageryProvider) {
-              console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
-            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                  url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-            });
-            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-      }
-    } else if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-        console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
-        viewer.imageryLayers.remove(heatmapImageryProvider);
-        heatmapImageryProvider = null; // Clear the reference
-    }
+function updateAirQualityData(currentSceneIndex) {
+    const airQualitySceneIndex = 7; // Scene 8 (index 7)
+    try {
+        if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
+            // Add the heatmap layer if we are in or beyond Scene 8 and it is toggled on
+            if (!heatmapImageryProvider) {
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+                heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                    url: heatmapUrlTemplate
+                });
+                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            }
+        } else {
+            // Remove the heatmap layer if we are not in the correct scene or it is toggled off
+            if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+                viewer.imageryLayers.remove(heatmapImageryProvider);
+                heatmapImageryProvider = null;
+            }
+        }
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
@@ -318,7 +318,7 @@ function updateScene() {
         } else {
             toggleButton.style.display = 'none';
         }
-       
+
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
@@ -360,6 +360,14 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  
+
+    function toggleAirQualityLayer() {
+    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
+    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
+    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
+}
+
 
     
 // Section 4 
@@ -495,19 +503,15 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
 
-    (function addToggleAirQualityButton() {
+(function addToggleAirQualityButton() {
     var button = document.createElement('button');
     button.id = 'toggleAirQuality';
     button.textContent = 'Toggle Air Quality';
     button.className = 'toggle-button off'; // Initially off
 
-    // Append the button to the Cesium container or a similar div
     var container = document.getElementById('cesiumContainer');
     container.appendChild(button);
 
-    // Event listener for the button
-    button.addEventListener('click', function() {
-        // We will fill this part later with the logic to toggle the heatmap
-        console.log('Toggle button clicked');
-    });
+     button.addEventListener('click', toggleAirQualityLayer);
+
  })();
