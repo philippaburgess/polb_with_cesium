@@ -23,8 +23,20 @@
     sceneModePicker: false, // Don't show the scene mode picker
     selectionIndicator: false, // Don't show the selection indicator
     timeline: false, // Don't show the timeline
-    navigationHelpButton: false, // Don't show the navigation help button  
+    navigationHelpButton: false, // Don't show the navigation help button 
+    terrainProvider: Cesium.createWorldTerrain({
+      requestWaterMask: true, // required for water effects
+      requestVertexNormals: true // for terrain lighting
+   })
 });
+
+// Add bathymetry imagery layer (replace with actual imagery provider and options)
+var bathymetryLayer = viewer.imageryLayers.addImageryProvider(
+    new Cesium.ArcGisMapServerImageryProvider({
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer'
+        // Additional options can be placed here
+    })
+);
 
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
