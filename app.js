@@ -398,6 +398,11 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
+
+   } else {
+        console.error("Scene title or content element not found!");  // Error log if elements are not found
+    }
+}  
     
 // Section 4 
 
@@ -535,5 +540,4 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
-
  })();
