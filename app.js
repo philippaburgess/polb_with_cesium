@@ -503,11 +503,8 @@ window.closeScene = function() {
 
 // Section 6 
 
-    
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
-
-document.getElementById('toggleAirQuality').addEventListener('click', toggleAirQualityLayer);
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
