@@ -514,5 +514,5 @@ window.closeInstructions = function() {
 button.addEventListener('click', function() {
     toggleAirQualityLayer(currentSceneIndex); // Pass currentSceneIndex if it's available here
 });
-}
+})
 })();
