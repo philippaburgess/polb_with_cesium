@@ -272,87 +272,45 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
-    function toggleAirQualityLayer() {
-    isAirQualityVisible = !isAirQualityVisible;
-    var toggleButton = document.getElementById('toggleAirQuality');
-    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
-    updateAirQualityData(currentSceneIndex);
-}
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-// API key should be secured
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
-const airQualityMapType = 'US_AQI';
 
-function updateAirQualityData(currentSceneIndex) {
-    const airQualitySceneIndex = 7; // Scene 8 (index 7)
-    try {
-        if (currentSceneIndex === airQualitySceneIndex) {
-            // If we are in the Air Quality scene (Scene 8)
-            if (!heatmapImageryProvider) {
-                // Create the heatmap layer if it doesn't exist
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
-
-                heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                    url: heatmapUrlTemplate
-                });
-
-                // Add the heatmap layer to the viewer
-                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-            }
-        } else {
-            // If we are not in Scene 8, remove the heatmap layer
-            if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-                viewer.imageryLayers.remove(heatmapImageryProvider);
-                heatmapImageryProvider = null; // Clear the reference to the provider
-            }
-        }
+function updateAirQualityData() {
+  try {
+    const airQualitySceneIndex = 7; // Index for Scene 8
+    console.log('Current scene index:', currentSceneIndex);
+   
+    if (currentSceneIndex === airQualitySceneIndex) {
+         console.log('In Air Quality Scene'); // Log if in Air Quality scene
+        
+        if (!heatmapImageryProvider) {
+              console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+                  url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+            });
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+      }
+    } else if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+        console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
+        viewer.imageryLayers.remove(heatmapImageryProvider);
+        heatmapImageryProvider = null; // Clear the reference
+    }
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
 }
-
+    
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
-    var toggleButton = document.getElementById('toggleAirQuality'); // Ensure this button exists in your HTML
-
-     if (currentSceneIndex === 7) { // If the current scene is 8 (index starts from 0)
-        toggleButton.style.display = 'block'; // Show the button
-    } else {
-        toggleButton.style.display = 'none'; // Hide the button
-    }
-
-   updateAirQualityData(currentSceneIndex);
 
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
-
-          if (currentSceneIndex === 5) {  // Assuming Scene 6 has an index of 5 since indexing starts at 0
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2,  // Duration of the camera flight in seconds
-            complete: function () {
-                // After the first animation completes, fly to the underwater view
-                viewer.camera.flyTo({
-                    destination: scene.underwaterDestination,
-                    orientation: scene.underwaterOrientation,
-                    duration: 2  // Duration of the camera flight in seconds
-                });
-            }
-        });
-    } else {
-        // Existing camera flyTo call for other scenes
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2  // Duration of the camera flight in seconds
-        });
-    }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -379,8 +337,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error(error);
                 });
             }     
-
-    
         } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
@@ -393,12 +349,13 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-
    } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  
-    
+
+        
+
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -457,7 +414,6 @@ function showSceneContainer() {
         sceneContainer.style.display = 'block';
     }
 }
-
     
 // Section 5
 
@@ -492,8 +448,10 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 };
 
+
 // Section 6 
 
+    
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
     
