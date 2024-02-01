@@ -278,9 +278,12 @@ footer {
 header h1, header p, footer p {
 max-width: 100%; / Allows some margin on smaller screens */
 }
+
 body {
         font-size: larger; /* Increase text size */
-    
+}    
+
  .my-slider {
         padding: 20px; /* Add padding around the sliders */
     }
+}
