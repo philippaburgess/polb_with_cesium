@@ -311,6 +311,14 @@ function updateScene() {
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
+     // Show or hide the toggle button based on the current scene index
+        var toggleButton = document.getElementById('toggleAirQuality');
+        if (currentSceneIndex >= 7) { // Scene 8 and beyond
+            toggleButton.style.display = 'block';
+        } else {
+            toggleButton.style.display = 'none';
+        }
+       
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
