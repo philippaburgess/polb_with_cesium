@@ -321,12 +321,12 @@ function updateScene() {
 
      // Show or hide the toggle button based on the current scene index
         var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.style.display = currentSceneIndex === airQualitySceneIndex ? 'block' : 'none';
+        if (toggleButton) {
+           toggleButton.style.display = currentSceneIndex === airQualitySceneIndex ? 'block' : 'none';
     }
-        } else {
-            toggleButton.style.display = 'none';
-        }
+} else {
+    console.error("Scene title or content element not found!"); // Error log if elements are not found
+}
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
