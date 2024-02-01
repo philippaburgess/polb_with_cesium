@@ -1,5 +1,3 @@
-var viewer; // Declare viewer globally to ensure it's accessible
-
  function toggleAirQualityLayer() {
     isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
     var toggleButton = document.getElementById('toggleAirQuality');
