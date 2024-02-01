@@ -515,5 +515,5 @@ var container = document.getElementById('cesiumContainer');
         button.addEventListener('click', function() {
             toggleAirQualityLayer(); // No need to pass currentSceneIndex as it's a global variable
         });
-})
+}
 })();
