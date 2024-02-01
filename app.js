@@ -486,4 +486,20 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
+
+    (function addToggleAirQualityButton() {
+    var button = document.createElement('button');
+    button.id = 'toggleAirQuality';
+    button.textContent = 'Toggle Air Quality';
+    button.className = 'toggle-button off'; // Initially off
+
+    // Append the button to the Cesium container or a similar div
+    var container = document.getElementById('cesiumContainer');
+    container.appendChild(button);
+
+    // Event listener for the button
+    button.addEventListener('click', function() {
+        // We will fill this part later with the logic to toggle the heatmap
+        console.log('Toggle button clicked');
+    });
  })();
