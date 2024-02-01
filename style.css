@@ -148,7 +148,7 @@ content: ' >';
 
 #scene-container {
     position: absolute;
-    top: 10px /* Adjust as needed for your design */
+    top: 10px; /* Adjust as needed for your design */
     left: 10px; /* Adjust as needed for your design */
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 5px;
