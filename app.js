@@ -1,9 +1,3 @@
- function toggleAirQualityLayer() {
-    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
-    var toggleButton = document.getElementById('toggleAirQuality');
-    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
-    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
-}
 
 // Section 1: API Keys and Viewer Initialization
 
@@ -283,12 +277,19 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
-    
-function updateAirQualityData(currentSceneIndex) {
+
+ function toggleAirQualityLayer() {
+    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
+    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
+    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
+}
+
+function updateAirQualityData() {
     const airQualitySceneIndex = 7; // Scene 8 (index 7)
     try {
+        // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
-            // Add the heatmap layer if we are in or beyond Scene 8 and it is toggled on
             if (!heatmapImageryProvider) {
                 const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -297,7 +298,6 @@ function updateAirQualityData(currentSceneIndex) {
                 viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
             }
         } else {
-            // Remove the heatmap layer if we are not in the correct scene or it is toggled off
             if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
                 viewer.imageryLayers.remove(heatmapImageryProvider);
                 heatmapImageryProvider = null;
@@ -490,32 +490,28 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
-    // Define the function to move to the next slide
 
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
-    // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
 
 (function addToggleAirQualityButton() {
-var container = document.getElementById('cesiumContainer');
+ var container = document.getElementById('cesiumContainer');
     var buttonExists = document.getElementById('toggleAirQuality');
 
     if (!buttonExists) {
         var button = document.createElement('button');
         button.id = 'toggleAirQuality';
-        button.textContent = 'Toggle Air Quality';
+        button.textContent = 'Show Air Quality';
         button.className = 'toggle-button off'; // Initially off
-        button.style.display = 'none'; // Initially hidden
-
         container.appendChild(button);
 
         button.addEventListener('click', function() {
-            toggleAirQualityLayer(); // No need to pass currentSceneIndex as it's a global variable
+            toggleAirQualityLayer(); // This will call your toggle function
         });
-}
+    }
 })
 })();
