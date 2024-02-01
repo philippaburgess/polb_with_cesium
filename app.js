@@ -307,7 +307,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
-    
+}
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
@@ -368,7 +368,7 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             duration: 2  // Duration of the camera flight in seconds
         });
 }
-
+}
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -510,7 +510,7 @@ window.closeInstructions = function() {
         button.textContent = 'Show Air Quality';
         button.className = 'toggle-button off'; // Initially off
         button.style.display = 'none'; // Initially hidden
-      
+    
         container.appendChild(button);
 
         button.addEventListener('click', function() {
