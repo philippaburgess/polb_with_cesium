@@ -3,7 +3,6 @@
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
     var slides;
-    var isAirQualityVisible = false;
     
     const apiKey = "AAPK0dc01961f9f84d51999214b2d7ca7ff6x6uGDqE0RJUvSzovTBuHrsjDNrutFT4xmERUGjjwJyxRD20vlXQvtIEPtAzSAOb7";
     Cesium.ArcGisMapService.defaultAccessToken = apiKey;
@@ -25,15 +24,7 @@
     timeline: false, // Don't show the timeline
     navigationHelpButton: false, // Don't show the navigation help button 
 });
-
-// Add bathymetry imagery layer (replace with actual imagery provider and options)
-var bathymetryLayer = viewer.imageryLayers.addImageryProvider(
-    new Cesium.ArcGisMapServerImageryProvider({
-        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer'
-        // Additional options can be placed here
-    })
-);
-
+    
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
 
