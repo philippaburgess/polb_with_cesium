@@ -168,6 +168,15 @@ content: ' >';
   font-size: 0.9em; /* Adjust the font size for list items as needed */
 }
 
+#infoBox {
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 10px;
+    border: 1px solid black;
+    z-index: 100;
+}
+
 .close-btn {
   position: absolute;
   top: 5px;
@@ -210,6 +219,14 @@ hover */
 
 #scene-content button:hover {
     background-color: #cca300; /* Darker yellow on hover */
+}
+
+#navigation-buttons {
+    visibility: hidden;
+}
+
+#slide-back {
+    display: none;
 }
 
 #toggleAirQuality {
