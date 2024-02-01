@@ -321,8 +321,9 @@ function updateScene() {
 
      // Show or hide the toggle button based on the current scene index
         var toggleButton = document.getElementById('toggleAirQuality');
-        if (currentSceneIndex >= 7) { // Scene 8 and beyond
-            toggleButton.style.display = 'block';
+    if (toggleButton) {
+        toggleButton.style.display = currentSceneIndex === airQualitySceneIndex ? 'block' : 'none';
+    }
         } else {
             toggleButton.style.display = 'none';
         }
@@ -503,16 +504,20 @@ window.closeInstructions = function() {
       };
 
 (function addToggleAirQualityButton() {
-    var button = document.createElement('button');
-    button.id = 'toggleAirQuality';
-    button.textContent = 'Toggle Air Quality';
-    button.className = 'toggle-button off'; // Initially off
+var container = document.getElementById('cesiumContainer');
+    var buttonExists = document.getElementById('toggleAirQuality');
 
-    var container = document.getElementById('cesiumContainer');
-    container.appendChild(button);
+    if (!buttonExists) {
+        var button = document.createElement('button');
+        button.id = 'toggleAirQuality';
+        button.textContent = 'Toggle Air Quality';
+        button.className = 'toggle-button off'; // Initially off
+        button.style.display = 'none'; // Initially hidden
 
-button.addEventListener('click', function() {
-    toggleAirQualityLayer(currentSceneIndex); // Pass currentSceneIndex if it's available here
-});
+        container.appendChild(button);
+
+        button.addEventListener('click', function() {
+            toggleAirQualityLayer(); // No need to pass currentSceneIndex as it's a global variable
+        });
 })
 })();
