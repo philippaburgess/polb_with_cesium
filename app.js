@@ -275,7 +275,6 @@ var heatmapImageryProvider;
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-
 function updateAirQualityData() {
   try {
     const airQualitySceneIndex = 7; // Index for Scene 8
@@ -354,8 +353,7 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
     }
 }  
 
-        
-
+    
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -414,7 +412,6 @@ function showSceneContainer() {
         sceneContainer.style.display = 'block';
     }
 }
-    
 // Section 5
 
     function onFlyoverComplete() {
@@ -447,7 +444,6 @@ window.closeScene = function() {
     }
     // Optional: Add logic to navigate back to the main view or do nothing
 };
-
 
 // Section 6 
 
