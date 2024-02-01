@@ -1,4 +1,12 @@
 // Section 1: API Keys and Viewer Initialization
+
+ function toggleAirQualityLayer() {
+    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
+    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
+    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
+}
+
 (function() {
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
@@ -275,14 +283,6 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
-
- function toggleAirQualityLayer() {
-    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
-    var toggleButton = document.getElementById('toggleAirQuality');
-    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
-    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
-}
-
     
 function updateAirQualityData(currentSceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 (index 7)
