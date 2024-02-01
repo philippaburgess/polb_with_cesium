@@ -295,7 +295,7 @@ function updateAirQualityData(currentSceneIndex) {
             // If we are in the Air Quality scene (Scene 8)
             if (!heatmapImageryProvider) {
                 // Create the heatmap layer if it doesn't exist
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
 
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
