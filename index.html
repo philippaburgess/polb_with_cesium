@@ -49,13 +49,14 @@
     <p id="scene-description">Scene description...</p>
   </div>
   </div> <!-- Closing tag for scene-container -->
-
+            
 <div id="infoBox"></div>
  <button onclick="document.getElementById('infoBox').style.display='none'">X</button>
-</div>            
-<div id="navigation-buttons">
-    <button id="slide-back" onclick="previousScene()">&lt; Previous</button>
-</div>
+</div>       
+        
+         <!-- Navigation Buttons (Previous and Next) -->
+   <div id="navigation-buttons" style="visibility: hidden;">
+        <button id="slide-back" onclick="previousScene()" style="display: none;">&lt; Previous</button>
         <button id="slide-forward" onclick="nextScene()">Next &gt;</button>
     </div> <!-- Closing tag for navigation-buttons -->
         </div>
