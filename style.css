@@ -26,6 +26,34 @@ header h1, header p, footer p {
   height: calc(100vh - 120px); /* Adjust based on header/footer height */
 }
 
+
+.toggle-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    z-index: 10; /* Ensure it's above other Cesium elements */
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.toggle-button.off {
+    background-color: #ccc; /* Grey color */
+    color: black;
+}
+
+.toggle-button.on {
+    background-color: #007bff; /* Bootstrap primary blue color */
+    color: white;
+}
+
+.toggle-button:hover {
+    opacity: 0.9;
+}
+
 main {
   flex: 1; /* Grow to use available space */
   position: relative; /* Positioned relative to its normal position */
