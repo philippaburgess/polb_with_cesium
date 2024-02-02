@@ -517,4 +517,5 @@ window.closeInstructions = function() {
             toggleAirQualityLayer(); // This will call your toggle function
         });
     }
+})
 })(); 
