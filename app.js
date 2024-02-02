@@ -287,7 +287,7 @@ const airQualityMapType = `US_AQI`; // The type of heatmap to return
 }
 
 function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is being passed
-    const airQualitySceneIndex = 7; // Scene 8 (index 7)
+    const airQualitySceneIndex === 7; // Scene 8 (index 7)
     try {
         // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
@@ -521,6 +521,3 @@ window.closeInstructions = function() {
     }
 })
 })(); 
-
-window.addEventListener('load', function() {
-};
