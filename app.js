@@ -477,22 +477,24 @@ window.addEventListener('load', function() {
         }
     });
 // Define next slide function
+window.slides = [];
+
 window.nextSlide = function() {
-   console.log('Current Slide Index:', currentSlideIndex);
-   console.log('Slides Length:', slides.length);
+    console.log('Current Slide Index:', currentSlideIndex);
+    console.log('Slides Length:', window.slides.length);
     
-   if (currentSlideIndex < scenes.length - 1) {
-        slides[currentSlideIndex].classList.remove('active');
-   }
-        currentSlideIndex++;
+    if (currentSlideIndex < scenes.length - 1) {
+        window.slides[currentSlideIndex].classList.remove('active');
+    }
+    currentSlideIndex++;
 
-    if(slides[currentSlideIndex]) {
-        slides[currentSlideIndex].classList.add('active');
-   } else {
-            console.error('No slide exists at index:', currentSlideIndex);
-        }
+    if(window.slides[currentSlideIndex]) {
+        window.slides[currentSlideIndex].classList.add('active');
+    } else {
+        console.error('No slide exists at index:', currentSlideIndex);
+    }
 };
-
+    
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
@@ -519,3 +521,7 @@ window.closeInstructions = function() {
     }
 })
 })(); 
+
+            window.addEventListener('load', function() {
+            window.slides = document.querySelectorAll('.slide');
+        });
