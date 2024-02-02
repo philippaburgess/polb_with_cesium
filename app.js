@@ -147,7 +147,7 @@ orientation: {
           }
         },
               {
-            title: "8: Air Quality - Test 5",
+            title: "8: Air Quality",
             content: "<p></p>" + "<p>Historically, the Port of Long Beach faced significant challenges with air pollution, impacting public health and the environment. In response, the Clean Air Action Plan (CAAP) was introduced, focusing on comprehensive measures to improve air quality in the South Coast Air Basin. Developed collaboratively by the South Coast Air Quality Management District (SCAQMD), local governments, businesses, and environmental groups, CAAP has played a crucial role in mitigating health risks associated with air pollution.</p>" +
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62% </p>", 
@@ -278,6 +278,11 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
+        const northLat = 33.75;
+        const southLat = 33.70;
+        const westLon = -118.25;
+        const eastLon = -118.20;
+
  function toggleAirQualityLayer() {
     console.log("Toggling air quality layer"); 
     isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
@@ -292,7 +297,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
         // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}'
+                const heatmapUrlTemplate = const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
