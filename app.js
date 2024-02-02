@@ -275,8 +275,8 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+const airQualityApiKey = `AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`; // Replace with your actual API key
+const airQualityMapType = `US_AQI`; // The type of heatmap to return
 
  function toggleAirQualityLayer() {
     console.log("Toggling air quality layer"); 
@@ -292,7 +292,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
         // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}';
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
@@ -522,6 +522,5 @@ window.closeInstructions = function() {
 })
 })(); 
 
-            window.addEventListener('load', function() {
-            window.slides = document.querySelectorAll('.slide');
-        });
+window.addEventListener('load', function() {
+};
