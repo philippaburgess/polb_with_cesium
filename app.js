@@ -304,6 +304,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
                 heatmapImageryProvider = null;
             }
         }
+    }
     } catch (error) {
         console.error('Error updating air quality data:', error);
     }
