@@ -516,4 +516,5 @@ window.closeInstructions = function() {
         button.addEventListener('click', function() {
             toggleAirQualityLayer(); // This will call your toggle function
         });
+    }
 })(); 
