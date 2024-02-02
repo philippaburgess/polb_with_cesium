@@ -292,7 +292,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
         // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`
+                const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
