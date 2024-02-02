@@ -278,11 +278,6 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-        const northLat = 33.75;
-        const southLat = 33.70;
-        const westLon = -118.25;
-        const eastLon = -118.20;
-
  function toggleAirQualityLayer() {
     console.log("Toggling air quality layer"); 
     isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
