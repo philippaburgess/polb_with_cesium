@@ -307,7 +307,6 @@ function updateAirQualityData(currentSceneIndex) {
         }
     }
 }
-    updateAirQualityData(currentSceneIndex);
     
     function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
@@ -342,6 +341,8 @@ function updateScene() {
             toggleButton.style.display = 'none';
         }
     }
+
+           updateAirQualityData(currentSceneIndex);
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
