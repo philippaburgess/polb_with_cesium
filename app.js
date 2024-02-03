@@ -1,4 +1,3 @@
-
 // Section 1: API Keys and Viewer Initialization
 
 (function() {
@@ -147,7 +146,7 @@ orientation: {
           }
         },
               {
-            title: "8: Air Quality",
+            title: "8: Air Quality - Test 5",
             content: "<p></p>" + "<p>Historically, the Port of Long Beach faced significant challenges with air pollution, impacting public health and the environment. In response, the Clean Air Action Plan (CAAP) was introduced, focusing on comprehensive measures to improve air quality in the South Coast Air Basin. Developed collaboratively by the South Coast Air Quality Management District (SCAQMD), local governments, businesses, and environmental groups, CAAP has played a crucial role in mitigating health risks associated with air pollution.</p>" +
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62% </p>", 
@@ -275,8 +274,8 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
-const airQualityApiKey = `AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`; // Replace with your actual API key
-const airQualityMapType = `US_AQI`; // The type of heatmap to return
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
  function toggleAirQualityLayer() {
     console.log("Toggling air quality layer"); 
@@ -292,7 +291,7 @@ function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is b
         // Add or remove the heatmap layer based on current scene and visibility state
         if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
             if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+                const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`;
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
@@ -477,24 +476,22 @@ window.addEventListener('load', function() {
         }
     });
 // Define next slide function
-window.slides = [];
-
 window.nextSlide = function() {
-    console.log('Current Slide Index:', currentSlideIndex);
-    console.log('Slides Length:', window.slides.length);
+   console.log('Current Slide Index:', currentSlideIndex);
+   console.log('Slides Length:', slides.length);
     
-    if (currentSlideIndex < scenes.length - 1) {
-        window.slides[currentSlideIndex].classList.remove('active');
-    }
-    currentSlideIndex++;
+   if (currentSlideIndex < scenes.length - 1) {
+        slides[currentSlideIndex].classList.remove('active');
+   }
+        currentSlideIndex++;
 
-    if(window.slides[currentSlideIndex]) {
-        window.slides[currentSlideIndex].classList.add('active');
-    } else {
-        console.error('No slide exists at index:', currentSlideIndex);
-    }
+    if(slides[currentSlideIndex]) {
+        slides[currentSlideIndex].classList.add('active');
+   } else {
+            console.error('No slide exists at index:', currentSlideIndex);
+        }
 };
-    
+
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
@@ -502,7 +499,7 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
 
-addToggleAirQualityButton() {
+(function addToggleAirQualityButton() {
  var container = document.getElementById('cesiumContainer');
     var buttonExists = document.getElementById('toggleAirQuality');
 
