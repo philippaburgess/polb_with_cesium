@@ -530,8 +530,6 @@ window.closeInstructions = function() {
     toggleAirQualityVisibility(); // Correct the function name
 
     addToggleAirQualityButton(); 
-        };
+        });
 });
-})
 })(); 
-
