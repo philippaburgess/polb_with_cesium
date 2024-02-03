@@ -276,7 +276,7 @@ var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
 function updateAirQualityData(currentSceneIndex) {
     // This checks if the current scene is the one where the air quality heatmap should be displayed.
-    if (currentSceneIndex === 7) { // Assuming scene index 7 corresponds to the air quality scene
+    if (currentSceneIndex === 4) { // Assuming scene index 7 corresponds to the air quality scene
         if (isAirQualityVisible) {
             // Only attempt to add the heatmap layer if it hasn't been added yet.
             if (!heatmapImageryProvider) {
