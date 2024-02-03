@@ -529,7 +529,6 @@ window.closeInstructions = function() {
         button.addEventListener('click', function() {
     toggleAirQualityVisibility(); // Correct the function name
 });
-    }
 })
 })(); 
 
