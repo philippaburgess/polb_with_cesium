@@ -531,6 +531,7 @@ window.closeInstructions = function() {
 
     addToggleAirQualityButton(); 
 });
+}
 })
 })(); 
 
