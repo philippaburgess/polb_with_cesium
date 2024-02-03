@@ -515,17 +515,16 @@ window.closeInstructions = function() {
       };
 
 (function addToggleAirQualityButton() {
- var container = document.getElementById('cesiumContainer');
-    var buttonExists = document.getElementById('toggleAirQuality');
-
-    if (!buttonExists) {
-        var button = document.createElement('button');
-        button.id = 'toggleAirQuality';
-        button.textContent = 'Show Air Quality';
-        button.className = 'toggle-button off'; // Initially off
-        button.style.display = 'none'; // Initially hidden
-    
-        container.appendChild(button);
+    var container = document.getElementById('cesiumContainer');
+    var button = document.createElement('button');
+    button.id = 'toggleAirQuality';
+    button.textContent = 'Show Air Quality';
+    button.className = 'toggle-button off'; // Initially off
+    button.style.display = 'block'; // Make it visible
+    button.onclick = function() {
+        toggleAirQualityVisibility();
+    };
+    container.appendChild(button);
 
         button.addEventListener('click', function() {
     toggleAirQualityVisibility(); // Correct the function name
