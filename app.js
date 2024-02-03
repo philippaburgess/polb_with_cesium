@@ -272,15 +272,14 @@ orientation: {
 
 var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
-var heatmapImageryProvider = null; // Reference to the heatmap layer provider
+var heatmapImageryProvider = true; // Reference to the heatmap layer provider
 
 function updateAirQualityData(currentSceneIndex) {
     // This checks if the current scene is the one where the air quality heatmap should be displayed.
-    if (currentSceneIndex === 4) { // Assuming scene index 7 corresponds to the air quality scene
+    if (currentSceneIndex === 7) { 
         if (isAirQualityVisible) {
             // Only attempt to add the heatmap layer if it hasn't been added yet.
             if (!heatmapImageryProvider) {
-                // Construct the URL template for the heatmap tiles.
                 const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/2/0/1?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg`;
                 
                 // Initialize the heatmap layer with the URL template.
