@@ -307,11 +307,17 @@ function updateAirQualityData(currentSceneIndex) {
         }
     }
 }
-
-// Example toggle function to change visibility state (call this based on some event, e.g., a button click)
-function toggleAirQualityVisibility() {
+    updateAirQualityData(currentSceneIndex);
+    
+    function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
-    updateAirQualityData(currentSceneIndex); // Ensure currentSceneIndex is updated accordingly elsewhere in your code
+    updateAirQualityData(currentSceneIndex); // Update the heatmap based on the new visibility state
+    // Additionally, update button text and appearance based on the new state
+    var toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.textContent = isAirQualityVisible ? 'Hide Air Quality' : 'Show Air Quality';
+        toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off';
+    }
 }
 
                
@@ -521,8 +527,8 @@ window.closeInstructions = function() {
         container.appendChild(button);
 
         button.addEventListener('click', function() {
-            toggleAirQualityLayer(); // This will call your toggle function
-        });
+    toggleAirQualityVisibility(); // Correct the function name
+});
     }
 })
 })(); 
