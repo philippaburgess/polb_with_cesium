@@ -502,7 +502,7 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
       };
 
-(function addToggleAirQualityButton() {
+addToggleAirQualityButton() {
  var container = document.getElementById('cesiumContainer');
     var buttonExists = document.getElementById('toggleAirQuality');
 
