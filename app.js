@@ -515,5 +515,4 @@ function addToggleAirQualityButton() {
 
     addToggleAirQualityButton(); 
         });
-});
 })(); 
