@@ -274,9 +274,6 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 
-const apiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // API key
-const type = 'US_AQI'; // The type of heatmap to return    
-
 function updateAirQualityData() {
     if (currentSceneIndex === 7) { // Scene 8 (index 7 because of 0-based indexing)
         if (isAirQualityVisible) {
