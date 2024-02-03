@@ -274,42 +274,36 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Reference to the heatmap layer provider
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
-
-        const northLat = 33.75;
-        const southLat = 33.70;
-        const westLon = -118.25;
-        const eastLon = -118.20;
-
- function toggleAirQualityLayer() {
-    console.log("Toggling air quality layer"); 
-    isAirQualityVisible = !isAirQualityVisible; // Toggle the visibility state
-    var toggleButton = document.getElementById('toggleAirQuality');
-    toggleButton.textContent = isAirQualityVisible ? "Hide Air Quality" : "Show Air Quality";
-    updateAirQualityData(currentSceneIndex); // Pass the current scene index to manage layer visibility
-}
-
-function updateAirQualityData(currentSceneIndex) { // Ensure this parameter is being passed
-    const airQualitySceneIndex = 7; // Scene 8 (index 7)
-    try {
-        // Add or remove the heatmap layer based on current scene and visibility state
-        if (currentSceneIndex >= airQualitySceneIndex && isAirQualityVisible) {
+function updateAirQualityData(currentSceneIndex) {
+    // This checks if the current scene is the one where the air quality heatmap should be displayed.
+    if (currentSceneIndex === 7) { // Assuming scene index 7 corresponds to the air quality scene
+        if (isAirQualityVisible) {
+            // Only attempt to add the heatmap layer if it hasn't been added yet.
             if (!heatmapImageryProvider) {
+                // Construct the URL template for the heatmap tiles.
                 const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+                
+                // Initialize the heatmap layer with the URL template.
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
                     url: heatmapUrlTemplate
                 });
+
+                // Add the heatmap layer to the Cesium viewer.
                 viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
             }
         } else {
+            // If the heatmap is currently visible but should be hidden, remove it.
             if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-                viewer.imageryLayers.remove(heatmapImageryProvider);
-                heatmapImageryProvider = null;
+                viewer.imageryLayers.remove(heatmapImageryProvider, true); // true for destroy to release resources
+                heatmapImageryProvider = null; // Reset the provider reference
             }
         }
-    } catch (error) {
-        console.error('Error updating air quality data:', error);
+    } else {
+        // Ensure that the heatmap layer is removed if we're navigating away from the air quality scene.
+        if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+            viewer.imageryLayers.remove(heatmapImageryProvider, true); // true for destroy
+            heatmapImageryProvider = null;
+        }
     }
 }
 function updateScene() {
