@@ -38,6 +38,7 @@ header h1, header p, footer p {
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s;
+    display: block; 
 }
 
 .toggle-button.off {
