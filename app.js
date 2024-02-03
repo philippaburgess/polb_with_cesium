@@ -274,6 +274,18 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 
+     function addToggleAirQualityButton() {
+        var container = document.getElementById('cesiumContainer');
+        if (!document.getElementById('toggleAirQuality')) { // Prevents adding the button more than once
+            var button = document.createElement('button');
+            button.id = 'toggleAirQuality';
+            button.textContent = 'Show Air Quality';
+            button.className = 'toggle-button off';
+            button.onclick = toggleAirQualityVisibility; // Correct event handler assignment
+            container.appendChild(button);
+        }
+    }
+
 function updateAirQualityData(currentSceneIndex) {
     // Check if we're in the Air Quality scene (Scene 8)
     if (currentSceneIndex === 7) {
@@ -318,6 +330,10 @@ function updateAirQualityData(currentSceneIndex) {
         toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off';
     }
 }
+
+    
+    function toggleAirQualityVisibility() {
+    }
 
                
 function updateScene() {
