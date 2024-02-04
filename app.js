@@ -274,36 +274,36 @@ var longBeachDataLayer;
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 
-function updateAirQualityData() {
-    if (currentSceneIndex === 7) { // Scene 8 (index 7 because of 0-based indexing)
-        if (isAirQualityVisible) {
+function updateAirQualityData(forceDisplay = false) {
+     var toggleButton = document.getElementById('toggleAirQuality'); 
+     
+    if (currentSceneIndex === 7 || forceDisplay) {  // Scene 8 (index 7 because of 0-based indexing)
             if (!heatmapImageryProvider) {
                 const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
                 heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({ url: heatmapUrlTemplate });
                 viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
             }
-        } else {
-            if (heatmapImageryProvider) {
-                viewer.imageryLayers.remove(heatmapImageryProvider, true);
-                heatmapImageryProvider = null;
-            }
+        
+ isAirQualityVisible = true; // Ensure the flag is set to true
+    } else {
+        if (heatmapImageryProvider) {
+            viewer.imageryLayers.remove(heatmapImageryProvider, true);
+            heatmapImageryProvider = null;
         }
-    } else if (heatmapImageryProvider) {
-        viewer.imageryLayers.remove(heatmapImageryProvider, true);
-        heatmapImageryProvider = null;
+        isAirQualityVisible = false; // Ensure the flag is set to false
     }
+        
+        if (toggleButton) {
+            toggleButton.textContent = 'Hide Air Quality';
+            toggleButton.className = 'toggle-button on';
+        }
 }
 
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
-    updateAirQualityData(); // No need to pass currentSceneIndex since it's a global variable
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.textContent = isAirQualityVisible ? 'Hide Air Quality' : 'Show Air Quality';
-        toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off';
-    }
+    updateAirQualityData(isAirQualityVisible); // Update based on the new visibility state
 }
-               
+       
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
@@ -319,6 +319,11 @@ function updateScene() {
         var toggleButton = document.getElementById('toggleAirQuality');
         if (toggleButton) {
            if (currentSceneIndex === 7) { // Show button only on scene 8
+                updateAirQualityData(true);
+    } else {
+        updateAirQualityData();
+    }
+}
             toggleButton.style.display = 'block';
             toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         } else {
@@ -490,6 +495,8 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
+        addToggleAirQualityButton();
+});
 
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
@@ -504,14 +511,13 @@ function addToggleAirQualityButton() {
         var button = document.createElement('button');
         button.id = 'toggleAirQuality';
         button.textContent = 'Show Air Quality';
-        button.className = 'toggle-button off';
-        button.addEventListener('click', function() {
-            toggleAirQualityVisibility(); // Make sure this function is already defined
-        });
+        button.className = 'toggle-button off'; // It starts off since we're adding it before Scene 8
+        button.addEventListener('click', toggleAirQualityVisibility);
         container.appendChild(button);
+    } else {
+        // If the button already exists, make sure it's visible
+        var toggleButton = document.getElementById('toggleAirQuality');
+        toggleButton.style.display = 'block';
     }
 }
-
-    
-    
 })(); 
