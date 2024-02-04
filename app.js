@@ -371,7 +371,8 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-     }
+    }
+}
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -519,5 +520,5 @@ function addToggleAirQualityButton() {
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
     }
-}
+});
 })(); 
