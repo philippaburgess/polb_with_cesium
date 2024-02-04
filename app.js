@@ -345,7 +345,7 @@ function updateScene() {
                                 entity.properties.propertyNames.forEach(function (propertyName) {
                                     var value = entity.properties[propertyName];
                                     description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-                                }
+                                }); 
                                 description += '</tbody></table>';
                                 entity.description = description; // InfoBox will use this
                             }
@@ -353,6 +353,8 @@ function updateScene() {
                     }
         } else {
             if (longBeachDataLayer) {
+            }
+        }
                 viewer.dataSources.remove(longBeachDataLayer);
                 longBeachDataLayer = null;
             }
