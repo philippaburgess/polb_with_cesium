@@ -309,6 +309,7 @@ function updateScene() {
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
+    var toggleButton = document.getElementById('toggleAirQuality');
 
     if (titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
@@ -316,18 +317,19 @@ function updateScene() {
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
         // Show or hide the toggle button based on the current scene index
-        var toggleButton = document.getElementById('toggleAirQuality');
+        
         if (toggleButton) {
             if (currentSceneIndex === 7) { // Show button only on scene 8
+                toggleButton.style.display = 'block';
                 updateAirQualityData(true);
             } else {
-                updateAirQualityData();
+                toggleButton.style.display = 'none';
+                updateAirQualityData(false);
             }
-            toggleButton.style.display = 'block';
             toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         }
     }
-}
+
         updateAirQualityData(currentSceneIndex);
 
         if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
@@ -352,15 +354,16 @@ function updateScene() {
                             }
                         }
                     })
+                .catch(function (error) {
+                    console.error(error);
+                });
         } else {
             if (longBeachDataLayer) {
-            }
-        }
                 viewer.dataSources.remove(longBeachDataLayer);
                 longBeachDataLayer = null;
             }
         }
-     })
+     }
 
         viewer.camera.flyTo({
             destination: scene.destination,
