@@ -316,21 +316,17 @@ function updateScene() {
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
      // Show or hide the toggle button based on the current scene index
-        var toggleButton = document.getElementById('toggleAirQuality');
-        if (toggleButton) {
-           if (currentSceneIndex === 7) { // Show button only on scene 8
-                updateAirQualityData(true);
+var toggleButton = document.getElementById('toggleAirQuality');
+if (toggleButton) {
+    if (currentSceneIndex === 7) { // Show button only on scene 8
+        updateAirQualityData(true);
     } else {
         updateAirQualityData();
     }
+    toggleButton.style.display = 'block';
+    toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
 }
-            toggleButton.style.display = 'block';
-            toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
-        } else {
-            toggleButton.style.display = 'none';
-        }
-    }
-
+        
            updateAirQualityData(currentSceneIndex);
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
@@ -518,5 +514,6 @@ function addToggleAirQualityButton() {
         // If the button already exists, make sure it's visible
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
+    }
 }
 })(); 
