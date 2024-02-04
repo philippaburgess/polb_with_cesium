@@ -364,13 +364,14 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                 longBeachDataLayer = null;
             }
         }
-   }
+   }); 
 
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
+}
 }
 // Section 4 
 
