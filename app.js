@@ -500,18 +500,17 @@ window.closeInstructions = function() {
 
 function addToggleAirQualityButton() {
     var container = document.getElementById('cesiumContainer');
-    if (!document.getElementById('toggleAirQuality')) { // Checks if the button already exists
+    if (!document.getElementById('toggleAirQuality')) {
         var button = document.createElement('button');
         button.id = 'toggleAirQuality';
         button.textContent = 'Show Air Quality';
-        button.className = 'toggle-button off'; // Initially set as "off"
-        button.onclick = toggleAirQualityVisibility; // Assign the event handler
-        container.appendChild(button); // Append the button to the container
+        button.className = 'toggle-button off';
+        button.addEventListener('click', function() {
+            toggleAirQualityVisibility(); // This function needs to be defined
+        });
+        container.appendChild(button);
     }
 }
-
-        button.addEventListener('click', function() {
-    toggleAirQualityVisibility(); // Correct the function name
 
     addToggleAirQualityButton(); 
         });
