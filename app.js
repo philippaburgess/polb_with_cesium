@@ -272,6 +272,7 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
+var addToggleAirQualityButton    
     
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
