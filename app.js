@@ -497,8 +497,6 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
-        addToggleAirQualityButton();
-
        
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
@@ -521,6 +519,8 @@ function addToggleAirQualityButton() {
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
     }
-};
+}
+         addToggleAirQualityButton();
+
 })(); 
 
