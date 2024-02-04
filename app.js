@@ -373,7 +373,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         });
      }
 }
-
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
