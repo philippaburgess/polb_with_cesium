@@ -357,6 +357,7 @@ function updateScene() {
                 .catch(function (error) {
                     console.error(error);
                 });
+            }
         } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
