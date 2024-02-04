@@ -371,7 +371,7 @@ function updateScene() {
             duration: 2  // Duration of the camera flight in seconds
         });
    } 
-})  
+})
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -480,7 +480,6 @@ window.addEventListener('load', function() {
         }
 
        addToggleAirQualityButton();
-});
 
 // Define next slide function
 window.nextSlide = function() {
