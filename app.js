@@ -370,9 +370,7 @@ function updateScene() {
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-   } else {
-        console.error("Scene title or content element not found!");  // Error log if elements are not found
-    }
+   } 
 }  
 // Section 4 
 
