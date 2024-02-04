@@ -269,16 +269,31 @@ orientation: {
 ];
 
 // Section 3
-
 var longBeachDataLayer;
-var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
-
+var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
+    
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
     updateAirQualityData(isAirQualityVisible); // Update based on the new visibility state
 }
-    
+
+function addToggleAirQualityButton() {
+    var container = document.getElementById('cesiumContainer');
+    if (!document.getElementById('toggleAirQuality')) {
+        var button = document.createElement('button');
+        button.id = 'toggleAirQuality';
+        button.textContent = 'Show Air Quality';
+        button.className = 'toggle-button off'; // It starts off since we're adding it before Scene 8
+        button.addEventListener('click', toggleAirQualityVisibility);
+        container.appendChild(button);
+    } else {
+        // If the button already exists, make sure it's visible
+        var toggleButton = document.getElementById('toggleAirQuality');
+        toggleButton.style.display = 'block';
+    }
+}
+
 function updateAirQualityData(forceDisplay = false) {
     var toggleButton = document.getElementById('toggleAirQuality');
 
@@ -303,22 +318,7 @@ function updateAirQualityData(forceDisplay = false) {
         toggleButton.className = 'toggle-button on';
     }
 }
-function addToggleAirQualityButton() {
-    var container = document.getElementById('cesiumContainer');
-    if (!document.getElementById('toggleAirQuality')) {
-        var button = document.createElement('button');
-        button.id = 'toggleAirQuality';
-        button.textContent = 'Show Air Quality';
-        button.className = 'toggle-button off'; // It starts off since we're adding it before Scene 8
-        button.addEventListener('click', toggleAirQualityVisibility);
-        container.appendChild(button);
-    } else {
-        // If the button already exists, make sure it's visible
-        var toggleButton = document.getElementById('toggleAirQuality');
-        toggleButton.style.display = 'block';
-    }
-}
-    
+
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
@@ -346,6 +346,7 @@ function updateScene() {
     }
 
         updateAirQualityData(currentSceneIndex);
+        addToggleAirQualityButton();
 
         if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
             if (!longBeachDataLayer) {
@@ -480,9 +481,7 @@ window.closeScene = function() {
 
 // Section 6 
 
-    
 window.addEventListener('load', function() {
-     addToggleAirQualityButton();
    slides = document.querySelectorAll('.slide');
     
     // Hide the navigation buttons initially
@@ -494,7 +493,7 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-
+});
       
 // Define next slide function
 window.nextSlide = function() {
@@ -518,7 +517,7 @@ window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-      };
+};
 
 })(); 
 
