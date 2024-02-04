@@ -297,7 +297,6 @@ function updateAirQualityData(forceDisplay = false) {
         toggleButton.textContent = 'Hide Air Quality';
         toggleButton.className = 'toggle-button on';
     }
-}
 
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
