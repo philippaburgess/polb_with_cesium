@@ -279,7 +279,7 @@ function updateAirQualityData(forceDisplay = false) {
 
     if (currentSceneIndex === 7 || forceDisplay) {  // Scene 8 (index 7 because of 0-based indexing)
         if (!heatmapImageryProvider) {
-            const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=YOUR_API_KEY';
+            const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
             heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({ url: heatmapUrlTemplate });
             viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
@@ -326,7 +326,7 @@ function updateScene() {
             toggleButton.style.display = 'block';
             toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         }
-
+    }
         updateAirQualityData(currentSceneIndex);
 
         if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
@@ -345,31 +345,26 @@ function updateScene() {
                                 entity.properties.propertyNames.forEach(function (propertyName) {
                                     var value = entity.properties[propertyName];
                                     description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-                                });
+                                }
                                 description += '</tbody></table>';
                                 entity.description = description; // InfoBox will use this
                             }
                         }
-                    }).catch(function (error) {
-                        console.error(error);
-                    });
-            }
+                    }
         } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
                 longBeachDataLayer = null;
             }
         }
+     }
 
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-    } else {
-        console.error("Scene title or content element not found!");  // Error log if elements are not found
-    }
-}
+ 
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
