@@ -275,16 +275,16 @@ var isAirQualityVisible = false; // Tracks visibility state of the Air Quality l
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 
 function updateAirQualityData(forceDisplay = false) {
-     var toggleButton = document.getElementById('toggleAirQuality'); 
-     
+    var toggleButton = document.getElementById('toggleAirQuality');
+
     if (currentSceneIndex === 7 || forceDisplay) {  // Scene 8 (index 7 because of 0-based indexing)
-            if (!heatmapImageryProvider) {
-                const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
-                heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({ url: heatmapUrlTemplate });
-                viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-            }
-        
- isAirQualityVisible = true; // Ensure the flag is set to true
+        if (!heatmapImageryProvider) {
+            const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=YOUR_API_KEY';
+            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({ url: heatmapUrlTemplate });
+            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        }
+
+        isAirQualityVisible = true; // Ensure the flag is set to true
     } else {
         if (heatmapImageryProvider) {
             viewer.imageryLayers.remove(heatmapImageryProvider, true);
@@ -292,70 +292,69 @@ function updateAirQualityData(forceDisplay = false) {
         }
         isAirQualityVisible = false; // Ensure the flag is set to false
     }
-        
-        if (toggleButton) {
-            toggleButton.textContent = 'Hide Air Quality';
-            toggleButton.className = 'toggle-button on';
-        }
+
+    if (toggleButton) {
+        toggleButton.textContent = 'Hide Air Quality';
+        toggleButton.className = 'toggle-button on';
+    }
 }
 
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
     updateAirQualityData(isAirQualityVisible); // Update based on the new visibility state
 }
-});     
-       
+
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
 
-   if(titleElement && contentElement && sceneContainer) {
+    if (titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
-     // Show or hide the toggle button based on the current scene index
-var toggleButton = document.getElementById('toggleAirQuality');
-if (toggleButton) {
-    if (currentSceneIndex === 7) { // Show button only on scene 8
-        updateAirQualityData(true);
-    } else {
-        updateAirQualityData();
-    }
-    toggleButton.style.display = 'block';
-    toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
-}
-        
-           updateAirQualityData(currentSceneIndex);
-
-if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
-        if (!longBeachDataLayer) {
-           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-            .then(function(dataSource) {
-                    viewer.dataSources.add(dataSource);
-                    longBeachDataLayer = dataSource;
-                    var entities = dataSource.entities.values;
-
-    for (var i = 0; i < entities.length; i++) {
-        var entity = entities[i];
-        if (entity.properties) {
-            // Create a description from the properties
-            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-            entity.properties.propertyNames.forEach(function(propertyName) {
-                var value = entity.properties[propertyName];
-                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-             });
-               description += '</tbody></table>';
-                entity.description = description; // InfoBox will use this
-             }
+        // Show or hide the toggle button based on the current scene index
+        var toggleButton = document.getElementById('toggleAirQuality');
+        if (toggleButton) {
+            if (currentSceneIndex === 7) { // Show button only on scene 8
+                updateAirQualityData(true);
+            } else {
+                updateAirQualityData();
+            }
+            toggleButton.style.display = 'block';
+            toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         }
-      }).catch(function(error) {
-        console.error(error);
-                });
-            }     
-   } else {
+
+        updateAirQualityData(currentSceneIndex);
+
+        if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
+            if (!longBeachDataLayer) {
+                Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+                    .then(function (dataSource) {
+                        viewer.dataSources.add(dataSource);
+                        longBeachDataLayer = dataSource;
+                        var entities = dataSource.entities.values;
+
+                        for (var i = 0; i < entities.length; i++) {
+                            var entity = entities[i];
+                            if (entity.properties) {
+                                // Create a description from the properties
+                                var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+                                entity.properties.propertyNames.forEach(function (propertyName) {
+                                    var value = entity.properties[propertyName];
+                                    description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+                                });
+                                description += '</tbody></table>';
+                                entity.description = description; // InfoBox will use this
+                            }
+                        }
+                    }).catch(function (error) {
+                        console.error(error);
+                    });
+            }
+        } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
                 longBeachDataLayer = null;
@@ -367,10 +366,10 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-   } else {
+    } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
-}  
+}
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -519,5 +518,5 @@ function addToggleAirQualityButton() {
         toggleButton.style.display = 'block';
     }
 }
-
 })(); 
+
