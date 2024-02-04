@@ -350,7 +350,7 @@ function updateScene() {
                                 entity.description = description; // InfoBox will use this
                             }
                         }
-                    }
+                    })
         } else {
             if (longBeachDataLayer) {
             }
