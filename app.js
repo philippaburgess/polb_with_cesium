@@ -492,8 +492,8 @@ window.nextSlide = function() {
         }
 };
         addToggleAirQualityButton();
-}
 
+       
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
