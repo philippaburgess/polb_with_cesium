@@ -492,7 +492,7 @@ window.nextSlide = function() {
         }
 };
         addToggleAirQualityButton();
-};
+}
 
  // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
