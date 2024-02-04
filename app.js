@@ -354,20 +354,22 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error(error);
                 });
             }     
-        } else {
+   } else {
             if (longBeachDataLayer) {
                 viewer.dataSources.remove(longBeachDataLayer);
                 longBeachDataLayer = null;
             }
         }
 
- if (scene.destination && scene.orientation) {
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
+   } else {
+        console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
+}  
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
