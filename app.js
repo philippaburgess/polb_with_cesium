@@ -519,6 +519,5 @@ function addToggleAirQualityButton() {
         // If the button already exists, make sure it's visible
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
-    }
 });
 })(); 
