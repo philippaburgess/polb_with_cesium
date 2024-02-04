@@ -303,6 +303,7 @@ function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
     updateAirQualityData(isAirQualityVisible); // Update based on the new visibility state
 }
+});     
        
 function updateScene() {
     var scene = scenes[currentSceneIndex];
@@ -518,5 +519,5 @@ function addToggleAirQualityButton() {
         toggleButton.style.display = 'block';
     }
 }
-};
+
 })(); 
