@@ -478,7 +478,10 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-    });
+
+       addToggleAirQualityButton();
+});
+
 // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
@@ -518,7 +521,5 @@ function addToggleAirQualityButton() {
         toggleButton.style.display = 'block';
     }
 }
-         addToggleAirQualityButton();
-);
 })(); 
 
