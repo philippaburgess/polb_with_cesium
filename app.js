@@ -517,5 +517,5 @@ function addToggleAirQualityButton() {
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
     }
-}
+});
 })(); 
