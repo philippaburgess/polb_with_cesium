@@ -513,5 +513,5 @@ function addToggleAirQualityButton() {
 }
 
     addToggleAirQualityButton(); 
-        });
+    
 })(); 
