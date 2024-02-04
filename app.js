@@ -506,12 +506,12 @@ function addToggleAirQualityButton() {
         button.textContent = 'Show Air Quality';
         button.className = 'toggle-button off';
         button.addEventListener('click', function() {
-            toggleAirQualityVisibility(); // This function needs to be defined
+            toggleAirQualityVisibility(); // Make sure this function is already defined
         });
         container.appendChild(button);
     }
 }
 
-    addToggleAirQualityButton(); 
+    
     
 })(); 
