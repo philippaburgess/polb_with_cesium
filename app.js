@@ -297,6 +297,7 @@ function updateAirQualityData(forceDisplay = false) {
         toggleButton.textContent = 'Hide Air Quality';
         toggleButton.className = 'toggle-button on';
     }
+}
 
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
@@ -326,6 +327,7 @@ function updateScene() {
             toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         }
     }
+}
         updateAirQualityData(currentSceneIndex);
 
         if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
