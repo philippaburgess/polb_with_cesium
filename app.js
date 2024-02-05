@@ -589,4 +589,5 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
 });
+        }
 })(); 
