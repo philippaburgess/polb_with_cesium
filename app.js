@@ -274,20 +274,31 @@ var heatmapImageryProvider = null; // Initially, there's no heatmap layer provid
 // var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
 
 function toggleAirQualityVisibility(show) {
-       if (show && !heatmapImageryProvider) {
+    var toggleButton = document.getElementById('toggleAirQuality');
+    if (show && !heatmapImageryProvider) {
         const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
         const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: heatmapUrlTemplate
         });
         viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-        else if (!show && heatmapImageryProvider) {
+   if (toggleButton) {
+            toggleButton.textContent = 'Hide Air Quality';
+            toggleButton.classList.remove('off');
+            toggleButton.classList.add('on');
+        }
+    } else if (!show && heatmapImageryProvider) {
         viewer.imageryLayers.remove(heatmapImageryProvider);
         heatmapImageryProvider = null;
+        if (toggleButton) {
+            toggleButton.textContent = 'Show Air Quality';
+            toggleButton.classList.remove('on');
+            toggleButton.classList.add('off');
+        }
     }
 }
-    
+  
+
 // function toggleAirQualityVisibility() {
    // isAirQualityVisible = !isAirQualityVisible;
     // updateAirQualityData(isAirQualityVisible); // Update based on the new visibility state
@@ -373,13 +384,14 @@ function updateScene() {
         sceneContainer.style.display = 'block'; // Make sure the container is visible
  
         const isAirQualityScene = currentSceneIndex === 7;
-        toggleAirQualityVisibility(isAirQualityScene);
+    //    toggleAirQualityVisibility(isAirQualityScene);
 
    if (toggleButton) {
             toggleButton.style.display = isAirQualityScene ? 'block' : 'none';
             // Set the button text depending on whether the heatmap is visible
-            toggleButton.textContent = isAirQualityScene && heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
+          //  toggleButton.textContent = isAirQualityScene && heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
         }
+    toggleAirQualityVisibility(isAirQualityScene && !!toggleButton);
     } else {
         console.error("Scene title or content element not found!");
     }
@@ -556,7 +568,17 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-});
+      var toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            var shouldShow = !heatmapImageryProvider;
+            toggleAirQualityVisibility(shouldShow);
+            // Update the button's text and class based on the heatmap's visibility
+            this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+            this.classList.toggle('on', shouldShow);
+            this.classList.toggle('off', !shouldShow);
+        });
+    }
       
 // Define next slide function
 window.nextSlide = function() {
@@ -583,4 +605,5 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
+});
 })(); 
