@@ -600,7 +600,6 @@ window.addEventListener('load', function() {
             this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
         });
     }
-}
 });
     
 })(); 
