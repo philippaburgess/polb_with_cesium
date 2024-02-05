@@ -562,7 +562,7 @@ window.addEventListener('load', function() {
             this.classList.toggle('off', !shouldShow);
         });
     }
-      
+});      
 // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
@@ -589,5 +589,4 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
 });
-        }
 })(); 
