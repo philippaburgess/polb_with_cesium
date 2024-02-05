@@ -272,6 +272,21 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 // var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
+
+function toggleAirQualityVisibility(show) {
+       if (show && !heatmapImageryProvider) {
+        const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+        const heatmapUrlTemplate = `https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`;
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: heatmapUrlTemplate
+        });
+        viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+    }
+        else if (!show && heatmapImageryProvider) {
+        viewer.imageryLayers.remove(heatmapImageryProvider);
+        heatmapImageryProvider = null;
+    }
+}
     
 // function toggleAirQualityVisibility() {
    // isAirQualityVisible = !isAirQualityVisible;
@@ -317,46 +332,66 @@ var heatmapImageryProvider = null; // Initially, there's no heatmap layer provid
         //toggleButton.className = 'toggle-button on';
     // }
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+// const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+// const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-function updateAirQualityData() {
-  try {
-    const airQualitySceneIndex = 7; // Index for Scene 8
-    console.log('Current scene index:', currentSceneIndex);
+// function updateAirQualityData() {
+  // try {
+    // const airQualitySceneIndex = 7; // Index for Scene 8
+    // console.log('Current scene index:', currentSceneIndex);
    
-    if (currentSceneIndex === airQualitySceneIndex) {
-         console.log('In Air Quality Scene'); // Log if in Air Quality scene
+    // if (currentSceneIndex === airQualitySceneIndex) {
+       //   console.log('In Air Quality Scene'); // Log if in Air Quality scene
         
-        if (!heatmapImageryProvider) {
-              console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
-            heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-                  url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-            });
-            viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-      }
-    } else if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
-        console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
-        viewer.imageryLayers.remove(heatmapImageryProvider);
-        heatmapImageryProvider = null; // Clear the reference
-    }
-    } catch (error) {
-        console.error('Error updating air quality data:', error);
-    }
-}
+        // if (!heatmapImageryProvider) {
+           //    console.log('Creating new heatmap imagery provider'); // Log when creating a new provider
+            // heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+               //    url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+            // });
+            // viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+     //  }
+    // } else if (heatmapImageryProvider && viewer.imageryLayers.contains(heatmapImageryProvider)) {
+       //  console.log('Removing heatmap imagery provider from viewer'); // Log when removing provider from viewer
+        // viewer.imageryLayers.remove(heatmapImageryProvider);
+        // heatmapImageryProvider = null; // Clear the reference
+    // }
+    // } catch (error) {
+       //  console.error('Error updating air quality data:', error);
+    // }
+ // }
         
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
-    // var toggleButton = document.getElementById('toggleAirQuality');
+    var toggleButton = document.getElementById('toggleAirQuality');
 
     if (titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
+ 
+        const isAirQualityScene = currentSceneIndex === 7;
+        toggleAirQualityVisibility(isAirQualityScene);
 
+   if (toggleButton) {
+            toggleButton.style.display = isAirQualityScene ? 'block' : 'none';
+            // Set the button text depending on whether the heatmap is visible
+            toggleButton.textContent = isAirQualityScene && heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
+        }
+    } else {
+        console.error("Scene title or content element not found!");
+    }
+}
+
+    document.getElementById('toggleAirQuality').addEventListener('click', function() {
+    var shouldShow = !heatmapImageryProvider;
+    toggleAirQualityVisibility(shouldShow);
+    this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+});
+
+        
         // Show or hide the toggle button based on the current scene index
         
         //  if (toggleButton) {
