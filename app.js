@@ -378,7 +378,7 @@ function updateScene() {
                 longBeachDataLayer = null;
             }
         }
-}
+};
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
