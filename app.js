@@ -317,7 +317,7 @@ function updateAirQualityData(forceDisplay = false) {
         toggleButton.textContent = 'Hide Air Quality';
         toggleButton.className = 'toggle-button on';
     }
-}
+
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
