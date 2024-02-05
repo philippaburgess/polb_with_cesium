@@ -568,19 +568,21 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-      var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            var shouldShow = !heatmapImageryProvider;
-            toggleAirQualityVisibility(shouldShow);
+
+}; 
+   //   var toggleButton = document.getElementById('toggleAirQuality');
+   // if (toggleButton) {
+   //     toggleButton.addEventListener('click', function() {
+   //         var shouldShow = !heatmapImageryProvider;
+   //         toggleAirQualityVisibility(shouldShow);
             // Update the button's text and class based on the heatmap's visibility
-            this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+   //         this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
             this.classList.toggle('on', shouldShow);
-            this.classList.toggle('off', !shouldShow);
-        });
-    }
-});      
-        }):
+     //       this.classList.toggle('off', !shouldShow);
+    //    });
+ //   }
+// });      
+//        }):
             
 // Define next slide function
 window.nextSlide = function() {
@@ -607,5 +609,4 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
-});
 })(); 
