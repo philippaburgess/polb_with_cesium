@@ -552,20 +552,6 @@ window.closeScene = function() {
 
 // Section 6 
 
-window.addEventListener('load', function() {
-   slides = document.querySelectorAll('.slide');
-    
-    // Hide the navigation buttons initially
-    document.getElementById('navigation-buttons').style.visibility = 'hidden';
-    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
-    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-
-// Activate the first slide if any are present
-       if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
-
-}); 
    //   var toggleButton = document.getElementById('toggleAirQuality');
    // if (toggleButton) {
    //     toggleButton.addEventListener('click', function() {
@@ -605,4 +591,20 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
+
+window.addEventListener('load', function() {
+   slides = document.querySelectorAll('.slide');
+    
+    // Hide the navigation buttons initially
+    document.getElementById('navigation-buttons').style.visibility = 'hidden';
+    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
+
+// Activate the first slide if any are present
+       if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+
+}); 
+    
 })(); 
