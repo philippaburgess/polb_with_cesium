@@ -517,7 +517,6 @@ window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-         }
      };
 })(); 
 
