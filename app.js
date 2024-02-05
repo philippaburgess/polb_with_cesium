@@ -327,7 +327,7 @@ function toggleAirQualityVisibility(show) {
       //      const heatmapUrlTemplate = 'https://airquality.googleapis.com/v1/mapTypes/US_AQI/heatmapTiles/{z}/{x}/{y}?key=AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg';
         //    heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({ url: heatmapUrlTemplate });
         //    viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        // )}
+        // }
 
         // isAirQualityVisible = true; // Ensure the flag is set to true
     // } else {
@@ -563,6 +563,8 @@ window.addEventListener('load', function() {
         });
     }
 });      
+        }):
+            
 // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
