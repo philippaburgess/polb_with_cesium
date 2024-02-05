@@ -384,7 +384,7 @@ function updateScene() {
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         });
-}
+
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
