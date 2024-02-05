@@ -463,7 +463,7 @@ window.flyToLocationAndHold = function(index) {
                     flyToLocationAndHold(index + 1);
                 }, 1500); // Time to hold on each location
             }
-        });
+        };
     }
 };
 
