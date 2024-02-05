@@ -347,7 +347,7 @@ function updateScene() {
         updateAirQualityData(currentSceneIndex);
         addToggleAirQualityButton();
 
-        if (currentSceneIndex === 12 { // Scene index starts at 0, so index 12 is Scene 13
+        if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
             if (!longBeachDataLayer) {
                 Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
                     .then(function (dataSource) {
@@ -378,7 +378,6 @@ function updateScene() {
                 longBeachDataLayer = null;
             }
         }
-});
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
