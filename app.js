@@ -292,7 +292,7 @@ function addToggleAirQualityButton() {
         var toggleButton = document.getElementById('toggleAirQuality');
         toggleButton.style.display = 'block';
     }
-}
+};
 
 function updateAirQualityData(forceDisplay = false) {
     var toggleButton = document.getElementById('toggleAirQuality');
@@ -317,7 +317,7 @@ function updateAirQualityData(forceDisplay = false) {
         toggleButton.textContent = 'Hide Air Quality';
         toggleButton.className = 'toggle-button on';
     }
-}
+};
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     var titleElement = document.getElementById('scene-title');
@@ -343,7 +343,7 @@ function updateScene() {
             toggleButton.className = isAirQualityVisible ? 'toggle-button on' : 'toggle-button off'; // Update class based on state
         }
     }
-}
+};
         updateAirQualityData(currentSceneIndex);
         addToggleAirQualityButton();
 
@@ -378,7 +378,7 @@ function updateScene() {
                 longBeachDataLayer = null;
             }
         }
-}
+};
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
