@@ -565,7 +565,7 @@ window.addEventListener('load', function() {
             slides[0].classList.add('active');
         }
 
-}; 
+}); 
    //   var toggleButton = document.getElementById('toggleAirQuality');
    // if (toggleButton) {
    //     toggleButton.addEventListener('click', function() {
