@@ -709,7 +709,6 @@ function updateScene() {
                         for (var i = 0; i < entities.length; i++) {
                             var entity = entities[i];
                             if (entity.properties) {
-                                // Create a description from the properties
                                 var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
                                 entity.properties.propertyNames.forEach(function (propertyName) {
                                     var value = entity.properties[propertyName];
