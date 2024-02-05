@@ -395,7 +395,7 @@ function updateScene() {
                                 entity.description = description; // InfoBox will use this
                             }
                         }
-                .catch(function (error) {
+                 }).catch(function (error) {
                     console.error(error);
                 });
             }
