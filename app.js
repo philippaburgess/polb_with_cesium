@@ -272,7 +272,6 @@ orientation: {
 var longBeachDataLayer;
 var heatmapImageryProvider = null; // Initially, there's no heatmap layer provider
 var isAirQualityVisible = false; // Tracks visibility state of the Air Quality layer
-var addToggleAirQualityButton    
     
 function toggleAirQualityVisibility() {
     isAirQualityVisible = !isAirQualityVisible;
@@ -518,7 +517,7 @@ window.closeInstructions = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-};
-
+         }
+     };
 })(); 
 
