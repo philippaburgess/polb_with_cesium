@@ -383,25 +383,25 @@ function updateScene() {
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
  
-        const isAirQualityScene = currentSceneIndex === 7;
+  // NEW      const isAirQualityScene = currentSceneIndex === 7;
     //    toggleAirQualityVisibility(isAirQualityScene);
 
-   if (toggleButton) {
-            toggleButton.style.display = isAirQualityScene ? 'block' : 'none';
+   // NEW if (toggleButton) {
+   // NEW          toggleButton.style.display = isAirQualityScene ? 'block' : 'none';
             // Set the button text depending on whether the heatmap is visible
           //  toggleButton.textContent = isAirQualityScene && heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
         }
-    toggleAirQualityVisibility(isAirQualityScene && !!toggleButton);
-    } else {
-        console.error("Scene title or content element not found!");
-    }
-}
+ // NEW   toggleAirQualityVisibility(isAirQualityScene && !!toggleButton);
+  // NEW   } else {
+   // NEW       console.error("Scene title or content element not found!");
+ // NEW     }
+ // NEW }
 
-    document.getElementById('toggleAirQuality').addEventListener('click', function() {
-    var shouldShow = !heatmapImageryProvider;
-    toggleAirQualityVisibility(shouldShow);
-    this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
-});
+  // NEW    document.getElementById('toggleAirQuality').addEventListener('click', function() {
+  // NEW    var shouldShow = !heatmapImageryProvider;
+  // NEW    toggleAirQualityVisibility(shouldShow);
+ // NEW     this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+ // NEW });
 
         
         // Show or hide the toggle button based on the current scene index
