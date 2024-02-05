@@ -340,7 +340,7 @@ function toggleAirQualityVisibility(show) {
 
     // if (toggleButton) {
        // toggleButton.textContent = 'Hide Air Quality';
-        //toggleButton.className = 'toggle-button on';
+        // toggleButton.className = 'toggle-button on';
     // }
 
 // const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
