@@ -313,12 +313,9 @@ function updateScene() {
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
-        if (currentSceneIndex === 7) {
-            toggleButton.style.display = 'block';
-        } else {
-            toggleButton.style.display = 'none';
-        }
-}
+ if (toggleButton) {
+        toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
+    }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -326,36 +323,32 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             .then(function(dataSource) {
                     viewer.dataSources.add(dataSource);
                     longBeachDataLayer = dataSource;
-                    var entities = dataSource.entities.values;
-
-    for (var i = 0; i < entities.length; i++) {
-        var entity = entities[i];
-        if (entity.properties) {
-            // Create a description from the properties
-            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-            entity.properties.propertyNames.forEach(function(propertyName) {
-                var value = entity.properties[propertyName];
-                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-             });
-               description += '</tbody></table>';
-                entity.description = description; // InfoBox will use this
-             }
-        }
-      }).catch(function(error) {
-        console.error(error);
+     dataSource.entities.values.forEach(function(entity) {
+                        if (entity.properties) {
+                            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+                            for (var propertyName of entity.properties.propertyNames) {
+                                var value = entity.properties[propertyName];
+                                description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
+                            }
+                            description += '</tbody></table>';
+                            entity.description = description;
+                        }
+                    });
+                }).catch(function(error) {
+                    console.error(error);
                 });
-            }     
-        } else {
-            if (longBeachDataLayer) {
-                viewer.dataSources.remove(longBeachDataLayer);
-                longBeachDataLayer = null;
-            }
         }
+    } else if (longBeachDataLayer) {
+        // Remove Long Beach data layer if moving away from scene 13
+        viewer.dataSources.remove(longBeachDataLayer);
+        longBeachDataLayer = null;
+    }
                 viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         }); 
+   }   
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
