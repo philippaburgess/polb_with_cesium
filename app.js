@@ -497,7 +497,7 @@ window.addEventListener('load', function() {
 //            toggleAirQualityVisibility(shouldShow);
  //           this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
 //     });
-    };
+    }
 // });
     
 })(); 
