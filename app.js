@@ -442,6 +442,32 @@ window.closeScene = function() {
 };
 
 // Section 6 
+
+        // Define next slide function
+window.nextSlide = function() {
+   console.log('Current Slide Index:', currentSlideIndex);
+   console.log('Slides Length:', slides.length);
+    
+   if (currentSlideIndex < scenes.length - 1) {
+        slides[currentSlideIndex].classList.remove('active');
+   }
+        currentSlideIndex++;
+
+    if(slides[currentSlideIndex]) {
+        slides[currentSlideIndex].classList.add('active');
+   } else {
+            console.error('No slide exists at index:', currentSlideIndex);
+        }
+};
+       
+ // Define the function to close the instructions and start the flyover
+
+   window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
             
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
@@ -467,29 +493,5 @@ window.addEventListener('load', function() {
   //  }
 // });
 
-    // Define next slide function
-window.nextSlide = function() {
-   console.log('Current Slide Index:', currentSlideIndex);
-   console.log('Slides Length:', slides.length);
-    
-   if (currentSlideIndex < scenes.length - 1) {
-        slides[currentSlideIndex].classList.remove('active');
-   }
-        currentSlideIndex++;
 
-    if(slides[currentSlideIndex]) {
-        slides[currentSlideIndex].classList.add('active');
-   } else {
-            console.error('No slide exists at index:', currentSlideIndex);
-        }
-};
-       
- // Define the function to close the instructions and start the flyover
-
-   window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
 })(); 
