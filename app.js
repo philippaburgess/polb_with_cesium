@@ -318,9 +318,6 @@ function updateScene() {
         } else {
             toggleButton.style.display = 'none';
         }
-         } else {
-        console.error("Scene title or content element not found!");
-    }
 }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
@@ -354,17 +351,12 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                 longBeachDataLayer = null;
             }
         }
-
-        viewer.camera.flyTo({
+}  
+                viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
-        });
-   } else {
-        console.error("Scene title or content element not found!");  // Error log if elements are not found
-    }
-}  
-    
+        }); 
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
