@@ -270,8 +270,6 @@ orientation: {
 
 // Section 3
 
-    
-
 var longBeachDataLayer;
 var heatmapImageryProvider;
 
@@ -449,7 +447,31 @@ window.closeScene = function() {
 
 // Section 6 
             
-// Define next slide function
+window.addEventListener('load', function() {
+   slides = document.querySelectorAll('.slide');
+    
+    // Hide the navigation buttons initially
+    document.getElementById('navigation-buttons').style.visibility = 'hidden';
+    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
+
+ // Activate first slide if any are present
+       if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+}); 
+//    document.addEventListener('DOMContentLoaded', (event) => {
+//    var toggleButton = document.getElementById('toggleAirQuality');
+//    if (toggleButton) {
+//        toggleButton.addEventListener('click', function() {
+//            var shouldShow = !heatmapImageryProvider;
+//            toggleAirQualityVisibility(shouldShow);
+ //           this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+//     });
+  //  }
+// });
+
+    // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
    console.log('Slides Length:', slides.length);
@@ -467,36 +489,11 @@ window.nextSlide = function() {
 };
        
  // Define the function to close the instructions and start the flyover
-    
-window.closeInstructions = function() {
+
+   window.closeInstructions = function() {
      // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-};
-
-window.addEventListener('load', function() {
-   slides = document.querySelectorAll('.slide');
-    
-    // Hide the navigation buttons initially
-    document.getElementById('navigation-buttons').style.visibility = 'hidden';
-    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
-    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-
- // Activate first slide if any are present
-       if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
-
-}); 
-//    document.addEventListener('DOMContentLoaded', (event) => {
-//    var toggleButton = document.getElementById('toggleAirQuality');
-//    if (toggleButton) {
-//        toggleButton.addEventListener('click', function() {
-//            var shouldShow = !heatmapImageryProvider;
-//            toggleAirQualityVisibility(shouldShow);
- //           this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
-//     });
-  //  }
-// });
+}; 
 })(); 
