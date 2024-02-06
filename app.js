@@ -438,6 +438,7 @@ window.closeScene = function() {
         sceneContainer.style.display = 'none'; // Hide the scene container
     }
     // Optional: Add logic to navigate back to the main view or do nothing
+}
 };
 
 // Section 6 
@@ -490,6 +491,5 @@ window.nextSlide = function() {
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-   }    
 }; 
 })(); 
