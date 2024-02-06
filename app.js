@@ -483,7 +483,7 @@ window.addEventListener('load', function() {
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
- Activate the first slide if any are present
+ // Activate the first slide if any are present
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
