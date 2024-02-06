@@ -355,8 +355,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  
-
-    
     
 // Section 4 
 
@@ -485,21 +483,21 @@ window.addEventListener('load', function() {
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
-// Activate the first slide if any are present
+ Activate the first slide if any are present
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
 
 }); 
-    document.addEventListener('DOMContentLoaded', (event) => {
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            var shouldShow = !heatmapImageryProvider;
-            toggleAirQualityVisibility(shouldShow);
-            this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
-        });
-    }
-});
+//    document.addEventListener('DOMContentLoaded', (event) => {
+//    var toggleButton = document.getElementById('toggleAirQuality');
+//    if (toggleButton) {
+//        toggleButton.addEventListener('click', function() {
+//            var shouldShow = !heatmapImageryProvider;
+//            toggleAirQualityVisibility(shouldShow);
+ //           this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
+//     });
+    };
+// });
     
 })(); 
