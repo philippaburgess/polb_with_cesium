@@ -478,7 +478,9 @@ window.nextSlide = function() {
 
     if(slides[currentSlideIndex]) {
         slides[currentSlideIndex].classList.add('active');
-   } 
+   } else {
+            console.error('No slide exists at index:', currentSlideIndex);
+        }
 };
        
  // Define the function to close the instructions and start the flyover
