@@ -323,13 +323,15 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             .then(function(dataSource) {
                     viewer.dataSources.add(dataSource);
                     longBeachDataLayer = dataSource;
-     dataSource.entities.values.forEach(function(entity) {
+                    var entities = dataSource.entities.values;
+                
+            entities.forEach(function(entity) {
                         if (entity.properties) {
                             var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
                             for (var propertyName of entity.properties.propertyNames) {
                                 var value = entity.properties[propertyName];
                                 description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
-                            }
+                          });
                             description += '</tbody></table>';
                             entity.description = description;
                         }
@@ -343,12 +345,12 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
     }
-                viewer.camera.flyTo({
+       viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
         }); 
-   }   
+       
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
