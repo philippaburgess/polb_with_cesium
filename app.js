@@ -325,17 +325,17 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                     longBeachDataLayer = dataSource;
                     var entities = dataSource.entities.values;
                 
-        //    entities.forEach(function(entity) {
+        // entities.forEach(function(entity) {
                       
              for (var i = 0; i < entities.length; i++) {
                 var entity = entities[i];       
                 if (entity.properties) {
                         // Create a description from the properties
                             var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-                          //  for (var propertyName of entity.properties.propertyNames) {
+                          // for (var propertyName of entity.properties.propertyNames) {
                       entity.properties.propertyNames.forEach(function(propertyName) {         
                       var value = entity.properties[propertyName];
-                                description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
+                      description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
                           });
                             description += '</tbody></table>';
                             entity.description = description;
@@ -448,7 +448,6 @@ window.closeScene = function() {
         sceneContainer.style.display = 'none'; // Hide the scene container
     }
     // Optional: Add logic to navigate back to the main view or do nothing
-}
 };
 
 // Section 6 
