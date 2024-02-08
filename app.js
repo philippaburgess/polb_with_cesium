@@ -267,7 +267,7 @@ var heatmapImageryProvider;
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
-
+    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
@@ -278,7 +278,7 @@ function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
-    manageToggleButton(currentSceneIndex);
+ //   manageToggleButton(currentSceneIndex);
     flyToScene(scene);
 }
 
@@ -291,7 +291,15 @@ function updateScene() {
         if (heatmapImageryProvider) removeHeatmapLayer();
         toggleButton.style.display = 'none';
     }
+            manageToggleButton(sceneIndex); // Call this function to manage the toggle button's visibility
+}
 
+function manageToggleButton(sceneIndex) {
+    // Assuming the toggle button should be displayed starting from sceneIndex 7
+    const airQualitySceneIndex = 7;
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+}
+    
 function toggleHeatmap() {
     if (heatmapImageryProvider) {
         removeHeatmapLayer();
@@ -301,15 +309,6 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Hide Air Quality';
     }
 }
-
-// Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
-document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.onclick = toggleHeatmap;
-    }
-});
-        
         
    // toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none'; // Show button starting from Scene 8
 
@@ -469,7 +468,16 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
+
+        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.onclick = toggleHeatmap;
     }
+});
+        
+
     
 // Section 4 
 
