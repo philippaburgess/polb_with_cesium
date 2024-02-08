@@ -440,12 +440,7 @@ window.closeScene = function() {
 }
 };
 
-            window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
+     
        
        viewer.camera.flyTo({
             destination: scene.destination,
@@ -499,5 +494,10 @@ window.nextSlide = function() {
   //  }
 // });
 
-
+     window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
 })(); 
