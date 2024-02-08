@@ -465,7 +465,6 @@ window.closeScene = function() {
 
 // Section 6 
 
-    
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
     
@@ -478,6 +477,13 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
+ var toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleHeatmap);
+    }
+    
+    // Initialize the heatmap visibility based on the current scene
+    manageHeatmapVisibility(currentSceneIndex);
     });
 // Define next slide function
 window.nextSlide = function() {
