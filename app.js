@@ -298,8 +298,11 @@ function manageToggleButton(sceneIndex) {
     // Assuming the toggle button should be displayed starting from sceneIndex 7
     const airQualitySceneIndex = 7;
     toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-}
-    
+  if (sceneIndex < airQualitySceneIndex && heatmapImageryProvider) {
+        removeHeatmapLayer();
+        toggleButton.textContent = 'Show Air Quality';
+    }
+}    
 function toggleHeatmap() {
     if (heatmapImageryProvider) {
         removeHeatmapLayer();
