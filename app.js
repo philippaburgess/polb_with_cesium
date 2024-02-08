@@ -307,6 +307,7 @@ function updateScene() {
 
     if (toggleButton) {
   toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
+   toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality'; // Update button text based on current state
  }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
