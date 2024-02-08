@@ -346,20 +346,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         longBeachDataLayer = null;
     }
 
-
-        window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
-       
-       viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2  // Duration of the camera flight in seconds
-        }); 
-   }
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -453,6 +439,20 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 }
 };
+
+            window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
+       
+       viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2  // Duration of the camera flight in seconds
+        }); 
+   }
 
 // Section 6 
     
