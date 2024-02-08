@@ -278,7 +278,6 @@ function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
- //   manageToggleButton(currentSceneIndex);
     flyToScene(scene);
 }
 
@@ -307,17 +306,6 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Hide Air Quality';
     }
 }
-    
-function manageToggleButton(sceneIndex) {
-    // Assuming the toggle button should be displayed starting from sceneIndex 7
-    const airQualitySceneIndex = 7;
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-  if (sceneIndex < airQualitySceneIndex && heatmapImageryProvider) {
-        removeHeatmapLayer();
-        toggleButton.textContent = 'Show Air Quality';
-    }
-}    
-
 
 // Functions to add or remove the heatmap layer
 function addHeatmapLayer() {
@@ -337,6 +325,16 @@ function removeHeatmapLayer() {
         toggleButton.textContent = 'Show Air Quality'; // Update button text
     }
 }
+    
+        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
+document.addEventListener('DOMContentLoaded', function() {
+ toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleHeatmap);
+    }
+    // Initialize the heatmap visibility based on the current scene
+    manageHeatmapVisibility(currentSceneIndex);
+});
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -378,14 +376,6 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
-
-        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
-document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-     toggleButton.addEventListener('click', toggleHeatmap); // Attach event listener
-    manageHeatmapVisibility(currentSceneIndex); // Set the initial state of the heatmap and button
-});
 
     
 // Section 4 
