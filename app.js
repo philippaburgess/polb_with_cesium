@@ -306,16 +306,16 @@ function updateScene() {
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
-    var toggleButton = document.getElementById('toggleAirQuality');
+ // var toggleButton = document.getElementById('toggleAirQuality');
     
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
 
- if (toggleButton) {
-        toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
-    }
+ // if (toggleButton) {
+ // toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
+ // }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -325,11 +325,16 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                     longBeachDataLayer = dataSource;
                     var entities = dataSource.entities.values;
                 
-            entities.forEach(function(entity) {
-                        if (entity.properties) {
+        //    entities.forEach(function(entity) {
+                      
+             for (var i = 0; i < entities.length; i++) {
+                var entity = entities[i];       
+                if (entity.properties) {
+                        // Create a description from the properties
                             var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-                            for (var propertyName of entity.properties.propertyNames) {
-                                var value = entity.properties[propertyName];
+                          //  for (var propertyName of entity.properties.propertyNames) {
+                      entity.properties.propertyNames.forEach(function(propertyName) {         
+                      var value = entity.properties[propertyName];
                                 description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
                           });
                             description += '</tbody></table>';
@@ -341,7 +346,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                 });
         }
     } else if (longBeachDataLayer) {
-        // Remove Long Beach data layer if moving away from scene 13
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
     }
