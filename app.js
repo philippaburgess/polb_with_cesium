@@ -295,7 +295,6 @@ function manageHeatmapVisibility(sceneIndex) {
         }
         toggleButton.style.display = 'none'; // Hide the toggle button
         }
-    }
 }
 
 function toggleHeatmap() {
