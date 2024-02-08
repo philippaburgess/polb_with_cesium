@@ -449,7 +449,7 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                 longBeachDataLayer = null;
             }
         }
-    }
+
 
 //        viewer.camera.flyTo({
 //            destination: scene.destination,
