@@ -331,7 +331,7 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                             for (var propertyName of entity.properties.propertyNames) {
                                 var value = entity.properties[propertyName];
                                 description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
-                          });
+                          }
                             description += '</tbody></table>';
                             entity.description = description;
                         }
