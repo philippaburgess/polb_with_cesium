@@ -1,5 +1,4 @@
 // Section 1: API Keys and Viewer Initialization
-
 (function() {
     var currentSceneIndex = 0;
     var currentSlideIndex = 0;
@@ -23,9 +22,9 @@
     sceneModePicker: false, // Don't show the scene mode picker
     selectionIndicator: false, // Don't show the selection indicator
     timeline: false, // Don't show the timeline
-    navigationHelpButton: false, // Don't show the navigation help button 
+    navigationHelpButton: false, // Don't show the navigation help button
 });
-    
+
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
 
@@ -42,7 +41,7 @@
 
        const scenes = [
         {
-        title: "1: The Green Port",
+            title: "1: The Green Port",
             content: "<p></p>" + "<p>The Port of Long Beach (POLB), proudly known as The Green Port, is a leader in green port operations. It plays a vital role in the U.S. and global economy, with its strategic location in Long Beach, California. The Port of Long Beach remains dedicated to pioneering green initiatives, integrating economic activity with environmental stewardship and community well-being. Among its awards and recognitions for its sustainable practices are the Level 4 Green Marine Environmental Certification, 2020 California Governor's Environmental and Economic Leadership Award, and the 2019 American Association of Port Authorities (AAPA) Environmental Excellence Award.</p>" +  
 "<p>It's sustainable practices and goals include:</p>" +
 "<ul>" +
@@ -119,15 +118,8 @@ orientation: {
          heading : Cesium.Math.toRadians(45), // North
          pitch : Cesium.Math.toRadians(-45), // Tilted angle looking down
          roll : 0.0 // No roll
-    },
-  underwaterDestination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -30), // Example underwater coordinates
-        underwaterOrientation: {
-            heading: Cesium.Math.toRadians(0),
-            pitch: Cesium.Math.toRadians(-45),
-            roll: 0.0
-        }
-    },
-           
+          }
+        },
              {
             title: "7: Clean Initiatives",
             content: "<p></p>" + "<p>The Port of Long Beach has been a pioneer in adopting clean energy sources, reducing air pollution, and enhancing water quality, alongside restoring natural habitats. In collaboration with government and local partners, the Port is setting the standard for green port operations. These actions and strategies reflect the Port's dedication to minimizing environmental impact and leading the way towards a sustainable future.</p>" + 
@@ -150,7 +142,7 @@ orientation: {
             content: "<p></p>" + "<p>Historically, the Port of Long Beach faced significant challenges with air pollution, impacting public health and the environment. In response, the Clean Air Action Plan (CAAP) was introduced, focusing on comprehensive measures to improve air quality in the South Coast Air Basin. Developed collaboratively by the South Coast Air Quality Management District (SCAQMD), local governments, businesses, and environmental groups, CAAP has played a crucial role in mitigating health risks associated with air pollution.</p>" +
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62% </p>", 
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.580, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.620, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-15), // This pitch tilts the camera towards the ground at a diagonal angle.
@@ -306,16 +298,11 @@ function updateScene() {
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
- // var toggleButton = document.getElementById('toggleAirQuality');
-    
+
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
-
- // if (toggleButton) {
- // toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
- // }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -324,43 +311,42 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                     viewer.dataSources.add(dataSource);
                     longBeachDataLayer = dataSource;
                     var entities = dataSource.entities.values;
-                
-        // entities.forEach(function(entity) {
-                      
-             for (var i = 0; i < entities.length; i++) {
-                var entity = entities[i];       
-                if (entity.properties) {
-                        // Create a description from the properties
-                            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-                          // for (var propertyName of entity.properties.propertyNames) {
-                      entity.properties.propertyNames.forEach(function(propertyName) {         
-                      var value = entity.properties[propertyName];
-                      description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
-                          });
-                            description += '</tbody></table>';
-                            entity.description = description;
-                        }
-                    }
-                }).catch(function(error) {
-                    console.error(error);
-                });
+
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.properties) {
+            // Create a description from the properties
+            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+            entity.properties.propertyNames.forEach(function(propertyName) {
+                var value = entity.properties[propertyName];
+                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+             });
+               description += '</tbody></table>';
+                entity.description = description; // InfoBox will use this
+             }
         }
-    } else if (longBeachDataLayer) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
-    }
-   }
-            viewer.camera.flyTo({
+      }).catch(function(error) {
+        console.error(error);
+                });
+            }     
+        } else {
+            if (longBeachDataLayer) {
+                viewer.dataSources.remove(longBeachDataLayer);
+                longBeachDataLayer = null;
+            }
+        }
+
+        viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2  // Duration of the camera flight in seconds
-        }); 
+        });
    } else {
         console.error("Scene title or content element not found!");  // Error log if elements are not found
     }
 }  
 
- 
+    
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -428,7 +414,7 @@ function showSceneContainer() {
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
     updateScene(); // This will load the first scene
 }
-    
+
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
         onFlyoverComplete();
@@ -453,6 +439,7 @@ window.closeScene = function() {
 };
 
 // Section 6 
+
     
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
@@ -462,14 +449,12 @@ window.addEventListener('load', function() {
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 
- // Activate first slide if any are present
+// Activate the first slide if any are present
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
-}); 
-
-            // Define next slide function
-    
+    });
+// Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
    console.log('Slides Length:', slides.length);
@@ -485,23 +470,13 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
+    // Define the function to move to the next slide
 
-//    document.addEventListener('DOMContentLoaded', (event) => {
-//    var toggleButton = document.getElementById('toggleAirQuality');
-//    if (toggleButton) {
-//        toggleButton.addEventListener('click', function() {
-//            var shouldShow = !heatmapImageryProvider;
-//            toggleAirQualityVisibility(shouldShow);
- //           this.textContent = shouldShow ? 'Hide Air Quality' : 'Show Air Quality';
-//     });
-  //  }
-// });
-    
-  // Define the function to close the instructions and start the flyover   
-     window.closeInstructions = function() {
-     // Hide the instruction box
+ // Define the function to close the instructions and start the flyover
+window.closeInstructions = function() {
+    // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
-})(); 
+      };
+ })();
