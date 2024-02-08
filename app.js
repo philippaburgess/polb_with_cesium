@@ -370,13 +370,11 @@ function flyToScene(scene) {
 
         // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
 document.addEventListener('DOMContentLoaded', function() {
- toggleButton = document.getElementById('toggleAirQuality');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
     }
-    // Initialize the heatmap visibility based on the current scene
-    manageHeatmapVisibility(currentSceneIndex);
 });
+    manageHeatmapVisibility(currentSceneIndex);
 
     
 // Section 4 
