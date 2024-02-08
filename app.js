@@ -323,9 +323,10 @@ function removeHeatmapLayer() {
     if (heatmapImageryProvider) {
         viewer.imageryLayers.remove(heatmapImageryProvider);
         heatmapImageryProvider = null;
-        if (toggleButton) toggleButton.textContent = 'Show Air Quality'; // Update button text
+        toggleButton.textContent = 'Show Air Quality'; // Update button text
     }
 }
+
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -368,14 +369,8 @@ function flyToScene(scene) {
     });
 }
 
-        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
-document.addEventListener('DOMContentLoaded', function() {
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-    }
-});
-    manageHeatmapVisibility(currentSceneIndex);
-
+    
+// Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
     
 // Section 4 
 
