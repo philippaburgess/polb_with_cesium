@@ -331,11 +331,11 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                             for (var propertyName of entity.properties.propertyNames) {
                                 var value = entity.properties[propertyName];
                                 description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
-                          }
+                          });
                             description += '</tbody></table>';
                             entity.description = description;
                         }
-                    });
+                    }
                 }).catch(function(error) {
                     console.error(error);
                 });
@@ -345,7 +345,16 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
     }
-
+   }
+              viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2  // Duration of the camera flight in seconds
+        }); 
+   } else {
+        console.error("Scene title or content element not found!");  // Error log if elements are not found
+    }
+}  
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
@@ -413,8 +422,6 @@ function showSceneContainer() {
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button on the first scene
     updateScene(); // This will load the first scene
 }
-
-        // Define the function to close the instructions and start the flyover   
     
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
@@ -439,15 +446,6 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 }
 };
-
-     
-       
-       viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2  // Duration of the camera flight in seconds
-        }); 
-   }
 
 // Section 6 
     
@@ -493,7 +491,8 @@ window.nextSlide = function() {
 //     });
   //  }
 // });
-
+    
+  // Define the function to close the instructions and start the flyover   
      window.closeInstructions = function() {
      // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
