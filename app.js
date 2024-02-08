@@ -304,8 +304,10 @@ function toggleHeatmap() {
 
 // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
 document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.getElementById('toggleAirQuality'); // Re-ensure access to the toggle button
-    toggleButton.onclick = toggleHeatmap; // Set the event handler
+    var toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.onclick = toggleHeatmap;
+    }
 });
         
         
