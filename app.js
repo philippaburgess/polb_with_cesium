@@ -445,6 +445,16 @@ window.closeScene = function() {
 
 // Section 6 
 
+ // Define the function to close the instructions and start the flyover
+
+   window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
+            
+    
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
     
@@ -476,16 +486,6 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
-       
- // Define the function to close the instructions and start the flyover
-
-   window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
-            
 
 //    document.addEventListener('DOMContentLoaded', (event) => {
 //    var toggleButton = document.getElementById('toggleAirQuality');
