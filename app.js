@@ -462,7 +462,7 @@ function flyToScene(scene) {
 document.addEventListener('DOMContentLoaded', function() {
     var toggleButton = document.getElementById('toggleAirQuality');
     if (toggleButton) {
-        toggleButton.onclick = toggleHeatmap;
+        toggleButton.addEventListener('click', toggleHeatmap);
     }
 });
         
