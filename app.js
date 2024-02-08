@@ -345,6 +345,15 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
     }
+
+
+        window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
+       
        viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
@@ -419,6 +428,8 @@ function showSceneContainer() {
     updateScene(); // This will load the first scene
 }
 
+        // Define the function to close the instructions and start the flyover   
+    
 window.flyToLocationAndHold = function(index) {
     if (index >= locations.length) {
         onFlyoverComplete();
@@ -459,16 +470,7 @@ window.addEventListener('load', function() {
         }
 }); 
 
-         // Define the function to close the instructions and start the flyover   
-
-    window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
-    
-        // Define next slide function
+            // Define next slide function
     
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
