@@ -315,29 +315,19 @@ function addHeatmapLayer() {
     heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
         url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
     });
-    viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-toggleButton.textContent = 'Hide Air Quality'; // Update button text
+        viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        if (toggleButton) toggleButton.textContent = 'Hide Air Quality'; // Update button text
     }
 }
     
 function removeHeatmapLayer() {
-  if (heatmapImageryProvider) {
+    if (heatmapImageryProvider) {
         viewer.imageryLayers.remove(heatmapImageryProvider);
         heatmapImageryProvider = null;
-        toggleButton.textContent = 'Show Air Quality'; // Update button text
+        if (toggleButton) toggleButton.textContent = 'Show Air Quality'; // Update button text
     }
 }
     
-        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
-document.addEventListener('DOMContentLoaded', function() {
- toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-    }
-    // Initialize the heatmap visibility based on the current scene
-    manageHeatmapVisibility(currentSceneIndex);
-});
-
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
@@ -378,6 +368,16 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
+
+        // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
+document.addEventListener('DOMContentLoaded', function() {
+ toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleHeatmap);
+    }
+    // Initialize the heatmap visibility based on the current scene
+    manageHeatmapVisibility(currentSceneIndex);
+});
 
     
 // Section 4 
