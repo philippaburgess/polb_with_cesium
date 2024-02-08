@@ -434,6 +434,15 @@ window.flyToLocationAndHold = function(index) {
     }
 };
 
+     // Define the function to close the instructions and start the flyover   
+
+    window.closeInstructions = function() {
+     // Hide the instruction box
+    document.getElementById('instruction-box').style.display = 'none';
+    // Start the flyover sequence
+    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
+}; 
+
 window.closeScene = function() {
     var sceneContainer = document.getElementById('scene-container');
     if (sceneContainer) {
@@ -444,16 +453,6 @@ window.closeScene = function() {
 };
 
 // Section 6 
-
- // Define the function to close the instructions and start the flyover
-
-   window.closeInstructions = function() {
-     // Hide the instruction box
-    document.getElementById('instruction-box').style.display = 'none';
-    // Start the flyover sequence
-    flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-}; 
-            
     
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
