@@ -469,6 +469,7 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
+    }
     
 // Section 4 
 
