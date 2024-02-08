@@ -287,15 +287,13 @@ function manageHeatmapVisibility(sceneIndex) {
     if (sceneIndex >= airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             addHeatmapLayer();
-            toggleButton.textContent = 'Hide Air Quality'; // The heatmap is now visible
-        }
-        toggleButton.style.display = 'block';
+            )
+  toggleButton.style.display = 'block'; // Show the toggle button
     } else {
         if (heatmapImageryProvider) {
-            removeHeatmapLayer();
-            toggleButton.textContent = 'Show Air Quality'; // The heatmap is now hidden
+            removeHeatmapLayer(); // If we're before the air quality scene, remove the heatmap
         }
-        toggleButton.style.display = 'none';
+        toggleButton.style.display = 'none'; // Hide the toggle button
     }
 }
 
@@ -323,15 +321,21 @@ function manageToggleButton(sceneIndex) {
 
 // Functions to add or remove the heatmap layer
 function addHeatmapLayer() {
+     if (!heatmapImageryProvider) {
     heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
         url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
     });
     viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+toggleButton.textContent = 'Hide Air Quality'; // Update button text
+    }
 }
-
+    
 function removeHeatmapLayer() {
-    viewer.imageryLayers.remove(heatmapImageryProvider);
-    heatmapImageryProvider = null;
+  if (heatmapImageryProvider) {
+        viewer.imageryLayers.remove(heatmapImageryProvider);
+        heatmapImageryProvider = null;
+        toggleButton.textContent = 'Show Air Quality'; // Update button text
+    }
 }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
@@ -379,10 +383,9 @@ function flyToScene(scene) {
 document.addEventListener('DOMContentLoaded', function() {
     var toggleButton = document.getElementById('toggleAirQuality');
     if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-    }
+     toggleButton.addEventListener('click', toggleHeatmap); // Attach event listener
+    manageHeatmapVisibility(currentSceneIndex); // Set the initial state of the heatmap and button
 });
-        
 
     
 // Section 4 
