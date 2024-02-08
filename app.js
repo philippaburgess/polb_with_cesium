@@ -298,11 +298,16 @@ function updateScene() {
     var titleElement = document.getElementById('scene-title');
     var contentElement = document.getElementById('scene-description');
     var sceneContainer = document.getElementById('scene-container');
+    var toggleButton = document.getElementById('toggleAirQuality');
 
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
         contentElement.innerHTML = scene.content;
         sceneContainer.style.display = 'block'; // Make sure the container is visible
+
+    if (toggleButton) {
+  toggleButton.style.display = (currentSceneIndex === 7) ? 'block' : 'none';
+ }
 
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
