@@ -264,10 +264,28 @@ orientation: {
 
 var longBeachDataLayer;
 var heatmapImageryProvider;
-
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(currentSceneIndex);
+    manageToggleButton(currentSceneIndex);
+    flyToScene(scene);
+}
+
+    function setSceneContent(scene) {
+    document.getElementById('scene-title').textContent = scene.title;
+    document.getElementById('scene-description').innerHTML = scene.content;
+    document.getElementById('scene-container').style.display = 'block';
+}
+        
+    // var titleElement = document.getElementById('scene-title');
+    // var contentElement = document.getElementById('scene-description');
+    // var sceneContainer = document.getElementById('scene-container');
+    
 function updateAirQualityData() {
   try {
     const airQualitySceneIndex = 7; // Index for Scene 8
@@ -293,12 +311,8 @@ function updateAirQualityData() {
     }
 }
     
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    var titleElement = document.getElementById('scene-title');
-    var contentElement = document.getElementById('scene-description');
-    var sceneContainer = document.getElementById('scene-container');
-    var toggleButton = document.getElementById('toggleAirQuality');
+
+   
 
    if(titleElement && contentElement && sceneContainer) {
         titleElement.textContent = scene.title;
