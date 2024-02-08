@@ -286,13 +286,15 @@ function manageHeatmapVisibility(sceneIndex) {
     if (sceneIndex >= airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             addHeatmapLayer();
-            )
-  toggleButton.style.display = 'block'; // Show the toggle button
+            toggleButton.style.display = 'block'; // Show the toggle button
+            toggleButton.textContent = 'Hide Air Quality'; // Set button text
+        }
     } else {
         if (heatmapImageryProvider) {
             removeHeatmapLayer(); // If we're before the air quality scene, remove the heatmap
         }
         toggleButton.style.display = 'none'; // Hide the toggle button
+        }
     }
 }
 
