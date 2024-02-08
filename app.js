@@ -346,8 +346,6 @@ function removeHeatmapLayer() {
     viewer.imageryLayers.remove(heatmapImageryProvider);
     heatmapImageryProvider = null;
 }
-
-
         
     // var titleElement = document.getElementById('scene-title');
     // var contentElement = document.getElementById('scene-description');
@@ -401,18 +399,6 @@ function removeHeatmapLayer() {
  //       console.error('Error updating air quality data:', error);
   //  }
 // }
-    
-
-
-function toggleHeatmap() {
-    if (heatmapImageryProvider) {
-        removeHeatmapLayer();
-        toggleButton.textContent = 'Show Air Quality';
-    } else {
-        addHeatmapLayer();
-        toggleButton.textContent = 'Hide Air Quality';
-    }
-}
 
 
 //     if (toggleButton) {
