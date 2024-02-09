@@ -314,7 +314,6 @@ if (!airQualityButtonShown) {
 }
 
 function toggleHeatmap() {
-    // This function will toggle the visibility based on the current state of the heatmap
     if (heatmapImageryProvider) {
         removeHeatmapLayer();
         toggleButton.textContent = 'Show Air Quality';
@@ -493,7 +492,7 @@ window.addEventListener('load', function() {
        if (slides.length > 0) {
             slides[0].classList.add('active');
         }
- var toggleButton = document.getElementById('toggleAirQuality');
+  toggleButton = document.getElementById('toggleAirQuality');
     
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
