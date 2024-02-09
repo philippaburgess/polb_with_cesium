@@ -283,24 +283,15 @@ function updateScene() {
 }
 
 function manageHeatmapVisibility(sceneIndex) {
-    const airQualitySceneIndex = 7;
-    if (sceneIndex >= airQualitySceneIndex) {
-        if (!heatmapImageryProvider) {
-            addHeatmapLayer();
-        }
-        toggleButton.style.display = 'block'; // Show the toggle button
-        toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
-        airQualityButtonShown = true; // Set the flag to keep the button shown permanently
-    } else {
-        // If we're before scene 8 and the heatmap is shown, remove it
-        if (heatmapImageryProvider) {
-            removeHeatmapLayer();
-        }
-        // If we're before scene 8 and the button has never been shown, keep it hidden
-        if (!airQualityButtonShown) {
-            toggleButton.style.display = 'none'; // Hide the toggle button
-        }
+        const airQualitySceneIndex = 7; /
+  if (sceneIndex === airQualitySceneIndex && !heatmapImageryProvider) {
+        addHeatmapLayer(); // Turn on the heatmap when Scene 8 loads
+    } else if (sceneIndex !== airQualitySceneIndex && heatmapImageryProvider) {
+        removeHeatmapLayer(); // Turn off the heatmap when navigating away from Scene 8
     }
+    // Update the toggle button's visibility and text
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+    toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
 function toggleHeatmap() {
@@ -480,6 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleButton.addEventListener('click', toggleHeatmap);
         manageHeatmapVisibility(currentSceneIndex); // Initialize the heatmap visibility based on the current scene
     }
+});
     
     // Activate the first slide if any are present
     var slides = document.querySelectorAll('.slide');
