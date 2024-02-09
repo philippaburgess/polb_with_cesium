@@ -267,6 +267,7 @@ var heatmapImageryProvider;
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
+var airQualityButtonShown = false;
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -286,15 +287,16 @@ function manageHeatmapVisibility(sceneIndex) {
     if (sceneIndex >= airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             addHeatmapLayer();
-            toggleButton.style.display = 'block'; // Show the toggle button
-            toggleButton.textContent = 'Hide Air Quality'; // Set button text
-        }
-    } else {
+     }
+        toggleButton.style.display = 'block'; // Show the toggle button
+        toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
+        airQualityButtonShown = true; // Set the flag to keep the button shown permanently
+    } else if (!airQualityButtonShown) { // Only hide the button if it hasn't been shown yet
         if (heatmapImageryProvider) {
-            removeHeatmapLayer(); // If we're before the air quality scene, remove the heatmap
+            removeHeatmapLayer();
         }
         toggleButton.style.display = 'none'; // Hide the toggle button
-        }
+    }
 }
 
 function toggleHeatmap() {
@@ -478,12 +480,12 @@ window.addEventListener('load', function() {
             slides[0].classList.add('active');
         }
  var toggleButton = document.getElementById('toggleAirQuality');
+    
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
+        // Initialize the heatmap visibility based on the current scene
+        manageHeatmapVisibility(currentSceneIndex);
     }
-    
-    // Initialize the heatmap visibility based on the current scene
-    manageHeatmapVisibility(currentSceneIndex);
     });
 // Define next slide function
 window.nextSlide = function() {
