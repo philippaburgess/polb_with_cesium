@@ -285,31 +285,21 @@ function updateScene() {
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7;
     if (sceneIndex >= airQualitySceneIndex) {
-if (!airQualityButtonShown) {
-            airQualityButtonShown = true;
-            toggleButton.style.display = 'block';
-            // If it's scene 8, ensure the heatmap is shown
-            if (sceneIndex === airQualitySceneIndex && !heatmapImageryProvider) {
-                addHeatmapLayer();
-            }
+        if (!heatmapImageryProvider) {
+            addHeatmapLayer();
         }
-        // Update the button text based on the heatmap's state
-        toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
-    } else if (!airQualityButtonShown && heatmapImageryProvider) {
-        // If we're before scene 8 and the heatmap is shown, remove it
-        removeHeatmapLayer();
-    }
-    // If we're before scene 8 and the button has never been shown, keep it hidden
-}
-    
         toggleButton.style.display = 'block'; // Show the toggle button
         toggleButton.textContent = heatmapImageryProvider ? 'Hide Air Quality' : 'Show Air Quality';
         airQualityButtonShown = true; // Set the flag to keep the button shown permanently
-    } else if (!airQualityButtonShown) { // Only hide the button if it hasn't been shown yet
+    } else {
+        // If we're before scene 8 and the heatmap is shown, remove it
         if (heatmapImageryProvider) {
             removeHeatmapLayer();
         }
-        toggleButton.style.display = 'none'; // Hide the toggle button
+        // If we're before scene 8 and the button has never been shown, keep it hidden
+        if (!airQualityButtonShown) {
+            toggleButton.style.display = 'none'; // Hide the toggle button
+        }
     }
 }
 
