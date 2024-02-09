@@ -295,11 +295,19 @@ function manageHeatmapVisibility(sceneIndex) {
 }
 
 function toggleHeatmap() {
- if (heatmapImageryProvider) {
+    // Check if the heatmap layer has been created
+    if (!heatmapImageryProvider) {
+        // If not, create it and set it to be shown
+        addHeatmapLayer();
+        heatmapImageryProvider.show = true;
+        toggleButton.textContent = 'Hide Air Quality';
+    } else {
+        // If it exists, just toggle the visibility
         heatmapImageryProvider.show = !heatmapImageryProvider.show;
         toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
     }
 }
+
 
     
 //    if (heatmapImageryProvider) {
@@ -317,11 +325,10 @@ function addHeatmapLayer() {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
         });
-        viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+       viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
-    heatmapImageryProvider.show = true;
 }
-    
+
 function removeHeatmapLayer() {
     if (heatmapImageryProvider) {
         heatmapImageryProvider.show = false;
@@ -477,11 +484,11 @@ window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
 });
 document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.getElementById('toggleAirQuality');
-    
+    toggleButton = document.getElementById('toggleAirQuality');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
-        manageHeatmapVisibility(currentSceneIndex); // Initialize the heatmap visibility based on the current scene
+        // Call manageHeatmapVisibility to ensure the button text is set correctly upon initialization
+        manageHeatmapVisibility(currentSceneIndex);
     }
     
     // Activate the first slide if any are present
