@@ -295,17 +295,17 @@ function manageHeatmapVisibility(sceneIndex) {
 }
 
 function toggleHeatmap() {
-    // Check if the heatmap layer has been created
+    console.log('toggleHeatmap called');
     if (!heatmapImageryProvider) {
-        // If not, create it and set it to be shown
+        console.log('Heatmap layer does not exist, creating one.');
         addHeatmapLayer();
-        heatmapImageryProvider.show = true;
-        toggleButton.textContent = 'Hide Air Quality';
+        heatmapImageryProvider.show = true; // Ensuring layer is visible
     } else {
-        // If it exists, just toggle the visibility
-        heatmapImageryProvider.show = !heatmapImageryProvider.show;
-        toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
+        console.log('Toggling heatmap layer visibility from:', heatmapImageryProvider.show);
+        heatmapImageryProvider.show = !heatmapImageryProvider.show; // Toggle visibility
     }
+    toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
+    console.log('Heatmap layer visibility now:', heatmapImageryProvider.show);
 }
 
 
