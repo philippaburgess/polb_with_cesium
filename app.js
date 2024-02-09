@@ -313,22 +313,27 @@ function toggleHeatmap() {
 
 // Functions to add or remove the heatmap layer
 function addHeatmapLayer() {
-     if (!heatmapImageryProvider) {
-    heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-        url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-    });
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
         viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        if (toggleButton) toggleButton.textContent = 'Hide Air Quality'; // Update button text
     }
+    heatmapImageryProvider.show = true;
 }
     
 function removeHeatmapLayer() {
     if (heatmapImageryProvider) {
-         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
-        heatmapImageryProvider = null;
-        toggleButton.textContent = 'Show Air Quality'; // Update button text
+        heatmapImageryProvider.show = false;
     }
 }
+    
+//    if (heatmapImageryProvider) {
+//         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
+//        heatmapImageryProvider = null;
+//        toggleButton.textContent = 'Show Air Quality'; // Update button text
+//    }
+// }
 
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
