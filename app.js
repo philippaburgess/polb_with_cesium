@@ -471,7 +471,6 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleButton.addEventListener('click', toggleHeatmap);
         manageHeatmapVisibility(currentSceneIndex); // Initialize the heatmap visibility based on the current scene
     }
-});
     
     // Activate the first slide if any are present
     var slides = document.querySelectorAll('.slide');
