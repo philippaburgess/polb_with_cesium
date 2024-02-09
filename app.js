@@ -482,24 +482,26 @@ window.closeScene = function() {
 
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
+});
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.getElementById('toggleAirQuality');
+    
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleHeatmap);
+        manageHeatmapVisibility(currentSceneIndex); // Initialize the heatmap visibility based on the current scene
+    }
+    
+    // Activate the first slide if any are present
+    var slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-
-// Activate the first slide if any are present
-       if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
-  toggleButton = document.getElementById('toggleAirQuality');
-    
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-        // Initialize the heatmap visibility based on the current scene
-        manageHeatmapVisibility(currentSceneIndex);
-    }
-    });
+});
 // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
