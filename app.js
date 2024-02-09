@@ -283,23 +283,24 @@ function updateScene() {
 }
 
 function manageHeatmapVisibility(sceneIndex) {
-    const airQualitySceneIndex = 7; // Scene 8 (index is 0-based)
-    if (sceneIndex === airQualitySceneIndex) {
-        // Ensure the heatmap layer exists and is shown
+    const airQualitySceneIndex = 7; // Index for Scene 8
+
+    // Show or hide the heatmap based on the scene index
+    if (sceneIndex >= airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             addHeatmapLayer();
-        } else {
-            heatmapImageryProvider.show = true; // Make sure it's visible if it already exists
         }
-        toggleButton.style.display = 'block';
-        toggleButton.textContent = 'Hide Air Quality'; // Since it's visible by default in Scene 8
+        heatmapImageryProvider.show = sceneIndex === airQualitySceneIndex; // Only show in Scene 8 by default
+        toggleButton.style.display = 'block'; // Show the toggle button from Scene 8 onwards
+        toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
+        airQualityButtonShown = true; // Remember that the button has been shown
     } else {
-        // For scenes other than Scene 8, hide or remove the heatmap layer
+        // For scenes before Scene 8
         if (heatmapImageryProvider) {
-            heatmapImageryProvider.show = false; // Just hide it instead of removing
+            heatmapImageryProvider.show = false; // Ensure heatmap is not visible
         }
-        // Only show the toggle button if it has been shown before
-        toggleButton.style.display = sceneIndex > airQualitySceneIndex ? 'block' : 'none';
+        // Only display the toggle button if it has been shown previously (i.e., user navigated back from Scene 8 or beyond)
+        toggleButton.style.display = airQualityButtonShown ? 'block' : 'none';
     }
 }
 
