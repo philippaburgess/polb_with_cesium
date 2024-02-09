@@ -295,14 +295,21 @@ function manageHeatmapVisibility(sceneIndex) {
 }
 
 function toggleHeatmap() {
-    if (heatmapImageryProvider) {
-        removeHeatmapLayer();
-        toggleButton.textContent = 'Show Air Quality';
-    } else {
-        addHeatmapLayer();
-        toggleButton.textContent = 'Hide Air Quality';
+ if (heatmapImageryProvider) {
+        heatmapImageryProvider.show = !heatmapImageryProvider.show;
+        toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
     }
 }
+
+    
+//    if (heatmapImageryProvider) {
+//        removeHeatmapLayer();
+//        toggleButton.textContent = 'Show Air Quality';
+//    } else {
+//        addHeatmapLayer();
+//        toggleButton.textContent = 'Hide Air Quality';
+//    }
+// }
 
 // Functions to add or remove the heatmap layer
 function addHeatmapLayer() {
