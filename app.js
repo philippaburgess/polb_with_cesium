@@ -317,7 +317,7 @@ function addHeatmapLayer() {
     
 function removeHeatmapLayer() {
     if (heatmapImageryProvider) {
-        viewer.imageryLayers.remove(heatmapImageryProvider);
+         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
         heatmapImageryProvider = null;
         toggleButton.textContent = 'Show Air Quality'; // Update button text
     }
