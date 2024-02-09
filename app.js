@@ -283,7 +283,7 @@ function updateScene() {
 }
 
 function manageHeatmapVisibility(sceneIndex) {
-        const airQualitySceneIndex = 7; /
+        const airQualitySceneIndex = 7; 
   if (sceneIndex === airQualitySceneIndex && !heatmapImageryProvider) {
         addHeatmapLayer(); // Turn on the heatmap when Scene 8 loads
     } else if (sceneIndex !== airQualitySceneIndex && heatmapImageryProvider) {
