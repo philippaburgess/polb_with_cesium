@@ -305,12 +305,15 @@ function manageHeatmapVisibility(sceneIndex) {
 }
 
 function toggleHeatmap() {
-    // Ensure heatmapImageryProvider exists
+    // Ensure the heatmapImageryProvider is initialized
     if (!heatmapImageryProvider) {
-        addHeatmapLayer(); // This will also set it to visible by default
+        addHeatmapLayer();
     }
-    // Toggle visibility
+
+    // Directly toggle the visibility of the heatmap layer
     heatmapImageryProvider.show = !heatmapImageryProvider.show;
+
+    // Update the button text based on the new visibility state
     toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
