@@ -143,7 +143,7 @@ orientation: {
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62% </p>" +
 "<p>USE THE SHOW/HIDE BUTTOM IN ALL SCENES TO SEE REAL-TIME AIR QUALITY DATA FROM GOOGLE</p>",               
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.620, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.600, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-15), // This pitch tilts the camera towards the ground at a diagonal angle.
