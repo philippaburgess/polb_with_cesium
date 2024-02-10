@@ -307,17 +307,15 @@ function manageHeatmapVisibility(sceneIndex) {
 
 function toggleHeatmap() {
     console.log('toggleHeatmap called'); // Check if function is called
-    if (heatmapImageryProvider) {
-        console.log('Current heatmap visibility:', heatmapImageryProvider.show);
-        // Toggle the visibility
-        heatmapImageryProvider.show = !heatmapImageryProvider.show;
-        // Update the button text
-        toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
-        // Request the scene to render immediately
-        viewer.scene.requestRender();
-        console.log('New heatmap visibility:', heatmapImageryProvider.show);
+    if (heatmapLayer) {
+        console.log('Removing heatmap layer');
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
     } else {
-        console.error("Heatmap layer is not initialized.");
+        console.log('Adding heatmap layer');
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
     }
 }
     
