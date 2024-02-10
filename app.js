@@ -317,7 +317,7 @@ function toggleHeatmap() {
     }
 }
     
-// Functions to add or remove the heatmap layer
+function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
@@ -325,7 +325,7 @@ function toggleHeatmap() {
         // Keep a reference to the layer object
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
-}
+} // This closing bracket was missing in your snippet
 
 function removeHeatmapLayer() {
     if (heatmapLayer) {
