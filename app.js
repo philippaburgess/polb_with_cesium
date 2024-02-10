@@ -285,20 +285,24 @@ function updateScene() {
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-    // Show the toggle button from Scene 8 onwards
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex || airQualityButtonShown ? 'block' : 'none';
+
+    // Hide the heatmap by default
+    if (heatmapImageryProvider) {
+        heatmapImageryProvider.show = false;
+    }
     
-    // Automatically show the heatmap in Scene 8 and ensure it can be toggled in subsequent scenes
+    // Show the toggle button from Scene 8 onwards
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+    
+    // If it's Scene 8 or beyond, make sure the heatmap layer is added, shown only for Scene 8
     if (sceneIndex >= airQualitySceneIndex) {
         if (!heatmapImageryProvider) {
             addHeatmapLayer();
         }
-        // Only automatically show the heatmap for Scene 8, not subsequent scenes
-        heatmapImageryProvider.show = sceneIndex === airQualitySceneIndex ? true : heatmapImageryProvider.show;
+        if (sceneIndex === airQualitySceneIndex) {
+            heatmapImageryProvider.show = true;
+        }
         airQualityButtonShown = true; // Indicate that the button has been shown
-    } else if (heatmapImageryProvider) {
-        // For scenes before Scene 8, keep the heatmap off
-        heatmapImageryProvider.show = false;
     }
     
     // Update button text based on the current visibility state of the heatmap
