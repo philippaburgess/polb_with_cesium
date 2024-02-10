@@ -312,6 +312,7 @@ function toggleHeatmap() {
         heatmapImageryProvider.show = !heatmapImageryProvider.show;
         toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
         console.log('New heatmap visibility:', heatmapImageryProvider.show);
+        viewer.scene.requestRender(); // Request the scene to render immediately
     } else {
         console.error("Heatmap layer is not initialized.");
     }
