@@ -268,6 +268,7 @@ const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace w
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 var airQualityButtonShown = false;
+var heatmapLayer;
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -317,22 +318,21 @@ function toggleHeatmap() {
 }
     
 // Functions to add or remove the heatmap layer
-function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
         });
-       viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        // Keep a reference to the layer object
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
 }
 
 function removeHeatmapLayer() {
-    if (heatmapImageryProvider) {
-        var layer = viewer.imageryLayers.findByImageryProvider(heatmapImageryProvider);
-        if (layer) {
-            viewer.imageryLayers.remove(layer, true);
-        }
-        heatmapImageryProvider = null; // Ensure the provider is reset
+    if (heatmapLayer) {
+        // Use the reference to remove the correct layer
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapImageryProvider = null;
+        heatmapLayer = null; // Make sure to clear the reference
     }
 }
     
