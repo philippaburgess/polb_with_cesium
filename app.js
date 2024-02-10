@@ -305,24 +305,15 @@ function manageHeatmapVisibility(sceneIndex) {
 }
 
 function toggleHeatmap() {
-    if (!heatmapImageryProvider) {
+    if (heatmapImageryProvider) {
+        removeHeatmapLayer();
+        toggleButton.textContent = 'Show Air Quality';
+    } else {
         addHeatmapLayer();
+        toggleButton.textContent = 'Hide Air Quality';
     }
-    // Toggle the visibility
-    heatmapImageryProvider.show = !heatmapImageryProvider.show;
-    toggleButton.textContent = heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
 }
-
     
-//    if (heatmapImageryProvider) {
-//        removeHeatmapLayer();
-//        toggleButton.textContent = 'Show Air Quality';
-//    } else {
-//        addHeatmapLayer();
-//        toggleButton.textContent = 'Hide Air Quality';
-//    }
-// }
-
 // Functions to add or remove the heatmap layer
 function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
@@ -335,7 +326,11 @@ function addHeatmapLayer() {
 
 function removeHeatmapLayer() {
     if (heatmapImageryProvider) {
-        heatmapImageryProvider.show = false;
+        var layer = viewer.imageryLayers.findByImageryProvider(heatmapImageryProvider);
+        if (layer) {
+            viewer.imageryLayers.remove(layer, true);
+        }
+        heatmapImageryProvider = null; // Ensure the provider is reset
     }
 }
     
@@ -491,7 +486,6 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton = document.getElementById('toggleAirQuality');
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
-        // Call manageHeatmapVisibility to ensure the button text is set correctly upon initialization
         manageHeatmapVisibility(currentSceneIndex);
     }
     
