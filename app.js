@@ -278,14 +278,12 @@ function setSceneContent(scene) {
  }
 
 function loadGeoJsonForScene3() {
-    // Corrected to point to the actual raw content of the GeoJSON file
     var geoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
-    viewer.dataSources.add(Cesium.GeoJsonDataSource.load(geoJsonUrl, {
-        camera: viewer.scene.camera,
-        canvas: viewer.scene.canvas
-    })).then(function(dataSource) {
-        // Keep a reference to the dataSource for later removal if needed
-       window.portTerminalsGeoJsonDataSource = dataSource;
+    Cesium.GeoJsonDataSource.load(geoJsonUrl).then(function(dataSource) {
+        viewer.dataSources.add(dataSource);
+        window.portTerminalsGeoJsonDataSource = dataSource;
+        // Optionally, zoom to the dataSource
+        viewer.zoomTo(dataSource);
     }).catch(function(error) {
         console.error('Error loading GeoJSON file:', error);
     });
