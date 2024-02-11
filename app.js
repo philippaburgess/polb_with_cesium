@@ -373,7 +373,6 @@ function removeHeatmapLayer() {
             window.portTerminalsKmlDataSource = null;
         }
     }
-}
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
