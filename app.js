@@ -278,7 +278,7 @@ function setSceneContent(scene) {
  }
 
 function loadKmlForScene3() {
-    var kmlUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminalsKML.kmz'; // Replace this with the actual URL to your KMZ file
+    var kmlUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminals_JSON.geojson'; // Replace this with the actual URL to your KMZ file
     viewer.dataSources.add(Cesium.KmlDataSource.load(kmlUrl, {
         camera: viewer.scene.camera,
         canvas: viewer.scene.canvas
@@ -363,7 +363,7 @@ function removeHeatmapLayer() {
 //    }
 // }
 
-        // Load KML when Scene 3 is active
+        // Load GeoJson when Scene 3 is active
     if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
         loadKmlForScene3();
     } else {
