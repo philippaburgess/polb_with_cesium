@@ -444,10 +444,10 @@ function flyToScene(scene) {
             complete: function() {
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, -5), // Replace with underwater coordinates
+                    destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 1), // Replace with underwater coordinates
                     orientation: {
-                        heading: Cesium.Math.toRadians(90), // Replace with desired heading
-                        pitch: Cesium.Math.toRadians(-45), // Replace with desired pitch
+                        heading: Cesium.Math.toRadians(0), // Replace with desired heading
+                        pitch: Cesium.Math.toRadians(0), // Replace with desired pitch
                         roll: 0.0
                     },
                     duration: 2 // Adjust duration as needed
