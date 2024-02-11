@@ -278,15 +278,16 @@ function setSceneContent(scene) {
  }
 
 function loadGeoJsonForScene3() {
-    var geoJsonUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminals_JSON.geojson'; // Replace this with the actual URL to your KMZ file
-    viewer.dataSources.add(Cesium.KmlDataSource.load(kmlUrl, {
+    // Corrected to point to the actual raw content of the GeoJSON file
+    var geoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
+    viewer.dataSources.add(Cesium.GeoJsonDataSource.load(geoJsonUrl, {
         camera: viewer.scene.camera,
         canvas: viewer.scene.canvas
     })).then(function(dataSource) {
         // Keep a reference to the dataSource for later removal if needed
        window.portTerminalsGeoJsonDataSource = dataSource;
     }).catch(function(error) {
-        console.error('Error loading KML file:', error);
+        console.error('Error loading GeoJSON file:', error);
     });
 }
  
