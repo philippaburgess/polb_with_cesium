@@ -387,13 +387,6 @@ if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
         window.portTerminalsGeoJsonDataSource = null; // Updated to the correct variable
     }
 }
-
-    if (currentSceneIndex === 5) { // Scene 6 is at index 5
-    viewer.scene.terrainProvider = bathymetryTerrainProvider;
-} else {
-    // Revert to default terrain for other scenes
-    viewer.scene.terrainProvider = defaultTerrainProvider;
-}
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
@@ -436,6 +429,12 @@ function flyToScene(scene) {
     });
 }
 
+        if (currentSceneIndex === 5) { // Scene 6 is at index 5
+    viewer.scene.terrainProvider = bathymetryTerrainProvider;
+} else {
+    // Revert to default terrain for other scenes
+    viewer.scene.terrainProvider = defaultTerrainProvider;
+}
     
 // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
     
