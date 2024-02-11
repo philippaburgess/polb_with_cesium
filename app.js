@@ -10,6 +10,11 @@
     const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
 
+var bathymetryTerrainProvider = new Cesium.CesiumTerrainProvider({
+    url: Cesium.IonResource.fromAssetId(2426648) // Replace with your actual bathymetry asset ID
+});
+var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
+    
    // Initialize the Cesium Viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
     animation: false, // Don't show the animation widget
@@ -290,15 +295,13 @@ function loadGeoJsonForScene3() {
 }
 
 function setBathymetryTerrain() {
-    var terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Replace with your actual bathymetry asset ID
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
     });
-    viewer.scene.terrainProvider = terrainProvider;
 }
 
-    function setDefaultTerrain() {
-    var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
-    viewer.scene.terrainProvider = defaultTerrainProvider;
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
     
 function updateScene() {
@@ -308,15 +311,12 @@ function updateScene() {
     flyToScene(scene);
 }
 
-            // Set bathymetry terrain for Scene 6
-    if (currentSceneIndex === 5) { // Remember, arrays are zero-indexed
-        setBathymetryTerrain();
-    } else {
-        // Optional: revert to default terrain for other scenes
-        setDefaultTerrain();
-    }
+if (currentSceneIndex === 5) { // Scene 6 is at index 5
+    viewer.scene.terrainProvider = bathymetryTerrainProvider;
+} else {
+    // Revert to default terrain for other scenes
+    viewer.scene.terrainProvider = defaultTerrainProvider;
 }
-
     
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
