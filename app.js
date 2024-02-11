@@ -429,6 +429,32 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             }
         }
 
+
+function flyToScene(scene) {
+    if (currentSceneIndex === 5) { // Scene 6
+        // Fly to above water location
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 1000), 
+            orientation: { 
+         heading : Cesium.Math.toRadians(45), // North
+         pitch : Cesium.Math.toRadians(-45), // Tilted angle looking down
+         roll : 0.0 // No roll
+            duration: 2, // Duration in seconds
+            complete: function() {
+                // After arriving at the above water location, fly to underwater
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, -1000), // Replace with underwater coordinates
+                    orientation: {
+                        heading : Cesium.Math.toRadians(90), // Replace with desired heading
+                        pitch : Cesium.Math.toRadians(-45, // Replace with desired pitch
+                        roll : 0.0
+                    },
+                    duration: 2 // Adjust duration as needed
+                });
+            }
+        });
+    } else {
+    
     // Function to navigate to the specified scene
 function flyToScene(scene) {
     viewer.camera.flyTo({
@@ -437,7 +463,7 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
-
+    }
         if (currentSceneIndex === 5) { // Scene 6 is at index 5
     viewer.scene.terrainProvider = bathymetryTerrainProvider;
 } else {
