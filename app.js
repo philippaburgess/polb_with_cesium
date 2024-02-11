@@ -143,7 +143,7 @@ orientation: {
 "<p>The Port has made substantial progress in reducing key pollutants and is preparing to meet new regulatory challenges. Engaging with the community is a central aspect of these efforts, ensuring that policies and projects are attuned to the needs of those most affected by port operations. This ongoing dialogue shapes the Port's environmental initiatives, enhancing their effectiveness and relevance. Community engagement remains a cornerstone of these endeavors, ensuring that the Port's strategies are closely aligned with the needs and concerns of those most impacted by its operations. This collaborative approach is key to continuously refining and enhancing the Port's air quality initiatives. These comprehensive measures continue to enhance air quality in the South Coast Air Basin which is instrumental in reducing health risks associated with air pollution.</p>" +
 "<p>Since 2005 the port has reduced: Diesel Particulate Matter (DPM) by 90%, Sulfur Oxides (SOx) by 97%, and Nitrogen Oxides (NOx) by 62%. </p>" +
 "<p>Use the Show/Hide toggle in all scenes to see real-time Air Quality from Google.</p>",               
-           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.600, 3800), // These coordinates position the camera above the port area.
+           destination: Cesium.Cartesian3.fromDegrees(-118.1550, 33.580, 3800), // These coordinates position the camera above the port area.
            orientation: {
         heading: Cesium.Math.toRadians(340), // This heading rotates the camera to an angle that approximates the northwest direction.
         pitch: Cesium.Math.toRadians(-15), // This pitch tilts the camera towards the ground at a diagonal angle.
@@ -277,14 +277,14 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-function loadKmlForScene3() {
-    var kmlUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminals_JSON.geojson'; // Replace this with the actual URL to your KMZ file
+function loadGeoJsonForScene3() {
+    var geoJsonUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminals_JSON.geojson'; // Replace this with the actual URL to your KMZ file
     viewer.dataSources.add(Cesium.KmlDataSource.load(kmlUrl, {
         camera: viewer.scene.camera,
         canvas: viewer.scene.canvas
     })).then(function(dataSource) {
         // Keep a reference to the dataSource for later removal if needed
-        window.portTerminalsKmlDataSource = dataSource;
+       window.portTerminalsGeoJsonDataSource = dataSource;
     }).catch(function(error) {
         console.error('Error loading KML file:', error);
     });
@@ -363,16 +363,16 @@ function removeHeatmapLayer() {
 //    }
 // }
 
-        // Load GeoJson when Scene 3 is active
-    if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
-        loadKmlForScene3();
-    } else {
-        // Optional: Remove or hide KML data source if moving away from Scene 3
-        if (window.portTerminalsKmlDataSource) {
-            viewer.dataSources.remove(window.portTerminalsKmlDataSource, true);
-            window.portTerminalsKmlDataSource = null;
-        }
+       // Load GeoJson when Scene 3 is active
+if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
+    loadGeoJsonForScene3(); // Updated to call the correct function
+} else {
+    // Optional: Remove or hide GeoJSON data source if moving away from Scene 3
+    if (window.portTerminalsGeoJsonDataSource) {
+        viewer.dataSources.remove(window.portTerminalsGeoJsonDataSource, true);
+        window.portTerminalsGeoJsonDataSource = null; // Updated to the correct variable
     }
+}
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
