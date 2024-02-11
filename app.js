@@ -310,13 +310,6 @@ function updateScene() {
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
-
-if (currentSceneIndex === 5) { // Scene 6 is at index 5
-    viewer.scene.terrainProvider = bathymetryTerrainProvider;
-} else {
-    // Revert to default terrain for other scenes
-    viewer.scene.terrainProvider = defaultTerrainProvider;
-}
     
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
@@ -393,6 +386,13 @@ if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
         viewer.dataSources.remove(window.portTerminalsGeoJsonDataSource, true);
         window.portTerminalsGeoJsonDataSource = null; // Updated to the correct variable
     }
+}
+
+    if (currentSceneIndex === 5) { // Scene 6 is at index 5
+    viewer.scene.terrainProvider = bathymetryTerrainProvider;
+} else {
+    // Revert to default terrain for other scenes
+    viewer.scene.terrainProvider = defaultTerrainProvider;
 }
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
