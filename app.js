@@ -288,13 +288,26 @@ function loadGeoJsonForScene3() {
         console.error('Error loading GeoJSON file:', error);
     });
 }
- 
+
+function setBathymetryTerrain() {
+    var terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Replace with your actual bathymetry asset ID
+    });
+    viewer.scene.terrainProvider = terrainProvider;
+}
+
+    function setDefaultTerrain() {
+    var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
+    viewer.scene.terrainProvider = defaultTerrainProvider;
+}
+    
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
+
     
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
@@ -370,6 +383,15 @@ if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
     if (window.portTerminalsGeoJsonDataSource) {
         viewer.dataSources.remove(window.portTerminalsGeoJsonDataSource, true);
         window.portTerminalsGeoJsonDataSource = null; // Updated to the correct variable
+    }
+}
+
+        // Set bathymetry terrain for Scene 6
+    if (currentSceneIndex === 5) { // Remember, arrays are zero-indexed
+        setBathymetryTerrain();
+    } else {
+        // Optional: revert to default terrain for other scenes
+        setDefaultTerrain();
     }
 }
     
