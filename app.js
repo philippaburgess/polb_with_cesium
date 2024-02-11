@@ -276,14 +276,27 @@ function setSceneContent(scene) {
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
-    
+
+function loadKmlForScene3() {
+    var kmlUrl = 'URL_TO_YOUR_KML_FILE'; // Replace this with the actual URL to your KMZ file
+    viewer.dataSources.add(Cesium.KmlDataSource.load(kmlUrl, {
+        camera: viewer.scene.camera,
+        canvas: viewer.scene.canvas
+    })).then(function(dataSource) {
+        // Keep a reference to the dataSource for later removal if needed
+        window.portTerminalsKmlDataSource = dataSource;
+    }).catch(function(error) {
+        console.error('Error loading KML file:', error);
+    });
+}
+ 
 function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
-
+    
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
@@ -350,6 +363,17 @@ function removeHeatmapLayer() {
 //    }
 // }
 
+        // Load KML when Scene 3 is active
+    if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
+        loadKmlForScene3();
+    } else {
+        // Optional: Remove or hide KML data source if moving away from Scene 3
+        if (window.portTerminalsKmlDataSource) {
+            viewer.dataSources.remove(window.portTerminalsKmlDataSource, true);
+            window.portTerminalsKmlDataSource = null;
+        }
+    }
+}
     
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
