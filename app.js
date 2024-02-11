@@ -310,31 +310,40 @@ function updateScene() {
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
-    
+
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
-    // Hide the heatmap by default
-    if (heatmapImageryProvider) {
-        heatmapImageryProvider.show = false;
-    }
-    
     // Show the toggle button from Scene 8 onwards
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-    
-    // If it's Scene 8 or beyond, make sure the heatmap layer is added, shown only for Scene 8
-    if (sceneIndex >= airQualitySceneIndex) {
-        if (!heatmapImageryProvider) {
+    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
+        toggleButton.style.display = 'block';
+        airQualityButtonShown = true; // Set the flag to true as the button is now shown
+        addHeatmapLayer(); // Add the heatmap layer if not already added
+    } else if (airQualityButtonShown) {
+        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
+    } else {
+        toggleButton.style.display = 'none'; // Hide the button before Scene 8
+    }
+
+    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
+    // and we are navigating back before scene 8, we need to ensure it's added but not visible
+    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
+        if (!heatmapLayer) {
             addHeatmapLayer();
         }
-        if (sceneIndex === airQualitySceneIndex) {
-            heatmapImageryProvider.show = true;
-        }
-        airQualityButtonShown = true; // Indicate that the button has been shown
+        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
     }
-    
+
+    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
+    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+        heatmapLayer.show = true; // Show the layer
+    }
+
     // Update button text based on the current visibility state of the heatmap
-    toggleButton.textContent = heatmapImageryProvider && heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
+    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
 function toggleHeatmap() {
