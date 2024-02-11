@@ -278,7 +278,7 @@ function setSceneContent(scene) {
  }
 
 function loadKmlForScene3() {
-    var kmlUrl = 'URL_TO_YOUR_KML_FILE'; // Replace this with the actual URL to your KMZ file
+    var kmlUrl = 'https://github.com/philippaburgess/polb_with_cesium/blob/main/PortTerminalsKML.kmz'; // Replace this with the actual URL to your KMZ file
     viewer.dataSources.add(Cesium.KmlDataSource.load(kmlUrl, {
         camera: viewer.scene.camera,
         canvas: viewer.scene.canvas
