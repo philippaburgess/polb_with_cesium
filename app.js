@@ -450,6 +450,7 @@ function flyToScene(scene) {
     // Revert to default terrain for other scenes
     viewer.scene.terrainProvider = defaultTerrainProvider;
 }
+}
 
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
@@ -467,9 +468,6 @@ function setDefaultTerrain() {
 //    manageHeatmapVisibility(currentSceneIndex);
 //    flyToScene(scene);
 // }    
-
-    
-
 
 // Update the scene with the right content, layers, and camera view
 function updateScene(sceneIndex) {
@@ -539,6 +537,8 @@ function showSceneContainer() {
         sceneContainer.style.display = 'block';
     }
 }
+
+    
 // Section 5
 
     function onFlyoverComplete() {
