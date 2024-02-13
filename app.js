@@ -285,42 +285,17 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-function manageHeatmapVisibility(sceneIndex) {
-    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-
-    // Show the toggle button from Scene 8 onwards
-    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
-        toggleButton.style.display = 'block';
-        airQualityButtonShown = true; // Set the flag to true as the button is now shown
-        addHeatmapLayer(); // Add the heatmap layer if not already added
-    } else if (airQualityButtonShown) {
-        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
-    } else {
-        toggleButton.style.display = 'none'; // Hide the button before Scene 8
+    function addHeatmapLayer() {
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+        // Keep a reference to the layer object
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
+} // This closing bracket was missing in your snippet
 
-    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
-    // and we are navigating back before scene 8, we need to ensure it's added but not visible
-    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
-        if (!heatmapLayer) {
-            addHeatmapLayer();
-        }
-        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
-    }
-
-    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
-    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
-        if (!heatmapLayer) {
-            addHeatmapLayer();
-        }
-        heatmapLayer.show = true; // Show the layer
-    }
-
-    // Update button text based on the current visibility state of the heatmap
-    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
-}
-
-function toggleHeatmap() {
+    function toggleHeatmap() {
     console.log('toggleHeatmap called'); // Check if function is called
     if (heatmapLayer) {
         console.log('Removing heatmap layer');
@@ -333,27 +308,8 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Hide Air Quality';
     }
 }
-    
-function addHeatmapLayer() {
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-        // Keep a reference to the layer object
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-} // This closing bracket was missing in your snippet
 
-function removeHeatmapLayer() {
-    if (heatmapLayer) {
-        // Use the reference to remove the correct layer
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapImageryProvider = null;
-        heatmapLayer = null; // Make sure to clear the reference
-    }
-}
-
-function checkSceneForGeoJsonLayers(sceneIndex) {
+    function checkSceneForGeoJsonLayers(sceneIndex) {
        // Load GeoJson when Scene 3 is active
 if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
    if (!portTerminalLayer) {
@@ -409,6 +365,49 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             }
         }
 
+function manageHeatmapVisibility(sceneIndex) {
+    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+
+    // Show the toggle button from Scene 8 onwards
+    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
+        toggleButton.style.display = 'block';
+        airQualityButtonShown = true; // Set the flag to true as the button is now shown
+        addHeatmapLayer(); // Add the heatmap layer if not already added
+    } else if (airQualityButtonShown) {
+        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
+    } else {
+        toggleButton.style.display = 'none'; // Hide the button before Scene 8
+    }
+
+    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
+    // and we are navigating back before scene 8, we need to ensure it's added but not visible
+    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
+    }
+
+    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
+    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+        heatmapLayer.show = true; // Show the layer
+    }
+
+    // Update button text based on the current visibility state of the heatmap
+    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
+}
+
+function removeHeatmapLayer() {
+    if (heatmapLayer) {
+        // Use the reference to remove the correct layer
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapImageryProvider = null;
+        heatmapLayer = null; // Make sure to clear the reference
+    }
+}
     
 function flyToScene(scene) {
     if (currentSceneIndex === 5) { // Scene 6
@@ -460,6 +459,7 @@ function setBathymetryTerrain() {
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
+    }
     
 // function updateScene() {
 //    var scene = scenes[currentSceneIndex];
@@ -476,7 +476,7 @@ function updateScene(sceneIndex) {
     checkSceneForGeoJsonLayers(sceneIndex);
     flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
 }
-};
+}
     
 // Section 4 
 
