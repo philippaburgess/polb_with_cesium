@@ -378,42 +378,40 @@ function setBathymetryTerrain() {
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
-
+ 
 function flyToScene(scene, specialFlyover = false) {
-  if (specialFlyover) {
-             if (currentSceneIndex === 5) {
-            // Fly to above water location
-            viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-                orientation: {
-                    heading: Cesium.Math.toRadians(45), // North
-                    pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                    roll: 0.0
-                },
-                duration: 6, // Duration in seconds
-                complete: function() {
-                    // After arriving at the above water location, fly to underwater
-                    viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
-                        orientation: {
-                            heading: Cesium.Math.toRadians(0), // Desired heading
-                            pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
-                            roll: 0.0
-                        },
-                        duration: 2 // Adjust duration as needed
-                    });
-                }
-            });
-        } else {
+    if (specialFlyover && currentSceneIndex === 5) {
+        // Special flyover logic for scene 6 (index 5)
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+            orientation: {
+                heading: Cesium.Math.toRadians(45), // North
+                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                roll: 0.0
+            },
+            duration: 6, // Duration in seconds
+            complete: function() {
+                // After arriving at the above water location, fly to underwater
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                    orientation: {
+                        heading: Cesium.Math.toRadians(0), // Desired heading
+                        pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
+                        roll: 0.0
+                    },
+                    duration: 2 // Adjust duration as needed
+                });
+            }
+        });
+    } else {
+        // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2 // Adjust the duration as needed
-     });
+        });
     }
-}  
-
-    
+}
 
 function updateScene(sceneIndex) {
     if (typeof sceneIndex === 'undefined') {
@@ -436,15 +434,6 @@ function updateScene(sceneIndex) {
 }
 
     initHeatmapLayerProvider();
-    
-    // Function to navigate to the specified scene
-function flyToScene(scene) {
-    viewer.camera.flyTo({
-        destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-    });
-}
     
 // Section 4 
 
