@@ -461,7 +461,7 @@ function setDefaultTerrain() {
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
         
-   flyToScene(scene, sceneIndex === 5); // Ensure 'flyToScene' is defined and handles camera movement
+   flyToScene(scene, sceneIndex === 5); 
 }
 
     
