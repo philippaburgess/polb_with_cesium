@@ -476,7 +476,7 @@ function updateScene(sceneIndex) {
     checkSceneForGeoJsonLayers(sceneIndex);
     flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
 }
-    
+};
     
 // Section 4 
 
