@@ -450,7 +450,6 @@ function flyToScene(scene) {
     // Revert to default terrain for other scenes
     viewer.scene.terrainProvider = defaultTerrainProvider;
 }
-}
 
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
