@@ -278,6 +278,12 @@ var heatmapLayer;
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
+function setSceneContent(scene) {
+      document.getElementById('scene-title').textContent = scene.title;
+      document.getElementById('scene-description').innerHTML = scene.content;
+      document.getElementById('scene-container').style.display = 'block';
+ }
+
 // Initialize heatmap layer provider
 function initHeatmapLayerProvider() {
     if (!heatmapImageryProvider) {
@@ -363,36 +369,74 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
-// Update the scene with required settings
+function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
+
+function flyToScene(scene, specialFlyover = false) {
+  if (specialFlyover) {
+             if (currentSceneIndex === 5) {
+            // Fly to above water location
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+                orientation: {
+                    heading: Cesium.Math.toRadians(45), // North
+                    pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                    roll: 0.0
+                },
+                duration: 6, // Duration in seconds
+                complete: function() {
+                    // After arriving at the above water location, fly to underwater
+                    viewer.camera.flyTo({
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                        orientation: {
+                            heading: Cesium.Math.toRadians(0), // Desired heading
+                            pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
+                            roll: 0.0
+                        },
+                        duration: 2 // Adjust duration as needed
+                    });
+                }
+            });
+        } else {
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Adjust the duration as needed
+     });
+    }
+}  
+
+    
+
 function updateScene(sceneIndex) {
+    if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex; // fallback to currentSceneIndex if sceneIndex is not provided
+    }
     var scene = scenes[sceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     
-    // Special handling for bathymetry change
-    if (scene.specialFlyover) {
-        flyToScene(scene, true); // Assuming flyToScene is modified to handle a specialFlyover boolean
+    // Call the terrain function based on the scene
+    if (sceneIndex === 5) {
+        setBathymetryTerrain();
     } else {
-        flyToScene(scene);
+        setDefaultTerrain();
     }
-}
     
-function setSceneContent(scene) {
-      document.getElementById('scene-title').textContent = scene.title;
-      document.getElementById('scene-description').innerHTML = scene.content;
-      document.getElementById('scene-container').style.display = 'block';
- }
-    
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(currentSceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene);
+    // Call flyToScene with the specialFlyover parameter based on the scene
+    flyToScene(scene, sceneIndex === 5); // Assuming sceneIndex 5 requires special handling
 }
 
-
+    initHeatmapLayerProvider();
+    
     // Function to navigate to the specified scene
 function flyToScene(scene) {
     viewer.camera.flyTo({
