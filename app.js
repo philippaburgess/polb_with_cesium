@@ -261,7 +261,6 @@ orientation: {
           heading : Cesium.Math.toRadians(0.0), // East, in radians
           pitch : Cesium.Math.toRadians(-90.0), // Looking down, in radians
           roll : 0.0 // No roll
-          }https://www.linkedin.com/notifications/?filter=all&refresh=true
         },
             
 ];
