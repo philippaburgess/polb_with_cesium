@@ -261,7 +261,7 @@ orientation: {
           heading : Cesium.Math.toRadians(0.0), // East, in radians
           pitch : Cesium.Math.toRadians(-90.0), // Looking down, in radians
           roll : 0.0 // No roll
-          }
+          }https://www.linkedin.com/notifications/?filter=all&refresh=true
         },
             
 ];
@@ -278,6 +278,35 @@ const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 var airQualityButtonShown = false;
 var heatmapLayer;
+
+    function loadLongBeachDataLayer() {
+  if (!longBeachDataLayer) { // Check if the GeoJSON layer is not already loaded
+    Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+      .then(function(dataSource) {
+        viewer.dataSources.add(dataSource);
+        longBeachDataLayer = dataSource;
+        viewer.zoomTo(dataSource); // Optional: Zoom to the GeoJSON layer
+
+        // Process entities if needed
+        var entities = dataSource.entities.values;
+        for (var i = 0; i < entities.length; i++) {
+          var entity = entities[i];
+          if (entity.properties) {
+            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+            for (var propertyName in entity.properties) {
+              var value = entity.properties[propertyName];
+              description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
+            }
+            description += '</tbody></table>';
+            entity.description = description; // Set custom description
+          }
+        }
+      })
+      .catch(function(error) {
+        console.error('Error loading Long Beach GeoJSON data:', error);
+      });
+  }
+}
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -289,46 +318,19 @@ function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
-    longBeachDataLayer(currentSceneIndex);
     flyToScene(scene);
 }
 
-if(titleElement && contentElement && sceneContainer) {
-        titleElement.textContent = scene.title;
-        contentElement.innerHTML = scene.content;
-        sceneContainer.style.display = 'block'; // Make sure the container is visible
-          
-  if (currentSceneIndex === 12) {
-    if (!longBeachDataLayer) {
-        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-        .then(function(dataSource) {
-            viewer.dataSources.add(dataSource);
-            longBeachDataLayer = dataSource;
-            var entities = dataSource.entities.values;
-
-            for (var i = 0; i < entities.length; i++) {
-                var entity = entities[i];
-                if (entity.properties) {
-                    var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-                    entity.properties.propertyNames.forEach(function(propertyName) {
-                        var value = entity.properties[propertyName].getValue(); // Ensure correct value retrieval
-                        description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-                    });
-                    description += '</tbody></table>';
-                    entity.description = description; // InfoBox will use this
-                }
-            }
-        }).catch(function(error) {
-            console.error(error);
-        });
-    }     
-} else {
-    if (longBeachDataLayer) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
+     if (currentSceneIndex === 12) {
+        loadLongBeachDataLayer(); // Call the function to load the GeoJSON layer
+    } else {
+        // Optionally, remove or hide the GeoJSON layer when not in the relevant scene
+        if (longBeachDataLayer) {
+            viewer.dataSources.remove(longBeachDataLayer);
+            longBeachDataLayer = undefined; // Reset the variable
+        }
     }
-}
-
+        
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
