@@ -292,7 +292,11 @@ function updateScene() {
     flyToScene(scene);
 }
 
-   
+if(titleElement && contentElement && sceneContainer) {
+        titleElement.textContent = scene.title;
+        contentElement.innerHTML = scene.content;
+        sceneContainer.style.display = 'block'; // Make sure the container is visible
+          
   if (currentSceneIndex === 12) {
     if (!longBeachDataLayer) {
         Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
