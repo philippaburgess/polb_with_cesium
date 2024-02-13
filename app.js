@@ -285,6 +285,15 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
+    // Update the scene with the right content, layers, and camera view
+function updateScene(sceneIndex) {
+    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
+}
+
     function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -333,37 +342,6 @@ if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
 }
 
     
-if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
-        if (!longBeachDataLayer) {
-           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-            .then(function(dataSource) {
-                    viewer.dataSources.add(dataSource);
-                    longBeachDataLayer = dataSource;
-                    var entities = dataSource.entities.values;
-
-    for (var i = 0; i < entities.length; i++) {
-        var entity = entities[i];
-        if (entity.properties) {
-            // Create a description from the properties
-            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-            entity.properties.propertyNames.forEach(function(propertyName) {
-                var value = entity.properties[propertyName];
-                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-             });
-               description += '</tbody></table>';
-                entity.description = description; // InfoBox will use this
-             }
-        }
-      }).catch(function(error) {
-        console.error(error);
-                });
-            }     
-        } else {
-            if (longBeachDataLayer) {
-                viewer.dataSources.remove(longBeachDataLayer);
-                longBeachDataLayer = null;
-            }
-        }
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
@@ -408,7 +386,39 @@ function removeHeatmapLayer() {
         heatmapLayer = null; // Make sure to clear the reference
     }
 }
-    
+
+if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
+        if (!longBeachDataLayer) {
+           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+            .then(function(dataSource) {
+                    viewer.dataSources.add(dataSource);
+                    longBeachDataLayer = dataSource;
+                    var entities = dataSource.entities.values;
+
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.properties) {
+            // Create a description from the properties
+            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+            entity.properties.propertyNames.forEach(function(propertyName) {
+                var value = entity.properties[propertyName];
+                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+             });
+               description += '</tbody></table>';
+                entity.description = description; // InfoBox will use this
+             }
+        }
+      }).catch(function(error) {
+        console.error(error);
+                });
+            }     
+        } else {
+            if (longBeachDataLayer) {
+                viewer.dataSources.remove(longBeachDataLayer);
+                longBeachDataLayer = null;
+            }
+        }
+        
 function flyToScene(scene) {
     if (currentSceneIndex === 5) { // Scene 6
         // Fly to above water location
@@ -468,14 +478,13 @@ function setDefaultTerrain() {
 //    flyToScene(scene);
 // }    
 
-// Update the scene with the right content, layers, and camera view
-function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
-}
+        // Function to navigate to the specified scene
+function flyToScene(scene) {
+    viewer.camera.flyTo({
+        destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+    });
 }
     
 // Section 4 
