@@ -289,6 +289,7 @@ function updateScene() {
     var scene = scenes[currentSceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(currentSceneIndex);
+    longBeachDataLayer(currentSceneIndex);
     flyToScene(scene);
 }
 
