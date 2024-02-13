@@ -285,14 +285,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-    function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
-}
-
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
@@ -413,48 +405,45 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
                 longBeachDataLayer = null;
             }
         }
-        
-function flyToScene(scene) {
-    if (currentSceneIndex === 5) { // Scene 6
-        // Fly to above water location
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45), // North
-                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                roll: 0.0
-            },
-            duration: 6, // Duration in seconds
-            complete: function() {
-                // After arriving at the above water location, fly to underwater
-                viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Replace with underwater coordinates
-                    orientation: {
-                        heading: Cesium.Math.toRadians(0), // Replace with desired heading
-                        pitch: Cesium.Math.toRadians(-10.0), // Replace with desired pitch
-                        roll: 0.0
-                    },
-                    duration: 2 // Adjust duration as needed
-                });
-            }
-        });
+
+       function flyToScene(scene, specialFlyover = false) {
+    if (specialFlyover) {
+        // Special case for Scene 6
+        if (currentSceneIndex === 5) {
+            // Fly to above water location
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+                orientation: {
+                    heading: Cesium.Math.toRadians(45), // North
+                    pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                    roll: 0.0
+                },
+                duration: 6, // Duration in seconds
+                complete: function() {
+                    // After arriving at the above water location, fly to underwater
+                    viewer.camera.flyTo({
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                        orientation: {
+                            heading: Cesium.Math.toRadians(0), // Desired heading
+                            pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
+                            roll: 0.0
+                        },
+                        duration: 2 // Adjust duration as needed
+                    });
+                }
+            });
+        } else {
+            // Code for other special flyovers if necessary
+        }
     } else {
-        // Function to navigate to the specified scene
+        // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2 // Adjust the duration as needed
         });
     }
-}
     
-        if (currentSceneIndex === 5) { // Scene 6 is at index 5
-    viewer.scene.terrainProvider = bathymetryTerrainProvider;
-} else {
-    // Revert to default terrain for other scenes
-    viewer.scene.terrainProvider = defaultTerrainProvider;
-}
-
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -465,14 +454,16 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
     }
-        // Function to navigate to the specified scene
-function flyToScene(scene) {
-    viewer.camera.flyTo({
-        destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-    });
+
+    function updateScene(sceneIndex) {
+    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+        
+   flyToScene(scene, sceneIndex === 5); Ensure 'flyToScene' is defined and handles camera movement
 }
+
     
 // Section 4 
 
