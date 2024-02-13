@@ -441,13 +441,11 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             destination: scene.destination,
             orientation: scene.orientation,
             duration: 2 // Adjust the duration as needed
-        });
     }
 }  
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
 }
 
 function setDefaultTerrain() {
@@ -455,14 +453,12 @@ function setDefaultTerrain() {
 }
 
     function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
-    setSceneContent(scene);
+    var scene = scenes[sceneIndex]; 
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     flyToScene(scene, sceneIndex === 5); 
 }
 
-    
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
