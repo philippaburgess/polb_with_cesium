@@ -269,6 +269,7 @@ orientation: {
 // Section 3
 
 var longBeachDataLayer;
+var portTerminalLayer; 
 var heatmapImageryProvider;
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
@@ -281,18 +282,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
-
-function loadGeoJsonForScene3() {
-    var geoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
-    Cesium.GeoJsonDataSource.load(geoJsonUrl).then(function(dataSource) {
-        viewer.dataSources.add(dataSource);
-        window.portTerminalsGeoJsonDataSource = dataSource;
-        // Optionally, zoom to the dataSource
-        viewer.zoomTo(dataSource);
-    }).catch(function(error) {
-        console.error('Error loading GeoJSON file:', error);
-    });
-}
 
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
@@ -379,21 +368,25 @@ function removeHeatmapLayer() {
     }
 }
     
-//    if (heatmapImageryProvider) {
-//         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
-//        heatmapImageryProvider = null;
-//        toggleButton.textContent = 'Show Air Quality'; // Update button text
-//    }
-// }
-
        // Load GeoJson when Scene 3 is active
 if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
-    loadGeoJsonForScene3(); // Updated to call the correct function
+   if (!portTerminalLayer) {
+            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
+            .then(function(dataSource) {
+                viewer.dataSources.add(dataSource);
+                portTerminalLayer = dataSource;
+                // Optionally, zoom to the dataSource
+                viewer.zoomTo(dataSource);
+            })
+            .catch(function(error) {
+                console.error('Error loading PortTerminals GeoJSON:', error);
+            });
+    }
 } else {
-    // Optional: Remove or hide GeoJSON data source if moving away from Scene 3
-    if (window.portTerminalsGeoJsonDataSource) {
-        viewer.dataSources.remove(window.portTerminalsGeoJsonDataSource, true);
-        window.portTerminalsGeoJsonDataSource = null; // Updated to the correct variable
+    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
+    if (portTerminalLayer) {
+        viewer.dataSources.remove(portTerminalLayer, true);
+        portTerminalLayer = null;
     }
 }
     
