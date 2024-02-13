@@ -279,44 +279,45 @@ var toggleButton = document.getElementById('toggleAirQuality'); // Access the to
 var airQualityButtonShown = false;
 var heatmapLayer;
     
+// Section 3
+    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
+    
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(currentSceneIndex);
+    flyToScene(scene);
+}
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
+    // Hide the heatmap by default
+    if (heatmapImageryProvider) {
+        heatmapImageryProvider.show = false;
+    }
+    
     // Show the toggle button from Scene 8 onwards
-    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
-        toggleButton.style.display = 'block';
-        airQualityButtonShown = true; // Set the flag to true as the button is now shown
-        addHeatmapLayer(); // Add the heatmap layer if not already added
-    } else if (airQualityButtonShown) {
-        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
-    } else {
-        toggleButton.style.display = 'none'; // Hide the button before Scene 8
-    }
-  // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
-    // and we are navigating back before scene 8, we need to ensure it's added but not visible
-    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
-        if (!heatmapLayer) {
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+    
+    // If it's Scene 8 or beyond, make sure the heatmap layer is added, shown only for Scene 8
+    if (sceneIndex >= airQualitySceneIndex) {
+        if (!heatmapImageryProvider) {
             addHeatmapLayer();
         }
-        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
-    }
-
-    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
-    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
-        if (!heatmapLayer) {
-            addHeatmapLayer();
+        if (sceneIndex === airQualitySceneIndex) {
+            heatmapImageryProvider.show = true;
         }
-        heatmapLayer.show = true; // Show the layer
+        airQualityButtonShown = true; // Indicate that the button has been shown
     }
-
+    
     // Update button text based on the current visibility state of the heatmap
-    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
+    toggleButton.textContent = heatmapImageryProvider && heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
 function toggleHeatmap() {
@@ -332,8 +333,8 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Hide Air Quality';
     }
 }
-
-        function addHeatmapLayer() {
+    
+function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
@@ -341,7 +342,7 @@ function toggleHeatmap() {
         // Keep a reference to the layer object
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
-} 
+} // This closing bracket was missing in your snippet
 
 function removeHeatmapLayer() {
     if (heatmapLayer) {
@@ -351,29 +352,15 @@ function removeHeatmapLayer() {
         heatmapLayer = null; // Make sure to clear the reference
     }
 }
-    function checkSceneForGeoJsonLayers(sceneIndex) {
-       // Load GeoJson when Scene 3 is active
-if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
-   if (!portTerminalLayer) {
-            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
-            .then(function(dataSource) {
-                viewer.dataSources.add(dataSource);
-                portTerminalLayer = dataSource;
-                // Optionally, zoom to the dataSource
-                viewer.zoomTo(dataSource);
-            })
-            .catch(function(error) {
-                console.error('Error loading PortTerminals GeoJSON:', error);
-            });
-    }
-} else {
-    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
-    if (portTerminalLayer) {
-        viewer.dataSources.remove(portTerminalLayer, true);
-        portTerminalLayer = null;
-    }
-}
-    }
+    
+//    if (heatmapImageryProvider) {
+//         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
+//        heatmapImageryProvider = null;
+//        toggleButton.textContent = 'Show Air Quality'; // Update button text
+//    }
+// }
+
+    
 if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
         if (!longBeachDataLayer) {
            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
@@ -406,66 +393,15 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
             }
         }
 
-       function flyToScene(scene, specialFlyover = false) {
-    if (specialFlyover) {
-        // Special case for Scene 6
-        if (currentSceneIndex === 5) {
-            // Fly to above water location
-            viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-                orientation: {
-                    heading: Cesium.Math.toRadians(45), // North
-                    pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                    roll: 0.0
-                },
-                duration: 6, // Duration in seconds
-                complete: function() {
-                    // After arriving at the above water location, fly to underwater
-                    viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
-                        orientation: {
-                            heading: Cesium.Math.toRadians(0), // Desired heading
-                            pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
-                            roll: 0.0
-                        },
-                        duration: 2 // Adjust duration as needed
-                    });
-                }
-            });
-        } else {
-            // Code for other special flyovers if necessary
-        }
-    } else {
-        // Standard flyTo behavior for scene navigation
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Adjust the duration as needed
-     });
-    }
-}  
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    // Function to navigate to the specified scene
+function flyToScene(scene) {
+    viewer.camera.flyTo({
+        destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
     });
 }
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
-
-    function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex]; 
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene); 
-            if (currentSceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
-    }
-     console.log("updateScene function processed correctly.");
-}
-
+    
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
