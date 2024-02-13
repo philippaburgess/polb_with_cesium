@@ -279,8 +279,6 @@ var toggleButton = document.getElementById('toggleAirQuality'); // Access the to
 var airQualityButtonShown = false;
 var heatmapLayer;
     
-// Section 3
-    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
@@ -359,6 +357,7 @@ function removeHeatmapLayer() {
 //        toggleButton.textContent = 'Show Air Quality'; // Update button text
 //    }
 // }
+
 
     
   if (currentSceneIndex === 12) {
