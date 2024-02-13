@@ -270,93 +270,23 @@ orientation: {
 var longBeachDataLayer;
 var portTerminalLayer; 
 var heatmapImageryProvider;
-
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
-
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 var airQualityButtonShown = false;
 var heatmapLayer;
 
-    function loadLongBeachDataLayer() {
-  if (!longBeachDataLayer) { // Check if the GeoJSON layer is not already loaded
-    Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-      .then(function(dataSource) {
-        viewer.dataSources.add(dataSource);
-        longBeachDataLayer = dataSource;
-        viewer.zoomTo(dataSource); // Optional: Zoom to the GeoJSON layer
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
-        // Process entities if needed
-        var entities = dataSource.entities.values;
-        for (var i = 0; i < entities.length; i++) {
-          var entity = entities[i];
-          if (entity.properties) {
-            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-            for (var propertyName in entity.properties) {
-              var value = entity.properties[propertyName];
-              description += `<tr><th>${propertyName}</th><td>${value}</td></tr>`;
-            }
-            description += '</tbody></table>';
-            entity.description = description; // Set custom description
-          }
-        }
-      })
-      .catch(function(error) {
-        console.error('Error loading Long Beach GeoJSON data:', error);
-      });
-  }
-}
-    
-function setSceneContent(scene) {
-      document.getElementById('scene-title').textContent = scene.title;
-      document.getElementById('scene-description').innerHTML = scene.content;
-      document.getElementById('scene-container').style.display = 'block';
- }
-    
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(currentSceneIndex);
-    flyToScene(scene);
+// Initialize heatmap layer provider
+function initHeatmapLayerProvider() {
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+    }
 }
 
-     if (currentSceneIndex === 12) {
-        loadLongBeachDataLayer(); // Call the function to load the GeoJSON layer
-    } else {
-        // Optionally, remove or hide the GeoJSON layer when not in the relevant scene
-        if (longBeachDataLayer) {
-            viewer.dataSources.remove(longBeachDataLayer);
-            longBeachDataLayer = undefined; // Reset the variable
-        }
-    }
-        
-function manageHeatmapVisibility(sceneIndex) {
-    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-
-    // Hide the heatmap by default
-    if (heatmapImageryProvider) {
-        heatmapImageryProvider.show = false;
-    }
-    
-    // Show the toggle button from Scene 8 onwards
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-    
-    // If it's Scene 8 or beyond, make sure the heatmap layer is added, shown only for Scene 8
-    if (sceneIndex >= airQualitySceneIndex) {
-        if (!heatmapImageryProvider) {
-            addHeatmapLayer();
-        }
-        if (sceneIndex === airQualitySceneIndex) {
-            heatmapImageryProvider.show = true;
-        }
-        airQualityButtonShown = true; // Indicate that the button has been shown
-    }
-    
-    // Update button text based on the current visibility state of the heatmap
-    toggleButton.textContent = heatmapImageryProvider && heatmapImageryProvider.show ? 'Hide Air Quality' : 'Show Air Quality';
-}
-
-function toggleHeatmap() {
+    function toggleHeatmap() {
     console.log('toggleHeatmap called'); // Check if function is called
     if (heatmapLayer) {
         console.log('Removing heatmap layer');
@@ -370,6 +300,23 @@ function toggleHeatmap() {
     }
 }
     
+
+// Function to manage heatmap visibility based on scene index
+function manageHeatmapVisibility(sceneIndex) {
+    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+
+    if (sceneIndex >= airQualitySceneIndex) {
+        if (!heatmapLayer) {
+            toggleHeatmap(); // Initially add the heatmap layer if not already added
+        } else if (!viewer.imageryLayers.contains(heatmapLayer)) {
+            toggleHeatmap(); // Add the heatmap layer if it was previously removed
+        }
+        heatmapLayer.show = sceneIndex === airQualitySceneIndex || toggleButton.textContent === 'Hide Air Quality';
+    }
+}
+
+
 function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -388,14 +335,61 @@ function removeHeatmapLayer() {
         heatmapLayer = null; // Make sure to clear the reference
     }
 }
-    
-//    if (heatmapImageryProvider) {
-//         viewer.imageryLayers.remove(heatmapImageryProvider, true); 
-//        heatmapImageryProvider = null;
-//        toggleButton.textContent = 'Show Air Quality'; // Update button text
-//    }
-// }
 
+// Function to load GeoJson layers based on scene
+function checkSceneForGeoJsonLayers(sceneIndex) {
+    // Load Port Terminals GeoJson in Scene 3
+    if (sceneIndex === 2 && !portTerminalLayer) {
+        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
+            .then(function(dataSource) {
+                viewer.dataSources.add(dataSource);
+                portTerminalLayer = dataSource;
+                viewer.zoomTo(dataSource);
+            }).catch(function(error) {
+                console.error('Error loading PortTerminals GeoJSON:', error);
+            });
+    } else if (portTerminalLayer && sceneIndex !== 2) {
+        viewer.dataSources.remove(portTerminalLayer);
+        portTerminalLayer = null;
+    }
+
+    // Load Long Beach GeoJson in Scene 13
+    if (sceneIndex === 12 && !longBeachDataLayer) {
+        loadLongBeachDataLayer(); // Utilize previously defined function for loading Long Beach data
+    } else if (longBeachDataLayer && sceneIndex !== 12) {
+        viewer.dataSources.remove(longBeachDataLayer);
+        longBeachDataLayer = null;
+    }
+}
+
+// Update the scene with required settings
+function updateScene(sceneIndex) {
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    
+    // Special handling for bathymetry change
+    if (scene.specialFlyover) {
+        flyToScene(scene, true); // Assuming flyToScene is modified to handle a specialFlyover boolean
+    } else {
+        flyToScene(scene);
+    }
+}
+    
+function setSceneContent(scene) {
+      document.getElementById('scene-title').textContent = scene.title;
+      document.getElementById('scene-description').innerHTML = scene.content;
+      document.getElementById('scene-container').style.display = 'block';
+ }
+    
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(currentSceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    flyToScene(scene);
+}
 
 
     // Function to navigate to the specified scene
