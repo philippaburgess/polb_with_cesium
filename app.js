@@ -285,63 +285,13 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-    // Update the scene with the right content, layers, and camera view
-function updateScene(sceneIndex) {
+    function updateScene(sceneIndex) {
     var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
 }
-
-    function addHeatmapLayer() {
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-        // Keep a reference to the layer object
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-} // This closing bracket was missing in your snippet
-
-    function toggleHeatmap() {
-    console.log('toggleHeatmap called'); // Check if function is called
-    if (heatmapLayer) {
-        console.log('Removing heatmap layer');
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
-    } else {
-        console.log('Adding heatmap layer');
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        toggleButton.textContent = 'Hide Air Quality';
-    }
-}
-
-    function checkSceneForGeoJsonLayers(sceneIndex) {
-       // Load GeoJson when Scene 3 is active
-if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
-   if (!portTerminalLayer) {
-            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
-            .then(function(dataSource) {
-                viewer.dataSources.add(dataSource);
-                portTerminalLayer = dataSource;
-                // Optionally, zoom to the dataSource
-                viewer.zoomTo(dataSource);
-            })
-            .catch(function(error) {
-                console.error('Error loading PortTerminals GeoJSON:', error);
-            });
-    }
-} else {
-    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
-    if (portTerminalLayer) {
-        viewer.dataSources.remove(portTerminalLayer, true);
-        portTerminalLayer = null;
-    }
-}
-
-    
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
@@ -356,8 +306,7 @@ function manageHeatmapVisibility(sceneIndex) {
     } else {
         toggleButton.style.display = 'none'; // Hide the button before Scene 8
     }
-
-    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
+  // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
     // and we are navigating back before scene 8, we need to ensure it's added but not visible
     if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
         if (!heatmapLayer) {
@@ -378,12 +327,58 @@ function manageHeatmapVisibility(sceneIndex) {
     toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
+function toggleHeatmap() {
+    console.log('toggleHeatmap called'); // Check if function is called
+    if (heatmapLayer) {
+        console.log('Removing heatmap layer');
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
+    } else {
+        console.log('Adding heatmap layer');
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    }
+}
+
+        function addHeatmapLayer() {
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+        // Keep a reference to the layer object
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+    }
+} 
+
 function removeHeatmapLayer() {
     if (heatmapLayer) {
         // Use the reference to remove the correct layer
         viewer.imageryLayers.remove(heatmapLayer, true);
         heatmapImageryProvider = null;
         heatmapLayer = null; // Make sure to clear the reference
+    }
+}
+    function checkSceneForGeoJsonLayers(sceneIndex) {
+       // Load GeoJson when Scene 3 is active
+if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
+   if (!portTerminalLayer) {
+            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
+            .then(function(dataSource) {
+                viewer.dataSources.add(dataSource);
+                portTerminalLayer = dataSource;
+                // Optionally, zoom to the dataSource
+                viewer.zoomTo(dataSource);
+            })
+            .catch(function(error) {
+                console.error('Error loading PortTerminals GeoJSON:', error);
+            });
+    }
+} else {
+    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
+    if (portTerminalLayer) {
+        viewer.dataSources.remove(portTerminalLayer, true);
+        portTerminalLayer = null;
     }
 }
 
@@ -470,14 +465,6 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
     }
-    
-// function updateScene() {
-//    var scene = scenes[currentSceneIndex];
-//    setSceneContent(scene);
-//    manageHeatmapVisibility(currentSceneIndex);
-//    flyToScene(scene);
-// }    
-
         // Function to navigate to the specified scene
 function flyToScene(scene) {
     viewer.camera.flyTo({
