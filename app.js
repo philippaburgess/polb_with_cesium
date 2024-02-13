@@ -271,8 +271,10 @@ orientation: {
 var longBeachDataLayer;
 var portTerminalLayer; 
 var heatmapImageryProvider;
+
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 var airQualityButtonShown = false;
 var heatmapLayer;
@@ -282,120 +284,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
-
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
-
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
-    
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(currentSceneIndex);
-    flyToScene(scene);
-}
-
-       // Load GeoJson when Scene 3 is active
-if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
-   if (!portTerminalLayer) {
-            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
-            .then(function(dataSource) {
-                viewer.dataSources.add(dataSource);
-                portTerminalLayer = dataSource;
-                // Optionally, zoom to the dataSource
-                viewer.zoomTo(dataSource);
-            })
-            .catch(function(error) {
-                console.error('Error loading PortTerminals GeoJSON:', error);
-            });
-    }
-} else {
-    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
-    if (portTerminalLayer) {
-        viewer.dataSources.remove(portTerminalLayer, true);
-        portTerminalLayer = null;
-    }
-}
-    
-if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
-        if (!longBeachDataLayer) {
-           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-            .then(function(dataSource) {
-                    viewer.dataSources.add(dataSource);
-                    longBeachDataLayer = dataSource;
-                    var entities = dataSource.entities.values;
-
-    for (var i = 0; i < entities.length; i++) {
-        var entity = entities[i];
-        if (entity.properties) {
-            // Create a description from the properties
-            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-            entity.properties.propertyNames.forEach(function(propertyName) {
-                var value = entity.properties[propertyName];
-                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-             });
-               description += '</tbody></table>';
-                entity.description = description; // InfoBox will use this
-             }
-        }
-      }).catch(function(error) {
-        console.error(error);
-                });
-            }     
-        } else {
-            if (longBeachDataLayer) {
-                viewer.dataSources.remove(longBeachDataLayer);
-                longBeachDataLayer = null;
-            }
-        }
-
-
-function flyToScene(scene) {
-    if (currentSceneIndex === 5) { // Scene 6
-        // Fly to above water location
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45), // North
-                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                roll: 0.0
-            },
-            duration: 6, // Duration in seconds
-            complete: function() {
-                // After arriving at the above water location, fly to underwater
-                viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7440, -20), // Replace with underwater coordinates
-                    orientation: {
-                        heading: Cesium.Math.toRadians(0), // Replace with desired heading
-                        pitch: Cesium.Math.toRadians(-10.0), // Replace with desired pitch
-                        roll: 0.0
-                    },
-                    duration: 2 // Adjust duration as needed
-                });
-            }
-        });
-    } else {
-        // Function to navigate to the specified scene
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Adjust the duration as needed
-        });
-    }
-}
-    
-        if (currentSceneIndex === 5) { // Scene 6 is at index 5
-    viewer.scene.terrainProvider = bathymetryTerrainProvider;
-} else {
-    // Revert to default terrain for other scenes
-    viewer.scene.terrainProvider = defaultTerrainProvider;
-}
-
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
@@ -464,9 +352,134 @@ function removeHeatmapLayer() {
         heatmapLayer = null; // Make sure to clear the reference
     }
 }
+
+function checkSceneForGeoJsonLayers(sceneIndex) {
+       // Load GeoJson when Scene 3 is active
+if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
+   if (!portTerminalLayer) {
+            Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
+            .then(function(dataSource) {
+                viewer.dataSources.add(dataSource);
+                portTerminalLayer = dataSource;
+                // Optionally, zoom to the dataSource
+                viewer.zoomTo(dataSource);
+            })
+            .catch(function(error) {
+                console.error('Error loading PortTerminals GeoJSON:', error);
+            });
+    }
+} else {
+    // Remove or hide PortTerminals GeoJson data source if moving away from Scene 3
+    if (portTerminalLayer) {
+        viewer.dataSources.remove(portTerminalLayer, true);
+        portTerminalLayer = null;
+    }
+}
+
     
+if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene 13
+        if (!longBeachDataLayer) {
+           Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+            .then(function(dataSource) {
+                    viewer.dataSources.add(dataSource);
+                    longBeachDataLayer = dataSource;
+                    var entities = dataSource.entities.values;
+
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.properties) {
+            // Create a description from the properties
+            var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+            entity.properties.propertyNames.forEach(function(propertyName) {
+                var value = entity.properties[propertyName];
+                description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+             });
+               description += '</tbody></table>';
+                entity.description = description; // InfoBox will use this
+             }
+        }
+      }).catch(function(error) {
+        console.error(error);
+                });
+            }     
+        } else {
+            if (longBeachDataLayer) {
+                viewer.dataSources.remove(longBeachDataLayer);
+                longBeachDataLayer = null;
+            }
+        }
+
     
-// Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
+function flyToScene(scene) {
+    if (currentSceneIndex === 5) { // Scene 6
+        // Fly to above water location
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+            orientation: {
+                heading: Cesium.Math.toRadians(45), // North
+                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                roll: 0.0
+            },
+            duration: 6, // Duration in seconds
+            complete: function() {
+                // After arriving at the above water location, fly to underwater
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7440, -20), // Replace with underwater coordinates
+                    orientation: {
+                        heading: Cesium.Math.toRadians(0), // Replace with desired heading
+                        pitch: Cesium.Math.toRadians(-10.0), // Replace with desired pitch
+                        roll: 0.0
+                    },
+                    duration: 2 // Adjust duration as needed
+                });
+            }
+        });
+    } else {
+        // Function to navigate to the specified scene
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Adjust the duration as needed
+        });
+    }
+}
+    
+        if (currentSceneIndex === 5) { // Scene 6 is at index 5
+    viewer.scene.terrainProvider = bathymetryTerrainProvider;
+} else {
+    // Revert to default terrain for other scenes
+    viewer.scene.terrainProvider = defaultTerrainProvider;
+}
+
+function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
+    
+// function updateScene() {
+//    var scene = scenes[currentSceneIndex];
+//    setSceneContent(scene);
+//    manageHeatmapVisibility(currentSceneIndex);
+//    flyToScene(scene);
+// }    
+
+    
+
+
+// Update the scene with the right content, layers, and camera view
+function updateScene(sceneIndex) {
+    var scene = scenes[sceneIndex]; // Ensure 'scenes' is defined and contains the scene data
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    flyToScene(scene); // Ensure 'flyToScene' is defined and handles camera movement
+}
+    
     
 // Section 4 
 
