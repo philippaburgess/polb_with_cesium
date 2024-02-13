@@ -292,6 +292,38 @@ function updateScene() {
     flyToScene(scene);
 }
 
+   
+  if (currentSceneIndex === 12) {
+    if (!longBeachDataLayer) {
+        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+        .then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            longBeachDataLayer = dataSource;
+            var entities = dataSource.entities.values;
+
+            for (var i = 0; i < entities.length; i++) {
+                var entity = entities[i];
+                if (entity.properties) {
+                    var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
+                    entity.properties.propertyNames.forEach(function(propertyName) {
+                        var value = entity.properties[propertyName].getValue(); // Ensure correct value retrieval
+                        description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
+                    });
+                    description += '</tbody></table>';
+                    entity.description = description; // InfoBox will use this
+                }
+            }
+        }).catch(function(error) {
+            console.error(error);
+        });
+    }     
+} else {
+    if (longBeachDataLayer) {
+        viewer.dataSources.remove(longBeachDataLayer);
+        longBeachDataLayer = null;
+    }
+}
+
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
@@ -359,37 +391,6 @@ function removeHeatmapLayer() {
 // }
 
 
-    
-  if (currentSceneIndex === 12) {
-    if (!longBeachDataLayer) {
-        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-        .then(function(dataSource) {
-            viewer.dataSources.add(dataSource);
-            longBeachDataLayer = dataSource;
-            var entities = dataSource.entities.values;
-
-            for (var i = 0; i < entities.length; i++) {
-                var entity = entities[i];
-                if (entity.properties) {
-                    var description = '<table class="cesium-infoBox-defaultTable"><tbody>';
-                    entity.properties.propertyNames.forEach(function(propertyName) {
-                        var value = entity.properties[propertyName].getValue(); // Ensure correct value retrieval
-                        description += '<tr><th>' + propertyName + '</th><td>' + value + '</td></tr>';
-                    });
-                    description += '</tbody></table>';
-                    entity.description = description; // InfoBox will use this
-                }
-            }
-        }).catch(function(error) {
-            console.error(error);
-        });
-    }     
-} else {
-    if (longBeachDataLayer) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
-    }
-}
 
     // Function to navigate to the specified scene
 function flyToScene(scene) {
