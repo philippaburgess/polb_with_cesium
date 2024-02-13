@@ -433,7 +433,7 @@ function flyToScene(scene) {
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
-            duration: 4, // Duration in seconds
+            duration: 6, // Duration in seconds
             complete: function() {
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
