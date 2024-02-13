@@ -457,7 +457,13 @@ function setDefaultTerrain() {
     var scene = scenes[sceneIndex]; 
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene, sceneIndex === 5); 
+    flyToScene(scene); 
+            if (currentSceneIndex === 5) {
+        setBathymetryTerrain();
+    } else {
+        setDefaultTerrain();
+    }
+     console.log("updateScene function processed correctly.");
 }
 
 // Section 4 
