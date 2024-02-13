@@ -447,7 +447,6 @@ if (currentSceneIndex === 12) { // Scene index starts at 0, so index 12 is Scene
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
 } 
 
 function setDefaultTerrain() {
