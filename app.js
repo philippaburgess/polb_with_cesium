@@ -300,74 +300,6 @@ function updateScene() {
     flyToScene(scene);
 }
 
-function manageHeatmapVisibility(sceneIndex) {
-    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-
-    // Show the toggle button from Scene 8 onwards
-    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
-        toggleButton.style.display = 'block';
-        airQualityButtonShown = true; // Set the flag to true as the button is now shown
-        addHeatmapLayer(); // Add the heatmap layer if not already added
-    } else if (airQualityButtonShown) {
-        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
-    } else {
-        toggleButton.style.display = 'none'; // Hide the button before Scene 8
-    }
-
-    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
-    // and we are navigating back before scene 8, we need to ensure it's added but not visible
-    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
-        if (!heatmapLayer) {
-            addHeatmapLayer();
-        }
-        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
-    }
-
-    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
-    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
-        if (!heatmapLayer) {
-            addHeatmapLayer();
-        }
-        heatmapLayer.show = true; // Show the layer
-    }
-
-    // Update button text based on the current visibility state of the heatmap
-    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
-}
-
-function toggleHeatmap() {
-    console.log('toggleHeatmap called'); // Check if function is called
-    if (heatmapLayer) {
-        console.log('Removing heatmap layer');
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
-    } else {
-        console.log('Adding heatmap layer');
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        toggleButton.textContent = 'Hide Air Quality';
-    }
-}
-    
-function addHeatmapLayer() {
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-        // Keep a reference to the layer object
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-} // This closing bracket was missing in your snippet
-
-function removeHeatmapLayer() {
-    if (heatmapLayer) {
-        // Use the reference to remove the correct layer
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapImageryProvider = null;
-        heatmapLayer = null; // Make sure to clear the reference
-    }
-}
-    
        // Load GeoJson when Scene 3 is active
 if (currentSceneIndex === 2) { // Assuming Scene 3 is at index 2
    if (!portTerminalLayer) {
@@ -437,7 +369,7 @@ function flyToScene(scene) {
             complete: function() {
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7455, -25), // Replace with underwater coordinates
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7450, -20), // Replace with underwater coordinates
                     orientation: {
                         heading: Cesium.Math.toRadians(0), // Replace with desired heading
                         pitch: Cesium.Math.toRadians(-10.0), // Replace with desired pitch
@@ -463,6 +395,76 @@ function flyToScene(scene) {
     // Revert to default terrain for other scenes
     viewer.scene.terrainProvider = defaultTerrainProvider;
 }
+
+
+function manageHeatmapVisibility(sceneIndex) {
+    const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+
+    // Show the toggle button from Scene 8 onwards
+    if (sceneIndex >= airQualitySceneIndex && !airQualityButtonShown) {
+        toggleButton.style.display = 'block';
+        airQualityButtonShown = true; // Set the flag to true as the button is now shown
+        addHeatmapLayer(); // Add the heatmap layer if not already added
+    } else if (airQualityButtonShown) {
+        toggleButton.style.display = 'block'; // Keep showing the button once it has been shown
+    } else {
+        toggleButton.style.display = 'none'; // Hide the button before Scene 8
+    }
+
+    // If the heatmap layer is supposed to be visible (when airQualityButtonShown is true)
+    // and we are navigating back before scene 8, we need to ensure it's added but not visible
+    if (airQualityButtonShown && sceneIndex < airQualitySceneIndex) {
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+        heatmapLayer.show = false; // Hide the layer but keep it in the layers list
+    }
+
+    // If it's Scene 8 or beyond, and the button has been shown, we ensure the heatmap is visible
+    if (sceneIndex >= airQualitySceneIndex && airQualityButtonShown) {
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+        heatmapLayer.show = true; // Show the layer
+    }
+
+    // Update button text based on the current visibility state of the heatmap
+    toggleButton.textContent = heatmapLayer && heatmapLayer.show ? 'Hide Air Quality' : 'Show Air Quality';
+}
+
+function toggleHeatmap() {
+    console.log('toggleHeatmap called'); // Check if function is called
+    if (heatmapLayer) {
+        console.log('Removing heatmap layer');
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
+    } else {
+        console.log('Adding heatmap layer');
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    }
+}
+    
+function addHeatmapLayer() {
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+        // Keep a reference to the layer object
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+    }
+} // This closing bracket was missing in your snippet
+
+function removeHeatmapLayer() {
+    if (heatmapLayer) {
+        // Use the reference to remove the correct layer
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapImageryProvider = null;
+        heatmapLayer = null; // Make sure to clear the reference
+    }
+}
+    
     
 // Ensure this code runs after the document has loaded to guarantee the toggleButton element is accessible
     
