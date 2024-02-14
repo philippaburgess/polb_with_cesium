@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
-    document.getElementById('slide-back')..style.display = 'none'; // Hide the "Previous" button
+    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
 });
 
 // Define next slide function
