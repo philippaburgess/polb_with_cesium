@@ -375,14 +375,7 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
-
-    // Determine the terrain based on the current scene
-    if (sceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
-    }
-
+    
     // Special flyTo handling for scene 6 or standard flyTo for other scenes
     if (sceneIndex === 5) {
         viewer.camera.flyTo({
