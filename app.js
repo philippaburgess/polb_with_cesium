@@ -408,13 +408,6 @@ function flyToScene(scene, sceneIndex) {
                 });
             }
         });
-    } else {
-        // Standard flyTo behavior for scene navigation
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Adjust the duration as needed
-        });
     }
 }
 }); 
