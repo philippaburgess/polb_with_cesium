@@ -370,7 +370,6 @@ function toggleHeatmap() {
             heatmapLayer = null;
         }
     }
-
     // Update button text
     toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
 }
@@ -662,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-});
+
 // Define next slide function
 window.nextSlide = function() {
    console.log('Current Slide Index:', currentSlideIndex);
@@ -679,6 +678,8 @@ window.nextSlide = function() {
             console.error('No slide exists at index:', currentSlideIndex);
         }
 };
+    });
+
     // Define the function to move to the next slide
 
  // Define the function to close the instructions and start the flyover
