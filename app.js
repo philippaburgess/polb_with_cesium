@@ -423,7 +423,7 @@ function updateScene(sceneIndex) {
     // Special flyTo handling for scene 6 or standard flyTo for other scenes
     if (sceneIndex === 5) {
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 24000),
             orientation: {
                 heading: Cesium.Math.toRadians(45), // North
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
