@@ -302,7 +302,7 @@ function updateScene() {
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
-
+});
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
