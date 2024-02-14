@@ -588,7 +588,6 @@ window.previousScene = function() {
     checkSceneForGeoJsonLayers(sceneIndex);
     initHeatmapLayerProvider();
     flyToScene(scene);
-}
 
 // Function to show the scene container
 function showSceneContainer() {
