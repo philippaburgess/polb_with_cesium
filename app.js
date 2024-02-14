@@ -294,12 +294,10 @@ function setDefaultTerrain() {
 function toggleHeatmap() {
     heatmapVisible = !heatmapVisible;
     var toggleButton = document.getElementById('toggleAirQuality');
- if (heatmapVisible && !heatmapLayer) {
-        // Add layer if it's supposed to be visible and not already added
+    if (heatmapVisible && !heatmapLayer) {
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         toggleButton.textContent = 'Hide Air Quality';
     } else if (!heatmapVisible && heatmapLayer) {
-        // Remove layer if it's supposed to be invisible
         viewer.imageryLayers.remove(heatmapLayer);
         heatmapLayer = null;
         toggleButton.textContent = 'Show Air Quality';
@@ -313,8 +311,7 @@ function setSceneContent(scene) {
  }
 
 function updateScene(sceneIndex) {
-    // Check if sceneIndex is undefined or not within the bounds of the scenes array
-    if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
+  if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
         console.error('Invalid sceneIndex:', sceneIndex);
         return;
     }
@@ -324,10 +321,10 @@ function updateScene(sceneIndex) {
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    // Assuming you have a function to handle terrain, call it here
-    // adjustTerrainBasedOnScene(sceneIndex); // Implement this based on your logic
-    flyToScene(scene);
+    adjustTerrainBasedOnScene(sceneIndex); // Make sure this is defined and being called here
+    flyToScene(scene, sceneIndex); // Pass the sceneIndex if needed
 }
+
     
 function adjustTerrainBasedOnScene(sceneIndex) {
     if (sceneIndex === 5) {
@@ -375,7 +372,7 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
     
-    // Special flyTo handling for scene 6 or standard flyTo for other scenes
+function flyToScene(scene, sceneIndex) {
     if (sceneIndex === 5) {
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -394,11 +391,19 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
                         pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
                         roll: 0.0
                     },
-                    duration: 2 // Adjust duration as needed
+                     duration: 2 // Adjust duration as needed
                 });
             }
         });
     } else {
+        // Standard flyTo behavior for scene navigation
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Adjust the duration as needed
+        });
+    }
+}
         // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
