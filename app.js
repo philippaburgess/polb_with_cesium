@@ -403,7 +403,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function flyToScene(scene, specialFlyover = false) {
+flyToScene(scene, specialFlyover = false) {
     if (specialFlyover && currentSceneIndex === 5) {
  viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
