@@ -393,6 +393,16 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
+ function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
+
 function flyToScene(scene, specialFlyover = false) {
     if (specialFlyover && currentSceneIndex === 5) {
  viewer.camera.flyTo({
@@ -426,16 +436,6 @@ function flyToScene(scene, specialFlyover = false) {
     }
 }
 
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
-
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
- 
 function updateScene(sceneIndex) {
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // fallback to currentSceneIndex if sceneIndex is not provided
