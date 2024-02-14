@@ -327,8 +327,10 @@ function updateScene(sceneIndex) {
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    initHeatmapLayerProvider();
-    
+    checkSceneForBathymetry(sceneIndex);
+    checkSceneForAirQuality(sceneIndex);
+    flyToScene(scene);
+}
     // Determine the terrain based on the current scene
     if (sceneIndex === 5) {
         setBathymetryTerrain();
@@ -338,7 +340,7 @@ function updateScene(sceneIndex) {
 
         // Navigate to the scene
     flyToScene(scene);
-}
+});
 
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
@@ -431,15 +433,14 @@ function setDefaultTerrain() {
             duration: 2 // Adjust the duration as needed
         });
     }
-});
-        // Function to navigate to the specified scene
-function flyToScene(scene) {
-      viewer.camera.flyTo({
-          destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-            });
- }
+//        // Function to navigate to the specified scene
+// function flyToScene(scene) {
+//      viewer.camera.flyTo({
+//          destination: scene.destination,
+//        orientation: scene.orientation,
+//        duration: 2 // Adjust the duration as needed
+//            });
+// }
 
 // Section 4 
 
