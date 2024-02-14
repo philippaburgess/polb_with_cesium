@@ -287,14 +287,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
-
-fucntion updateScene() { 
-    var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene);
-}
     
 function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
@@ -496,6 +488,13 @@ function setDefaultTerrain() {
             duration: 2 // Adjust the duration as needed
         });
     }
+}
+
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    flyToScene(scene);
 }
 
         // Function to navigate to the specified scene
