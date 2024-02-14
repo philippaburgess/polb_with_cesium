@@ -288,7 +288,8 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-var scene = scenes[sceneIndex];
+fucntion updateScene() { 
+    var scene = scenes[sceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
