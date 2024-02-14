@@ -295,7 +295,7 @@ function updateScene(sceneIndex) {
     checkSceneForGeoJsonLayers(sceneIndex);
     initHeatmapLayerProvider();
     flyToScene(scene);
-    
+}
  function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
