@@ -288,6 +288,14 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
+function updateScene(sceneIndex) {
+   var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    initHeatmapLayerProvider();
+    flyToScene(scene);
+    
  function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -432,13 +440,6 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
-function updateScene(sceneIndex) {
-   var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    initHeatmapLayerProvider();
-    flyToScene(scene);
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
     } else {
