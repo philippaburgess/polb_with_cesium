@@ -281,6 +281,15 @@ var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
+function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
 
 function toggleHeatmap() {
     heatmapVisible = !heatmapVisible;
@@ -364,16 +373,6 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
             longBeachDataLayer = null;
         }
     }
-}
-
-    function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
-
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
     
     // Special flyTo handling for scene 6 or standard flyTo for other scenes
