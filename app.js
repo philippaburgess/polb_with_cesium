@@ -405,6 +405,7 @@ function setDefaultTerrain() {
 }
 
 function updateScene(sceneIndex) {
+    initHeatmapLayerProvider();
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
     } else {
@@ -471,9 +472,6 @@ function updateScene(sceneIndex) {
     // Call flyToScene with the specialFlyover parameter based on the scene
     flyToScene(scene, sceneIndex === 5); // Assuming sceneIndex 5 requires special handling
 }
-
-    initHeatmapLayerProvider();
-
     
 // Section 4 
 
