@@ -548,7 +548,7 @@ window.closeScene = function() {
 // Section 6 
 
 document.addEventListener('DOMContentLoaded', function() {
-    var slides = document.querySelectorAll('.slide');
+    slides = document.querySelectorAll('.slide'); // Now slides is accessible throughout the script
     var toggleButton = document.getElementById('toggleAirQuality');
     
     if (toggleButton) {
@@ -561,19 +561,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
-});
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
     document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
     document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
+});
 
 // Define next slide function
 window.nextSlide = function() {
     console.log('Current Slide Index:', currentSlideIndex);
     console.log('Slides Length:', slides.length);
 
-    if (currentSlideIndex < scenes.length - 1) {
+    if (currentSlideIndex < slides.length - 1) { // Ensure we're not going past the last slide
         slides[currentSlideIndex].classList.remove('active');
         currentSlideIndex++;
         slides[currentSlideIndex].classList.add('active');
@@ -588,4 +588,5 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
+
  })();
