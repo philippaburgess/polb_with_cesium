@@ -302,7 +302,7 @@ function updateScene() {
     manageHeatmapVisibility(currentSceneIndex);
     flyToScene(scene);
 }
-});
+
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -325,7 +325,7 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Show Air Quality';
     }
 }
-
+});
 function updateScene(sceneIndex) {
   if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
         console.error('Invalid sceneIndex:', sceneIndex);
