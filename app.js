@@ -290,6 +290,19 @@ var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
+function setSceneContent(scene) {
+      document.getElementById('scene-title').textContent = scene.title;
+      document.getElementById('scene-description').innerHTML = scene.content;
+      document.getElementById('scene-container').style.display = 'block';
+ }
+
+function updateScene() {
+    var scene = scenes[currentSceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(currentSceneIndex);
+    flyToScene(scene);
+}
+
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -312,12 +325,6 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Show Air Quality';
     }
 }
-
-function setSceneContent(scene) {
-      document.getElementById('scene-title').textContent = scene.title;
-      document.getElementById('scene-description').innerHTML = scene.content;
-      document.getElementById('scene-container').style.display = 'block';
- }
 
 function updateScene(sceneIndex) {
   if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
