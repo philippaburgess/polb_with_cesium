@@ -332,11 +332,11 @@ function updateScene(sceneIndex) {
     flyToScene(scene);
 }
     // Determine the terrain based on the current scene
-    if (sceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
-    }
+//    if (sceneIndex === 5) {
+//        setBathymetryTerrain();
+//    } else {
+//        setDefaultTerrain();
+//    }
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
@@ -432,14 +432,14 @@ function setDefaultTerrain() {
     // Navigate to the scene
     flyToScene(scene);
 
-//        // Function to navigate to the specified scene
-// function flyToScene(scene) {
-//      viewer.camera.flyTo({
-//          destination: scene.destination,
-//        orientation: scene.orientation,
-//        duration: 2 // Adjust the duration as needed
-//            });
-// }
+    // Function to navigate to the specified scene
+ function flyToScene(scene) {
+      viewer.camera.flyTo({
+          destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+            });
+ }
 
 // Section 4 
 
