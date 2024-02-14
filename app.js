@@ -635,6 +635,13 @@ window.closeScene = function() {
 
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
+     toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton && typeof toggleHeatmap === 'function') {
+        toggleButton.addEventListener('click', toggleHeatmap);
+        manageHeatmapVisibility(currentSceneIndex);
+    } else {
+        console.error('toggleHeatmap function is not defined');
+    } 
 });
 document.addEventListener('DOMContentLoaded', function() {
     toggleButton = document.getElementById('toggleAirQuality');
