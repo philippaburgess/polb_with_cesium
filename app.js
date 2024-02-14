@@ -411,6 +411,16 @@ function updateScene(sceneIndex) {
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
+
+    function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
     
     // Determine the terrain based on the current scene
     if (sceneIndex === 5) {
@@ -451,7 +461,16 @@ function updateScene(sceneIndex) {
         });
     }
 }
-   
+
+        // Function to navigate to the specified scene
+function flyToScene(scene) {
+    viewer.camera.flyTo({
+        destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+    });
+}
+
 
 // Section 4 
 
