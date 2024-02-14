@@ -360,15 +360,20 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
         portTerminalLayer = null;
     }
 
-    // Load Long Beach GeoJson in Scene 13
-    if (sceneIndex === 12 && !longBeachDataLayer) {
-        loadLongBeachDataLayer(); // Utilize previously defined function for loading Long Beach data
+ if (sceneIndex === 12 && !longBeachDataLayer) { // Scene 13 has an index of 12
+        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
+            .then(function(dataSource) {
+                viewer.dataSources.add(dataSource);
+                longBeachDataLayer = dataSource;
+                // No zoomTo call here, as we don't want to zoom to this layer
+            }).catch(function(error) {
+                console.error('Error loading Long Beach GeoJSON:', error);
+            });
     } else if (longBeachDataLayer && sceneIndex !== 12) {
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
     }
 }
-
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
