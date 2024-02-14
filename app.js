@@ -438,6 +438,7 @@ function updateScene(sceneIndex) {
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     initHeatmapLayerProvider();
+    flyToScene(scene);
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
     } else {
