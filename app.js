@@ -287,7 +287,13 @@ function setSceneContent(scene) {
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
-    
+
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+}
+
 function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -489,14 +495,6 @@ function setDefaultTerrain() {
         });
     }
 }
-
-    var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(scene);
-}
-
         // Function to navigate to the specified scene
 function flyToScene(scene) {
     viewer.camera.flyTo({
