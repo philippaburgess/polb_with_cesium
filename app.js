@@ -399,24 +399,28 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
-
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
-function flyToScene(scene, specialFlyover = false) {
+function updateScene(sceneIndex) {
     initHeatmapLayerProvider();
+    if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
+    } else {
+        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
+    }
+
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    
+    // Determine the terrain based on the current scene
     if (sceneIndex === 5) {
         setBathymetryTerrain();
     } else {
         setDefaultTerrain();
     }
-    
-    if (specialFlyover && currentSceneIndex === 5) {
+
+    // Special flyTo handling for scene 6 or standard flyTo for other scenes
+    if (sceneIndex === 5) {
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
@@ -447,6 +451,7 @@ function flyToScene(scene, specialFlyover = false) {
         });
     }
 }
+   
 
 // Section 4 
 
