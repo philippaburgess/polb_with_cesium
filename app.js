@@ -268,6 +268,15 @@ orientation: {
 
 // Section 3
 
+// Function to navigate to the specified scene
+function flyToScene(scene) {
+    viewer.camera.flyTo({
+        destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+    });
+}
+
 var longBeachDataLayer;
 var portTerminalLayer; 
 
@@ -502,6 +511,7 @@ window.closeScene = function() {
 };
 
 // Section 6 
+  
 document.addEventListener('DOMContentLoaded', function() {
     slides = document.querySelectorAll('.slide');
     toggleButton = document.getElementById('toggleAirQuality');
@@ -516,6 +526,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
+
+window.addEventListener('load', function() {
+   slides = document.querySelectorAll('.slide');
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
