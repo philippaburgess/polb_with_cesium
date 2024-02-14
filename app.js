@@ -404,25 +404,8 @@ function flyToScene(scene, sceneIndex) {
         });
     }
 }
-        // Standard flyTo behavior for scene navigation
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Adjust the duration as needed
-        });
-    }
-
     // Navigate to the scene
-    flyToScene(scene);
-
-    // Function to navigate to the specified scene
- function flyToScene(scene) {
-      viewer.camera.flyTo({
-          destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-            });
- }
+flyToScene(scenes[currentSceneIndex], currentSceneIndex);
 
 // Section 4 
 
