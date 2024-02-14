@@ -548,7 +548,6 @@ window.closeScene = function() {
 // Section 6 
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.addEventListener('DOMContentLoaded', function() {
     var slides = document.querySelectorAll('.slide');
     var toggleButton = document.getElementById('toggleAirQuality');
     
