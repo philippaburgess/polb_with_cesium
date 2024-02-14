@@ -273,11 +273,13 @@ var portTerminalLayer;
 
 var heatmapImageryProvider;
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
-
+var toggleHeatmap; 
+    
 var airQualityButtonShown = false;
 var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneReached = false;
+
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
