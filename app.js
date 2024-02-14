@@ -342,16 +342,29 @@ function removeHeatmapLayer() {
         heatmapLayer = null; // Make sure to clear the reference
     }
 }
+const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
+const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
+
+// Function to load the Long Beach data layer
+function loadLongBeachDataLayer() {
+    Cesium.GeoJsonDataSource.load(longBeachGeoJsonUrl)
+        .then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            longBeachDataLayer = dataSource;
+        }).catch(function(error) {
+            console.error('Error loading Long Beach GeoJSON:', error);
+        });
+}
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
     // Load Port Terminals GeoJson in Scene 3
     if (sceneIndex === 2 && !portTerminalLayer) {
-        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson')
+        Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
             .then(function(dataSource) {
                 viewer.dataSources.add(dataSource);
                 portTerminalLayer = dataSource;
-                viewer.zoomTo(dataSource);
+                // Removed viewer.zoomTo call
             }).catch(function(error) {
                 console.error('Error loading PortTerminals GeoJSON:', error);
             });
@@ -360,15 +373,9 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
         portTerminalLayer = null;
     }
 
- if (sceneIndex === 12 && !longBeachDataLayer) { // Scene 13 has an index of 12
-        Cesium.GeoJsonDataSource.load('https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson')
-            .then(function(dataSource) {
-                viewer.dataSources.add(dataSource);
-                longBeachDataLayer = dataSource;
-                // No zoomTo call here, as we don't want to zoom to this layer
-            }).catch(function(error) {
-                console.error('Error loading Long Beach GeoJSON:', error);
-            });
+    // Load Long Beach GeoJson in Scene 13
+    if (sceneIndex === 12 && !longBeachDataLayer) {
+        loadLongBeachDataLayer();
     } else if (longBeachDataLayer && sceneIndex !== 12) {
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
