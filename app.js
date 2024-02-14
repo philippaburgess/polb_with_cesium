@@ -315,20 +315,29 @@ function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
   if (sceneIndex >= airQualitySceneIndex && !airQualitySceneReached) {
         airQualitySceneReached = true;
-         if (!heatmapLayer) {
-            addHeatmapLayer();
-        }
    heatmapVisible = true; // We want the heatmap to be visible by default on scene 8
     }
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-    if (sceneIndex === airQualitySceneIndex && heatmapLayer) {
-          toggleHeatmap();
-    }
-     if (sceneIndex < airQualitySceneIndex && heatmapVisible) {
-        toggleHeatmap();
+    // If we are past the air quality scene, ensure the toggle button is displayed
+    if (airQualitySceneReached) {
+        toggleButton.style.display = 'block'; 
+        toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
+        
+        // If the heatmap should be visible and it's not, add it
+        if (heatmapVisible && !heatmapLayer) {
+            addHeatmapLayer();
+        } 
+        // If the heatmap should not be visible and it is, remove it
+        else if (!heatmapVisible && heatmapLayer) {
+            removeHeatmapLayer();
+        }
+    } else {
+        // If we are before the air quality scene, ensure the heatmap and button are not displayed
+        toggleButton.style.display = 'none';
+        if (heatmapLayer) {
+            removeHeatmapLayer();
+        }
     }
 }
-
 function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
@@ -390,7 +399,54 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
- function setBathymetryTerrain() {
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    
+function flyToScene(sceneIndex) {
+    const isScene6 = sceneIndex === 5;
+    // Decide on the terrain based on the scene index
+    if (isScene6) {
+        setBathymetryTerrain();
+    } else {
+        setDefaultTerrain();
+    }
+ if (isScene6) {
+        // Special flyTo for scene 6
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+            orientation: {
+                heading: Cesium.Math.toRadians(45), // North
+                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                roll: 0.0
+            },
+            duration: 6, // Duration in seconds for the initial view
+            complete: function() {
+                // Transition to underwater after the initial view
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                    orientation: {
+                        heading: Cesium.Math.toRadians(0), // Desired heading
+                        pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
+                        roll: 0.0
+                    },
+                    duration: 2 // Duration for transitioning underwater
+                });
+            }
+        });
+    } else {
+        // Standard flyTo behavior for other scenes
+        const scene = scenes[sceneIndex]; // Assuming you have a 'scenes' array with 'destination' and 'orientation'
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Standard duration for other scenes
+        });
+    }
+}
+
+function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
     });
@@ -400,42 +456,14 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
+function updateScene(sceneIndex) {
     var scene = scenes[sceneIndex];
-    setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    
-function flyToScene(scene, specialFlyover = false) {
-    initHeatmapLayerProvider();
-    if (sceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
-    }
-    
-    if (specialFlyover && currentSceneIndex === 5) {
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45), // North
-                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                roll: 0.0
-            },
-            duration: 6, // Duration in seconds
-            complete: function() {
-                // After arriving at the above water location, fly to underwater
-                viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
-                    orientation: {
-                        heading: Cesium.Math.toRadians(0), // Desired heading
-                        pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
-                        roll: 0.0
-                    },
-                    duration: 2 // Adjust duration as needed
-                });
-            }
-        });
-    } else {
+    flyToScene(sceneIndex); // Pass sceneIndex instead of scene object to determine special behavior inside flyToScene
+    console.log("updateScene function processed correctly.");
+}
+            
         // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
