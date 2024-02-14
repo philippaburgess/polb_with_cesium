@@ -399,21 +399,30 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
+ function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
+
     var scene = scenes[sceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     
-function flyToScene(sceneIndex) {
-    const isScene6 = sceneIndex === 5;
-    // Decide on the terrain based on the scene index
-    if (isScene6) {
+function flyToScene(scene, specialFlyover = false) {
+    initHeatmapLayerProvider();
+    if (sceneIndex === 5) {
         setBathymetryTerrain();
     } else {
         setDefaultTerrain();
     }
- if (isScene6) {
-        // Special flyTo for scene 6
+    
+    if (specialFlyover && currentSceneIndex === 5) {
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
@@ -421,9 +430,9 @@ function flyToScene(sceneIndex) {
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
-            duration: 6, // Duration in seconds for the initial view
+            duration: 6, // Duration in seconds
             complete: function() {
-                // Transition to underwater after the initial view
+                // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
                     destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
                     orientation: {
@@ -431,29 +440,11 @@ function flyToScene(sceneIndex) {
                         pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
                         roll: 0.0
                     },
-                    duration: 2 // Duration for transitioning underwater
+                    duration: 2 // Adjust duration as needed
                 });
             }
         });
     } else {
-        // Standard flyTo behavior for other scenes
-        const scene = scenes[sceneIndex]; // Assuming you have a 'scenes' array with 'destination' and 'orientation'
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Standard duration for other scenes
-        });
-    }
-}
-
-function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex];
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    flyToScene(sceneIndex); // Pass sceneIndex instead of scene object to determine special behavior inside flyToScene
-    console.log("updateScene function processed correctly.");
-}
-            
         // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
@@ -461,6 +452,7 @@ function updateScene(sceneIndex) {
             duration: 2 // Adjust the duration as needed
         });
     }
+}
    
 // Section 4 
 
