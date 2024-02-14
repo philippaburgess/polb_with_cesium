@@ -270,8 +270,10 @@ orientation: {
 
 var longBeachDataLayer;
 var portTerminalLayer; 
+
 var heatmapImageryProvider;
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
+
 var airQualityButtonShown = false;
 var heatmapLayer;
 var heatmapVisible = false;    
@@ -286,30 +288,65 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-// Initialize heatmap layer provider
-// function initHeatmapLayerProvider() {
-//    if (!heatmapImageryProvider) {
-//        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-//            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-//        });
-//    }
-// }
+var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    flyToScene(scene);
+}
+    
+function initHeatmapLayerProvider() {
+   if (!heatmapImageryProvider) {
+       heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+    }
+}
+
+function updateToggleAndHeatmapVisibility(sceneIndex) {
+    // The toggle button and heatmap functionality start from Scene 8
+    if (sceneIndex >= airQualitySceneIndex) {
+        toggleButton.style.display = 'block';
+           if (sceneIndex === airQualitySceneIndex && !heatmapLayer) {
+            // Initialize and add the heatmap layer if it's not yet created
+            initHeatmapLayerProvider();
+            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            heatmapVisible = true; // Show heatmap by default only on Scene 8
+        }
+
+        // Update button text based on the heatmap visibility state
+        toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
+    } else {
+        // Hide the toggle button and the heatmap for scenes before Scene 8
+        toggleButton.style.display = 'none';
+        if (heatmapLayer) {
+            viewer.imageryLayers.remove(heatmapLayer);
+            heatmapLayer = null;
+            heatmapVisible = false; // Ensure heatmap is not visible before Scene 8
+        }
+    }
+}
 
 function toggleHeatmap() {
-    heatmapVisible = !heatmapVisible; // Toggle the visibility state
-  if (heatmapVisible) {
-        // If we are turning the heatmap on
+   // Toggle the visibility state of the heatmap
+    heatmapVisible = !heatmapVisible;
+
+    if (heatmapVisible) {
         if (!heatmapLayer) {
-            addHeatmapLayer();
+            // If the heatmap layer doesn't exist, initialize and add it
+            initHeatmapLayerProvider();
+            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
-        toggleButton.textContent = 'Hide Air Quality';
     } else {
-        // If we are turning the heatmap off
         if (heatmapLayer) {
-            removeHeatmapLayer();
+            // If the heatmap is currently shown, remove it
+            viewer.imageryLayers.remove(heatmapLayer);
+            heatmapLayer = null;
         }
-        toggleButton.textContent = 'Show Air Quality';
     }
+
+    // Update button text
+    toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
     function addHeatmapLayer() {
@@ -410,11 +447,6 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
 //        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
 //    }
 
-    var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-
     function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -500,6 +532,7 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
          manageHeatmapVisibility(currentSceneIndex);
+         updateToggleAndHeatmapVisibility(currentSceneIndex);
         updateScene();
     document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
@@ -514,6 +547,7 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         manageHeatmapVisibility(currentSceneIndex);
+        updateToggleAndHeatmapVisibility(currentSceneIndex);
         updateScene();
         
         document.getElementById('scene-container').style.display = 'block';
