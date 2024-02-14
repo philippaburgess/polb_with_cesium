@@ -288,15 +288,16 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
+function updateScene() {
+    var scene = scenes[SceneIndex];
+    var titleElement = document.getElementById('scene-title');
+    var contentElement = document.getElementById('scene-description');
+    var sceneContainer = document.getElementById('scene-container');
 
-function updateScene(sceneIndex) {
-   var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    initHeatmapLayerProvider();
-    flyToScene(scene);
-}
+   if(titleElement && contentElement && sceneContainer) {
+        titleElement.textContent = scene.title;
+        contentElement.innerHTML = scene.content;
+        sceneContainer.style.display = 'block'; // Make sure the container is visible
 
 function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
@@ -562,6 +563,13 @@ window.previousScene = function() {
         }
     }
 };
+
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    initHeatmapLayerProvider();
+    flyToScene(scene);
+}
 
 // Function to show the scene container
 function showSceneContainer() {
