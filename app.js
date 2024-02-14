@@ -519,7 +519,7 @@ function setDefaultTerrain() {
             duration: 2 // Adjust the duration as needed
         });
     }
-}
+});
         // Function to navigate to the specified scene
 function flyToScene(scene) {
       viewer.camera.flyTo({
