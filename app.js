@@ -373,10 +373,8 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
             }).catch(function(error) {
                 console.error('Error loading PortTerminals GeoJSON:', error);
             });
-    }
-    // Load the Long Beach layer if we're on scene 12 and it's not already loaded
-    if (sceneIndex === 12 && !longBeachDataLayer) {
-        loadLongBeachDataLayer();
+            } else if (sceneIndex === 12) { // Scene 13 for Long Beach
+        loadLongBeachDataLayer(); // This function already handles adding the dataSource
     }
 }
 
