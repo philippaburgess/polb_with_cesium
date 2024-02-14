@@ -471,7 +471,6 @@ function updateScene(sceneIndex) {
             duration: 2 // Adjust the duration as needed
         });
     }
-}
    
 // Section 4 
 
