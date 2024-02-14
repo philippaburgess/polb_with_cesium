@@ -325,7 +325,7 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Show Air Quality';
     }
 }
-});
+
 function updateScene(sceneIndex) {
   if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
         console.error('Invalid sceneIndex:', sceneIndex);
