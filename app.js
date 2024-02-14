@@ -289,7 +289,8 @@ var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
 var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-var toggleHeatmap = false; 
+var toggleButton = document.getElementById('toggleAirQuality');
+var airQualityButtonShown = false;
 
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -510,24 +511,21 @@ window.closeScene = function() {
 };
 
 // Section 6 
-  
-document.addEventListener('DOMContentLoaded', function() {
-    slides = document.querySelectorAll('.slide');
-    toggleButton = document.getElementById('toggleAirQuality');
-    
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-    } else {
-        console.error('toggleHeatmap function is not defined');
-    }
-
-    // Activate the first slide if any are present
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-    }
 
 window.addEventListener('load', function() {
    slides = document.querySelectorAll('.slide');
+});
+document.addEventListener('DOMContentLoaded', function() {
+    toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleHeatmap);
+        manageHeatmapVisibility(currentSceneIndex);
+    }
+    // Activate the first slide if any are present
+    var slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
