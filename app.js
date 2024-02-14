@@ -446,16 +446,6 @@ function flyToScene(sceneIndex) {
     }
 }
 
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
-
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
-
 function updateScene(sceneIndex) {
     var scene = scenes[sceneIndex];
     manageHeatmapVisibility(sceneIndex);
