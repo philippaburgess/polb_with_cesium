@@ -297,41 +297,37 @@ function initHeatmapLayerProvider() {
 
 function toggleHeatmap() {
     heatmapVisible = !heatmapVisible; // Toggle the visibility state
-    if (heatmapLayer && !heatmapVisible) {
-        console.log('Removing heatmap layer');
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
-    } else if (!heatmapLayer && heatmapVisible) {
-        console.log('Adding heatmap layer');
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+  if (heatmapVisible) {
+        // If we are turning the heatmap on
+        if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
         toggleButton.textContent = 'Hide Air Quality';
+    } else {
+        // If we are turning the heatmap off
+        if (heatmapLayer) {
+            removeHeatmapLayer();
+        }
+        toggleButton.textContent = 'Show Air Quality';
     }
 }
-
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-      if (sceneIndex >= airQualitySceneIndex) {
+  if (sceneIndex >= airQualitySceneIndex && !airQualitySceneReached) {
         airQualitySceneReached = true;
-    }    
-    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
-    
-    if (sceneIndex < airQualitySceneIndex) {
-        heatmapVisible = false; // Ensure heatmap is off on previous slides
+         if (!heatmapLayer) {
+            addHeatmapLayer();
+        }
+   heatmapVisible = true; // We want the heatmap to be visible by default on scene 8
     }
-
-    // Ensure the correct state of the heatmap layer is displayed
-    if (heatmapVisible) {
-        if (!heatmapLayer) {
-            toggleHeatmap(); // Add the heatmap layer if it's supposed to be visible
-        }
-    } else {
-        if (heatmapLayer) {
-            toggleHeatmap(); // Remove the heatmap layer if it's not supposed to be visible
-        }
+    toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+    if (sceneIndex === airQualitySceneIndex && heatmapLayer) {
+          toggleHeatmap();
+    }
+     if (sceneIndex < airQualitySceneIndex && heatmapVisible) {
+        toggleHeatmap();
     }
 }
-
 
 function addHeatmapLayer() {
     if (!heatmapImageryProvider) {
