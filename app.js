@@ -287,13 +287,13 @@ function setSceneContent(scene) {
  }
 
 // Initialize heatmap layer provider
-function initHeatmapLayerProvider() {
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-    }
-}
+// function initHeatmapLayerProvider() {
+//    if (!heatmapImageryProvider) {
+//        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+//            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+//        });
+//    }
+// }
 
 function toggleHeatmap() {
     heatmapVisible = !heatmapVisible; // Toggle the visibility state
@@ -311,6 +311,26 @@ function toggleHeatmap() {
         toggleButton.textContent = 'Show Air Quality';
     }
 }
+
+    function addHeatmapLayer() {
+    if (!heatmapImageryProvider) {
+        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+        });
+        // Keep a reference to the layer object
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+    }
+} 
+
+function removeHeatmapLayer() {
+    if (heatmapLayer) {
+        // Use the reference to remove the correct layer
+        viewer.imageryLayers.remove(heatmapLayer, true);
+        heatmapImageryProvider = null;
+        heatmapLayer = null; // Make sure to clear the reference
+    }
+}
+    
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
   if (sceneIndex >= airQualitySceneIndex && !airQualitySceneReached) {
@@ -338,24 +358,7 @@ function manageHeatmapVisibility(sceneIndex) {
         }
     }
 }
-function addHeatmapLayer() {
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-        // Keep a reference to the layer object
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-    }
-} // This closing bracket was missing in your snippet
 
-function removeHeatmapLayer() {
-    if (heatmapLayer) {
-        // Use the reference to remove the correct layer
-        viewer.imageryLayers.remove(heatmapLayer, true);
-        heatmapImageryProvider = null;
-        heatmapLayer = null; // Make sure to clear the reference
-    }
-}
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
