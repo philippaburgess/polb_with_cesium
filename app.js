@@ -404,9 +404,28 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function flyToScene(scene, specialFlyover = false) {
-    if (specialFlyover && currentSceneIndex === 5) {
- viewer.camera.flyTo({
+function updateScene(sceneIndex) {
+    if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
+    } else {
+        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
+    }
+
+    var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    
+    // Determine the terrain based on the current scene
+    if (sceneIndex === 5) {
+        setBathymetryTerrain();
+    } else {
+        setDefaultTerrain();
+    }
+
+    // Special flyTo handling for scene 6 or standard flyTo for other scenes
+    if (sceneIndex === 5) {
+        viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
                 heading: Cesium.Math.toRadians(45), // North
@@ -436,14 +455,6 @@ function flyToScene(scene, specialFlyover = false) {
         });
     }
 }
-
-function updateScene(sceneIndex) {
-    if (typeof sceneIndex === 'undefined') {
-        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
-    } else {
-        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-    }
-
     var scene = scenes[sceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
@@ -456,9 +467,6 @@ function updateScene(sceneIndex) {
         setDefaultTerrain();
     }
 }
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
     
     // Call flyToScene with the specialFlyover parameter based on the scene
     flyToScene(scene, sceneIndex === 5); // Assuming sceneIndex 5 requires special handling
