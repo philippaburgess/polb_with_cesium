@@ -456,23 +456,7 @@ function updateScene(sceneIndex) {
         });
     }
 }
-    var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    
-    // Call the terrain function based on the scene
-    if (sceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
-    }
-}
-    
-    // Call flyToScene with the specialFlyover parameter based on the scene
-    flyToScene(scene, sceneIndex === 5); // Assuming sceneIndex 5 requires special handling
-}
-    
+   
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
