@@ -433,6 +433,10 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
 }
 
 function updateScene(sceneIndex) {
+   var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
     initHeatmapLayerProvider();
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
@@ -449,7 +453,7 @@ function updateScene(sceneIndex) {
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
-    
+
     // Determine the terrain based on the current scene
     if (sceneIndex === 5) {
         setBathymetryTerrain();
