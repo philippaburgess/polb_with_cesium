@@ -275,6 +275,7 @@ var toggleButton = document.getElementById('toggleAirQuality'); // Access the to
 var airQualityButtonShown = false;
 var heatmapLayer;
 var heatmapVisible = false;    
+var airQualitySceneReached = false;
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
@@ -310,6 +311,9 @@ function toggleHeatmap() {
 
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+      if (sceneIndex >= airQualitySceneIndex) {
+        airQualitySceneReached = true;
+    }    
     toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
     
     if (sceneIndex < airQualitySceneIndex) {
