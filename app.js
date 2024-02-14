@@ -398,8 +398,7 @@ function setDefaultTerrain() {
  
 function flyToScene(scene, specialFlyover = false) {
     if (specialFlyover && currentSceneIndex === 5) {
-        // Special flyover logic for scene 6 (index 5)
-        viewer.camera.flyTo({
+ viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
                 heading: Cesium.Math.toRadians(45), // North
