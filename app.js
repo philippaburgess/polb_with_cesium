@@ -363,33 +363,30 @@ function loadLongBeachDataLayer() {
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
-   if (portTerminalLayer) {
+    // Remove port terminal layer if it exists and the current scene is not 2
+    if (portTerminalLayer && sceneIndex !== 2) {
         viewer.dataSources.remove(portTerminalLayer);
         portTerminalLayer = null;
     }
-    if (longBeachDataLayer) {
+    // Remove Long Beach layer if it exists and the current scene is not 12
+    if (longBeachDataLayer && sceneIndex !== 12) {
         viewer.dataSources.remove(longBeachDataLayer);
         longBeachDataLayer = null;
-    }   
+    }
+
+    // Load the port terminal layer if we're on scene 2 and it's not already loaded
     if (sceneIndex === 2 && !portTerminalLayer) {
         Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
-               .then(function(dataSource) {
+            .then(function(dataSource) {
                 portTerminalLayer = dataSource;
                 viewer.dataSources.add(portTerminalLayer);
             }).catch(function(error) {
                 console.error('Error loading PortTerminals GeoJSON:', error);
             });
-    } else if (sceneIndex === 12) { // Scene 13 for Long Beach
-        loadLongBeachDataLayer(); // This function already handles adding the dataSource
     }
-}
-
-    // Load Long Beach GeoJson in Scene 13
+    // Load the Long Beach layer if we're on scene 12 and it's not already loaded
     if (sceneIndex === 12 && !longBeachDataLayer) {
         loadLongBeachDataLayer();
-    } else if (longBeachDataLayer && sceneIndex !== 12) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
     }
 }
 
@@ -403,7 +400,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-flyToScene(scene, specialFlyover = false) {
+function flyToScene(scene, specialFlyover = false) {
     if (specialFlyover && currentSceneIndex === 5) {
  viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
