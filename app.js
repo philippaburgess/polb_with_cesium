@@ -296,13 +296,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-function updateScene() {
-    var scene = scenes[currentSceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(currentSceneIndex);
-    flyToScene(scene);
-}
-
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -327,20 +320,24 @@ function toggleHeatmap() {
 }
 
 function updateScene(sceneIndex) {
-  if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
+  if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex;
+    }
+
+    if (sceneIndex < 0 || sceneIndex >= scenes.length) {
         console.error('Invalid sceneIndex:', sceneIndex);
         return;
     }
-  currentSceneIndex = sceneIndex;
+
+    currentSceneIndex = sceneIndex;
     var scene = scenes[sceneIndex];
-    
+
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    adjustTerrainBasedOnScene(sceneIndex); // Make sure this is defined and being called here
-    flyToScene(scene, sceneIndex); // Pass the sceneIndex if needed
+    adjustTerrainBasedOnScene(sceneIndex);
+    flyToScene(scene, sceneIndex);
 }
-
     
 function adjustTerrainBasedOnScene(sceneIndex) {
     if (sceneIndex === 5) {
@@ -420,6 +417,7 @@ function flyToScene(scene, sceneIndex) {
         });
     }
 }
+}); 
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
