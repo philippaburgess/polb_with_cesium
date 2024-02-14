@@ -408,59 +408,46 @@ function setBathymetryTerrain() {
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
-
-function flyToScene(sceneIndex, specialFlyover = false) {
+function flyToScene(scene, specialFlyover = false) {
+    initHeatmapLayerProvider();
     if (sceneIndex === 5) {
         setBathymetryTerrain();
     } else {
         setDefaultTerrain();
     }
-
-    const scene = scenes[sceneIndex]; // Get the scene configuration
-
-    if (specialFlyover && sceneIndex === 5) {
-        // Special flyover logic for scene 6 (index 5)
+    
+    if (specialFlyover && currentSceneIndex === 5) {
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
-                heading: Cesium.Math.toRadians(45),
-                pitch: Cesium.Math.toRadians(-45),
+                heading: Cesium.Math.toRadians(45), // North
+                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
-            duration: 6,
+            duration: 6, // Duration in seconds
             complete: function() {
+                // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20),
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
                     orientation: {
-                        heading: Cesium.Math.toRadians(0),
-                        pitch: Cesium.Math.toRadians(-10.0),
+                        heading: Cesium.Math.toRadians(0), // Desired heading
+                        pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
                         roll: 0.0
                     },
-                    duration: 2
+                    duration: 2 // Adjust duration as needed
                 });
             }
         });
     } else {
-        // Standard flyTo behavior for other scenes
+        // Standard flyTo behavior for scene navigation
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
-            duration: 2
+            duration: 2 // Adjust the duration as needed
         });
     }
 }
 
-function updateScene(sceneIndex) {
-    var scene = scenes[sceneIndex];
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    
-    // Determine if the special flyover logic should be used
-    const specialFlyover = (sceneIndex === 5);
-    flyToScene(sceneIndex, specialFlyover);
-}
-   
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
