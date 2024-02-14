@@ -337,10 +337,7 @@ function updateScene(sceneIndex) {
     } else {
         setDefaultTerrain();
     }
-
-        // Navigate to the scene
-    flyToScene(scene);
-});
+}
 
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
@@ -433,6 +430,10 @@ function setDefaultTerrain() {
             duration: 2 // Adjust the duration as needed
         });
     }
+
+    // Navigate to the scene
+    flyToScene(scene);
+
 //        // Function to navigate to the specified scene
 // function flyToScene(scene) {
 //      viewer.camera.flyTo({
