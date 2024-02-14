@@ -288,16 +288,34 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-function updateScene() {
-    var scene = scenes[SceneIndex];
-    var titleElement = document.getElementById('scene-title');
-    var contentElement = document.getElementById('scene-description');
-    var sceneContainer = document.getElementById('scene-container');
+function updateScene(sceneIndex) {
+    // Check if sceneIndex is undefined or not within the bounds of the scenes array
+    if (typeof sceneIndex === 'undefined' || sceneIndex < 0 || sceneIndex >= scenes.length) {
+        console.error('Invalid sceneIndex:', sceneIndex);
+        return;
+    }
+    currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
 
-   if(titleElement && contentElement && sceneContainer) {
-        titleElement.textContent = scene.title;
-        contentElement.innerHTML = scene.content;
-        sceneContainer.style.display = 'block'; // Make sure the container is visible
+    var scene = scenes[sceneIndex];
+    if (!scene) {
+        console.error('No scene found at index:', sceneIndex);
+        return;
+    }
+
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+    
+    // Determine the terrain based on the current scene
+    if (sceneIndex === 5) {
+        setBathymetryTerrain();
+    } else {
+        setDefaultTerrain();
+    }
+
+        // Navigate to the scene
+    flyToScene(scene);
+}
 
 function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
