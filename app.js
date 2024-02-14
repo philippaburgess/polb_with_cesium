@@ -547,26 +547,22 @@ window.closeScene = function() {
 
 // Section 6 
 
-window.addEventListener('load', function() {
-   slides = document.querySelectorAll('.slide');
-     toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton && typeof toggleHeatmap === 'function') {
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var slides = document.querySelectorAll('.slide');
+    var toggleButton = document.getElementById('toggleAirQuality');
+    
+    if (toggleButton) {
         toggleButton.addEventListener('click', toggleHeatmap);
     } else {
         console.error('toggleHeatmap function is not defined');
-    } 
-});
-document.addEventListener('DOMContentLoaded', function() {
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
     }
-});
+
     // Activate the first slide if any are present
-    var slides = document.querySelectorAll('.slide');
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
+});
     
     // Hide the navigation buttons initially
     document.getElementById('navigation-buttons').style.visibility = 'hidden';
@@ -575,29 +571,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Define next slide function
 window.nextSlide = function() {
-   console.log('Current Slide Index:', currentSlideIndex);
-   console.log('Slides Length:', slides.length);
-    
-   if (currentSlideIndex < scenes.length - 1) {
+    console.log('Current Slide Index:', currentSlideIndex);
+    console.log('Slides Length:', slides.length);
+
+    if (currentSlideIndex < scenes.length - 1) {
         slides[currentSlideIndex].classList.remove('active');
-   }
         currentSlideIndex++;
-
-    if(slides[currentSlideIndex]) {
         slides[currentSlideIndex].classList.add('active');
-   } else {
-            console.error('No slide exists at index:', currentSlideIndex);
-        }
+    } else {
+        console.error('No slide exists at index:', currentSlideIndex);
+    }
 };
-    });
 
-    // Define the function to move to the next slide
-
- // Define the function to close the instructions and start the flyover
 window.closeInstructions = function() {
     // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
-      };
+};
  })();
