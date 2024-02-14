@@ -400,30 +400,22 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function updateScene(sceneIndex) {
-    initHeatmapLayerProvider();
-    if (typeof sceneIndex === 'undefined') {
-        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
-    } else {
-        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-    }
-
     var scene = scenes[sceneIndex];
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
     
-    // Determine the terrain based on the current scene
+function flyToScene(scene, specialFlyover = false) {
+    initHeatmapLayerProvider();
     if (sceneIndex === 5) {
         setBathymetryTerrain();
     } else {
         setDefaultTerrain();
     }
-
-    // Special flyTo handling for scene 6 or standard flyTo for other scenes
-    if (sceneIndex === 5) {
+    
+    if (specialFlyover && currentSceneIndex === 5) {
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 24000),
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
                 heading: Cesium.Math.toRadians(45), // North
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
