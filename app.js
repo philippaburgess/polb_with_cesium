@@ -583,12 +583,6 @@ window.previousScene = function() {
     }
 };
 
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-    initHeatmapLayerProvider();
-    flyToScene(scene);
-
 // Function to show the scene container
 function showSceneContainer() {
     var sceneContainer = document.getElementById('scene-container');
