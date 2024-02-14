@@ -444,12 +444,17 @@ function updateScene(sceneIndex) {
     } else {
         setDefaultTerrain();
     }
+
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
     
     // Call flyToScene with the specialFlyover parameter based on the scene
     flyToScene(scene, sceneIndex === 5); // Assuming sceneIndex 5 requires special handling
 }
 
     initHeatmapLayerProvider();
+
     
 // Section 4 
 
