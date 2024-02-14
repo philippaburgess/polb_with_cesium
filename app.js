@@ -294,13 +294,13 @@ function setSceneContent(scene) {
     checkSceneForGeoJsonLayers(sceneIndex);
 }
 
-function initHeatmapLayerProvider() {
-   if (!heatmapImageryProvider) {
-       heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
-    }
-}
+// function initHeatmapLayerProvider() {
+//   if (!heatmapImageryProvider) {
+//       heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+//            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+//        });
+//    }
+// }
 
 function updateToggleAndHeatmapVisibility(sceneIndex) {
     // The toggle button and heatmap functionality start from Scene 8
