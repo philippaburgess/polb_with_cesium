@@ -274,6 +274,7 @@ var heatmapImageryProvider;
 var toggleButton = document.getElementById('toggleAirQuality'); // Access the toggle button once var toggleButton = document.getElementById('toggleAirQuality');
 var airQualityButtonShown = false;
 var heatmapLayer;
+var heatmapVisible = false;    
 
 const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
 const airQualityMapType = 'US_AQI'; // The type of heatmap to return
@@ -293,33 +294,37 @@ function initHeatmapLayerProvider() {
     }
 }
 
-    function toggleHeatmap() {
-    console.log('toggleHeatmap called'); // Check if function is called
-    if (heatmapLayer) {
+function toggleHeatmap() {
+    heatmapVisible = !heatmapVisible; // Toggle the visibility state
+    if (heatmapLayer && !heatmapVisible) {
         console.log('Removing heatmap layer');
         viewer.imageryLayers.remove(heatmapLayer, true);
         heatmapLayer = null;
         toggleButton.textContent = 'Show Air Quality';
-    } else {
+    } else if (!heatmapLayer && heatmapVisible) {
         console.log('Adding heatmap layer');
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         toggleButton.textContent = 'Hide Air Quality';
     }
 }
-    
 
-// Function to manage heatmap visibility based on scene index
 function manageHeatmapVisibility(sceneIndex) {
     const airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
     toggleButton.style.display = sceneIndex >= airQualitySceneIndex ? 'block' : 'none';
+    
+    if (sceneIndex < airQualitySceneIndex) {
+        heatmapVisible = false; // Ensure heatmap is off on previous slides
+    }
 
-    if (sceneIndex >= airQualitySceneIndex) {
+    // Ensure the correct state of the heatmap layer is displayed
+    if (heatmapVisible) {
         if (!heatmapLayer) {
-            toggleHeatmap(); // Initially add the heatmap layer if not already added
-        } else if (!viewer.imageryLayers.contains(heatmapLayer)) {
-            toggleHeatmap(); // Add the heatmap layer if it was previously removed
+            toggleHeatmap(); // Add the heatmap layer if it's supposed to be visible
         }
-        heatmapLayer.show = sceneIndex === airQualitySceneIndex || toggleButton.textContent === 'Hide Air Quality';
+    } else {
+        if (heatmapLayer) {
+            toggleHeatmap(); // Remove the heatmap layer if it's not supposed to be visible
+        }
     }
 }
 
@@ -471,6 +476,7 @@ for (var key in properties) {
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
+         manageHeatmapVisibility(currentSceneIndex);
         updateScene();
     document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
@@ -484,6 +490,7 @@ window.nextScene = function() {
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
+        manageHeatmapVisibility(currentSceneIndex);
         updateScene();
         
         document.getElementById('scene-container').style.display = 'block';
