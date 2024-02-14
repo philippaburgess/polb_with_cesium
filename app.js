@@ -464,11 +464,11 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
-//    if (typeof sceneIndex === 'undefined') {
-//        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
-//    } else {
-//        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-//    }
+  if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
+   } else {
+    currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
+   }
 
     function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
