@@ -490,14 +490,13 @@ function setDefaultTerrain() {
     }
 }
         // Function to navigate to the specified scene
-// function flyToScene(scene) {
-//      viewer.camera.flyTo({
-//        destination: scene.destination,
-//        orientation: scene.orientation,
-//        duration: 2 // Adjust the duration as needed
-//    });
-// }
-
+function flyToScene(scene) {
+      viewer.camera.flyTo({
+          destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+            });
+ }
 
 // Section 4 
 
