@@ -288,6 +288,7 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
+
 function updateScene(sceneIndex) {
    var scene = scenes[sceneIndex];
     setSceneContent(scene);
@@ -296,13 +297,16 @@ function updateScene(sceneIndex) {
     initHeatmapLayerProvider();
     flyToScene(scene);
 }
- function initHeatmapLayerProvider() {
+
+function initHeatmapLayerProvider() {
    if (!heatmapImageryProvider) {
        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
         });
     }
  }
+
+
 
 function updateToggleAndHeatmapVisibility(sceneIndex) {
     // The toggle button and heatmap functionality start from Scene 8
@@ -440,11 +444,11 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
     }
 }
 
-    if (typeof sceneIndex === 'undefined') {
-        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
-    } else {
-        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-    }
+//    if (typeof sceneIndex === 'undefined') {
+//        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
+//    } else {
+//        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
+//    }
 
     function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
