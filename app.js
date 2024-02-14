@@ -283,28 +283,27 @@ function toggleHeatmap() {
     heatmapVisible = !heatmapVisible;
     var toggleButton = document.getElementById('toggleAirQuality');
 
-    // Initialize provider if not already done
     if (!heatmapImageryProvider) {
         heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
             url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
         });
     }
-
-    // Add or remove layer based on visibility state
     if (heatmapVisible) {
         if (!heatmapLayer) {
             heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+         }
+    } else {
+        // If heatmapLayer exists and heatmap is now invisible, remove it
+        if (heatmapLayer) {
+            viewer.imageryLayers.remove(heatmapLayer);
+            // After removal, set heatmapLayer to null to indicate it's not currently added
+            heatmapLayer = null;
         }
-    } else if (heatmapLayer) {
-        viewer.imageryLayers.remove(heatmapLayer);
-        heatmapLayer = null;
     }
-
     // Update button text
     toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
-    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
