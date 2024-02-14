@@ -408,7 +408,7 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
 //        sceneIndex = currentSceneIndex; // Use the currentSceneIndex if no specific sceneIndex is provided
 //    } else {
 //        currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-    }
+//    }
 
     var scene = scenes[sceneIndex];
     setSceneContent(scene);
