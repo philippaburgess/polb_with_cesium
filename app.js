@@ -363,20 +363,26 @@ function loadLongBeachDataLayer() {
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
-    // Load Port Terminals GeoJson in Scene 3
-    if (sceneIndex === 2 && !portTerminalLayer) {
-        Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
-            .then(function(dataSource) {
-                viewer.dataSources.add(dataSource);
-                portTerminalLayer = dataSource;
-                // Removed viewer.zoomTo call
-            }).catch(function(error) {
-                console.error('Error loading PortTerminals GeoJSON:', error);
-            });
-    } else if (portTerminalLayer && sceneIndex !== 2) {
+   if (portTerminalLayer) {
         viewer.dataSources.remove(portTerminalLayer);
         portTerminalLayer = null;
     }
+    if (longBeachDataLayer) {
+        viewer.dataSources.remove(longBeachDataLayer);
+        longBeachDataLayer = null;
+    }   
+    if (sceneIndex === 2 && !portTerminalLayer) {
+        Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
+               .then(function(dataSource) {
+                portTerminalLayer = dataSource;
+                viewer.dataSources.add(portTerminalLayer);
+            }).catch(function(error) {
+                console.error('Error loading PortTerminals GeoJSON:', error);
+            });
+    } else if (sceneIndex === 12) { // Scene 13 for Long Beach
+        loadLongBeachDataLayer(); // This function already handles adding the dataSource
+    }
+}
 
     // Load Long Beach GeoJson in Scene 13
     if (sceneIndex === 12 && !longBeachDataLayer) {
@@ -386,16 +392,7 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
         longBeachDataLayer = null;
     }
 }
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
-    });
-}
 
-function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
- 
 function flyToScene(scene, specialFlyover = false) {
     if (specialFlyover && currentSceneIndex === 5) {
  viewer.camera.flyTo({
@@ -429,6 +426,16 @@ function flyToScene(scene, specialFlyover = false) {
     }
 }
 
+function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+    });
+}
+
+function setDefaultTerrain() {
+    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+}
+ 
 function updateScene(sceneIndex) {
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex; // fallback to currentSceneIndex if sceneIndex is not provided
