@@ -271,37 +271,30 @@ orientation: {
 var longBeachDataLayer;
 var portTerminalLayer; 
 
-var heatmapImageryProvider;
+const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
+const airQualityMapType = 'US_AQI'; // The type of heatmap to return
+
+var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
+    url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
+});
 var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
-const airQualityApiKey = 'AIzaSyAQ76encI5EJ6UK3ykhdMwO6fxU9495xBg'; // Replace with your actual API key
-const airQualityMapType = 'US_AQI'; // The type of heatmap to return
 
 function toggleHeatmap() {
     heatmapVisible = !heatmapVisible;
     var toggleButton = document.getElementById('toggleAirQuality');
-
-    if (!heatmapImageryProvider) {
-        heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
-            url: `https://airquality.googleapis.com/v1/mapTypes/${airQualityMapType}/heatmapTiles/{z}/{x}/{y}?key=${airQualityApiKey}`
-        });
+ if (heatmapVisible && !heatmapLayer) {
+        // Add layer if it's supposed to be visible and not already added
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    } else if (!heatmapVisible && heatmapLayer) {
+        // Remove layer if it's supposed to be invisible
+        viewer.imageryLayers.remove(heatmapLayer);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
     }
-    if (heatmapVisible) {
-        if (!heatmapLayer) {
-            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-         }
-    } else {
-        // If heatmapLayer exists and heatmap is now invisible, remove it
-        if (heatmapLayer) {
-            viewer.imageryLayers.remove(heatmapLayer);
-            // After removal, set heatmapLayer to null to indicate it's not currently added
-            heatmapLayer = null;
-        }
-    }
-    // Update button text
-    toggleButton.textContent = heatmapVisible ? 'Hide Air Quality' : 'Show Air Quality';
 }
 
 function setSceneContent(scene) {
@@ -316,27 +309,25 @@ function updateScene(sceneIndex) {
         console.error('Invalid sceneIndex:', sceneIndex);
         return;
     }
-    currentSceneIndex = sceneIndex; // Update the currentSceneIndex if a specific sceneIndex is provided
-
+  currentSceneIndex = sceneIndex;
     var scene = scenes[sceneIndex];
-    if (!scene) {
-        console.error('No scene found at index:', sceneIndex);
-        return;
-    }
-
+    
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
-    checkSceneForBathymetry(sceneIndex);
-    checkSceneForAirQuality(sceneIndex);
+    // Assuming you have a function to handle terrain, call it here
+    // adjustTerrainBasedOnScene(sceneIndex); // Implement this based on your logic
     flyToScene(scene);
 }
-    // Determine the terrain based on the current scene
-//    if (sceneIndex === 5) {
-//        setBathymetryTerrain();
-//    } else {
-//        setDefaultTerrain();
-//    }
+    
+function adjustTerrainBasedOnScene(sceneIndex) {
+    if (sceneIndex === 5) {
+        setBathymetryTerrain();
+    } else {
+        setDefaultTerrain();
+    }
+}
+
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
@@ -353,28 +344,25 @@ function loadLongBeachDataLayer() {
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
-    // Remove port terminal layer if it exists and the current scene is not 2
-    if (portTerminalLayer && sceneIndex !== 2) {
-        viewer.dataSources.remove(portTerminalLayer);
-        portTerminalLayer = null;
+    if (sceneIndex === 2) {
+        if (!portTerminalLayer) {
+            // Load and add portTerminalLayer
+        } // else it's already loaded
+    } else {
+        if (portTerminalLayer) {
+            viewer.dataSources.remove(portTerminalLayer);
+            portTerminalLayer = null;
+        }
     }
-    // Remove Long Beach layer if it exists and the current scene is not 12
-    if (longBeachDataLayer && sceneIndex !== 12) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
-    }
-
-    // Load the port terminal layer if we're on scene 2 and it's not already loaded
-    if (sceneIndex === 2 && !portTerminalLayer) {
-        Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
-            .then(function(dataSource) {
-                portTerminalLayer = dataSource;
-                viewer.dataSources.add(portTerminalLayer);
-            }).catch(function(error) {
-                console.error('Error loading PortTerminals GeoJSON:', error);
-            });
-            } else if (sceneIndex === 12) { // Scene 13 for Long Beach
-        loadLongBeachDataLayer(); // This function already handles adding the dataSource
+    if (sceneIndex === 12) {
+        if (!longBeachDataLayer) {
+            // Load and add longBeachDataLayer
+        } // else it's already loaded
+    } else {
+        if (longBeachDataLayer) {
+            viewer.dataSources.remove(longBeachDataLayer);
+            longBeachDataLayer = null;
+        }
     }
 }
 
