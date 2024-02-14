@@ -307,6 +307,7 @@ function updateScene(sceneIndex) {
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
+    initHeatmapLayerProvider();
     
     // Determine the terrain based on the current scene
     if (sceneIndex === 5) {
@@ -326,8 +327,6 @@ function initHeatmapLayerProvider() {
         });
     }
  }
-
-
 
 function updateToggleAndHeatmapVisibility(sceneIndex) {
     // The toggle button and heatmap functionality start from Scene 8
