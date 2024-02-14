@@ -404,9 +404,6 @@ function flyToScene(scene, sceneIndex) {
         });
     }
 }
-    // Navigate to the scene
-flyToScene(scenes[currentSceneIndex], currentSceneIndex);
-
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
