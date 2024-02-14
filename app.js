@@ -562,18 +562,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Define next slide function
 window.nextSlide = function() {
-    console.log('Current Slide Index:', currentSlideIndex);
-    console.log('Slides Length:', slides.length);
-
-    if (currentSlideIndex < slides.length - 1) { // Ensure we're not going past the last slide
+   console.log('Current Slide Index:', currentSlideIndex);
+   console.log('Slides Length:', slides.length);
+    
+   if (currentSlideIndex < scenes.length - 1) {
         slides[currentSlideIndex].classList.remove('active');
+   }
         currentSlideIndex++;
-        if (slides[currentSlideIndex]) {
-            slides[currentSlideIndex].classList.add('active');
+
+    if(slides[currentSlideIndex]) {
+        slides[currentSlideIndex].classList.add('active');
+   } else {
+            console.error('No slide exists at index:', currentSlideIndex);
         }
-    } else {
-        console.error('No slide exists at index:', currentSlideIndex);
-    }
 };
 
 window.closeInstructions = function() {
