@@ -301,7 +301,6 @@ function manageHeatmapVisibility(sceneIndex) {
         if (heatmapLayer) {
             viewer.imageryLayers.remove(heatmapLayer);
             heatmapLayer = null;
-            // Update the button text if necessary
             if (toggleButton) toggleButton.textContent = 'Show Air Quality';
         }
     }
@@ -458,7 +457,9 @@ window.toggleHeatmap = function() {
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
-         manageHeatmapVisibility(currentSceneIndex);
+         updateScene(currentSceneIndex);
+    } else {
+        manageHeatmapVisibility(currentSceneIndex);
         toggleHeatmap(currentSceneIndex);
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
@@ -472,6 +473,8 @@ window.nextScene = function() {
 window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
+        updateScene(currentSceneIndex);
+    } else {
         manageHeatmapVisibility(currentSceneIndex);
         toggleHeatmap(currentSceneIndex);
         
