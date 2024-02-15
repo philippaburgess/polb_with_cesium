@@ -31,7 +31,6 @@ var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
 });
 
 viewer.scene.globe.enableLighting = true;
-viewer.scene.fog.enabled = false;
 
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
@@ -289,9 +288,6 @@ var setDefaultTerrain;
 var setBathymetryTerrain;
 var flyToBathymetricView;
     
-viewer.scene.globe.enableLighting = true;
-
-    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
@@ -344,6 +340,10 @@ function setDefaultTerrain() {
 // Separate function to fly to the scene's specified coordinates
 function flyToBathymetricView() {
   if (currentSceneIndex === 5) { // Scene 6
+        if (!(viewer.scene.terrainProvider instanceof Cesium.CesiumTerrainProvider) ||
+            viewer.scene.terrainProvider._url !== Cesium.IonResource.fromAssetId(2426648).url) {
+            viewer.scene.terrainProvider = bathymetryTerrainProvider;
+        }
         // Fly to above water location
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
