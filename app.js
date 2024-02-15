@@ -287,6 +287,7 @@ var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showin
 
 var setDefaultTerrain 
 var setBathymetryTerrain
+var flyToBathymetricView 
     
 viewer.scene.globe.enableLighting = true;
 viewer.scene.fog.enabled = true;
