@@ -529,7 +529,6 @@ window.closeScene = function() {
         toggleButton = document.getElementById('toggleAirQuality');
           if (toggleButton) {
         toggleButton.addEventListener('click', window.toggleHeatmap);
-        manageHeatmapVisibility(currentSceneIndex);
     }
         // Activate the first slide if any are present
         slides = document.querySelectorAll('.slide');
@@ -574,6 +573,7 @@ window.toggleHeatmap = function() {
         heatmapLayer = null;
         toggleButton.textContent = 'Show Air Quality';
     }
+    manageHeatmapVisibility(currentSceneIndex);
 };
     
  })();
