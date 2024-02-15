@@ -284,6 +284,9 @@ var heatmapLayer;
 var heatmapVisible = false;    
 var toggleButton; 
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+
+var setDefaultTerrain 
+var setBathymetryTerrain
     
 viewer.scene.globe.enableLighting = true;
 viewer.scene.fog.enabled = true;
