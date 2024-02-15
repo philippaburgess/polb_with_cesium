@@ -344,6 +344,9 @@ function setDefaultTerrain() {
 // Separate function to fly to the scene's specified coordinates
 function flyToBathymetricView() {
   if (currentSceneIndex === 5) { // Scene 6
+  if (!(viewer.scene.terrainProvider instanceof Cesium.CesiumTerrainProvider) || viewer.scene.terrainProvider._url !== Cesium.IonResource.fromAssetId(2426648).url) {
+        viewer.scene.terrainProvider = bathymetryTerrainProvider;
+    }
         // Fly to above water location
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -354,21 +357,19 @@ function flyToBathymetricView() {
             },
             duration: 8, // Duration in seconds
                 // Switch to bathymetric terrain for underwater view
-               complete: function() { 
-                setBathymetryTerrain();
+             }).then(function() {
                     viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2), // Replace with underwater coordinates
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7420, -20), // Replace with underwater coordinates
                         orientation: {
                             heading: Cesium.Math.toRadians(0), // Replace with desired heading
-                            pitch: Cesium.Math.toRadians(0), // Replace with desired pitch
+                            pitch: Cesium.Math.toRadians(-10), // Replace with desired pitch
                             roll: 0.0
                         },
                         duration: 4 // Adjust duration as needed
-                    });
-            }
-        });
+  });
+        }); // Removed the extraneous closing brackets and parentheses
     } else {
-        // Function to navigate to the specified scene
+        // Function to navigate to the specified scene for other indices
         viewer.camera.flyTo({
             destination: scene.destination,
             orientation: scene.orientation,
@@ -406,7 +407,7 @@ function updateScene(sceneIndex) {
         flyToBathymetricView();
     } else {
         setDefaultTerrain();
-        flyToScene(scenes[sceneIndex]);
+        flyToScene(scene);
     }
 }
 
