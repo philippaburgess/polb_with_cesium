@@ -289,9 +289,21 @@ var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
 var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
-var toggleButton = document.getElementById('toggleAirQuality');
-var airQualityButtonShown = false;
+    
+window.toggleHeatmap = function() {
+        heatmapVisible = !heatmapVisible;
+        var toggleButton = document.getElementById('toggleAirQuality');
+        if (heatmapVisible && !heatmapLayer) {
+            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+            toggleButton.textContent = 'Hide Air Quality';
+        } else if (!heatmapVisible && heatmapLayer) {
+            viewer.imageryLayers.remove(heatmapLayer);
+            heatmapLayer = null;
+            toggleButton.textContent = 'Show Air Quality';
+        }
+    };
 
+    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
@@ -439,7 +451,6 @@ window.nextScene = function() {
         currentSceneIndex++;
          manageHeatmapVisibility(currentSceneIndex);
          updateToggleAndHeatmapVisibility(currentSceneIndex);
-        updateScene();
     document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
         document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
@@ -454,7 +465,6 @@ window.previousScene = function() {
         currentSceneIndex--;
         manageHeatmapVisibility(currentSceneIndex);
         updateToggleAndHeatmapVisibility(currentSceneIndex);
-        updateScene();
         
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
@@ -510,28 +520,30 @@ window.closeScene = function() {
     // Optional: Add logic to navigate back to the main view or do nothing
 };
 
-// Section 6 
+    // Section 6
+    // This event listener is better placed outside the IIFE
+    window.addEventListener('load', function() {
+        slides = document.querySelectorAll('.slide');
+    });
 
-window.addEventListener('load', function() {
-   slides = document.querySelectorAll('.slide');
-});
-document.addEventListener('DOMContentLoaded', function() {
-    toggleButton = document.getElementById('toggleAirQuality');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', toggleHeatmap);
-        manageHeatmapVisibility(currentSceneIndex);
-    }
-    // Activate the first slide if any are present
-    slides = document.querySelectorAll('.slide');
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-    }
-    
-    // Hide the navigation buttons initially
-    document.getElementById('navigation-buttons').style.visibility = 'hidden';
-    document.getElementById('slide-forward').style.display = 'none'; // Hide the "Next" button
-    document.getElementById('slide-back').style.display = 'none'; // Hide the "Previous" button
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggleButton = document.getElementById('toggleAirQuality');
+        if (toggleButton) {
+            toggleButton.addEventListener('click', window.toggleHeatmap);
+            manageHeatmapVisibility(currentSceneIndex);
+        }
+        // Activate the first slide if any are present
+        slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+        
+        // Hide the navigation buttons initially
+        document.getElementById('navigation-buttons').style.visibility = 'hidden';
+        document.getElementById('slide-forward').style.display = 'none';
+        document.getElementById('slide-back').style.display = 'none';
+    });
+
 
 // Define next slide function
 window.nextSlide = function() {
