@@ -335,6 +335,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
+function flyToBathymetricView() {
   setBathymetryTerrain(); // Switch to bathymetric terrain first
     // Fly to the above water location first
     viewer.camera.flyTo({
