@@ -352,7 +352,7 @@ function flyToBathymetricView() {
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
-            duration: 2, // Duration in seconds
+            duration: 8, // Duration in seconds
             complete: function() {
                 // Switch to bathymetric terrain for underwater view
                 setBathymetryTerrain();
@@ -360,10 +360,10 @@ function flyToBathymetricView() {
                 // After a slight delay, fly to the underwater location
                 setTimeout(function() {
                     viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Replace with underwater coordinates
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -2), // Replace with underwater coordinates
                         orientation: {
-                            heading: Cesium.Math.toRadians(90), // Replace with desired heading
-                            pitch: Cesium.Math.toRadians(-45), // Replace with desired pitch
+                            heading: Cesium.Math.toRadians(0), // Replace with desired heading
+                            pitch: Cesium.Math.toRadians(0), // Replace with desired pitch
                             roll: 0.0
                         },
                         duration: 2 // Adjust duration as needed
