@@ -478,16 +478,17 @@ function flyToScene(scene, sceneIndex) {
             },
             duration: 8, // Duration in seconds
             complete: function() {
-            setBathymetryTerrain();
+
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7380, -200), // Underwater coordinates
+                    setBathymetryTerrain();
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7410, -20), // Underwater coordinates
                     orientation: {
                         heading: Cesium.Math.toRadians(0), // Desired heading
-                        pitch: Cesium.Math.toRadians(0), // Desired pitch
+                        pitch: Cesium.Math.toRadians(-10), // Desired pitch
                         roll: 0.0
                     },
-                    duration: 2 // Adjust duration as needed
+                    duration: 4 // Adjust duration as needed
                 });
             }
         });
