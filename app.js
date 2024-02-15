@@ -353,9 +353,8 @@ function updateScene(sceneIndex) {
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
 
+function flyToBathymetricView() {
     if (sceneIndex === 5) {
-        // Special behavior for Scene 6
-        setBathymetryTerrain(); // Switch to bathymetric terrain
         // Fly to the above water location first
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -366,6 +365,7 @@ function updateScene(sceneIndex) {
             },
             duration: 8,
         }).then(function() {
+            setBathymetryTerrain(); // Switch to bathymetric terrain
             // Then, fly to the underwater view
             return viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2),
