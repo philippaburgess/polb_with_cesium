@@ -290,14 +290,17 @@ function setSceneContent(scene) {
 
 function manageHeatmapVisibility(sceneIndex) {
   if (sceneIndex >= airQualitySceneIndex) {
-    toggleButton.style.display = 'block'; // Show the button
-    if (!heatmapVisible) {
-      // If the heatmap is not already visible, show it by default only on Scene 8
-      if (sceneIndex === airQualitySceneIndex) window.toggleHeatmap();
+    // Show the button if we're at or past the scene where it's introduced
+    toggleButton.style.display = 'block';
+    // Show the heatmap by default only on Scene 8, but leave it as is for other scenes
+    if (sceneIndex === airQualitySceneIndex && !heatmapVisible) {
+      window.toggleHeatmap();
     }
   } else {
-    toggleButton.style.display = 'none'; // Hide the button
-    if (heatmapVisible) window.toggleHeatmap(); // Hide the heatmap if we go back before Scene 8
+    // If we navigate back before Scene 8, hide the heatmap but keep the button visible
+    if (heatmapVisible) {
+      window.toggleHeatmap();
+    }
   }
 }
    function toggleHeatmap() {
@@ -318,12 +321,14 @@ function manageHeatmapVisibility(sceneIndex) {
 
     
 function setBathymetryTerrain() {
+ console.log('Setting bathymetry terrain...');
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
+        url: Cesium.IonResource.fromAssetId(2426648)
     });
 }
 
 function setDefaultTerrain() {
+   console.log('Setting default terrain...');
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
@@ -348,12 +353,13 @@ function updateScene(sceneIndex) {
 }
     
 function adjustTerrainBasedOnScene(sceneIndex) {
-   setDefaultTerrain();
-if (sceneIndex === 5) {
-        // Delay switching to bathymetry terrain to coincide with the underwater move
+    console.log('Adjusting terrain for scene index:', sceneIndex);
+    setDefaultTerrain();
+    if (sceneIndex === 5) {
         setTimeout(function() {
+            console.log('Switching to bathymetry terrain...');
             setBathymetryTerrain();
-        }, 6000); // Wait for the duration of the first flight (6 seconds)
+        }, 6000);
     }
 }
 
