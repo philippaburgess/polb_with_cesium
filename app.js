@@ -289,28 +289,33 @@ function setSceneContent(scene) {
  }
 
 function manageHeatmapVisibility(sceneIndex) {
-    if (sceneIndex >= airQualitySceneIndex && !heatmapVisible) {
-        // If we are at or beyond the air quality scene index, and the heatmap is not visible, show it
-        window.toggleHeatmap(); // This calls the toggle function to show the heatmap
-    } else if (sceneIndex < airQualitySceneIndex && heatmapVisible) {
-        // If we are before the air quality scene index, and the heatmap is visible, hide it
-        window.toggleHeatmap(); // This calls the toggle function to hide the heatmap
+  if (sceneIndex >= airQualitySceneIndex) {
+    toggleButton.style.display = 'block'; // Show the button
+    if (!heatmapVisible) {
+      // If the heatmap is not already visible, show it by default only on Scene 8
+      if (sceneIndex === airQualitySceneIndex) window.toggleHeatmap();
     }
-    // The button text is managed within the toggleHeatmap function
+  } else {
+    toggleButton.style.display = 'none'; // Hide the button
+    if (heatmapVisible) window.toggleHeatmap(); // Hide the heatmap if we go back before Scene 8
+  }
 }
-    
    function toggleHeatmap() {
- heatmapVisible = currentSceneIndex >= airQualitySceneIndex;
-    
-    if (heatmapVisible && !heatmapLayer) {
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        toggleButton.textContent = 'Hide Air Quality';
-    } else if (!heatmapVisible && heatmapLayer) {
-        viewer.imageryLayers.remove(heatmapLayer);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
+ heatmapVisible = !heatmapVisible;
+  if (heatmapVisible) {
+    if (!heatmapLayer) {
+      heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
     }
+    toggleButton.textContent = 'Hide Air Quality';
+  } else {
+    if (heatmapLayer) {
+      viewer.imageryLayers.remove(heatmapLayer);
+      heatmapLayer = null;
+    }
+    toggleButton.textContent = 'Show Air Quality';
+  }
 }
+
     
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
@@ -455,18 +460,22 @@ for (var key in properties) {
 }
 
 window.toggleHeatmap = function() {
- heatmapVisible = !heatmapVisible;
+ heatmapVisible = !heatmapVisible; // Toggle the heatmap visibility state
     if (heatmapVisible) {
         if (!heatmapLayer) {
+            // Add the heatmap layer if it doesn't exist
             heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
         toggleButton.textContent = 'Hide Air Quality';
+        toggleButton.classList.add('on'); // Add class 'on' to represent the active state
     } else {
         if (heatmapLayer) {
+            // Remove the heatmap layer if it exists
             viewer.imageryLayers.remove(heatmapLayer);
             heatmapLayer = null;
         }
         toggleButton.textContent = 'Show Air Quality';
+        toggleButton.classList.remove('on'); // Remove class 'on' to represent the inactive state
     }
 };
 
@@ -546,22 +555,22 @@ window.closeScene = function() {
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        toggleButton = document.getElementById('toggleAirQuality');
-          if (toggleButton) {
+  toggleButton = document.getElementById('toggleAirQuality');
+    if (toggleButton) {
         toggleButton.addEventListener('click', window.toggleHeatmap);
     }
-        // Activate the first slide if any are present
-        slides = document.querySelectorAll('.slide');
-        if (slides.length > 0) {
-            slides[0].classList.add('active');
-        }
-        
-        // Hide the navigation buttons initially
-        document.getElementById('navigation-buttons').style.visibility = 'hidden';
-        document.getElementById('slide-forward').style.display = 'none';
-        document.getElementById('slide-back').style.display = 'none';
-    });
 
+    // Initialize slides and set the first slide to active, if any are present
+    slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
+
+    // Hide the navigation buttons initially
+    document.getElementById('navigation-buttons').style.visibility = 'hidden';
+    document.getElementById('slide-forward').style.display = 'none';
+    document.getElementById('slide-back').style.display = 'none';
+});
 
 // Define next slide function
 window.nextSlide = function() {
