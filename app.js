@@ -290,7 +290,7 @@ var setBathymetryTerrain;
 var flyToBathymetricView;
     
 viewer.scene.globe.enableLighting = true;
-viewer.scene.fog.enabled = true;
+
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
