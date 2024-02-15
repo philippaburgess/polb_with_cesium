@@ -336,25 +336,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function updateScene(sceneIndex) {
-    if (typeof sceneIndex === 'undefined') {
-        sceneIndex = currentSceneIndex;
-    }
-
-    if (sceneIndex < 0 || sceneIndex >= scenes.length) {
-        console.error('Invalid sceneIndex:', sceneIndex);
-        return;
-    }
-
-    currentSceneIndex = sceneIndex;
-    var scene = scenes[sceneIndex];
-
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-    checkSceneForGeoJsonLayers(sceneIndex);
-
 function flyToBathymetricView() {
-    if (sceneIndex === 5) {
         // Fly to the above water location first
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -373,12 +355,33 @@ function flyToBathymetricView() {
                     pitch: Cesium.Math.toRadians(0),
                     roll: 0.0
                 },
-                duration: 4
+                  duration: 4
             });
-        });
+        }
+    });
+}
+
+function updateScene(sceneIndex) {
+    if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex;
+    }
+
+    if (sceneIndex < 0 || sceneIndex >= scenes.length) {
+        console.error('Invalid sceneIndex:', sceneIndex);
+        return;
+    }
+
+    currentSceneIndex = sceneIndex;
+    var scene = scenes[sceneIndex];
+
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+    checkSceneForGeoJsonLayers(sceneIndex);
+
+     if (sceneIndex === 5) {
+        flyToBathymetricView();
     } else {
-        // Behavior for all other scenes
-        setDefaultTerrain(); // Switch to default terrain
+        setDefaultTerrain();
         // Fly to the scene's designated view
         viewer.camera.flyTo({
             destination: scene.destination,
@@ -387,6 +390,7 @@ function flyToBathymetricView() {
         });
     }
 }
+
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
