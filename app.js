@@ -279,8 +279,7 @@ var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
 });
 var heatmapLayer;
 var heatmapVisible = false;    
-var toggleButton = false; 
-var manageHeatmapVisibility = false;
+var toggleButton; 
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
     
 function setSceneContent(scene) {
@@ -289,8 +288,27 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
- function manageHeatmapVisibility() {
+function manageHeatmapVisibility(sceneIndex) {
+    // Implement the logic to manage the visibility of the heatmap
+    if (sceneIndex >= airQualitySceneIndex) {
+        // Show the heatmap
+        if (!heatmapLayer) {
+            // Assuming you have a function to add the heatmap layer
+            addHeatmapLayer();
+        }
+        // Update the button text if necessary
+        toggleButton.textContent = 'Hide Air Quality';
+    } else {
+        // Hide the heatmap
+        if (heatmapLayer) {
+            viewer.imageryLayers.remove(heatmapLayer);
+            heatmapLayer = null;
+            // Update the button text if necessary
+            toggleButton.textContent = 'Show Air Quality';
+        }
     }
+}
+
     
    function toggleHeatmap() {
   heatmapVisible = !heatmapVisible; 
@@ -431,7 +449,7 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
          manageHeatmapVisibility(currentSceneIndex);
-         updatetoggleHeatmap(currentSceneIndex);
+        toggleHeatmap(currentSceneIndex);
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
         document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
@@ -445,7 +463,7 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         manageHeatmapVisibility(currentSceneIndex);
-        updatetoggleHeatmap(currentSceneIndex);
+        toggleHeatmap(currentSceneIndex);
         
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
@@ -509,10 +527,10 @@ window.closeScene = function() {
 
     document.addEventListener('DOMContentLoaded', function() {
         toggleButton = document.getElementById('toggleAirQuality');
-        if (toggleButton) {
-            toggleButton.addEventListener('click', window.toggleHeatmap);
-             manageHeatmapVisibility(currentSceneIndex);
-        }
+          if (toggleButton) {
+        toggleButton.addEventListener('click', window.toggleHeatmap);
+        manageHeatmapVisibility(currentSceneIndex);
+    }
         // Activate the first slide if any are present
         slides = document.querySelectorAll('.slide');
         if (slides.length > 0) {
@@ -547,8 +565,7 @@ window.closeInstructions = function() {
 };
 
 window.toggleHeatmap = function() {
-    heatmapVisible = !heatmapVisible;
-    toggleButton = document.getElementById('toggleAirQuality');
+   heatmapVisible = !heatmapVisible;
     if (heatmapVisible && !heatmapLayer) {
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         toggleButton.textContent = 'Hide Air Quality';
