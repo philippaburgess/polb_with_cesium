@@ -336,74 +336,58 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-
-// Separate function to fly to the scene's specified coordinates
-function flyToBathymetricView() {
-  if (currentSceneIndex === 5) { // Scene 6
-      setBathymetryTerrain();
-        // Fly to above water location
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45), // North
-                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                roll: 0.0
-            },
-            duration: 8, // Duration in seconds
-      }).then(function() {
-            // After arriving at the above water location, fly to underwater
-            return viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2), // Underwater coordinates
-                orientation: {
-                    heading: Cesium.Math.toRadians(0), // Desired heading
-                    pitch: Cesium.Math.toRadians(-10), // Desired pitch, adjusted to -10 from 0 for a slight tilt
-                    roll: 0.0
-                },
-                duration: 4 // Adjust duration as needed
-            });
-        });
-    } else {
-        // Function to navigate to the specified scene
-        viewer.camera.flyTo({
-            destination: scenes[currentSceneIndex].destination, // Ensuring the 'scenes' array is accessible
-            orientation: scenes[currentSceneIndex].orientation,
-            duration: 2 // Adjust the duration as needed
-        });
-    }
-}
 function updateScene(sceneIndex) {
- if (typeof sceneIndex === 'undefined') {
+    if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex;
     }
 
-    // Validate sceneIndex to ensure it's within the bounds of the scenes array
     if (sceneIndex < 0 || sceneIndex >= scenes.length) {
         console.error('Invalid sceneIndex:', sceneIndex);
         return;
     }
 
-    // Update the currentSceneIndex global variable
     currentSceneIndex = sceneIndex;
-
-    // Access the current scene object using the updated sceneIndex
     var scene = scenes[sceneIndex];
 
-    // Update scene content and manage heatmap visibility
     setSceneContent(scene);
     manageHeatmapVisibility(sceneIndex);
-
-    // Check for and handle GeoJson layers for the current scene
     checkSceneForGeoJsonLayers(sceneIndex);
 
-    // Adjust terrain based on the current scene; this includes switching to bathymetry if needed
     if (sceneIndex === 5) {
-        flyToBathymetricView();
+        // Special behavior for Scene 6
+        setBathymetryTerrain(); // Switch to bathymetric terrain
+        // Fly to the above water location first
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+            orientation: {
+                heading: Cesium.Math.toRadians(45),
+                pitch: Cesium.Math.toRadians(-45),
+                roll: 0.0
+            },
+            duration: 8,
+        }).then(function() {
+            // Then, fly to the underwater view
+            return viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-10),
+                    roll: 0.0
+                },
+                duration: 4
+            });
+        });
     } else {
-        setDefaultTerrain();
-        flyToScene(scene);
+        // Behavior for all other scenes
+        setDefaultTerrain(); // Switch to default terrain
+        // Fly to the scene's designated view
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2
+        });
     }
 }
-
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
@@ -460,42 +444,7 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
   }
 }
     // Function to navigate to the specified scene
-function flyToScene(scene, sceneIndex) {
-    if (sceneIndex === 5) {
-        // Special case for sceneIndex 5
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45), // North
-                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
-                roll: 0.0
-            },
-            duration: 8, // Duration in seconds
-            complete: function() {
 
-                // After arriving at the above water location, fly to underwater
-                viewer.camera.flyTo({
-                    setBathymetryTerrain(); 
-                        }
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7410, -20), // Underwater coordinates
-                    orientation: {
-                        heading: Cesium.Math.toRadians(0), // Desired heading
-                        pitch: Cesium.Math.toRadians(-10), // Desired pitch
-                        roll: 0.0
-                    },
-                    duration: 4 // Adjust duration as needed
-                });
-            }
-        });
-    } else {
-        // Default flyTo for other scenes
-        viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
-            duration: 2 // Adjust the duration as needed
-        });
-    }
-}
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
