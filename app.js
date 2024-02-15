@@ -350,29 +350,27 @@ function flyToBathymetricView() {
                 roll: 0.0
             },
             duration: 8, // Duration in seconds
-                // Switch to bathymetric terrain for underwater view
-               complete: function() { 
-                viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2), // Replace with underwater coordinates
-                        orientation: {
-                            heading: Cesium.Math.toRadians(0), // Replace with desired heading
-                            pitch: Cesium.Math.toRadians(0), // Replace with desired pitch
-                            roll: 0.0
-                        },
-                        duration: 4 // Adjust duration as needed
-                    });
-            }
+      }).then(function() {
+            // After arriving at the above water location, fly to underwater
+            return viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2), // Underwater coordinates
+                orientation: {
+                    heading: Cesium.Math.toRadians(0), // Desired heading
+                    pitch: Cesium.Math.toRadians(-10), // Desired pitch, adjusted to -10 from 0 for a slight tilt
+                    roll: 0.0
+                },
+                duration: 4 // Adjust duration as needed
+            });
         });
     } else {
         // Function to navigate to the specified scene
         viewer.camera.flyTo({
-            destination: scene.destination,
-            orientation: scene.orientation,
+            destination: scenes[currentSceneIndex].destination, // Ensuring the 'scenes' array is accessible
+            orientation: scenes[currentSceneIndex].orientation,
             duration: 2 // Adjust the duration as needed
         });
     }
 }
-
 function updateScene(sceneIndex) {
  if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex;
