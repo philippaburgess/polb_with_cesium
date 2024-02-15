@@ -340,10 +340,7 @@ function setDefaultTerrain() {
 // Separate function to fly to the scene's specified coordinates
 function flyToBathymetricView() {
   if (currentSceneIndex === 5) { // Scene 6
-        if (!(viewer.scene.terrainProvider instanceof Cesium.CesiumTerrainProvider) ||
-            viewer.scene.terrainProvider._url !== Cesium.IonResource.fromAssetId(2426648).url) {
-            viewer.scene.terrainProvider = bathymetryTerrainProvider;
-        }
+      setBathymetryTerrain();
         // Fly to above water location
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -355,8 +352,7 @@ function flyToBathymetricView() {
             duration: 8, // Duration in seconds
                 // Switch to bathymetric terrain for underwater view
                complete: function() { 
-                setBathymetryTerrain();
-                    viewer.camera.flyTo({
+                viewer.camera.flyTo({
                         destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -2), // Replace with underwater coordinates
                         orientation: {
                             heading: Cesium.Math.toRadians(0), // Replace with desired heading
