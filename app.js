@@ -442,7 +442,7 @@ window.previousScene = function() {
     if (currentSceneIndex > 0) {
         currentSceneIndex--;
         manageHeatmapVisibility(currentSceneIndex);
-        updateToggleHeatmap(currentSceneIndex);
+        updatetoggleHeatmap(currentSceneIndex);
         
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
