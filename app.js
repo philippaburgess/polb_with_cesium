@@ -374,37 +374,42 @@ function updateScene(sceneIndex) {
 
 // Separate function to fly to the scene's specified coordinates
 function flyToScene(scene) {
-    viewer.camera.flyTo({
-        destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-    });
-}
+  if (currentSceneIndex === 5) { // Scene 6
+        // Fly to above water location
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 1000),
+            orientation: {
+                heading: Cesium.Math.toRadians(45), // North
+                pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
+                roll: 0.0
+            },
+            duration: 2, // Duration in seconds
+            complete: function() {
+                // Switch to bathymetric terrain for underwater view
+                setBathymetryTerrain();
 
-// Updated flyToBathymetricView function with corrected logic
-function flyToBathymetricView() {
-    // Fly to the initial above-water location
-    viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000), // Adjust as needed for the above-water view
-        orientation: {
-            heading: Cesium.Math.toRadians(45), // Example orientation for above-water
-            pitch: Cesium.Math.toRadians(-45),
-            roll: 0.0
-        },
-        duration: 6, // Time to complete the transition to above-water view
-        complete: function() {
-            // After above-water view, fly to the underwater view
-            viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
-                orientation: {
-                    heading: Cesium.Math.toRadians(0), // Example orientation for underwater
-                    pitch: Cesium.Math.toRadians(-10.0),
-                    roll: 0.0
-                },
-                duration: 2 // Time to complete the transition to underwater view
-            });
-        }
-    });
+                // After a slight delay, fly to the underwater location
+                setTimeout(function() {
+                    viewer.camera.flyTo({
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Replace with underwater coordinates
+                        orientation: {
+                            heading: Cesium.Math.toRadians(90), // Replace with desired heading
+                            pitch: Cesium.Math.toRadians(-45), // Replace with desired pitch
+                            roll: 0.0
+                        },
+                        duration: 2 // Adjust duration as needed
+                    });
+                }, 2000); // Wait for 2 seconds before moving underwater
+            }
+        });
+    } else {
+        // Function to navigate to the specified scene
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Adjust the duration as needed
+        });
+    }
 }
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
