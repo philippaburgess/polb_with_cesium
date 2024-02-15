@@ -30,6 +30,9 @@ var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
     navigationHelpButton: false, // Don't show the navigation help button
 });
 
+viewer.scene.globe.enableLighting = true;
+viewer.scene.fog.enabled = true;
+
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
 
@@ -462,11 +465,12 @@ function flyToScene(scene, sceneIndex) {
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
-            duration: 6, // Duration in seconds
+            duration: 8, // Duration in seconds
             complete: function() {
+            setBathymetryTerrain();
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
-                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7380, -20), // Underwater coordinates
                     orientation: {
                         heading: Cesium.Math.toRadians(0), // Desired heading
                         pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
