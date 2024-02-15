@@ -280,6 +280,7 @@ var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
 var heatmapLayer;
 var heatmapVisible = false;    
 var toggleButton = false; 
+var manageHeatmapVisibility = false;
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
     
 function setSceneContent(scene) {
@@ -288,6 +289,9 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
+ function manageHeatmapVisibility() {
+    }
+    
    function toggleHeatmap() {
   heatmapVisible = !heatmapVisible; 
     }
