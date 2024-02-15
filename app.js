@@ -293,22 +293,19 @@ function manageHeatmapVisibility(sceneIndex) {
     if (sceneIndex >= airQualitySceneIndex) {
         // Show the heatmap
         if (!heatmapLayer) {
-            // Assuming you have a function to add the heatmap layer
-            addHeatmapLayer();
+            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         }
-        // Update the button text if necessary
-        toggleButton.textContent = 'Hide Air Quality';
+         if (toggleButton) toggleButton.textContent = 'Hide Air Quality';
     } else {
         // Hide the heatmap
         if (heatmapLayer) {
             viewer.imageryLayers.remove(heatmapLayer);
             heatmapLayer = null;
             // Update the button text if necessary
-            toggleButton.textContent = 'Show Air Quality';
+            if (toggleButton) toggleButton.textContent = 'Show Air Quality';
         }
     }
 }
-
     
    function toggleHeatmap() {
   heatmapVisible = !heatmapVisible; 
@@ -445,6 +442,19 @@ for (var key in properties) {
     }
 }
 
+window.toggleHeatmap = function() {
+   heatmapVisible = !heatmapVisible;
+    if (heatmapVisible && !heatmapLayer) {
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    } else if (!heatmapVisible && heatmapLayer) {
+        viewer.imageryLayers.remove(heatmapLayer);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
+    }
+    manageHeatmapVisibility(currentSceneIndex);
+};
+
 window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
@@ -563,17 +573,5 @@ window.closeInstructions = function() {
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
 
-window.toggleHeatmap = function() {
-   heatmapVisible = !heatmapVisible;
-    if (heatmapVisible && !heatmapLayer) {
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        toggleButton.textContent = 'Hide Air Quality';
-    } else if (!heatmapVisible && heatmapLayer) {
-        viewer.imageryLayers.remove(heatmapLayer);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
-    }
-    manageHeatmapVisibility(currentSceneIndex);
-};
     
  })();
