@@ -560,8 +560,7 @@ window.nextSlide = function() {
    } else {
             console.error('No slide exists at index:', currentSlideIndex);
         }
-};
-
+}
 window.closeInstructions = function() {
     // Hide the instruction box
     document.getElementById('instruction-box').style.display = 'none';
