@@ -333,7 +333,6 @@ function setBathymetryTerrain() {
 }
 
 function setDefaultTerrain() {
-    console.log('Setting default terrain...');
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
