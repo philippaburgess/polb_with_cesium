@@ -428,8 +428,8 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
          manageHeatmapVisibility(currentSceneIndex);
-         updateTogglHeatmap(currentSceneIndex);
-    document.getElementById('scene-container').style.display = 'block';
+         updateToggleHeatmap(currentSceneIndex);
+        document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
         document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
     }
@@ -525,9 +525,6 @@ window.closeScene = function() {
 
 // Define next slide function
 window.nextSlide = function() {
-   console.log('Current Slide Index:', currentSlideIndex);
-   console.log('Slides Length:', slides.length);
-    
    if (currentSlideIndex < scenes.length - 1) {
         slides[currentSlideIndex].classList.remove('active');
    }
