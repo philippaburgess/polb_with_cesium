@@ -31,7 +31,7 @@ var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
 });
 
 viewer.scene.globe.enableLighting = true;
-viewer.scene.fog.enabled = true;
+viewer.scene.fog.enabled = false;
 
       // Section 2: Scene and Location Setup
     // Define your locations array here as before
