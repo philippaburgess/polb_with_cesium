@@ -344,7 +344,7 @@ function flyToBathymetricView() {
         complete: function() {
             // After arriving at the above water location, fly to underwater
             viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-118.2140, 33.7340, -10),
+                destination: Cesium.Cartesian3.fromDegrees(-118.2140, 33.7345, -10),
                 orientation: {
                     heading: Cesium.Math.toRadians(0),
                     pitch: Cesium.Math.toRadians(0), // Slightly tilted down for underwater view
