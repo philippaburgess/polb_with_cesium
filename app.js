@@ -346,29 +346,25 @@ function flyToBathymetricView() {
   if (currentSceneIndex === 5) { // Scene 6
         // Fly to above water location
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 1000),
+            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
                 heading: Cesium.Math.toRadians(45), // North
                 pitch: Cesium.Math.toRadians(-45), // Tilted angle looking down
                 roll: 0.0
             },
             duration: 8, // Duration in seconds
-            complete: function() {
                 // Switch to bathymetric terrain for underwater view
+               complete: function() { 
                 setBathymetryTerrain();
-
-                // After a slight delay, fly to the underwater location
-                setTimeout(function() {
                     viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -2), // Replace with underwater coordinates
+                        destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7320, -20), // Replace with underwater coordinates
                         orientation: {
                             heading: Cesium.Math.toRadians(0), // Replace with desired heading
-                            pitch: Cesium.Math.toRadians(0), // Replace with desired pitch
+                            pitch: Cesium.Math.toRadians(-10), // Replace with desired pitch
                             roll: 0.0
                         },
                         duration: 2 // Adjust duration as needed
                     });
-                }, 2000); // Wait for 2 seconds before moving underwater
             }
         });
     } else {
