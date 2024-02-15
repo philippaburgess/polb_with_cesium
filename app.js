@@ -279,12 +279,14 @@ var heatmapImageryProvider = new Cesium.UrlTemplateImageryProvider({
 });
 var heatmapLayer;
 var heatmapVisible = false;    
+var toggleButton = false; 
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
+      document.getElementById('toggleAirQuality').toggleButton = ='false'; 
  }
 
    function manageHeatmapVisibility(sceneIndex) {
@@ -546,7 +548,7 @@ window.closeInstructions = function() {
 
 window.toggleHeatmap = function() {
     heatmapVisible = !heatmapVisible;
-    var toggleButton = document.getElementById('toggleAirQuality');
+    toggleButton = document.getElementById('toggleAirQuality');
     if (heatmapVisible && !heatmapLayer) {
         heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
         toggleButton.textContent = 'Hide Air Quality';
