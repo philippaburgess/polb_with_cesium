@@ -268,14 +268,6 @@ orientation: {
 
 // Section 3
 
-// Function to navigate to the specified scene
-function flyToScene(scene) {
-    viewer.camera.flyTo({
-        destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-    }); 
-} 
 var longBeachDataLayer;
 var portTerminalLayer; 
 
@@ -375,8 +367,16 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
         }
     }
 }
-    
-function flyToScene(scene, sceneIndex) {
+
+    // Function to navigate to the specified scene
+function flyToScene(scene, SceneIndex) {
+    viewer.camera.flyTo({
+        destination: scene.destination,
+        orientation: scene.orientation,
+        duration: 2 // Adjust the duration as needed
+    }); 
+} 
+} else { 
     if (sceneIndex === 5) {
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
