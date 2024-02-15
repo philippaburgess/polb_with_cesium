@@ -384,26 +384,32 @@ function loadLongBeachDataLayer() {
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
+  // Check if the current scene is the Port Terminals scene
   if (sceneIndex === 2) {
-        if (!portTerminalLayer) {
-            loadPortTerminalLayer(); // This function needs to be defined to load portTerminalLayer
-        }
-    } else if (portTerminalLayer) {
-        viewer.dataSources.remove(portTerminalLayer);
-        portTerminalLayer = null;
+    if (!portTerminalLayer) {
+      loadPortTerminalsDataLayer(); // Corrected function name
     }
-    
-    // For Long Beach Data Layer
-    if (sceneIndex === 12) {
-        if (!longBeachDataLayer) {
-            loadLongBeachDataLayer();
-        }
-    } else if (longBeachDataLayer) {
-        viewer.dataSources.remove(longBeachDataLayer);
-        longBeachDataLayer = null;
+  } else {
+    // If we are not in the Port Terminals scene, remove the layer if it exists
+    if (portTerminalLayer) {
+      viewer.dataSources.remove(portTerminalLayer);
+      portTerminalLayer = null;
     }
+  }
+  
+  // Check if the current scene is the Long Beach Data scene
+  if (sceneIndex === 12) {
+    if (!longBeachDataLayer) {
+      loadLongBeachDataLayer();
+    }
+  } else {
+    // If we are not in the Long Beach Data scene, remove the layer if it exists
+    if (longBeachDataLayer) {
+      viewer.dataSources.remove(longBeachDataLayer);
+      longBeachDataLayer = null;
+    }
+  }
 }
-
     // Function to navigate to the specified scene
 function flyToScene(scene, sceneIndex) {
     if (sceneIndex === 5) {
