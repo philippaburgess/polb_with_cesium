@@ -286,7 +286,6 @@ function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
-      document.getElementById('toggleAirQuality').toggleButton = ='false'; 
  }
 
    function manageHeatmapVisibility(sceneIndex) {
