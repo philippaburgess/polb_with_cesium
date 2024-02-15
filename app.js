@@ -482,7 +482,7 @@ function flyToScene(scene, sceneIndex) {
                 // After arriving at the above water location, fly to underwater
                 viewer.camera.flyTo({
                     setBathymetryTerrain(); 
-                        },
+                        }
                     destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7410, -20), // Underwater coordinates
                     orientation: {
                         heading: Cesium.Math.toRadians(0), // Desired heading
