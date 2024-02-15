@@ -276,7 +276,7 @@ function flyToScene(scene) {
         duration: 2 // Adjust the duration as needed
     });
 }
-
+});
 var longBeachDataLayer;
 var portTerminalLayer; 
 
@@ -424,7 +424,6 @@ function flyToScene(scene, sceneIndex) {
         });
     }
 }
-}); 
 // Section 4 
 
     function displayInfoBox(pickedFeature) {        
