@@ -332,7 +332,6 @@ function setBathymetryTerrain() {
 }
 
 function flyToBathymetricView() {
-  setBathymetryTerrain(); // Switch to bathymetric terrain first
     // Fly to the above water location first
     viewer.camera.flyTo({
         destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
@@ -344,6 +343,7 @@ function flyToBathymetricView() {
         duration: 8,
         complete: function() {
             // After arriving at the above water location, fly to underwater
+             setBathymetryTerrain(); // Switch to bathymetric terrain first
             viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -1),
                 orientation: {
