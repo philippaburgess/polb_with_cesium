@@ -281,6 +281,11 @@ var heatmapLayer;
 var heatmapVisible = false;    
 var toggleButton; 
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
+
+var bathymetryTerrainProvider;
+var defaultTerrainProvider;
+viewer.scene.globe.enableLighting = true;
+viewer.scene.fog.enabled = true;
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -328,12 +333,23 @@ function setBathymetryTerrain() {
 }
 
 function setDefaultTerrain() {
-   console.log('Setting default terrain...');
+    console.log('Setting default terrain...');
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
 function updateScene(sceneIndex) {
-  if (typeof sceneIndex === 'undefined') {
+  var scene = scenes[sceneIndex];
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+     if (sceneIndex === 5) { // Assuming Scene 6 is at index 5
+        viewer.scene.terrainProvider = bathymetryTerrainProvider;
+    flyToBathymetricView();
+    } else {
+        viewer.scene.terrainProvider = defaultTerrainProvider;
+        flyToScene(scene); // Fly to the scene using the standard view
+    }
+}
+    if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex;
     }
 
@@ -352,15 +368,32 @@ function updateScene(sceneIndex) {
     flyToScene(scene, sceneIndex);
 }
     
-function adjustTerrainBasedOnScene(sceneIndex) {
-    console.log('Adjusting terrain for scene index:', sceneIndex);
-    setDefaultTerrain();
-    if (sceneIndex === 5) {
-        setTimeout(function() {
-            console.log('Switching to bathymetry terrain...');
-            setBathymetryTerrain();
-        }, 6000);
-    }
+// Fly to a specific view for the bathymetry scene
+function flyToBathymetricView() {
+    // Fly to the initial above water location
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000), // Adjust as needed
+        orientation: {
+            heading: Cesium.Math.toRadians(45), // North
+            pitch: Cesium.Math.toRadians(-45), // Looking down
+            roll: 0.0
+        },
+        duration: 6, // Duration in seconds
+        complete: function() {
+            // Delay the switch to the underwater view
+            setTimeout(function() {
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(-118.2266, 33.7420, -20), // Underwater coordinates
+                    orientation: {
+                        heading: Cesium.Math.toRadians(0), // Desired heading
+                        pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
+                        roll: 0.0
+                    },
+                    duration: 2 // Adjust duration as needed
+                });
+            }, 6000); // Delay in milliseconds (matches the duration of the first flight)
+        }
+    });
 }
 
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
