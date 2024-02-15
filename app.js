@@ -289,21 +289,14 @@ function setSceneContent(scene) {
  }
 
 function manageHeatmapVisibility(sceneIndex) {
-    // Implement the logic to manage the visibility of the heatmap
-    if (sceneIndex >= airQualitySceneIndex) {
-        // Show the heatmap
-        if (!heatmapLayer) {
-            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        }
-         if (toggleButton) toggleButton.textContent = 'Hide Air Quality';
-    } else {
-        // Hide the heatmap
-        if (heatmapLayer) {
-            viewer.imageryLayers.remove(heatmapLayer);
-            heatmapLayer = null;
-            if (toggleButton) toggleButton.textContent = 'Show Air Quality';
-        }
+    if (sceneIndex >= airQualitySceneIndex && !heatmapVisible) {
+        // If we are at or beyond the air quality scene index, and the heatmap is not visible, show it
+        window.toggleHeatmap(); // This calls the toggle function to show the heatmap
+    } else if (sceneIndex < airQualitySceneIndex && heatmapVisible) {
+        // If we are before the air quality scene index, and the heatmap is visible, hide it
+        window.toggleHeatmap(); // This calls the toggle function to hide the heatmap
     }
+    // The button text is managed within the toggleHeatmap function
 }
     
    function toggleHeatmap() {
@@ -442,51 +435,45 @@ for (var key in properties) {
 }
 
 window.toggleHeatmap = function() {
-   heatmapVisible = !heatmapVisible;
-    if (heatmapVisible && !heatmapLayer) {
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+ heatmapVisible = !heatmapVisible;
+    if (heatmapVisible) {
+        if (!heatmapLayer) {
+            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        }
         toggleButton.textContent = 'Hide Air Quality';
-    } else if (!heatmapVisible && heatmapLayer) {
-        viewer.imageryLayers.remove(heatmapLayer);
-        heatmapLayer = null;
+    } else {
+        if (heatmapLayer) {
+            viewer.imageryLayers.remove(heatmapLayer);
+            heatmapLayer = null;
+        }
         toggleButton.textContent = 'Show Air Quality';
     }
-    manageHeatmapVisibility(currentSceneIndex);
 };
 
 window.nextScene = function() {
-    if (currentSceneIndex < scenes.length - 1) {
+      if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
-         updateScene(currentSceneIndex);
-    } else {
-        manageHeatmapVisibility(currentSceneIndex);
-        toggleHeatmap(currentSceneIndex);
-        document.getElementById('scene-container').style.display = 'block';
+        updateScene(currentSceneIndex); // Apply the new scene changes
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
         document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
     }
+    // Hide 'Next' button at the last scene
     if (currentSceneIndex === scenes.length - 1) {
-        document.getElementById('slide-forward').style.display = 'none'; // Hide 'Next' button in the last scene
+        document.getElementById('slide-forward').style.display = 'none';
     }
 };
 
 window.previousScene = function() {
-    if (currentSceneIndex > 0) {
+ if (currentSceneIndex > 0) {
         currentSceneIndex--;
-        updateScene(currentSceneIndex);
-    } else {
-        manageHeatmapVisibility(currentSceneIndex);
-        toggleHeatmap(currentSceneIndex);
-        
-        document.getElementById('scene-container').style.display = 'block';
+        updateScene(currentSceneIndex); // Apply the new scene changes
         document.getElementById('slide-forward').style.display = 'block'; // Show 'Next' button
-
-         if (currentSceneIndex === 0) {
-            document.getElementById('slide-back').style.display = 'none'; // Hide 'Previous' button
-        } else {
-            // If we are not at the first scene, ensure the 'Previous' button is visible
-            document.getElementById('slide-back').style.display = 'block';
-        }
+    }
+    // Hide 'Previous' button at the first scene
+    if (currentSceneIndex === 0) {
+        document.getElementById('slide-back').style.display = 'none';
+    } else {
+        document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button if not the first scene
     }
 };
 
