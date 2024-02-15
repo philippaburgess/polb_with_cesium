@@ -288,9 +288,8 @@ function setSceneContent(scene) {
       document.getElementById('scene-container').style.display = 'block';
  }
 
-   function manageHeatmapVisibility(sceneIndex) {
-        // Your logic to manage the visibility of the heatmap
-        // This function needs to be implemented
+   function toggleHeatmap() {
+  heatmapVisible = !heatmapVisible; 
     }
     
 function setBathymetryTerrain() {
