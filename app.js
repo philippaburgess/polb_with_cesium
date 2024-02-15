@@ -359,7 +359,7 @@ function setDefaultTerrain() {
         }
     });
 }
-
+ }); 
 function updateScene(sceneIndex) {
     if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex;
