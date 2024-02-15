@@ -289,26 +289,17 @@ var heatmapLayer;
 var heatmapVisible = false;    
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
     
-window.toggleHeatmap = function() {
-        heatmapVisible = !heatmapVisible;
-        var toggleButton = document.getElementById('toggleAirQuality');
-        if (heatmapVisible && !heatmapLayer) {
-            heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-            toggleButton.textContent = 'Hide Air Quality';
-        } else if (!heatmapVisible && heatmapLayer) {
-            viewer.imageryLayers.remove(heatmapLayer);
-            heatmapLayer = null;
-            toggleButton.textContent = 'Show Air Quality';
-        }
-    };
-
-    
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
       document.getElementById('scene-description').innerHTML = scene.content;
       document.getElementById('scene-container').style.display = 'block';
  }
 
+   function manageHeatmapVisibility(sceneIndex) {
+        // Your logic to manage the visibility of the heatmap
+        // This function needs to be implemented
+    }
+    
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648) // Use your actual bathymetry asset ID
@@ -317,19 +308,6 @@ function setBathymetryTerrain() {
 
 function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
-}
-
-window.toggleHeatmap = function() {
-    heatmapVisible = !heatmapVisible;
-    var toggleButton = document.getElementById('toggleAirQuality');
-    if (heatmapVisible && !heatmapLayer) {
-        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
-        toggleButton.textContent = 'Hide Air Quality';
-    } else if (!heatmapVisible && heatmapLayer) {
-        viewer.imageryLayers.remove(heatmapLayer);
-        heatmapLayer = null;
-        toggleButton.textContent = 'Show Air Quality';
-    }
 }
 
 function updateScene(sceneIndex) {
@@ -528,7 +506,6 @@ window.closeScene = function() {
         toggleButton = document.getElementById('toggleAirQuality');
         if (toggleButton) {
             toggleButton.addEventListener('click', window.toggleHeatmap);
-            manageHeatmapVisibility(currentSceneIndex);
         }
         // Activate the first slide if any are present
         slides = document.querySelectorAll('.slide');
@@ -565,4 +542,18 @@ window.closeInstructions = function() {
     // Start the flyover sequence
     flyToLocationAndHold(0); // Ensure this function is defined elsewhere
 };
+
+window.toggleHeatmap = function() {
+    heatmapVisible = !heatmapVisible;
+    var toggleButton = document.getElementById('toggleAirQuality');
+    if (heatmapVisible && !heatmapLayer) {
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    } else if (!heatmapVisible && heatmapLayer) {
+        viewer.imageryLayers.remove(heatmapLayer);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
+    }
+};
+    
  })();
