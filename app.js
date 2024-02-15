@@ -428,7 +428,7 @@ window.nextScene = function() {
     if (currentSceneIndex < scenes.length - 1) {
         currentSceneIndex++;
          manageHeatmapVisibility(currentSceneIndex);
-         updateToggleHeatmap(currentSceneIndex);
+         updatetoggleHeatmap(currentSceneIndex);
         document.getElementById('scene-container').style.display = 'block';
         document.getElementById('slide-back').style.display = 'block'; // Show 'Previous' button
         document.getElementById('slide-forward').style.display = 'block'; // Ensure 'Next' button is visible unless it's the last scene
