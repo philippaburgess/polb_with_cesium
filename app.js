@@ -371,15 +371,9 @@ function checkSceneForGeoJsonLayers(sceneIndex) {
 }
 
     // Function to navigate to the specified scene
-function flyToScene(scene, SceneIndex) {
-    viewer.camera.flyTo({
-        destination: scene.destination,
-        orientation: scene.orientation,
-        duration: 2 // Adjust the duration as needed
-    }); 
-} 
-} else { 
+function flyToScene(scene, sceneIndex) {
     if (sceneIndex === 5) {
+        // Special case for sceneIndex 5
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
             orientation: {
@@ -397,9 +391,16 @@ function flyToScene(scene, SceneIndex) {
                         pitch: Cesium.Math.toRadians(-10.0), // Desired pitch
                         roll: 0.0
                     },
-                     duration: 2 // Adjust duration as needed
+                    duration: 2 // Adjust duration as needed
                 });
             }
+        });
+    } else {
+        // Default flyTo for other scenes
+        viewer.camera.flyTo({
+            destination: scene.destination,
+            orientation: scene.orientation,
+            duration: 2 // Adjust the duration as needed
         });
     }
 }
