@@ -522,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
         manageHeatmapVisibility(currentSceneIndex);
     }
     // Activate the first slide if any are present
-    var slides = document.querySelectorAll('.slide');
+    slides = document.querySelectorAll('.slide');
     if (slides.length > 0) {
         slides[0].classList.add('active');
     }
