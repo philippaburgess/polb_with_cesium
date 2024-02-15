@@ -348,10 +348,12 @@ function updateScene(sceneIndex) {
 }
     
 function adjustTerrainBasedOnScene(sceneIndex) {
-    if (sceneIndex === 5) {
-        setBathymetryTerrain();
-    } else {
-        setDefaultTerrain();
+   setDefaultTerrain();
+if (sceneIndex === 5) {
+        // Delay switching to bathymetry terrain to coincide with the underwater move
+        setTimeout(function() {
+            setBathymetryTerrain();
+        }, 6000); // Wait for the duration of the first flight (6 seconds)
     }
 }
 
