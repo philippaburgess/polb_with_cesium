@@ -300,8 +300,17 @@ function manageHeatmapVisibility(sceneIndex) {
 }
     
    function toggleHeatmap() {
-  heatmapVisible = !heatmapVisible; 
+ heatmapVisible = currentSceneIndex >= airQualitySceneIndex;
+    
+    if (heatmapVisible && !heatmapLayer) {
+        heatmapLayer = viewer.imageryLayers.addImageryProvider(heatmapImageryProvider);
+        toggleButton.textContent = 'Hide Air Quality';
+    } else if (!heatmapVisible && heatmapLayer) {
+        viewer.imageryLayers.remove(heatmapLayer);
+        heatmapLayer = null;
+        toggleButton.textContent = 'Show Air Quality';
     }
+}
     
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
@@ -344,6 +353,19 @@ function adjustTerrainBasedOnScene(sceneIndex) {
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
+function loadPortTerminalsDataLayer() {
+    Cesium.GeoJsonDataSource.load(portTerminalsGeoJsonUrl)
+        .then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            portTerminalLayer = dataSource;
+            // Optionally set some properties like name, show, etc.
+            portTerminalLayer.name = 'Port Terminals';
+            portTerminalLayer.show = true;
+        }).catch(function(error) {
+            console.error('Error loading Port Terminals GeoJSON:', error);
+        });
+}
+    
 // Function to load the Long Beach data layer
 function loadLongBeachDataLayer() {
     Cesium.GeoJsonDataSource.load(longBeachGeoJsonUrl)
@@ -357,25 +379,23 @@ function loadLongBeachDataLayer() {
 
 // Function to load GeoJson layers based on scene
 function checkSceneForGeoJsonLayers(sceneIndex) {
-    if (sceneIndex === 2) {
+  if (sceneIndex === 2) {
         if (!portTerminalLayer) {
-            // Load and add portTerminalLayer
-        } // else it's already loaded
-    } else {
-        if (portTerminalLayer) {
-            viewer.dataSources.remove(portTerminalLayer);
-            portTerminalLayer = null;
+            loadPortTerminalLayer(); // This function needs to be defined to load portTerminalLayer
         }
+    } else if (portTerminalLayer) {
+        viewer.dataSources.remove(portTerminalLayer);
+        portTerminalLayer = null;
     }
+    
+    // For Long Beach Data Layer
     if (sceneIndex === 12) {
         if (!longBeachDataLayer) {
-            // Load and add longBeachDataLayer
-        } // else it's already loaded
-    } else {
-        if (longBeachDataLayer) {
-            viewer.dataSources.remove(longBeachDataLayer);
-            longBeachDataLayer = null;
+            loadLongBeachDataLayer();
         }
+    } else if (longBeachDataLayer) {
+        viewer.dataSources.remove(longBeachDataLayer);
+        longBeachDataLayer = null;
     }
 }
 
