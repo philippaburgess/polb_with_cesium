@@ -9,11 +9,6 @@
 
     const cesiumAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNWJlYzdlYi03OWE2LTQ4NDktYjU1MS0wMjg4MWIzMDI0YmEiLCJpZCI6MTczNDE4LCJpYXQiOjE3MDE2MjM1OTZ9.UMTbFZ4HZz2IJbfsVFFsob7GgDE1haShx5DWUdhrkr4";
     Cesium.Ion.defaultAccessToken = cesiumAccessToken;
-
-var bathymetryTerrainProvider = new Cesium.CesiumTerrainProvider({
-    url: Cesium.IonResource.fromAssetId(2426648) // Replace with your actual bathymetry asset ID
-});
-var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
     
    // Initialize the Cesium Viewer
     const viewer = new Cesium.Viewer('cesiumContainer', {
@@ -284,9 +279,12 @@ var heatmapVisible = false;
 var toggleButton; 
 var airQualitySceneIndex = 7; // Scene 8 is where air quality data starts showing
 
-var setDefaultTerrain; 
-var setBathymetryTerrain;
 var flyToBathymetricView;
+
+var bathymetryTerrainProvider = new Cesium.CesiumTerrainProvider({
+    url: Cesium.IonResource.fromAssetId(2426648) // Replace with your actual bathymetry asset ID
+});
+var defaultTerrainProvider = new Cesium.EllipsoidTerrainProvider({});
     
 function setSceneContent(scene) {
       document.getElementById('scene-title').textContent = scene.title;
@@ -325,14 +323,12 @@ function manageHeatmapVisibility(sceneIndex) {
   }
 }
 
-function setBathymetryTerrain() {
-    viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: Cesium.IonResource.fromAssetId(2426648)
-    });
-}
-
 function setDefaultTerrain() {
-    viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
+    viewer.scene.terrainProvider = defaultTerrainProvider;
+}
+    
+function setBathymetryTerrain() {
+    viewer.scene.terrainProvider = bathymetryTerrainProvider;
 }
 
 function flyToBathymetricView() {
