@@ -325,7 +325,6 @@ function manageHeatmapVisibility(sceneIndex) {
   }
 }
 
-    
 function setBathymetryTerrain() {
     viewer.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(2426648)
@@ -336,26 +335,26 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function flyToBathymetricView() {
-        // Fly to the above water location first
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
-            orientation: {
-                heading: Cesium.Math.toRadians(45),
-                pitch: Cesium.Math.toRadians(-45),
-                roll: 0.0
-            },
-            duration: 8,
-            complete: function() {
-            setBathymetryTerrain(); // Switch to bathymetric terrain 
-           viewer.camera.flyTo({
+  setBathymetryTerrain(); // Switch to bathymetric terrain first
+    // Fly to the above water location first
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-120.0, 31.1, 240000),
+        orientation: {
+            heading: Cesium.Math.toRadians(45),
+            pitch: Cesium.Math.toRadians(-45),
+            roll: 0.0
+        },
+        duration: 8,
+        complete: function() {
+            // After arriving at the above water location, fly to underwater
+            viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-118.2265, 33.7489, -1),
                 orientation: {
                     heading: Cesium.Math.toRadians(0),
-                    pitch: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-10), // Slightly tilted down for underwater view
                     roll: 0.0
                 },
-                  duration: 4
+                duration: 4
             });
         }
     });
@@ -378,7 +377,7 @@ function updateScene(sceneIndex) {
     manageHeatmapVisibility(sceneIndex);
     checkSceneForGeoJsonLayers(sceneIndex);
 
-     if (sceneIndex === 5) {
+    if (sceneIndex === 5) {
         flyToBathymetricView();
     } else {
         setDefaultTerrain();
@@ -390,7 +389,6 @@ function updateScene(sceneIndex) {
         });
     }
 }
-
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
