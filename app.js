@@ -340,43 +340,9 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function updateScene(sceneIndex) {
- if (typeof sceneIndex === 'undefined') {
-        sceneIndex = currentSceneIndex;
-    }
-
-    // Validate sceneIndex to ensure it's within the bounds of the scenes array
-    if (sceneIndex < 0 || sceneIndex >= scenes.length) {
-        console.error('Invalid sceneIndex:', sceneIndex);
-        return;
-    }
-
-    // Update the currentSceneIndex global variable
-    currentSceneIndex = sceneIndex;
-
-    // Access the current scene object using the updated sceneIndex
-    var scene = scenes[sceneIndex];
-
-    // Update scene content and manage heatmap visibility
-    setSceneContent(scene);
-    manageHeatmapVisibility(sceneIndex);
-
-    // Check for and handle GeoJson layers for the current scene
-    checkSceneForGeoJsonLayers(sceneIndex);
-
-    // Adjust terrain based on the current scene; this includes switching to bathymetry if needed
-    if (sceneIndex === 5) { // Scene 6 specific logic
-        setBathymetryTerrain();
-        flyToBathymetricView();
-    } else {
-        // For all other scenes, ensure default terrain is set and fly to the scene's specified view
-        setDefaultTerrain();
-        flyToScene(scene);
-    }
-}
 
 // Separate function to fly to the scene's specified coordinates
-function flyToScene(scene) {
+function flyToBathymetricView() {
   if (currentSceneIndex === 5) { // Scene 6
         // Fly to above water location
         viewer.camera.flyTo({
@@ -414,6 +380,40 @@ function flyToScene(scene) {
         });
     }
 }
+
+function updateScene(sceneIndex) {
+ if (typeof sceneIndex === 'undefined') {
+        sceneIndex = currentSceneIndex;
+    }
+
+    // Validate sceneIndex to ensure it's within the bounds of the scenes array
+    if (sceneIndex < 0 || sceneIndex >= scenes.length) {
+        console.error('Invalid sceneIndex:', sceneIndex);
+        return;
+    }
+
+    // Update the currentSceneIndex global variable
+    currentSceneIndex = sceneIndex;
+
+    // Access the current scene object using the updated sceneIndex
+    var scene = scenes[sceneIndex];
+
+    // Update scene content and manage heatmap visibility
+    setSceneContent(scene);
+    manageHeatmapVisibility(sceneIndex);
+
+    // Check for and handle GeoJson layers for the current scene
+    checkSceneForGeoJsonLayers(sceneIndex);
+
+    // Adjust terrain based on the current scene; this includes switching to bathymetry if needed
+    if (sceneIndex === 5) {
+        flyToBathymetricView();
+    } else {
+        setDefaultTerrain();
+        flyToScene(scenes[sceneIndex]);
+    }
+}
+
 const portTerminalsGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/PortTerminals_JSON.geojson';
 const longBeachGeoJsonUrl = 'https://raw.githubusercontent.com/philippaburgess/polb_with_cesium/main/Long_Beach_Com_JSON_NEWEST.geojson';
 
