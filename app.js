@@ -339,6 +339,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
+function updateScene(sceneIndex) {
  if (typeof sceneIndex === 'undefined') {
         sceneIndex = currentSceneIndex;
     }
