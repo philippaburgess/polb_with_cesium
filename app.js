@@ -274,9 +274,8 @@ function flyToScene(scene) {
         destination: scene.destination,
         orientation: scene.orientation,
         duration: 2 // Adjust the duration as needed
-    });
-}
-});
+    }); 
+} 
 var longBeachDataLayer;
 var portTerminalLayer; 
 
@@ -320,7 +319,7 @@ function setDefaultTerrain() {
     viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider({});
 }
 
-function toggleHeatmap() {
+window.toggleHeatmap = function() {
     heatmapVisible = !heatmapVisible;
     var toggleButton = document.getElementById('toggleAirQuality');
     if (heatmapVisible && !heatmapLayer) {
@@ -526,7 +525,7 @@ window.closeScene = function() {
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        var toggleButton = document.getElementById('toggleAirQuality');
+        toggleButton = document.getElementById('toggleAirQuality');
         if (toggleButton) {
             toggleButton.addEventListener('click', window.toggleHeatmap);
             manageHeatmapVisibility(currentSceneIndex);
